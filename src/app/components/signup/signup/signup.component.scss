@@ -1,0 +1,33 @@
+.form-container{
+    width: 380px;
+    background-color: white;
+    height: 650px;
+    border-radius: 1.9%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: auto;
+
+    strong{
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .form{
+        display: flex;
+        flex-direction: column;
+
+    }
+    .fbtn{
+        align-self: center;
+        text-align: center;
+    }
+    button{
+        align-self: center;
+        text-align: center;
+    }
+
+
+}
+

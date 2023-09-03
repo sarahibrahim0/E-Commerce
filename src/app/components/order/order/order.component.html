@@ -1,0 +1,24 @@
+<div class="order-summary overflow-x-auto">
+    <h3 class="white-space-nowrap">
+        Order Summary
+    </h3>
+    <div class="summary-price">
+        <span>Items Price</span>
+        <span>{{ totalPrice | currency}}</span>
+    </div>
+    <div class="summary-price">
+        <span>Packing & Shipping</span>
+        <span class="free">Free</span>
+    </div>
+    <div class="to-checkout">
+        <div class="summary-price">
+            <span>Total Price</span>
+            <span>{{ totalPrice | currency}}</span>
+        </div>
+        <ng-content>
+
+        </ng-content>
+
+    </div>
+</div>
+

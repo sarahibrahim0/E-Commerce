@@ -1,0 +1,26 @@
+.product-item-wrapper {
+  background-color: var(--surface-200);
+  border: 1px solid var(--surface-300);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 250px;
+  margin-top: 85px;
+}
+.product-item .price {
+  color: #ff3a00;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.product-item .name {
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.product-item .image {
+  width: 60%;
+  height: 150px;
+  margin-top: -60px;
+  border-radius: 10%;
+}/*# sourceMappingURL=product-item.component.css.map */

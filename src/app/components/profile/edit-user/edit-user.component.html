@@ -1,0 +1,95 @@
+<p-toast></p-toast>
+
+  <div class="container">
+    <h3>Edit Profile</h3>
+    <p-card>
+        <div class="checkout-page">
+
+            <div class="grid checkout-form">
+              <div class="col-12">
+                <form [formGroup]="checkoutFormGroup">
+                  <div class="p-fluid p-formgrid grid">
+                    <div class="field col-4">
+                      <label for="name">Name</label><br/>
+                      <input formControlName="name" id="name" type="text" pInputText  /><br/>
+                      <small *ngIf="checkoutForm['name'].invalid && isSubmitted" class="p-error"
+                        >Name is required</small
+                      >
+                    </div>
+                    <div class="field col-4">
+                      <label for="email">Email</label><br/>
+                      <input formControlName="email" id="email" type="text" pInputText /><br/>
+                      <small *ngIf="checkoutForm['email'].invalid && isSubmitted" class="p-error"
+                        ><span *ngIf="checkoutForm['email'].errors['required']">email is required</span>
+                        <span *ngIf="checkoutForm['email'].errors['email']">email is invalid</span></small
+                      >
+                    </div>
+
+                    <div class="field col-4">
+                      <label for="password">Password</label><br/>
+                      <input formControlName="password" id="password" type="password" pInputText /><br/>
+                      <small *ngIf="checkoutForm['password'].invalid && isSubmitted" class="p-error"
+                        ><span *ngIf="checkoutForm['password'].errors['required']">password is required</span>
+                        <span *ngIf="checkoutForm['password'].errors['password']">password is invalid</span></small
+                      >
+                    </div>
+
+
+                  </div>
+
+                  <div class="p-fluid formgrid grid">
+
+                    <div class="field col-4">
+                      <label for="phone">Phone</label><br/>
+                      <p-inputMask
+                        mask="(9999) 9999-999999"
+                        inputId="phone"
+                        formControlName="phone"
+                        placeholder="(9999) 9999-999999"
+                      ></p-inputMask><br/>
+                      <small *ngIf="checkoutForm['phone'].invalid && isSubmitted" class="p-error"
+                        >phone is required</small
+                      >
+                    </div>
+
+                    <div class="field col-4">
+                      <label for="street">Street</label><br/>
+                      <input formControlName="street" id="street" type="text" pInputText /><br/>
+                      <small *ngIf="checkoutForm['street'].invalid && isSubmitted" class="p-error"
+                        >Street is required</small
+                      >
+                    </div>
+                    <div class="field col-4">
+                      <label for="apartment">Apartment</label><br/>
+                      <input formControlName="apartment" id="apartment" type="text" pInputText /><br/>
+                      <small *ngIf="checkoutForm['apartment'].invalid && isSubmitted" class="p-error"
+                        >Apartment is required</small
+                      >
+                    </div>
+
+                    <div class="field col-4">
+                      <label for="street">Zip Code</label><br/>
+                      <input formControlName="zip" id="zip" type="text" pInputText /><br/>
+                      <small *ngIf="checkoutForm['zip'].invalid && isSubmitted" class="p-error"
+                        >Zip is required</small
+                      >
+                    </div>
+                    <div class="field col-4">
+                      <label for="city">City</label><br/>
+                      <input formControlName="city" id="city" type="text" pInputText /><br/>
+                      <small *ngIf="checkoutForm['city'].invalid && isSubmitted" class="p-error"
+                        >City is required</small
+                      >
+                    </div>
+
+
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+          <div class="checkout-button">
+            <p-button styleClass="delete" label="Edit Profile" (onClick)="editUserInfo()"></p-button>
+          </div>
+    </p-card>

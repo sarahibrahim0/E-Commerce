@@ -1,0 +1,35 @@
+
+
+.banner{
+    height: 280px;
+    width: 100%;
+    background-color: #D7EFFB;
+    border-radius: 15px;
+
+    &-text{
+        color: var(surface-700);
+        margin-top: 50px;
+        h1{
+            margin: 0;
+            font-size: 3em;
+            font-weight: 400;
+        }
+        h2{
+            margin: 0;
+            font-size: 2em;
+            font-weight: 300;
+        }
+    }
+
+&-image{
+    text-align: right;
+    padding: 15px 15px 0 0 ;
+    img{
+        width: 300px;
+    }
+}
+
+
+
+}
+

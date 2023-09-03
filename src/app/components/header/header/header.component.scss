@@ -1,0 +1,35 @@
+header{
+    margin-bottom: 25px;
+    .logo{
+        img{
+            width: 160px
+        }
+    }
+    .tools{
+
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 38px;
+        .pi-user{
+            margin-right: 15px;
+        }
+    }
+
+    .search{
+        padding-top: 25px ;
+    }
+
+    .navigation{
+        display: flex;
+        justify-content: center;
+        padding-top: 25px ;
+
+    }
+
+
+
+    i{
+        opacity: 1;
+    }
+}
+

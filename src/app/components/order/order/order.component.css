@@ -1,0 +1,23 @@
+.order-summary {
+  background-color: var(--surface-0);
+  padding: 15px;
+  border: 1px solid var(--surface-200);
+}
+.order-summary .summary-price {
+  display: flex;
+  margin: 15px 0;
+}
+.order-summary .summary-price span {
+  display: block;
+  width: 80%;
+}
+.order-summary .summary-price span:last-child {
+  width: 20%;
+  font-weight: 600;
+}
+.order-summary .summary-price span.free {
+  color: green;
+}
+.order-summary .checkout-button button {
+  width: 100%;
+}/*# sourceMappingURL=order.component.css.map */

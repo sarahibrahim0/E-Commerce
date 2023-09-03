@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CartService } from './services/cart/cart.service';
+import { Component, NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'E-Commerce';
+
+  constructor(private CartService: CartService){}
+
+  ngOnInit(){
+    this.CartService.initialCartLocalStorage()
+  }
 }

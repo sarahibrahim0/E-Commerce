@@ -1,0 +1,10 @@
+
+<div class="product-item" *ngIf="product">
+    <div class="product-item-wrapper">
+        <img [routerLink]="'/product/' + product.id" [src]="product.image" class="image" alt="product.name" />
+        <span class="name mt-4 ">{{product.name}}</span>
+        <span class="price mt-3 mb-3">{{product.price | currency}}</span>
+        <p-button styleClass="add-to-cart"  label="add to cart" (onClick)="addToCart(product)"icon="bi bi-cart"></p-button>
+
+    </div>
+</div>

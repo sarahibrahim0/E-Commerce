@@ -1,0 +1,30 @@
+footer {
+  background-color: var(--yellow-100);
+  height: auto;
+  min-height: auto;
+  width: 100%;
+  margin-top: 25px;
+  justify-self: flex-end;
+  padding: 10px 25px;
+}
+footer .footer-wrapper {
+  align-items: center;
+}
+footer .footer-wrapper .social {
+  margin-top: 15px;
+  text-align: right;
+}
+footer .footer-wrapper .social .nav {
+  text-align: center;
+  display: flex;
+  justify-content: flex-end;
+  color: black;
+}
+footer .footer-wrapper .social .nav .nav-item {
+  list-style: none;
+  margin-left: 10px;
+}
+footer .footer-wrapper .social .nav .nav-item .pi {
+  color: black;
+  font-size: medium;
+}/*# sourceMappingURL=footer.component.css.map */

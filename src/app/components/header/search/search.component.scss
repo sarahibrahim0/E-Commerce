@@ -1,0 +1,30 @@
+@import '../../../../styles.scss';
+
+
+.search{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--surface-200);
+    border-radius: 10px;
+    width: 275px;
+    height: 35px;
+    border: 1px solid gray;
+
+    .pi{
+        width: 25px;
+        font-size: 1.3em;
+        color: $primary;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    input{
+        height: 35px;
+        border: 0;
+        color: var(surface-600);
+        background-color: transparent;
+        &:focus-visible{
+            border:0;
+            outline: none
+        }
+    }
+}

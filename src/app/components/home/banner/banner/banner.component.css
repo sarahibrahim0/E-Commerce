@@ -1,0 +1,27 @@
+.banner {
+  height: 280px;
+  width: 100%;
+  background-color: #D7EFFB;
+  border-radius: 15px;
+}
+.banner-text {
+  color: var(surface-700);
+  margin-top: 50px;
+}
+.banner-text h1 {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 400;
+}
+.banner-text h2 {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 300;
+}
+.banner-image {
+  text-align: right;
+  padding: 15px 15px 0 0;
+}
+.banner-image img {
+  width: 300px;
+}/*# sourceMappingURL=banner.component.css.map */

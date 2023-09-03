@@ -1,0 +1,47 @@
+<p-toast></p-toast>
+
+
+<div class="form-container">
+
+
+    <strong  >One account  <br/>
+    Many Possibilities </strong>
+
+    <form [formGroup]="SignUpForm" class="form">
+
+        <!-- form group with email and password input fields-->
+
+        <div class="field mt-4">
+            <label for="firstName" class="lable">First Name</label>
+            <input id="firstName" (ngModelChange)="clear()" type="text" formControlName="firstName"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+            <label class="label" for="lastName">Last Name</label>
+            <input id="lastName" (ngModelChange)="clear()" type="text" formControlName="lastName"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+            <label for="email" class="lable">Email</label>
+            <input id="email" (ngModelChange)="clear()" type="text" formControlName="email"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+            <label class="label" for="password">Password</label>
+            <input id="password" (ngModelChange)="clear()" type="password" formControlName="password"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+
+        <div class="field">
+            <label class="label" for="phone">Phone</label>
+            <input id="phone" (ngModelChange)="clear()" type="phone" formControlName="phone"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+
+        <button pButton type="submit" (click)="login()">Sign Up</button>
+        <small *ngIf="error" class="p-error fbtn mt-2"> {{error}}</small>
+    </form>
+</div>
+
+
+

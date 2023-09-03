@@ -1,0 +1,52 @@
+
+
+<div class="container " >
+    <h3>Orders</h3>
+    <p-card>
+        <p-table [value]="ordersArr | paginate: { itemsPerPage: 6, currentPage: p}">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Order Code</th>
+                    <th>Ordered At</th>
+                    <th>Order Status</th>
+                    <th>Order Review</th>
+                    <th></th>
+
+
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-order  >
+                    <tr>
+                        <td>{{order.id | slice: 0: 6}}</td>
+
+                        <td>{{order.dateOrdered | date : 'short'}} </td>
+                        <td>
+
+                            <svg height="10" width="10">
+                                <circle cx="5" cy="5" r="4" [attr.fill]= "orderStatus[order.status]"/>
+                                Sorry, your browser does not support inline SVG.
+                              </svg>
+                              {{order.status}}
+
+                        </td>
+
+                         <td >
+                            <img *ngFor="let item of order.orderItems " [src]="item?.product.image" [alt]="item?.product.name" style="width: 70px; height: 70px; margin-left:5px; border-radius: 10%;">
+                         </td>
+<td class="text-xs font-medium " style="color: #ff3a00;">
+   <span (click)=viewOrder(order.id) class="cursor-pointer"> VIEW ORDER <i class="cursor-pointer text-xs ml-1 pi pi-arrow-right"></i></span>
+
+</td>
+                    </tr>
+
+            </ng-template>
+        </p-table>
+
+        <div class="flex flex-row justify-content-center mt-3">
+            <pagination-controls [autoHide]="true"  (pageChange)="p = $event" (pageBoundsCorrection)="p = $event">  </pagination-controls>
+        </div>
+
+    </p-card>
+
+
+</div>

@@ -1,0 +1,36 @@
+header {
+  margin-bottom: 25px;
+}
+header .logo img {
+  width: 160px;
+}
+header .tools {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 38px;
+}
+header .tools .pi-user {
+  margin-right: 15px;
+}
+header .search {
+  padding-top: 25px;
+}
+header .navigation {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+header i {
+  opacity: 1;
+}
+
+.drop:hover {
+  color: #6c757d;
+  background: #e9ecef;
+}
+
+a.drop:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #BFDBFE;
+}/*# sourceMappingURL=header.component.css.map */

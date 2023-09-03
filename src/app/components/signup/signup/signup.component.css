@@ -1,0 +1,27 @@
+.form-container {
+  width: 380px;
+  background-color: white;
+  height: 650px;
+  border-radius: 1.9%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: auto;
+}
+.form-container strong {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+}
+.form-container .fbtn {
+  align-self: center;
+  text-align: center;
+}
+.form-container button {
+  align-self: center;
+  text-align: center;
+}/*# sourceMappingURL=signup.component.css.map */

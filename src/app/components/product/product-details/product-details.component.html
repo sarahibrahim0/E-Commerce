@@ -1,0 +1,39 @@
+<p-toast></p-toast>
+<div class="product-page">
+    <div class="grid">
+        <div class="col-6">
+            <app-product-gallery [images]="product?.images"></app-product-gallery>
+        </div>
+        <div class="col-6 product" *ngIf="product">
+            <h2 class="product-name">{{product.name}}</h2>
+            <p class="product-description">{{product.description}}</p>
+            <div class="product-rating"> <p-rating [(ngModel)]="product.rating" [disabled]="true"
+                    [cancel]="false"></p-rating>
+            </div>
+            <div class="product-price">
+                {{product.price | currency }}
+                <span class="price-before">
+                    {{product.price + 18 | currency}}
+                </span>
+            </div>
+          <div class="product-quantity">
+            <div class="p-field col-12 md-3 p-0">
+                <label for="quantity" class="mb-1">Quantity</label> <br/>
+                    <p-inputNumber [(ngModel)]="productQuantity" mode="decimal" [showButtons]="true" inputId="quantity" [min]="0" [max]="100"> </p-inputNumber>
+            </div>
+          </div>
+
+          <div class="product-action">
+            <button pButton  pRipple type="button" label="buy now" (click)="addToCartAndBuy()" class="p-button-rounded details  mr-2"></button>
+            <button pButton  pRipple type="button" label="add to cart" (click)="addToCart()" class="p-button-rounded details"></button>
+
+          </div>
+        </div>
+        <div class="grid product.rich-description" *ngIf="product" >
+            <div class="col-12">
+                <div [innerHTML]="product?.richDescription">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

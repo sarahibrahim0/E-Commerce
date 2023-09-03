@@ -1,0 +1,30 @@
+<p-toast></p-toast>
+
+
+<div class="form-container">
+    <h3>Log In</h3>
+
+    <form [formGroup]="loginForm" class="form">
+
+        <!-- form group with email and password input fields-->
+
+        <div class="field">
+            <label for="email" class="lable">Email</label>
+            <input id="email" (ngModelChange)="clear()" type="text" formControlName="email"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+            <label class="label" for="password">Password</label>
+            <input id="password" (ngModelChange)="clear()" type="password" formControlName="password"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+
+
+        <button class="mt-2" pButton type="submit" (click)="login()">Sign In</button>
+        <small *ngIf="error" class="p-error fbtn mt-2"> Wrong Email or Password</small>
+
+    </form>
+
+  <span>Don't have an account? <span class="cursor-pointer" style="color: #ff3a00;" routerLink="/register">Sign Up!</span></span>
+
+</div>
