@@ -14,7 +14,7 @@
     <mat-menu #menu="matMenu">
       <button routerLink="/" mat-menu-item> <i class="pi pi-home text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Home</button>
       <button routerLink="/products" mat-menu-item><i class="pi pi-shopping-cart text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Products</button>
-      <button routerLink="/profile" mat-menu-item><i class="pi pi-user text-color-secondary cursor-pointer" style="font-size: 1rem"></i>  Profile</button>
+      <button routerLink="/profile" mat-menu-item *ngIf="token"> <i class="pi pi-user text-color-secondary cursor-pointer" style="font-size: 1rem"></i>  Profile</button>
       <button mat-menu-item (click)="logout()" *ngIf="token" ><i class="pi pi-sign-out  text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Log out</button>
       <button mat-menu-item (click)="login()" *ngIf="!token" ><i class="pi pi-sign-in text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Log in</button>
     </mat-menu>
@@ -27,7 +27,7 @@
                 <app-nav> </app-nav>
             </div>
             <div class="col-6 md:col-3 tools">
-                <i routerLink="/profile" class="pi pi-user text-color-secondary cursor-pointer" style="font-size: 1.5rem"></i>
+                <i *ngIf="token" routerLink="/profile" class="pi pi-user text-color-secondary cursor-pointer" style="font-size: 1.5rem"></i>
                 <app-cart-icon></app-cart-icon>
                 <i [ngStyle]="{'opacity': hide}" (click)="logout()"  *ngIf="token" class="pi pi-sign-out text-color-secondary cursor-pointer" style="font-size: 1.5rem"></i>
                 <i [ngStyle]="{'opacity': hide}" (click)="login()"  *ngIf="!token" class="pi pi-sign-in  text-color-secondary cursor-pointer" style="font-size: 1.5rem"></i>

@@ -24,7 +24,7 @@ userOrders: Order[] = []
 
 
   items: MenuItem[] | undefined;
-
+  secItems :  MenuItem[] | undefined;
   ngOnInit() {
 
       this.getUser();
@@ -40,19 +40,19 @@ userOrders: Order[] = []
       this.UsersService.getUserById(this.id).subscribe({
         next:(data) =>{ this.user = data;
           this.items = [{
-            label: `Hello ${this.user?.name}`,
+            label: `Hello, ${this.user?.name}`,
 
             items: [
               {
                   label: 'Profile',
                   icon: 'pi pi-fw pi-user',
-                  routerLink: '/profile'
-              },
-              {
-                  label: 'Orders',
-                  icon: 'pi pi-fw pi-shopping-bag',
-                  routerLink:'/profile/orders'
-              }
+                  routerLink: '/profile'}
+              // },
+              // {
+              //     label: 'Orders',
+              //     icon: 'pi pi-fw pi-shopping-bag',
+              //     routerLink:'/profile/orders'
+              // }
           ]}];
           this.getUserOrders(this.id);
 
@@ -67,7 +67,24 @@ userOrders: Order[] = []
 
 private getUserOrders(id:string){
   this.OrdersService.getUserOrders(id).subscribe({
-    next:(data) => this.userOrders = data ,
+    next:(data) =>{ this.userOrders = data
+    if(this.userOrders.length !== 0){
+      this.secItems =  [{
+        label: `Hello, ${this.user?.name}`,
+
+        items: [
+          {
+              label: 'Profile',
+              icon: 'pi pi-fw pi-user',
+              routerLink: '/profile'
+          },
+          {
+              label: 'Orders',
+              icon: 'pi pi-fw pi-shopping-bag',
+              routerLink:'/profile/orders'
+          }
+      ]}];
+    } },
     error:(error)=>{
       this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Sorry, Couldn't Get User Orders` });
 

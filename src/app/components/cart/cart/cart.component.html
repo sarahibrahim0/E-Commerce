@@ -76,6 +76,6 @@
 </div>
 
 
-<div class="card flex justify-content-center">
+<div class="card flex justify-content-center" *ngIf="cartItemsDetails.length">
     <pagination-controls [autoHide]="true"  (pageChange)="p = $event" (pageBoundsCorrection)="p = $event">  </pagination-controls>
 </div>

@@ -140,14 +140,14 @@ export class CheckoutComponent {
               next:(data) =>{
                 const prevForm = {
                 name: data?.name,
-                 orderItems:  this.orderItems,
-                 email: data?.email,
-                 phone: data?.phone,
-                 city: data?.city,
-                 country: data?.country,
-                 zip: data?.zip,
-                 apartment: data?.apartment,
-                 street: data?.street,
+                 orderItems:  this.orderItems || this.checkoutFormGroup.controls['name'].value,
+                 email: data?.email || this.checkoutFormGroup.controls['email'].value,
+                 phone: data?.phone || this.checkoutFormGroup.controls['phone'].value,
+                 city: data?.city || this.checkoutFormGroup.controls['city'].value,
+                 country: data?.country || this.checkoutFormGroup.controls['country'].value,
+                 zip: data?.zip || this.checkoutFormGroup.controls['zip'].value,
+                 apartment: data?.apartment || this.checkoutFormGroup.controls['apartment'].value,
+                 street: data?.street || this.checkoutFormGroup.controls['street'].value,
                  shippingAddress1: this.checkoutFormGroup.controls['shippingAddress1'].value,
                  shippingAddress2: this.checkoutFormGroup.controls['shippingAddress2'].value}
 

@@ -1,4 +1,4 @@
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,7 +19,6 @@ import { ProductItemComponent } from './components/product/product-item/product-
 import { FooterComponent } from './components/home/footer/footer.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { CheckboxModule } from 'primeng/checkbox';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { RatingModule } from 'primeng/rating';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -43,7 +42,6 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { environment } from '../environments/environment';
 import { ErrorComponent } from './components/error/error.component';
 import { PaginatorModule } from 'primeng/paginator';
-import { ProfileComponent } from './components/profile/profile/profile.component';
 import { MenuModule } from 'primeng/menu';
 import { UserDataComponent } from './components/profile/user-data/user-data.component';
 import { OrdersListComponent } from './components/profile/orders-list/orders-list.component';
@@ -58,6 +56,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { StepsModule } from 'primeng/steps';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatMenuModule} from '@angular/material/menu';
+import { ProfileComponent } from './components/profile/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -116,9 +115,11 @@ import {MatMenuModule} from '@angular/material/menu';
 TimelineModule,
 MenuModule,
 StepsModule,
+
 NgxPaginationModule,
+MatMenuModule,
 NgxStripeModule.forRoot(environment.stripe.publicKey),
-MatMenuModule
+
   ],
   providers: [MessageService, ConfirmationService, loginGuard,
 

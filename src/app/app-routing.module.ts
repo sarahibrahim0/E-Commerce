@@ -1,8 +1,5 @@
-import { OrderItemComponent } from './components/profile/order-item/order-item.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoriesComponent } from './components/home/categories/categories/categories.component';
-import { ProductItemComponent } from './components/product/product-item/product-item.component';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
 import { HomeComponent } from './components/home/home/home.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
