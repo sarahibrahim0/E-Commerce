@@ -34,7 +34,7 @@
                             <img *ngFor="let item of order.orderItems " [src]="item?.product.image" [alt]="item?.product.name" style="width: 70px; height: 70px; margin-left:5px; border-radius: 10%;">
                          </td>
 <td class="text-xs font-medium " style="color: #ff3a00;">
-   <span (click)=viewOrder(order.id) class="cursor-pointer white-space-nowrap"> VIEW ORDER <i class="cursor-pointer text-xs ml-1 pi pi-arrow-right"></i></span>
+   <span [routerLink]="'/profile/orders/'+ order.id" (click)=viewOrder(order.id) class="cursor-pointer white-space-nowrap" > VIEW ORDER <i class="cursor-pointer text-xs ml-1 pi pi-arrow-right"></i> </span>
 
 </td>
                     </tr>
@@ -47,6 +47,5 @@
         </div>
 
     </p-card>
-
 
 </div>

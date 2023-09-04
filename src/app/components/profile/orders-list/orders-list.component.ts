@@ -1,11 +1,10 @@
 import { MessageService } from 'primeng/api';
 import { Product } from './../../../interfaces/product';
-import { loginGuard } from './../../../guards/login.guard';
 import { LoginService } from 'src/app/services/login/login.service';
 import { OrdersService } from 'src/app/services/order/order.service';
 import { Component, Input } from '@angular/core';
 import { Order, OrderItem } from 'src/app/interfaces/order';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { state } from '@angular/animations';
 
 
@@ -33,10 +32,11 @@ orderStatus = {
 
 
 
-constructor(private OrdersService: OrdersService, private LoginService: LoginService, private router: Router,private MessageService: MessageService){}
+constructor(private ActivatedRoute: ActivatedRoute, private OrdersService: OrdersService, private LoginService: LoginService, private router: Router,private MessageService: MessageService){}
 
 ngOnInit(){
   this.getUserOrders();
+
 }
 
 private getUserOrders(){
@@ -89,7 +89,7 @@ this.ordersArr.push(order)
  };
 
  viewOrder(id: string){
-  console.log(id)
-this.router.navigate(['/profile/orders/${id}'] ,{ 'state':{id: id}})
+//   console.log(id)
+// this.router.navigate(['/profile/orders/:${id}'])
  }
 }

@@ -1,3 +1,4 @@
+import { CanActivateFn } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductListComponent } from './components/product/product-list/product-list.component';
@@ -14,6 +15,7 @@ import { OrdersListComponent } from './components/profile/orders-list/orders-lis
 import { EditUserComponent } from './components/profile/edit-user/edit-user.component';
 import { UserDataComponent } from './components/profile/user-data/user-data.component';
 import { OrderDetailsComponent } from './components/profile/order-details/order-details.component';
+import { ErrorComponent } from './components/error/error.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -22,21 +24,20 @@ const routes: Routes = [
   {path: 'product/:id', component:ProductDetailsComponent},
   {path: 'category/:id', component:ProductListComponent},
   {path: 'cart', component:CartComponent},
-  {path: 'checkout', component:CheckoutComponent, canActivate:[isLoggedGuard]},
-  {path: 'success', component:ThankyouComponent},
+  {path: 'checkout', component:CheckoutComponent},
+  {path: 'success', component:ThankyouComponent, canActivate :[isLoggedGuard]},
   {path: 'login', component:LoginComponent},
   {path: 'register', component:SignupComponent},
   {path: 'error', component:SignupComponent},
   {path: 'profile', component:ProfileComponent ,  children: [
     { path: '', component: UserDataComponent},
     { path: 'user/edit', component: EditUserComponent},
-    { path: 'orders', component: OrdersListComponent},
+    { path: 'orders', component: OrdersListComponent },
     { path:'orders/:orderId' , component :OrderDetailsComponent}
- ]},
 
+ ] , canActivate : [isLoggedGuard] },
 
-
-
+{path:'**' , component : ErrorComponent}
 ];
 
 @NgModule({

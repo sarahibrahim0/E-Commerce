@@ -1,15 +1,24 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from "@angular/router";
+import { CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
+import { LoginService } from '../services/login/login.service';
 
 
+export const isLoggedGuard : CanActivateFn = ()=>{
 
-export class loginGuard {
-  CanActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot ){
+  const router = inject(Router);
+  const loginService =  inject(LoginService);
+  let userToken: string ;
 
-    return true
+  loginService.$token.subscribe(token=>{
+    userToken = token;
+
+  })
+
+  if(!userToken){
+router.navigate(['/login'])
+return false
   }
-}
 
-export const isLoggedGuard : CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot )=>{
-  return inject(loginGuard).CanActivate(route, state)
+  return true;
+
 }

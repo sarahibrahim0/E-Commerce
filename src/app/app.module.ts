@@ -35,7 +35,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { userInterceptor } from './interceptor/user-auth.interceptor';
 import { ThankyouComponent } from './components/thankyou/thankyou/thankyou.component';
-import { isLoggedGuard, loginGuard } from './guards/login.guard';
+import { isLoggedGuard } from './guards/login.guard';
 import { LoginComponent } from './components/login/login/login.component';
 import { SignupComponent } from './components/signup/signup/signup.component';
 import { NgxStripeModule } from 'ngx-stripe';
@@ -121,7 +121,7 @@ MatMenuModule,
 NgxStripeModule.forRoot(environment.stripe.publicKey),
 
   ],
-  providers: [MessageService, ConfirmationService, loginGuard,
+  providers: [MessageService, ConfirmationService,
 
     {provide: HTTP_INTERCEPTORS, useClass: userInterceptor ,  multi: true},
 
