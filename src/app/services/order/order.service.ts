@@ -44,7 +44,7 @@ export class OrdersService {
 
   createCheckoutSession( orderItems: OrderItem[])
   {
-    return this.http.post(`${this.api}/create-checkout-session`, orderItems).pipe(switchMap((session :{id:string}) => this.StripeService.redirectToCheckout({sessionId: session['id']})))
+    return this.http.post(`https://dashboard-pnlv.onrender.com/api/v1/orders/create-checkout-session`, orderItems).pipe(switchMap((session :{id:string}) => this.StripeService.redirectToCheckout({sessionId: session['id']})))
 }
 
 
