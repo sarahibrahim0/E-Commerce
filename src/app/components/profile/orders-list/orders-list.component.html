@@ -23,10 +23,10 @@
                         <td>
 
                             <svg height="10" width="10">
-                                <circle cx="5" cy="5" r="4" [attr.fill]= "orderStatus[order.status]"/>
+                                <circle cx="5" cy="5" r="4" [attr.fill]= "orderStatus[order.status]?.color"/>
                                 Sorry, your browser does not support inline SVG.
                               </svg>
-                              {{order.status}}
+                              {{orderStatus[order.status]?.status}}
 
                         </td>
 

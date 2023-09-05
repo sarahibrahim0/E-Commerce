@@ -23,14 +23,13 @@ items: MenuItem[] | undefined;
 
 activeIndex: number = 0;
 
-orderStatus ={
-'Pending' : 0,
-'Processed':1 ,
-'Shipped':2,
-'Delivered':3,
-'Failed': 4
-}
-
+orderStatus  = {
+  0:{ status: 'Pending',  color:'limegreen', label: 0 },
+  1: {status: 'Processed',color: 'yellow', label: 1 },
+  2: {status: 'Shipped', color:'yellow', label: 2} ,
+  3: {status: 'Delivered',color: 'green', label:3} ,
+  4: {status: 'Failed',color: 'red', label: 4} ,
+ }
 constructor(public messageService: MessageService){
 
 
@@ -42,6 +41,8 @@ constructor(public messageService: MessageService){
 
 
 ngOnInit() {
+
+  console.log(this.status + this.orderStatus[this.status].status)
   this.items = [
     {
         label: 'Pending',

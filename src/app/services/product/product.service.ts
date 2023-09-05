@@ -20,10 +20,8 @@ export class ProductsServiceService {
   getProducts(selectedCategories?: string[]): Observable<Product[]> {
     let params = new HttpParams()
     if (selectedCategories) {
-      console.log(selectedCategories)
       params = params.append('categories', selectedCategories.join(','))
   }
-  console.log('h')
   return this.http.get<Product[]>(`${this.api}`,{ params} );
     }
     getSingleCategoryproducts(id?: string): Observable<Product[]> {

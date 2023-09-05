@@ -15,6 +15,15 @@ import { state } from '@angular/animations';
   styleUrls: ['./orders-list.component.scss']
 })
 export class OrdersListComponent {
+
+  // orderStatus ={
+  //   0 : 'Pending',
+  //   1 :'Processed',
+  //   2: 'Shipped',
+  //   3: 'Delivered',
+  //   4: 'Failed'
+  //   }
+
 p: number = 1;
 id:string
 orderList: OrderItem [] = []
@@ -22,11 +31,11 @@ orderProducts: any = []
 ordersArr : Order[] = []
 finalList = [];
 orderStatus = {
-  'Pending': 'limegreen' ,
-  'Processed': 'yellow' ,
-  'Shipped': 'yellow' ,
-  'Delivered': 'green' ,
-  'Failed': 'red' ,
+ 0:{ status: 'Pending',  color:'limegreen' },
+ 1: {status: 'Processed',color: 'yellow' },
+ 2: {status: 'Shipped', color:'yellow'} ,
+ 3: {status: 'Delivered',color: 'green'} ,
+ 4: {status: 'Failed',color: 'red'} ,
 }
 
 

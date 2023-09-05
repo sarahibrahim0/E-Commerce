@@ -22,13 +22,21 @@ export class OrderDetailsComponent {
 
 activeIndex: number = 0;
 
-orderStatus ={
- 'Pending' : 0,
- 'Processed':1 ,
- 'Shipped':2,
- 'Delivered':3,
- 'Failed': 4
+orderStatuss = {
+  0: { label: 'pending', color: 'primary' },
+  1: { label: 'processed', color: 'warning' },
+  2: { label: 'shipped', color: 'warning' },
+  3: { label: 'delivered', color: 'success' },
+  4: { label: 'failed', color: 'danger' },
 }
+
+orderStatus ={
+  0 : 'Pending',
+  1 :'Processed',
+  2: 'Shipped',
+  3: 'Delivered',
+  4: 'Failed'
+  }
 
 constructor(private ActivatedRoute: ActivatedRoute, private router: Router, private OrdersService: OrdersService, private MessageService: MessageService){
   // if (this.router.getCurrentNavigation() != null) {

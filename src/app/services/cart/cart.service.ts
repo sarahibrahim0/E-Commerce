@@ -87,8 +87,6 @@ export class CartService {
     cart.items = newCart;
     const cartJsonString = JSON.stringify(cart);
     localStorage.setItem('cart', cartJsonString);
-    console.log(cart + 'delete')
     this.cartSub$.next(cart);
-    console.log(cart +'cart sub')
 }
 }
