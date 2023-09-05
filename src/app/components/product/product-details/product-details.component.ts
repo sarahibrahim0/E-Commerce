@@ -35,7 +35,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   private getProductById(id: string){
   this.ProductsServiceService.getProductById(id).pipe(takeUntil(this.endSub$)).subscribe({
     next : (data)=>{
-      this.product = data;},
+      this.product = data
+      console.log(this.product.images)
+
+    },
     error:(err)=>console.log('Error getting products:', err),
   })
   }
