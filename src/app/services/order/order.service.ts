@@ -5,6 +5,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
+const orderStatus = {
+  'Pending': "0" ,
+   'Processed': "1" ,
+  'Shipped' :"2" ,
+   'Delivered': "3" ,
+   'Failed':"4" ,
+ }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +23,9 @@ export class OrdersService {
   api = `${environment.apiUrl}orders`
 
   postOrder(order: Order) : Observable<Order> {
+
+    let newOrder = {... order , status : orderStatus[order.status] }
+    console.log(newOrder)
     return this.http.post<Order>(`${this.api}`, order);
   }
 
