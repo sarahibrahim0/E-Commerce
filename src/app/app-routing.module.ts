@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'category/:id', component:ProductListComponent},
   {path: 'cart', component:CartComponent},
   {path: 'checkout', component:CheckoutComponent},
-  {path: 'success', component:ThankyouComponent, canActivate :[isLoggedGuard]},
+  {path: 'success', component:ThankyouComponent},
   {path: 'login', component:LoginComponent},
   {path: 'register', component:SignupComponent},
   {path: 'error', component:SignupComponent},
