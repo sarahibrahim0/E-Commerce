@@ -112,6 +112,7 @@ export class CheckoutComponent {
 
     }else{
       this.ordersService.createCheckoutSession(this.orderItems).subscribe({
+        next: (data)=>{this.router.navigate['/success']},
         error: (err)=>{
                 this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Something Went Wrong During Payment`});
         }
