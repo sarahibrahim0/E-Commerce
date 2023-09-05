@@ -37,14 +37,9 @@ export class ThankyouComponent {
 
   postOrders(){
     this.getOrders()
-  console.log(this.orderItems)
     this.OrdersService.postOrder(this.orderItems).subscribe({
       next :(data)=>{
         this.CartService.emptyCart();
-        this.LoginService.$token.subscribe(t=>{
-          console.log(t)
-        })
-        this.LoginService.$id.subscribe(id=> console.log(id))
       },
       error: (err)=>{
         this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Couldn't Order Now, try again!`});

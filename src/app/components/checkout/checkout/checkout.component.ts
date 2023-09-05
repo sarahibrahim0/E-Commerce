@@ -12,7 +12,7 @@ import { BehaviorSubject, filter, timer } from 'rxjs';
 import { MessageService } from 'primeng/api';
 import { Stripe } from '@stripe/stripe-js';
 import { StripeService } from 'ngx-stripe';
-
+import { environment } from 'src/environments/environment';
 declare function require(name:string);
 
 
@@ -43,7 +43,7 @@ export class CheckoutComponent {
   countryName: string;
   userCountry : BehaviorSubject<any> = new BehaviorSubject<any>(null);
   error
-
+  api = environment.apiUrl;
 
 
   ngOnInit(): void {
@@ -112,7 +112,7 @@ export class CheckoutComponent {
 
     }else{
       this.ordersService.createCheckoutSession(this.orderItems).subscribe({
-        next: (data)=>{this.router.navigate['/success']},
+        next: (data)=>{this.router.navigate[`${this.api}/success`]},
         error: (err)=>{
                 this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Something Went Wrong During Payment`});
         }
