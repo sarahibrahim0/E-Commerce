@@ -15,7 +15,6 @@ export class OrdersService {
   api = `${environment.apiUrl}orders`
 
   postOrder(order: Order) : Observable<Order> {
-    console.log(order)
     return this.http.post<Order>(`${this.api}`, order);
   }
 
@@ -44,7 +43,7 @@ export class OrdersService {
 
   createCheckoutSession( orderItems: OrderItem[])
   {
-    return this.http.post(`https://dashboard-pnlv.onrender.com/api/v1/orders/create-checkout-session`, orderItems).pipe(switchMap((session :{id:string}) => this.StripeService.redirectToCheckout({sessionId: session['id']})))
+    return this.http.post(`https://dashboard-pnlv.onrender.com/api/v1/orders/create-checkout-session`, orderItems).pipe(switchMap((session :{id:string ,  success_url: 'https://dashboard-pnlv.onrender.com/api/v1/success',}) => this.StripeService.redirectToCheckout({sessionId: session['id']})))
 }
 
 
