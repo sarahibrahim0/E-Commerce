@@ -41,7 +41,7 @@ export class ProductsServiceService {
     return this.http.delete<Product>(`${this.api}/${id}`);
   }
 
-  editProduct(id: string , product: FormData): Observable<Product> {
+  editProduct(id: string , product: FormData | any): Observable<Product> {
     return this.http.put<Product>(`${this.api}/${id}`, product);
   }
 

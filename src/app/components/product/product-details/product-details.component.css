@@ -1,20 +1,16 @@
 .product-name {
-  font-size: 2em;
-}
-.product-description {
-  font-size: 1.4em;
+  font-size: 1.5em;
 }
 .product-rating {
   margin: 15px 0;
 }
 .product-price {
-  font-size: 2em;
+  color: #ff3a00;
   font-weight: 600;
   border-bottom: 1px solid var(--surface-300);
   padding: 25px 0;
 }
 .product-price .price-before {
-  font-size: 0.7em;
   margin-left: 10px;
   font-weight: 200;
   color: var(--surface-500);
@@ -22,9 +18,6 @@
 }
 .product-quantity {
   margin: 25px 0;
-}
-.product-quantity label {
-  font-size: 1.2em;
 }
 .product-actions .p-button {
   background-color: #ff3a00;

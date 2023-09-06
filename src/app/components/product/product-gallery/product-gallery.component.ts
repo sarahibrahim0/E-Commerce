@@ -10,14 +10,17 @@ export class ProductGalleryComponent implements OnChanges {
   selectedImage : string;
   @Input() images : string[]
 
+  totalImages: string[]
+
   ngOnInit(){
 
     //  this.images? this.selectedImage =this.images[0] : null;
-    //  console.log(this.images)
   }
 
   ngOnChanges(){
      this.images? this.selectedImage =this.images[0] : null;
+     this.totalImages = this.images
+     console.log(this.totalImages)
 
   }
 

@@ -325,3 +325,19 @@ p-checkbox:hover .p-checkbox-box.p-highlight:hover {
 // html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.p-rating .p-rating-icon.p-rating-icon-active {
+  color: $primary!important;
+}
+
+
+.p-rating .p-rating-icon.pi-star-fill {
+  color: $primary !important;
+}
+
+.p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {
+  color: $primary!important;
+}
+
+.p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon{
+  color: $primary!important;
+}

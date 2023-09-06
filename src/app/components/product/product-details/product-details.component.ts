@@ -15,6 +15,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   product: Product;
   endSub$ : Subject<any> = new Subject();
   productQuantity: number = 1;
+  rating: number
 
 
   constructor(private ProductsServiceService: ProductsServiceService,
@@ -56,9 +57,20 @@ addToCart(){
   }, false)
   this.MessageService.add({ severity: 'success', summary: 'Success', detail: 'Added To Cart'})
 }
+
+editRating(event, product){
+  console.log(event, product)
+  let rating= event.value
+  this.ProductsServiceService.editProduct(product.id, product).subscribe({
+    next:(data)=>{},
+    error:(e)=>{}
+  })
+}
   ngOnDestroy(): void {
       this.endSub$.next(0);
       this.endSub$.complete()
 
   }
+
+
 }
