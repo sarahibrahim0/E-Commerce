@@ -16,7 +16,7 @@
                 </div>
                 <div class="cart-item mb-5" *ngFor="let cartItem of cartItemsDetails | paginate: { itemsPerPage: 2, currentPage: p }">
                     <div class="grid p-fluid overflow-x-auto">
-                        <div class="col-2 cart-item-image">
+                        <div class="col-4  md:col-2 cart-item-image">
                             <img [src]="cartItem?.product?.image" [alt]="cartItem?.product?.name">
                         </div>
                         <div class="col-7">
