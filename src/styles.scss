@@ -341,3 +341,8 @@ p-checkbox:hover .p-checkbox-box.p-highlight:hover {
 .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon{
   color: $primary!important;
 }
+
+.p-fluid .p-inputnumber .p-inputnumber-input {
+  width: 100%;
+  min-width: 100%!important;
+}

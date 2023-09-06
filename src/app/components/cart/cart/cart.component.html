@@ -34,10 +34,10 @@
                         </div>
                         <div class="col-3">
                             <div class="p-field cart-item-quantity">
-                                <p-inputNumber [(ngModel)]="cartItem.quantity" mode="decimal" [showButtons]="true"
+                                <p-inputNumber styleClass="{}" [(ngModel)]="cartItem.quantity" mode="decimal" [showButtons]="true"
                                     inputId="cartItem?.product?.id" [min]="1" [max]="100" (onInput)="updateCartQuantity($event, cartItem)"> </p-inputNumber>
                             </div>
-                            <div class="cart-item-subtotal">
+                            <div class="cart-item-subtotal white-space-nowrap">
                                 Subtotal:
                                 <span class="cart-item-subtotal-value">
                                     {{cartItem?.product?.price * cartItem?.quantity |currency}}
