@@ -12,16 +12,16 @@
                 <span class="white-space-nowrap"><b class=" mr-1">Invoice Number:</b> {{order?.id | slice: 0: 6}}</span> <br>
             </div> <br>
             <div>
-                <span class="white-space-nowrap"><b class=" mr-1 ">Invoice Date:</b> {{order?.dateOrdered | date :'short'}}</span>
+                <span class="white-space-wrap"><b class=" mr-1 ">Invoice Date:</b> {{order?.dateOrdered | date :'short'}}</span>
             </div>
 
      </div>
         <div class="col-6 md:col-6 flex flex-column align-items-end ">
             <div>
-                <span class="white-space-wrap"><b class=" mr-1">Total:</b> {{order?.totalPrice |currency :'EGP'}}</span>
+                <span class="white-space-nowrap"><b class=" mr-1">Total:</b> {{order?.totalPrice |currency :'EGP'}}</span>
             </div> <br>
             <div>
-                <span class="white-space-wrap"> <b class=" mr-1">Delivery Charges:</b> Free</span>
+                <span class="white-space-nowrap"> <b class=" mr-1">Delivery Charges:</b> Free</span>
             </div>
 
         </div>
