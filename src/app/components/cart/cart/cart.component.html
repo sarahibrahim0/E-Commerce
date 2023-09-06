@@ -19,7 +19,7 @@
                         <div class="col-4  md:col-2 cart-item-image">
                             <img [src]="cartItem?.product?.image" [alt]="cartItem?.product?.name">
                         </div>
-                        <div class="col-7">
+                        <div class="col-5 md:col-7">
                             <div class="cart-item-name">
                                 {{ cartItem?.product?.name}}
                             </div>
@@ -32,7 +32,7 @@
                             </div>
 
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 md:col-3">
                             <div class="p-field cart-item-quantity">
                                 <p-inputNumber styleClass="{}" [(ngModel)]="cartItem.quantity" mode="decimal" [showButtons]="true"
                                     inputId="cartItem?.product?.id" [min]="1" [max]="100" (onInput)="updateCartQuantity($event, cartItem)"> </p-inputNumber>
