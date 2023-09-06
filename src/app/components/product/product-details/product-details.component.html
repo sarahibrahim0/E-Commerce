@@ -1,10 +1,10 @@
 <p-toast [breakpoints]="{'900px': {width: '70%', right: '0'}}"></p-toast>
     <div class="flex flex-column align-items-center">
         <div class="grid  justify-content-center ">
-            <div class="col-3">
+            <div class="col-12 md:col-3">
                 <app-product-gallery [images]="product?.images"></app-product-gallery>
             </div>
-            <div class="col-5 product " *ngIf="product">
+            <div class=" col-12 md:col-5 product " *ngIf="product">
                 <b class="product-name">{{product.name}}</b>
                 <p class="product-description col-12">{{product.description}}</p>
                 <div class="product-rating">
@@ -36,7 +36,7 @@
         </div>
 
 
-        <div class="product.rich-description col-8 " *ngIf="product" >
+        <div class="product.rich-description col-12 md:col-8 " *ngIf="product" >
             <b style="color:#ff3a00">Description</b>
             <div [innerHTML]="product?.richDescription">
             </div>
