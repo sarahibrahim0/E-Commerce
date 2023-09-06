@@ -2,7 +2,8 @@
     background-color: var(--surface-0);
     padding: 15px;
     border: 1px solid var(--surface-200);
-
+    box-sizing: border-box;
+  min-width: 100vh;
     .summary-price {
       display: flex;
       margin: 15px 0;
