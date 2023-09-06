@@ -1,6 +1,6 @@
 <div class="cart-page">
     <ng-template #cartFull>
-        <div class="grid overflow-x-auto">
+        <div class="grid overflow-x-auto ">
             <div class="md:col-8">
                 <div>
                     <p-button styleClass="back" label="continue shopping" icon="pi pi-arrow-left" (onClick)="backToShop()">
@@ -50,7 +50,7 @@
                 </div>
 
             </div>
-            <div class=" col-12 md:col-4" >
+            <div class=" col-12 md:col-4 overflow-x-auto" >
                 <app-order>
                     <div class="checkout-button">
                         <p-button routerLink="/checkout" styleClass="delete" label="checkout" class="checkout"></p-button>
