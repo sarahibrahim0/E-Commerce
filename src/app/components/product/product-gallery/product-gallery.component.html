@@ -5,7 +5,7 @@
     <!-- <div class="images" *ngIf="imagesLength"> -->
       <ul class="  col-12 flex flex-row ">
         <!-- <li  *ngFor="let image of images" [ngStyle]="{ 'background-image': 'url(' + image + ')' , 'background-size':' cover'}" ></li> -->
-        <li class="list-none col-3  " *ngFor="let image of images">
+        <li class="list-none col-3 overflow-hidden " *ngFor="let image of images">
           <img (click)="changeSelectedImage(image)"   [src]="image" alt="" class="col-12 cursor-pointer" style="border-radius: 3%; height: 70%;">
         </li>
       </ul>
