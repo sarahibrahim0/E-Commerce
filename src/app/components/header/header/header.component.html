@@ -13,8 +13,9 @@
     </a>
     <mat-menu #menu="matMenu">
       <button routerLink="/" mat-menu-item> <i class="pi pi-home text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Home</button>
-      <button routerLink="/products" mat-menu-item><i class="pi pi-shopping-cart text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Products</button>
+      <button routerLink="/products" mat-menu-item><i class="pi pi-tags text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Products</button>
       <button routerLink="/profile" mat-menu-item *ngIf="token"> <i class="pi pi-user text-color-secondary cursor-pointer" style="font-size: 1rem"></i>  Profile</button>
+      <button routerLink="/cart" mat-menu-item > <i class="pi pi-shopping-cart text-color-secondary cursor-pointer" style="font-size: 1rem"></i>  Cart</button>
       <button mat-menu-item (click)="logout()" *ngIf="token" ><i class="pi pi-sign-out  text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Log out</button>
       <button mat-menu-item (click)="login()" *ngIf="!token" ><i class="pi pi-sign-in text-color-secondary cursor-pointer" style="font-size: 1rem"></i> Log in</button>
     </mat-menu>
