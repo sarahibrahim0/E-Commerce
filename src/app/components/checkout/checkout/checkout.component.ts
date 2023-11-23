@@ -1,19 +1,19 @@
 import { LoginService } from './../../../services/login/login.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavigationEnd, NavigationStart, Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Cart } from 'src/app/interfaces/cart';
-import { Order, OrderItem } from 'src/app/interfaces/order';
+import { OrderItem } from 'src/app/interfaces/order';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { OrdersService } from 'src/app/services/order/order.service';
 import { UsersService } from 'src/app/services/user/user.service';
 import * as countriesList from 'i18n-iso-countries'
 import { BehaviorSubject, filter, timer } from 'rxjs';
 import { MessageService } from 'primeng/api';
-import { Stripe } from '@stripe/stripe-js';
 import { StripeService } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
-declare function require(name:string);
+import { User } from 'src/app/interfaces/user';
+declare function require(name: string);
 
 
 @Component({
@@ -24,59 +24,74 @@ declare function require(name:string);
 export class CheckoutComponent {
 
 
-  constructor(    private router: Router,
+  constructor(private router: Router,
     private usersService: UsersService,
     private formBuilder: FormBuilder,
     private cartService: CartService,
     private ordersService: OrdersService,
     private LoginService: LoginService,
     private MessageService: MessageService,
-    private stripe: StripeService){
-    }
+    private stripe: StripeService) {
+  }
 
 
   checkoutFormGroup: FormGroup;
   isSubmitted = false;
-  orderItems: OrderItem [] = [];
+  orderItems: OrderItem[] = [];
   userId = '64004a943ec39500352b79ea';
   countries = [];
   countryName: string;
-  userCountry : BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  userCountry: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   error
   api = environment.apiUrl;
+  cart: Cart
+  user: User
 
 
   ngOnInit(): void {
+
+    this._getUser();
     this.getCountries();
     this._initCheckoutForm();
     this._getCartItems();
-    this.setPrevForm();
-
-
-    if(localStorage.getItem('form')){
-      this.getPrevForm()
-    }
-
   }
 
+  private _getUser() {
+    this.LoginService.$id.subscribe(id => {
+      if (id) {
+        this.usersService.getUserById(id).subscribe({
+          next: (data) => {
+            this.user = data;
+            this.getPrevForm();
+
+
+          }
+        })
+      }
+    })
+  }
   private _initCheckoutForm() {
+
+    console.log('form')
     this.checkoutFormGroup = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.email, Validators.required]],
-      phone: ['', Validators.required],
-      city: ['', Validators.required],
-      country: ['', Validators.required],
-      zip: ['', Validators.required],
-      apartment: ['', Validators.required],
-      street: ['', Validators.required],
-      shippingAddress1 : ['', Validators.required],
-      shippingAddress2 : ['', Validators.required],
+      name: [this.user?.name, Validators.required],
+      email: [this.user?.email, [Validators.email, Validators.required]],
+      phone: [this.user?.phone, Validators.required],
+      city: [this.user?.city, Validators.required],
+      country: [this.user?.country, Validators.required],
+      zip: [this.user?.zip, Validators.required],
+      apartment: [this.user?.apartment, Validators.required],
+      street: [this.user?.street, Validators.required],
+      shippingAddress1: ['', Validators.required],
+      shippingAddress2: ['', Validators.required],
 
     });
+
+
   }
 
   private _getCartItems() {
-    const cart : Cart = this.cartService.getCart();
+    const cart: Cart = this.cartService.getCart();
     this.orderItems = cart.items.map((item) => {
       return {
         product: item.productId,
@@ -98,79 +113,90 @@ export class CheckoutComponent {
 
   placeOrder() {
 
-  if(this.checkoutFormGroup.invalid){
-    this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Please Enter Correct info`});
+    if (this.checkoutFormGroup.invalid) {
+      this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Please Enter Correct info` });
 
-  }else{
+    } else {
 
-    this.setPrevForm();
-    if(!this.LoginService.getToken()){
-        this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `You Must Log in To Continue`});
+
+      if (!this.LoginService.getToken()) {
+
+
+        const prevForm = {
+          name: this.checkoutFormGroup.controls['name'].value,
+          email: this.checkoutFormGroup.controls['email'].value,
+          phone: this.checkoutFormGroup.controls['phone'].value,
+          city: this.checkoutFormGroup.controls['city'].value,
+          country: this.checkoutFormGroup.controls['country'].value,
+          zip: this.checkoutFormGroup.controls['zip'].value,
+          apartment: this.checkoutFormGroup.controls['apartment'].value,
+          street: this.checkoutFormGroup.controls['street'].value,
+          shippingAddress1: this.checkoutFormGroup.controls['shippingAddress1'].value,
+          shippingAddress2: this.checkoutFormGroup.controls['shippingAddress2'].value
+        }
+
+
+        const prevFormString = JSON.stringify(prevForm)
+        localStorage.setItem('previousForm', prevFormString);
+
+        this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `You Must Log in To Continue` });
         timer(1600).subscribe(() => {
           this.router.navigate(['/login'])
         })
 
-    }else{
-      this.ordersService.createCheckoutSession(this.orderItems).subscribe({
-        error: (err)=>{
-                this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Something Went Wrong During Payment`});
-        }
-      })
-    }
-  }
-  }
-
-
-  private getCountries(){
-    countriesList.registerLocale(require("i18n-iso-countries/langs/en.json"));
-   this.countries = Object.entries(countriesList.getNames("en", {select: "official"})).map(country=>{
-  return {
-    id : country[0],
-    name : country[1]
-  }
-    })
-    }
-
-
-    setPrevForm(){
-
-        this.LoginService.$id.subscribe(id=>{
-          if(id){
-            this.usersService.getUserById(id).subscribe({
-              next:(data) =>{
-                const prevForm = {
-                name: data?.name,
-                 orderItems:  this.orderItems || this.checkoutFormGroup.controls['name'].value,
-                 email: data?.email || this.checkoutFormGroup.controls['email'].value,
-                 phone: data?.phone || this.checkoutFormGroup.controls['phone'].value,
-                 city: data?.city || this.checkoutFormGroup.controls['city'].value,
-                 country: data?.country || this.checkoutFormGroup.controls['country'].value,
-                 zip: data?.zip || this.checkoutFormGroup.controls['zip'].value,
-                 apartment: data?.apartment || this.checkoutFormGroup.controls['apartment'].value,
-                 street: data?.street || this.checkoutFormGroup.controls['street'].value,
-                 shippingAddress1: this.checkoutFormGroup.controls['shippingAddress1'].value,
-                 shippingAddress2: this.checkoutFormGroup.controls['shippingAddress2'].value}
-
-
-        const prevFormString = JSON.stringify(prevForm)
-        localStorage.setItem('form', prevFormString);
-
-             },
-              error:(error)=> {
-                // this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Sorry, Couldn't Get User Info` });
-
-              }
-            })
-            }
+      } else {
+        this.setPrevForm();
+        this.ordersService.createCheckoutSession(this.orderItems).subscribe({
+          error: (err) => {
+            this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Something Went Wrong During Payment` });
+          }
         })
+      }
+    }
+  }
 
+
+  private getCountries() {
+    countriesList.registerLocale(require("i18n-iso-countries/langs/en.json"));
+    this.countries = Object.entries(countriesList.getNames("en", { select: "official" })).map(country => {
+      return {
+        id: country[0],
+        name: country[1]
+      }
+    })
+  }
+
+
+  setPrevForm() {
+    const prevForm = {
+      name: this.checkoutFormGroup.controls['name'].value,
+      orderItems: this.orderItems,
+      email: this.checkoutFormGroup.controls['email'].value,
+      phone: this.checkoutFormGroup.controls['phone'].value,
+      city: this.checkoutFormGroup.controls['city'].value,
+      country: this.checkoutFormGroup.controls['country'].value,
+      zip: this.checkoutFormGroup.controls['zip'].value,
+      apartment: this.checkoutFormGroup.controls['apartment'].value,
+      street: this.checkoutFormGroup.controls['street'].value,
+      shippingAddress1: this.checkoutFormGroup.controls['shippingAddress1'].value,
+      shippingAddress2: this.checkoutFormGroup.controls['shippingAddress2'].value
+    }
+    const prevFormString = JSON.stringify(prevForm)
+    localStorage.setItem('form', prevFormString);
+  }
+
+  getPrevForm() {
+    let prevForm;
+    let prevFormParsed
+    if (localStorage.getItem('previousForm')) {
+      prevForm = localStorage.getItem('previousForm');
+      prevFormParsed = JSON.parse(prevForm);
 
     }
-
-    getPrevForm (){
-      const prevForm = localStorage.getItem('form');
-      const prevFormParsed = JSON.parse(prevForm);
-      this.checkoutFormGroup.controls['name'].setValue(prevFormParsed.name),
+    else {
+      prevFormParsed = this.user;
+    }
+    this.checkoutFormGroup.controls['name'].setValue(prevFormParsed.name),
       this.checkoutFormGroup.controls['email'].setValue(prevFormParsed.email),
       this.checkoutFormGroup.controls['phone'].setValue(prevFormParsed.phone),
       this.checkoutFormGroup.controls['city'].setValue(prevFormParsed.city),
@@ -180,9 +206,6 @@ export class CheckoutComponent {
       this.checkoutFormGroup.controls['street'].setValue(prevFormParsed.street),
       this.checkoutFormGroup.controls['shippingAddress1'].setValue(prevFormParsed.shippingAddress1),
       this.checkoutFormGroup.controls['shippingAddress2'].setValue(prevFormParsed.shippingAddress2)
-      // localStorage.removeItem('form');
-    }
-
-
+  }
 
 }

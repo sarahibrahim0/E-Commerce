@@ -43,7 +43,6 @@ export class CartComponent implements OnInit{
 
   ngOnInit(){
     this.getCartDetails();
-    console.log(this.p)
   }
   backToShop(){
 this.Router.navigate(['/products'])

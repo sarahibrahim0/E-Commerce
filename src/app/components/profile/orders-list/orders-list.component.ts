@@ -93,12 +93,12 @@ this.ordersArr.push(order)
 }
 }
 
- private elementCount(arr, element){
-  return arr.filter((currentElement) => currentElement == element).length;
- };
+//  private elementCount(arr, element){
+//   return arr.filter((currentElement) => currentElement == element).length;
+//  };
 
- viewOrder(id: string){
-//   console.log(id)
-// this.router.navigate(['/profile/orders/:${id}'])
- }
+//  viewOrder(id: string){
+// //   console.log(id)
+// // this.router.navigate(['/profile/orders/:${id}'])
+//  }
 }
