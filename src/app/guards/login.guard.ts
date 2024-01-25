@@ -15,11 +15,6 @@ export const isLoggedGuard : CanActivateFn = ()=>{
 
   })
 
-  if(!userToken){
-router.navigate([`${api}users/login`])
-return false
-  }
 
-  return true;
 
 }

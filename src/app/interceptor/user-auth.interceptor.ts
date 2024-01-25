@@ -14,7 +14,6 @@ export class userInterceptor implements HttpInterceptor {
 
   constructor(private LoginService: LoginService) {}
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
     let token = this.LoginService.getToken()
     const apiUrl = request.url.startsWith(environment.apiUrl);
 
