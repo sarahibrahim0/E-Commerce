@@ -33,7 +33,6 @@
     "bootstrap-icons": "^1.10.5",
     "i18n-iso-countries": "^7.6.0",
     "ngx-pagination": "^6.0.3",
-    "ngx-stripe": "15.2",
     "normalize.css": "^8.0.1",
     "popper.js": "^1.16.1",
     "primeflex": "^3.3.1",
