@@ -1,192 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~normalize.css/normalize.css";
-@import "primeicons/primeicons.css";
-@import "~animate.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html {
   overflow: visible;
-  height: 100vh;
+  min-width: 100vh;
   min-height: 100vh;
+  box-sizing: border-box !important;
 }
 
 body {
-  font-family: "Open Sans", "sans-serif";
-  font-size: 14px;
-  height: 100vh;
-  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  box-sizing: border-box !important;
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
-.p-button.banner:enabled {
-  background-color: #fff !important;
-  color: #ff3a00;
-  border: 0;
-  border-radius: 15px;
-  height: 50px;
-}
-
-.p-button.add-to-cart:enabled {
-  background-color: #ff3a00 !important;
-  color: white !important;
-  border: 0;
-  border-radius: 20px;
-  height: 35px;
-}
-
-.add-to-cart.p-button:hover {
-  background-color: #ff3a00 !important;
-  color: white !important;
-}
-
-.p-button:enabled:hover {
-  background-color: #ff3a00 !important;
-  color: white !important;
-  border: 0 !important;
-}
-
-.p-button.delete, .p-button.back {
-  background-color: #ff3a00 !important;
-  color: white !important;
-  border: 0 !important;
-}
-
-.banner.p-button:hover {
-  background-color: #fff !important;
-  color: #ff3a00 !important;
-  border: 0;
-  box-shadow: none;
-}
-
-.add-to-cart.p-button:focus,
-.banner.p-button:focus,
-.p-button.details:focus,
-.p-button.back:focus,
-.p-button.delete:focus {
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-}
-
-.p-button.details {
-  background-color: #ff3a00 !important;
-  border: 0;
-}
-
-p-inputNumber .p-button {
-  background-color: #ff3a00 !important;
-}
-p-inputNumber .p-button:enabled {
-  background-color: #ff3a00 !important;
-  border: 0 !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-p-inputNumber .p-inputtext:focus {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-p-inputNumber .p-inputtext:hover {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-p-inputNumber .p-inputtext {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.p-button {
-  background-color: #ff3a00 !important;
-}
-
-.p-button:enabled {
-  background-color: #ff3a00 !important;
-  border: 0 !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.p-inputtext:focus, .p-dropdown {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.p-inputtext:hover, .p-dropdown {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.p-inputtext, .p-dropdown {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.drop:focus {
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.drop:hover .p-inputtext {
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.drop .p-inputtext {
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-p-timeline.p-element {
-  width: 90% !important;
-}
-
-.p-steps .p-steps-item .p-menuitem-link {
-  background: transparent !important;
-}
-
-.p-steps .p-steps-item .p-menuitem-link:not(.p-disabled):focus {
-  outline: 0 none;
-  outline-offset: 0;
-  box-shadow: 0 0 0 0 !important;
-}
-
-p-steps {
-  width: 100% !important;
-}
-
-a.p-menuitem-link:focus {
-  outline-offset: 0;
-  box-shadow: 0 0 0 0 !important;
-}
-
-.ngx-pagination .current {
-  padding: 0.1875rem 0.625rem;
-  background: #ff3a00 !important;
-  color: #fefefe;
-  cursor: default;
-}
-
-.p-menu .p-submenu-header {
-  margin: 0;
-  padding: 0.75rem 1.25rem;
-  color: #ff3a00 !important;
-  background: #ffffff;
-  font-weight: 700;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
-
-p-checkbox .p-checkbox-box.p-highlight {
-  border-color: #ff3a00;
-  background-color: #ff3a00;
+ul {
+  list-style: none !important;
+  padding: 0;
 }
 
 .search {
@@ -201,7 +41,7 @@ p-checkbox .p-checkbox-box.p-highlight {
 .search .pi {
   width: 25px;
   font-size: 1.3em;
-  color: #ff3a00;
+  color: #fff;
   margin-top: 10px;
   margin-left: 10px;
 }

@@ -1,21 +1,106 @@
 <p-toast [breakpoints]="{'900px': {width: '70%', right: '0'}}"></p-toast>
+ <div class=" w-full flex flex-col items-center justify-start mt-[100px] ">
+  <div class="w-full px-[60px]">
+    <app-checkout-header/>
 
-<div class="checkout-page">
-    <div>
-      <p-button styleClass="delete" label="Back to cart" icon="pi pi-arrow-left" (onClick)="backToCart()"></p-button>
-    </div>
-    <div class="grid checkout-form">
-      <div class="md:col-8 col-12">
-        <form [formGroup]="checkoutFormGroup">
-          <div class="p-fluid p-formgrid grid">
-            <div class="field col-4">
-              <label for="name">Name</label><br/>
-              <input formControlName="name" id="name" type="text" pInputText  /><br/>
+  </div>
+
+    <div class="flex flex-col justify-between items-start w-full mb-[100px] px-[60px]">
+      <h3 class="whitespace-nowrap text-lg font-semibold tracking-wider my-[30px]">Billing Details </h3>
+        <form [formGroup]="checkoutFormGroup" class="w-full grid grid-cols-12 gap-7">
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="Name" formControlName="name" id="name" type="text" class="w-full  focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
               <small *ngIf="checkoutForm['name'].invalid && isSubmitted" class="p-error"
                 >Name is required</small
               >
             </div>
-            <div class="field col-4">
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="Email" formControlName="email" id="email" type="text" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['email'].invalid && isSubmitted" class="p-error"
+                >Email is required</small
+              >
+            </div>
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="phone" formControlName="phone" id="phone" type="tel" pattern="[+]{1}[0-9]{12}" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['phone'].invalid && isSubmitted" class="p-error"
+                >Phone is required</small
+              >
+            </div>
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="street" formControlName="street" id="street" type="text" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['street'].invalid && isSubmitted" class="p-error"
+                >street is required</small
+              >
+            </div>
+
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="apartment" formControlName="apartment" id="apartment" type="text" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['apartment'].invalid && isSubmitted" class="p-error"
+                >apartment is required</small
+              >
+            </div>
+
+
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="Shipping address 1" formControlName="shippingAddress1" id="shippingAddress1" type="text" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['shippingAddress1'].invalid && isSubmitted" class="p-error"
+                >Shipping address is required</small
+              >
+            </div>
+
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="Shipping address 2" formControlName="shippingAddress2" id="shippingAddress2" type="text" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['shippingAddress2'].invalid && isSubmitted" class="p-error"
+                >Shipping address is required</small
+              >
+            </div>
+
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="Shipping address 2" formControlName="shippingAddress2" id="shippingAddress2" type="text" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['shippingAddress2'].invalid && isSubmitted" class="p-error"
+                >Shipping address is required</small
+              >
+            </div>
+
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+
+            <!-- <p-dropdown
+            styleClass=""
+              [options]="countries"
+              formControlName="country"
+              optionLabel="name"
+              optionValue="name"
+              [filter]="true"
+              filterBy="name"
+              placeholder="Select a Country"
+            ></p-dropdown> -->
+
+            <p-dropdown               formControlName="country"
+            optionLabel="name"
+            optionValue="name"
+            [options]="countries" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Country">
+  
+          </p-dropdown>
+
+            <small *ngIf="checkoutForm['country'].invalid && isSubmitted" class="p-error"
+              >Country is required</small
+            >
+
+            </div>
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="City" formControlName="city" id="city" type="text" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['city'].invalid && isSubmitted" class="p-error"
+                >City is required</small
+              >
+            </div>
+
+            <div class=" w-full col-span-6 flex flex-col justify-between items-start ">
+              <input  placeholder="Zip" formControlName="zip" id="zip" type="text" class="w-full focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
+              <small *ngIf="checkoutForm['zip'].invalid && isSubmitted" class="p-error"
+                >Zip is required</small
+              >
+            </div>
+            <!-- <div class="field col-4">
               <label for="email">Email</label><br/>
               <input formControlName="email" id="email" type="text" pInputText /><br/>
               <small *ngIf="checkoutForm['email'].invalid && isSubmitted" class="p-error"
@@ -35,7 +120,6 @@
                 >phone is required</small
               >
             </div>
-          </div>
           <div class="p-fluid formgrid grid">
             <div class="field col-4">
               <label for="street">Street</label><br/>
@@ -96,15 +180,21 @@
                 >Country is required</small
               >
             </div>
-          </div>
+          </div> -->
         </form>
-      </div>
-      <div class="md:col-4 col-12">
+      <!-- <div class="md:col-4 col-12">
         <app-order>
-          <div class="checkout-button">
-            <p-button  styleClass="delete" label="Place Order" (onClick)="placeOrder()" class="checkout"></p-button>
+          <div class="">
+            <button    (onClick)="placeOrder()" class="">checkout</button>
         </div>
         </app-order>
-      </div>
+      </div> -->
     </div>
+<div class="w-full">
+  <app-advertise/>
+
+</div>
+
   </div>
+
+

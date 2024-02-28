@@ -10,14 +10,12 @@ export class CartIconComponent {
 
   constructor(private CartService: CartService) { }
   cartCount = 0;
-  cartCountString
 
 
 
   ngOnInit(): void {
     this.CartService.cartSub$.subscribe(cart => {
       this.cartCount = cart?.items?.length ?? 0;
-      this.cartCountString = this.cartCount.toString()
 
     })
   }

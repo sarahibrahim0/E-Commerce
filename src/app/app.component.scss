@@ -1,13 +1,14 @@
-.container{
-    width: 100%;
-    min-width: 100%;
-    padding: 15px;
-    margin: auto;
-    background-color: var(--surface-100);
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-    box-sizing: border-box!important;
-  }
+.hide{
 
+  visibility: hidden;
+  transition: all .3s  linear;
+  pointer-events: none;
+}
+
+.show{
+
+  opacity: 1;
+  visibility: visible;
+  transition: all .3s linear;
+  pointer-events: all;
+}

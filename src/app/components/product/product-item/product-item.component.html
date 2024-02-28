@@ -1,10 +1,16 @@
 
-<div class="product-item" *ngIf="product">
-    <div class="product-item-wrapper">
-        <img [routerLink]="'/product/'+ product.id" [src]="product?.image.url" class="image" alt="product.name" />
-        <span class="name mt-4 ">{{product.name}}</span>
-        <span class="price mt-3 mb-3">{{product.price | currency}}</span>
-        <p-button styleClass="add-to-cart"  label="add to cart" (onClick)="addToCart(product)"icon="bi bi-cart"></p-button>
+<ng-container class="product-item" *ngIf="product">
+    <div class="w-full border-[1px] border-solid border-[#F6F8FE] pb-5  text-center min-w-max ">
+        <img [routerLink]="'/product/'+ product.id" [src]="product?.image.url" class=" cursor-pointer inline-block w-full  object-cover" alt="product.name" />
+         <h3 class=" w-full !font-[500] tracking-wider md:mt-[31px] sm:mt-[20px]">
+          <a
+          [routerLink]="'/product/' + product.id"
+          class="text-[#1a1a1a] !font-semibold block leading-[1.7] mb-[20px] transition-all duration-300 hover:!underline ">
+            {{product.name}}
+          </a>
+        </h3>
+
+        <span class="text-dark-purple font-semibold block">{{product.price | currency}}</span>
 
     </div>
-</div>
+</ng-container>

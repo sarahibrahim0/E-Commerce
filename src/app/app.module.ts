@@ -35,6 +35,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { InputTextModule } from 'primeng/inputtext';
 import { userInterceptor } from './interceptor/user-auth.interceptor';
 import { ThankyouComponent } from './components/thankyou/thankyou/thankyou.component';
+import { AccordionModule } from 'primeng/accordion';
 import { isLoggedGuard } from './guards/login.guard';
 import { LoginComponent } from './components/login/login/login.component';
 import { SignupComponent } from './components/signup/signup/signup.component';
@@ -57,6 +58,18 @@ import { StepsModule } from 'primeng/steps';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {MatMenuModule} from '@angular/material/menu';
 import { ProfileComponent } from './components/profile/profile/profile.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { AdvertiseComponent } from './components/advertise/advertise.component';
+import { BreadcrampComponent } from './components/breadcramp/breadcramp.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { GalleriaModule } from 'primeng/galleria';
+import { LoginService } from './services/login/login.service';
+import { CheckoutHeaderComponent } from './components/checkout/checkout-header/checkout-header.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -87,10 +100,14 @@ import { ProfileComponent } from './components/profile/profile/profile.component
     EditUserComponent,
     OrderDetailsComponent,
     OrderItemComponent,
+    BreadcrampComponent,
+    AboutComponent,
+    ContactComponent,
 
   ],
   imports: [
-    BrowserModule,
+GalleriaModule,
+  BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ButtonModule,
@@ -115,9 +132,13 @@ import { ProfileComponent } from './components/profile/profile/profile.component
 TimelineModule,
 MenuModule,
 StepsModule,
-
+AdvertiseComponent,
+CheckoutHeaderComponent,
+FilterComponent,
 NgxPaginationModule,
 MatMenuModule,
+AccordionModule,
+SidebarModule,
 NgxStripeModule.forRoot(environment.stripe.publicKey),
 
   ],
@@ -130,4 +151,9 @@ NgxStripeModule.forRoot(environment.stripe.publicKey),
 
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(private LoginService : LoginService){
+
+  }
+}

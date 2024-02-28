@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
   private initiateForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required]]
     })
 
   }

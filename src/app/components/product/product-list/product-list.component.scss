@@ -6,3 +6,31 @@
 min-height: 100%;
 min-width: 100%;
 }
+
+
+.hoverEff {
+  color: #FD8F5F !important;
+  background-color: #fff;
+  border-bottom: 2px solid #FD8F5F;
+  z-index: 9;
+  position: relative;
+  transition: all 100ms ease-in-out;
+}
+
+
+h2{
+  animation-name: fadeInUp;
+  animation-delay: .04s;
+  animation-duration: .7s;
+  animation-fill-mode: backwards;
+
+}
+p{
+  animation-name: fadeInUp;
+  animation-delay: .06s;
+  animation-duration: .7s;
+  animation-fill-mode: backwards;
+
+
+
+}

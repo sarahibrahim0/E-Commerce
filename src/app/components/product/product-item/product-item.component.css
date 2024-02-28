@@ -23,4 +23,6 @@
   height: 150px;
   margin-top: -60px;
   border-radius: 10%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=product-item.component.css.map */

@@ -1,5 +1,524 @@
-<ul class="nav">
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/products">Products</a></li>
-    <!-- <li><a routerLink="">Contact</a></li> -->
-</ul>
+<nav
+  class="w-full flex flex-col justify-between items-center relative main transition-all duration-500 ease-in-out bg-almond xl:pr-[50px]"
+>
+  <div
+    [ngClass]="hideNav ? 'Nav' : 'showNav'"
+    class="relative box-border w-full flex flex-row justify-between items-start "
+  >
+    <div
+      class="font-semibold text-sm md:w-[165px] md:h-[136px] sm:w-[100px] sm:h-[69px] text-blue-black min-w-max min-h-max z-10"
+    >
+      <img
+        src="../../../../../assets/logo.png.webp"
+        class="md:inline-block w-full h-full object-cover"
+        alt="logo"
+      />
+    </div>
+    <div
+      class="box-border w-full 2xl:pr-0 xl:pr-4 xl:flex flex-row justify-between items-center pl-4 h-[100px] sm:hidden bg-almond"
+    >
+      <ul class="flex flex-row justify-between items-center">
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/"
+        >
+          Home
+        </li>
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/products"
+        >
+          Products
+        </li>
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/categories"
+        >
+          Categories
+        </li>
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+        routerLink="/about"
+          >
+          About
+        </li>
+        <li
+          class="duration-100 leading-[32px] font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/contact"
+
+          >
+          Contact
+        </li>
+      </ul>
+
+      <ul class="flex flex-row justify-between items-center">
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer"
+        >
+          <app-search></app-search>
+        </li>
+        <li
+          *ngIf="token"
+          routerLink="/profile"
+          class="whitespace-nowrap duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+        >
+          My Account
+        </li>
+        <li
+          class="transition-all duration-100 cursor-pointer 2xl:mr-10 xl:mr-5"
+        >
+          <app-cart-icon></app-cart-icon>
+        </li>
+
+        <li
+          class="transition-all duration-100 cursor-pointer text-[27px] text-blue-black"
+        >
+          <i
+            [ngStyle]="{}"
+            (click)="login()"
+            *ngIf="!token"
+            class="bi bi-box-arrow-in-right text-[27px]"
+            style="-webkit-text-stroke: 0.6px"
+          ></i>
+          <i
+            [ngStyle]="{}"
+            (click)="logout()"
+            *ngIf="token"
+            class="bi bi-box-arrow-right text-[27px]"
+            style="-webkit-text-stroke: 0.6px"
+          ></i>
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="w-full flex flex-row justify-end xl:hidden bg-almond self-center mb-12 "
+    >
+      <p-sidebar
+        [(visible)]="sidebarVisible"
+        styleClass="bg-almond py-3 w-[70%] "
+      >
+        <ul class="flex flex-col justify-between items-start my-4 space-y-4">
+          <li
+            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            routerLink="/"
+          >
+            <i
+              class="bi bi-house text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >Home</span
+            >
+          </li>
+          <li
+            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            routerLink="/products"
+          >
+            <i
+              class="bi bi-tags text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >Products</span
+            >
+          </li>
+          <li
+            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            routerLink="/categories"
+          >
+            <i
+              class="bi bi-list-ul text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+              routerLink="/categories"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+            >
+              Categories
+            </span>
+          </li>
+          <li
+            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            routerLink="/about"
+
+          >
+            <i
+              class="bi bi-question-circle text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            >
+            </i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >About</span
+            >
+          </li>
+          <li
+            class="w-full leading-[32px] mx-2 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            routerLink="/contact"
+          >
+            <i
+              class="bi bi-chat-quote text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >Contact</span
+            >
+          </li>
+
+          <li
+            *ngIf="token"
+            routerLink="/profile"
+            class="w-full whitespace-nowrap mx-2 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+          >
+            <i
+              class="bi bi-person text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >My Account</span
+            >
+          </li>
+          <li class="w-full mx-2 cursor-pointer 2xl:mr-10 xl:mr-5 liSide">
+            <app-cart-icon></app-cart-icon>
+            <span
+              class="text-sm not-italic inline-block ml-4 hover:text-salmon transition-all duration-100"
+              >Cart</span
+            >
+          </li>
+          <li
+            class="w-full mx-2 cursor-pointer text-[27px] text-blue-black liSide"
+          >
+            <i
+              [ngStyle]="{}"
+              (click)="login()"
+              *ngIf="!token"
+              class="inline-block w-full bi bi-box-arrow-in-right text-[27px] not-italic"
+              style="-webkit-text-stroke: 0.6px"
+              ><span
+                class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+                >Log in</span
+              ></i
+            >
+            <i
+              [ngStyle]="{}"
+              (click)="logout()"
+              *ngIf="token"
+              class="inline-block w-full bi bi-box-arrow-right text-[27px] not-italic"
+              style="-webkit-text-stroke: 0.6px"
+              ><span
+                class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+                >Log out</span
+              ></i
+            >
+          </li>
+        </ul>
+      </p-sidebar>
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        [ngClass]="{ sideIcon: sidebarVisible }"
+        (click)="toggleSideBar()"
+        title="open navbar"
+        fill="currentColor"
+        class="bi bi-list cursor-pointer text-blue-black hover:text-salmon transition-all duration-150"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <div
+    [ngClass]="!hideNav ? 'fakeNav' : 'showFakeNav'"
+    class="transition-all shadow-lg duration-300 ease-in-out fixed -top-3 left-0 box-border w-full flex flex-row justify-between items-center  pl-2 py-2  sm:z-10 bg-almond"
+  >
+    <div
+      class="font-semibold text-sm md:w-[77px]  sm:w-[77px] h-auto   text-blue-black min-w-max min-h-max"
+    >
+      <img
+        src="../../../../../assets/logo2.png.webp"
+        class="md:inline-block w-full h-full object-cover"
+        alt="logo"
+      />
+    </div>
+    <div
+      class="box-border w-full 2xl:pr-0 xl:pr-4 xl:flex flex-row justify-between items-center pl-4 sm:hidden bg-almond"
+    >
+      <ul class="flex flex-row justify-between items-center">
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/"
+        >
+          Home
+        </li>
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/products"
+        >
+          Products
+        </li>
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/categories"
+
+          >
+          Categories
+        </li>
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/about"
+
+          >
+          About
+        </li>
+        <li
+          class="duration-100 leading-[32px] font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          routerLink="/contact"
+
+          >
+          Contact
+        </li>
+      </ul>
+
+      <ul class="flex flex-row justify-between items-center">
+        <li
+          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer"
+        >
+          <app-search></app-search>
+        </li>
+        <li
+          *ngIf="token"
+          routerLink="/profile"
+          class="whitespace-nowrap duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+        >
+          My Account
+        </li>
+        <li
+          class="transition-all duration-100 cursor-pointer 2xl:mr-10 xl:mr-5"
+          routerLink="/cart"
+        >
+
+          <app-cart-icon></app-cart-icon>
+        </li>
+
+        <li
+          class="transition-all duration-100 cursor-pointer text-[27px] text-blue-black"
+        >
+          <i
+            [ngStyle]="{}"
+            (click)="login()"
+            *ngIf="!token"
+            class="bi bi-box-arrow-in-right text-[27px]"
+            style="-webkit-text-stroke: 0.6px"
+          ></i>
+          <i
+            [ngStyle]="{}"
+            (click)="logout()"
+            *ngIf="token"
+            class="bi bi-box-arrow-right text-[27px]"
+            style="-webkit-text-stroke: 0.6px"
+          ></i>
+        </li>
+      </ul>
+    </div>
+
+    <div
+      class="w-full flex flex-row justify-end items-center xl:hidden bg-almond self-center  z-10"
+    >
+      <!-- <p-sidebar
+        [(visible)]="sidebarVisible"
+        styleClass="bg-almond py-3 w-[70%]"
+      >
+        <ul class="flex flex-col justify-between items-start my-4 space-y-4">
+          <li
+            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            routerLink="/"
+          >
+            <i
+              class="bi bi-house text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >Home</span
+            >
+          </li>
+          <li
+            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            routerLink="/products"
+          >
+            <i
+              class="bi bi-tags text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >Products</span
+            >
+          </li>
+          <li
+            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            routerLink=""
+          >
+            <i
+              class="bi bi-list-ul text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+            >
+              Categories
+            </span>
+          </li>
+          <li
+            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+          >
+            <i
+              class="bi bi-question-circle text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            >
+            </i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >About</span
+            >
+          </li>
+          <li
+            class="w-full leading-[32px] mx-2 font-semibold text-sm text-blue-black cursor-pointer liSide"
+          >
+            <i
+              class="bi bi-chat-quote text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >Contact</span
+            >
+          </li>
+
+          <li
+            *ngIf="token"
+            routerLink="/profile"
+            class="w-full whitespace-nowrap mx-2 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+          >
+            <i
+              class="bi bi-person text-[27px] not-italic inline-block"
+              style="-webkit-text-stroke: 0.6px"
+            ></i>
+            <span
+              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+              >My Account</span
+            >
+          </li>
+          <li class="w-full mx-2 cursor-pointer 2xl:mr-10 xl:mr-5 liSide">
+            <app-cart-icon></app-cart-icon>
+            <span
+              class="text-sm not-italic inline-block ml-4 hover:text-salmon transition-all duration-100"
+              >Cart</span
+            >
+          </li>
+          <li
+            class="w-full mx-2 cursor-pointer text-[27px] text-blue-black liSide"
+          >
+            <i
+              [ngStyle]="{}"
+              (click)="login()"
+              *ngIf="!token"
+              class="inline-block w-full bi bi-box-arrow-in-right text-[27px] not-italic"
+              style="-webkit-text-stroke: 0.6px"
+              ><span
+                class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+                >Log in</span
+              ></i
+            >
+            <i
+              [ngStyle]="{}"
+              (click)="logout()"
+              *ngIf="token"
+              class="inline-block w-full bi bi-box-arrow-right text-[27px] not-italic"
+              style="-webkit-text-stroke: 0.6px"
+              ><span
+                class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
+                >Log out</span
+              ></i
+            >
+          </li>
+        </ul>
+      </p-sidebar> -->
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        [ngClass]="{ sideIcon: sidebarVisible }"
+        (click)="toggleSideBar()"
+        title="open navbar"
+        fill="currentColor"
+        class="bi bi-list cursor-pointer text-blue-black hover:text-salmon transition-all duration-150"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <div class="w-full h-auto mb-[89px] z-0 relative -mt-10">
+    <div class="absolute layout w-full h-full"></div>
+
+    <div
+      class="w-full transition-all duration-100 ease-in-out md:py-12  flex flex-col justify-center md:items-start sm:items-center lg:pl-[124px] sm:space-y-5"
+      style="
+        background-image: url(../../../../../assets/h1_hero.png.webp);
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      "
+    >
+      <div
+        class="duration-100 leading-[32px] !z-10 md:mt-5  sm:mt-9 sm:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer md:hidden sm:flex"
+      >
+        <app-search></app-search>
+      </div>
+
+      @if(url === '/'){
+
+      <div
+        class="z-10  md:w-[570px] md:h-[493px] sm:h-auto sm:w-full bg-white mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px] flex flex-col justify-between md:items-start md:text-start sm:items-center"
+      >
+        <span
+          class="uppercase md:text-2xl sm:text-base font-semibold leading-[1.2] mb-2 block text-[#7F85A8]"
+        >
+          70% sale off
+        </span>
+        <h1
+          class="text-[#1a1a1a] uppercase md:text-[60px] sm:text-[16px] font-black leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5"
+        >
+          furniture at cost
+        </h1>
+        <p
+          class="box-border text-[#646D77] md:text-[18px] sm:text-[12px] leading-[30px] md:mb-[25px] sm:mb-[14px] md:pr-[49px] sm:px-2 md:text-start sm:text-center"
+        >
+          Suspendisse varius enim in eros elementum tristique. Duis cursus, mi
+          quis viverra ornare, eros dolor interdum nulla.
+        </p>
+        <button class="btn whitespace-nowrap">discover more</button>
+      </div>
+
+      } @else {
+
+        <div class="z-10">
+          <app-breadcramp [url]="url" ></app-breadcramp>
+        </div>
+      }
+    </div>
+  </div>
+</nav>

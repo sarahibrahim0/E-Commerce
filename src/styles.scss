@@ -1,348 +1,225 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$E-Commerce-primary: mat.define-palette(mat.$indigo-palette);
-$E-Commerce-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// The warn palette is optional (defaults to red).
-$E-Commerce-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$E-Commerce-theme: mat.define-light-theme((
-  color: (
-    primary: $E-Commerce-primary,
-    accent: $E-Commerce-accent,
-    warn: $E-Commerce-warn,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($E-Commerce-theme);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-// @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-// @include mat.core();
-
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-// $E-Commerce-primary: mat.define-palette(mat.$indigo-palette);
-// $E-Commerce-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-// // The warn palette is optional (defaults to red).
-// $E-Commerce-warn: mat.define-palette(mat.$red-palette);
-
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-// $E-Commerce-theme: mat.define-light-theme((
-//   color: (
-//     primary: $E-Commerce-primary,
-//     accent: $E-Commerce-accent,
-//     warn: $E-Commerce-warn,
-//   )
-// ));
-
-// // Include theme styles for core and each component used in your app.
-// // Alternatively, you can import and @include the theme mixins for each component
-// // that you are using.
-// @include mat.all-component-themes($E-Commerce-theme);
-
-
-
-
-@import "~normalize.css/normalize.css";
-@import "primeicons/primeicons.css";
-@import "~animate.css";
-
-$primary: #ff3a00;
-$primary-dark: #af2900;
-
-
-html {
-  overflow:visible;
-  height: 100vh;
-  min-height: 100vh;
-  box-sizing: border-box!important;
-
+* {
+  scrollbar-width: auto; /* "auto" or "thin" */
+  scrollbar-color: rgb(186, 186, 186) #F2E1D9; /* scroll thumb and track */
+  scroll-behavior: smooth;
+  // font-size:16px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 
 }
+
+
+@keyframes fadeInUp {
+  0% {
+      visibility: hidden;
+      transform: translate3d(0,100%,0)
+  }
+
+  to {
+      opacity: 1;
+      transform: translateZ(0)
+  }
+}
+
+
+
+
+
+
+
+
 body {
-  font-family: "Open Sans", "sans-serif";
-  font-size: 14px;
-  height: 100vh;
-  min-height: 100vh;
+  font-family:"Poppins",sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  overflow-x: visible;
+
 
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box!important;
+
+}
+
+html{
+  overflow-x: hidden;
+}
 
 a {
   text-decoration: none!important;
 }
 
+ul{
+  list-style: none!important;
+  padding: 0;
+}
+
 
 
 
 
-.p-button.banner:enabled {
-  background-color: #fff !important;
-  color: $primary;
-  border: 0;
-  border-radius: 15px;
-  height: 50px;
-}
-.p-button.add-to-cart:enabled {
-  background-color: $primary !important;
-  color: white !important;
-  border: 0;
-  border-radius: 20px;
-  height: 35px;
-}
 
-.add-to-cart.p-button:hover {
-  background-color: $primary !important;
-  color: white !important;
-}
-
-.p-button:enabled:hover {
-  background-color: $primary !important;
-  color: white !important;
-  border: 0!important;
-}
-.p-button.delete , .p-button.back {
-  background-color: $primary !important;
-  color: white !important;
-  border: 0!important;
-}
-.banner.p-button:hover {
-  background-color: #fff !important;
-  color: $primary !important;
-  border: 0;
-  box-shadow: none;
-}
-
-.add-to-cart.p-button:focus,
-.banner.p-button:focus,
-.p-button.details:focus,
-.p-button.back:focus,
-.p-button.delete:focus {
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-}
-
-.p-button.details {
-  background-color: #ff3a00 !important;
-  border: 0;
-}
-
-p-inputNumber {
-  .p-button {
-    background-color: #ff3a00 !important;
-  }
-  .p-button:enabled {
-    background-color: #ff3a00 !important;
-    border: 0 !important;
-    box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-    outline: 0;
-  }
-  .p-inputtext:focus {
-    border: 1px solid #ced4da !important;
-    box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-    outline: 0;
-  }
-  .p-inputtext:hover {
-    border: 1px solid #ced4da !important;
-    box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-    outline: 0;
-  }
-  .p-inputtext {
-    border: 1px solid #ced4da !important;
-    box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-    outline: 0;
-  }
-}
-
-.p-button {
-  background-color: #ff3a00 !important;
-}
-.p-button:enabled{
-  background-color: #ff3a00 !important;
-  border: 0 !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-.p-inputtext:focus , .p-dropdown  {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-.p-inputtext:hover , .p-dropdown  {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-.p-inputtext , .p-dropdown  {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.drop:focus{
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-.drop:hover {
-  .p-inputtext{
-    border: 1px solid #ffffff !important;
-    box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-    outline: 0;
-  }
-
-}
-.drop {
-
-  .p-inputtext{
-    border: 1px solid #ffffff !important;
-    box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-    outline: 0;
-  }
-}
-
-p-timeline.p-element{
-
-
-  width : 90%!important;
-}
-
-// .p-component{
-//   min-width: 90% !important;
+// *::-webkit-scrollbar {
+//   width: 12px; /* width of the entire scrollbar */
 // }
 
-.p-steps .p-steps-item .p-menuitem-link{
-  background: transparent!important;
-}
-.p-steps .p-steps-item .p-menuitem-link:not(.p-disabled):focus {
-  outline: 0 none;
-  outline-offset: 0;
-  box-shadow: 0 0 0 0!important;
-}
+// *::-webkit-scrollbar-track {
+//   background: orange; /* color of the tracking area */
+// }
+
+// *::-webkit-scrollbar-thumb {
+//   // scrollbar-color: rgb(116, 116, 116) #F2E1D9; /* color of the scroll thumb */
+//   border-radius: 20px; /* roundness of the scroll thumb */
+//   // border: 3px solid orange; /* creates padding around scroll thumb */
+// }
 
 
 
-  p-steps{
-    width: auto!important;
-  }
-
-
-
-a.p-menuitem-link:focus {
-  outline-offset: 0;
-  box-shadow: 0 0 0 0!important;
-}
-
-.ngx-pagination .current {
-  padding: 0.1875rem 0.625rem;
-  background: $primary!important;
-  color: #fefefe;
-  cursor: default;
-}
-
-.p-menu .p-submenu-header {
-  margin: 0;
-  padding: 0.75rem 1.25rem;
-  color: $primary!important;
-  background: #ffffff;
-  font-weight: 700;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
-
-p-checkbox .p-checkbox-box.p-highlight {
-  border-color: $primary!important;
-  background-color: $primary!important
-}
-
-
-p-checkbox:hover .p-checkbox-box.p-highlight:hover {
-  border-color: $primary!important;
-  background-color: $primary!important
-}
-
-.p-checkbox .p-checkbox-box {
-  border: 2px solid $primary!important;
-  background: #ffffff;
-  width: 22px;
-  height: 22px;
-  color: $primary!important;
-  border-radius: 6px;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-}
-
-.p-menu {
-  padding: 0.25rem 0;
-  background: #ffffff;
-  color: #495057;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  width: 100%!important;
+p-dropdown
+{
+  display: flex!important;
+  width: 150px!important;
+  height: 40px!important;
+  flex-direction: column;
+  justify-content: center ;
 }
 
 
 
-.drop:hover{
-  color: #6c757d;
-  background: #e9ecef}
 
 
 
-
- a.drop:focus {
-      outline: 0 none;
-      outline-offset: 0;
-      box-shadow: 0 0 10 0.2rem #BFDBFE;
-  }
-
-// html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .p-rating .p-rating-icon.p-rating-icon-active {
-  color: $primary!important;
+  color: #FD8F5F!important;
 }
 
 
 .p-rating .p-rating-icon.pi-star-fill {
-  color: $primary !important;
+  color: #FD8F5F !important;
 }
 
 .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {
-  color: $primary!important;
+  color: #FD8F5F!important;
 }
 
 .p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon{
-  color: $primary!important;
+  color: #FD8F5F!important;
 }
 
 .p-fluid .p-inputnumber .p-inputnumber-input {
   width: 100%;
   min-width: 70%!important;
 }
+
+.p-hidden-accessible{
+  visibility: hidden!important;
+  pointer-events: none!important
+
+}
+
+
+.desc > span{
+  font-size: 14px;
+
+}
+.p-accordion .p-accordion-header .p-accordion-header-link {
+  padding: 0!important;
+  border: none!important;
+  color: #6b7280;
+  background: transparent!important;
+  font-weight: 700;
+  border-radius: 6px;
+  transition: box-shadow 0.2s;
+}
+
+.p-accordion-header-text  {
+  color: #FD8F5F !important;
+  margin-left: 10px;
+}
+
+
+.p-galleria .p-galleria-thumbnail-container {
+  background: transparent!important;
+  padding: 1rem 0.25rem;
+}
+
+
+
+
+.p-inputtext {
+  font-family: var(--font-family);
+  font-feature-settings: var(--font-feature-settings, normal);
+  font-size: 1rem;
+  color: #4b5563;
+  background: #ffffff;
+  padding: 0.75rem 0.75rem;
+  border: 1px solid rgb(225, 225, 225)!important;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  width: 70px!important;
+  height: 60px!important;
+  border-radius: 0px!important;
+  text-align: center!important;
+}
+
+.p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none!important;
+  border: 1px solid rgb(225, 225, 225)!important;
+
+}
+
+
+.p-button
+{
+  border-radius: 0px!important;
+  border: 1px solid rgb(225, 225, 225)!important;
+  font-weight: 200!important;
+
+
+}
+
+
+.p-inputtext{
+
+  width: 100%!important;
+  height: auto!important;
+  border-radius: 3px!important;
+  border: none!important
+}
+
+
+.p-dropdown-clear-icon {
+  top: 17px!important;
+  right: 60px!important;
+}
+
+p-dropdown{
+  width: 100%!important;
+
+
+}
+
+
+.p-inputwrapper{
+  border: 1px solid #eee!important
+
+}
+
+.p-dropdown-items li{
+  padding-left: 10px!important;
+}
+

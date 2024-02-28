@@ -16,15 +16,19 @@ import { EditUserComponent } from './components/profile/edit-user/edit-user.comp
 import { UserDataComponent } from './components/profile/user-data/user-data.component';
 import { OrderDetailsComponent } from './components/profile/order-details/order-details.component';
 import { ErrorComponent } from './components/error/error.component';
-
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { CategoriesComponent } from './components/home/categories/categories/categories.component';
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'products', component:ProductListComponent},
-  {path: 'products/:id', component:ProductListComponent},
+  {path: 'about', component:AboutComponent},
+  {path: 'contact', component:ContactComponent},
+  {path: 'products', component:ProductListComponent},
   {path: 'product/:id', component:ProductDetailsComponent},
-  {path: 'category/:id', component:ProductListComponent},
-  {path: 'cart', component:CartComponent},
-  {path: 'checkout', component:CheckoutComponent},
+  {path: 'categories', component:CategoriesComponent},
+  {path: 'cart', component:CartComponent , canActivate: [isLoggedGuard] },
+  {path: 'checkout', component:CheckoutComponent , canActivate: [isLoggedGuard]},
   {path: 'order/success', component:ThankyouComponent},
   {path: 'login', component:LoginComponent},
   {path: 'register', component:SignupComponent},

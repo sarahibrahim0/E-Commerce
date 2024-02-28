@@ -1,8 +1,9 @@
-import { Observable } from 'rxjs';
+import { Observable, max } from 'rxjs';
 import { HttpClient , HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Product } from '../../interfaces/product';
+import { Category } from 'src/app/interfaces/category';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,42 @@ export class ProductsServiceService {
       if (id) {
       params = params.append('categories', id)
       }
+
+      // dashboard-pnlv.onrender.com
+
+      return this.http.get<Product[]>('http://localhost:3000/api/v1/products', { params: params });
+    }
+
+
+    filterProducts(minPrice?: number, maxPrice? : number, categoryId? : string, color?: string): Observable<Product[]> {
+      let params = new HttpParams()
+
+
+      // }
+      if(categoryId){
+        params = params.append('categories', categoryId )
+
+
+      }
+
+           if (minPrice) {
+            params = params.append('minPrice', minPrice )
+
+      }
+
+      if(maxPrice){
+        params = params.append('maxPrice', maxPrice )
+      }
+
+      if(color){
+        params = params.append('color', color )
+
+      }
+
+
+console.log(params)
+
+      // dashboard-pnlv.onrender.com
 
       return this.http.get<Product[]>('http://localhost:3000/api/v1/products', { params: params });
     }

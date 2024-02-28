@@ -1,47 +1,107 @@
-<p-toast [breakpoints]="{'900px': {width: '70%', right: '0'}}"></p-toast>
+<p-toast [breakpoints]="{ '900px': { width: '70%', right: '0' } }"></p-toast>
+
+<div
+  class="relative w-full transition-all duration-100 ease-in-out h-screen min-h-screen flex flex-col justify-center items-center sm:space-y-5"
+  style="
+    background-image: url(../../../../../assets/h1_hero.png.webp);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  "
+>
+  <div class="absolute layout w-full h-full"></div>
 
 
-<div class="form-container">
 
+  <div class="z-10 overflow-auto w-full h-full pt-10">
+    <form
+      [formGroup]="SignUpForm"
+      class="z-10 w-[45%] m-auto min-h-[95%] min-w-[500px] bg-white flex flex-col items-start justify-evenly text-left"
+    >
+      <!-- form group with email and password input fields-->
 
-    <strong  >One account  <br/>
-    Many Possibilities </strong>
+      <div class="px-12 w-full">
 
-    <form [formGroup]="SignUpForm" class="form">
+        <label
+          for="firstName"
+          class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
+          >First Name</label
+        >
+        <input
+          id="firstName"
+          (ngModelChange)="clear()"
+          type="text"
+          formControlName="firstName"
+          class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
+        />
+      </div>
+      <div class="px-12 w-full">
 
-        <!-- form group with email and password input fields-->
+        <label
+          class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
+          for="lastName"
+          >Last Name</label
+        >
+        <input
+          id="lastName"
+          (ngModelChange)="clear()"
+          type="text"
+          formControlName="lastName"
+          class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
+        />
+      </div>
+      <div class="px-12 w-full">
 
-        <div class="field mt-4">
-            <label for="firstName" class="lable">First Name</label>
-            <input id="firstName" (ngModelChange)="clear()" type="text" formControlName="firstName"
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-        </div>
-        <div class="field">
-            <label class="label" for="lastName">Last Name</label>
-            <input id="lastName" (ngModelChange)="clear()" type="text" formControlName="lastName"
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-        </div>
-        <div class="field">
-            <label for="email" class="lable">Email</label>
-            <input id="email" (ngModelChange)="clear()" type="text" formControlName="email"
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-        </div>
-        <div class="field">
-            <label class="label" for="password">Password</label>
-            <input id="password" (ngModelChange)="clear()" type="password" formControlName="password"
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-        </div>
+        <label
+          for="email"
+          class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
+          >Email</label
+        >
+        <input
+          id="email"
+          (ngModelChange)="clear()"
+          type="text"
+          formControlName="email"
+          class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
+        />
+      </div>
+      <div class="px-12 w-full">
 
-        <div class="field">
-            <label class="label" for="phone">Phone</label>
-            <input id="phone" (ngModelChange)="clear()" type="phone" formControlName="phone"
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-        </div>
+        <label
+          class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
+          for="password"
+          >Password</label
+        >
+        <input
+          id="password"
+          (ngModelChange)="clear()"
+          type="password"
+          formControlName="password"
+          class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
+        />
+      </div>
 
-        <button pButton type="submit" (click)="login()">Sign Up</button>
-        <small *ngIf="error" class="p-error fbtn mt-2"> {{error}}</small>
+      <div class="px-12 w-full">
+
+        <label
+          class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
+          for="phone"
+          >Phone</label
+        >
+        <input
+          id="phone"
+          (ngModelChange)="clear()"
+          type="phone"
+          formControlName="phone"
+          class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
+        />
+      </div>
+
+      <button
+      class="bg-salmon h-[60px] py-[10px] px-[43px] uppercase cursor-pointer text-[16px] text-white"
+      type="submit"
+      (click)="login()">Sign Up</button>
+      <small *ngIf="error" class="p-error fbtn mt-2"> {{ error }}</small>
     </form>
+  </div>
 </div>
-
-
-

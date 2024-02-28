@@ -17,8 +17,11 @@ export class ProductListComponent {
 products: Product[] = [];
 categories: Category[] = [];
 endSub$ : Subject<any> = new Subject();
+activeButton: number;
 inputId
 checked: string[] = [];
+id: string = "64a58ffcb2120d003b2a90ce";
+
   constructor(
   private productService: ProductsServiceService,
   private CategoriesService: CategoriesService,
@@ -32,29 +35,39 @@ checked: string[] = [];
   }
   ngOnInit(){
 
+    this.CategoriesService.getCategories().subscribe({
+      next:(categories) =>{
+        this.categories = categories;
 
-
-this.ActivatedRoute.params.subscribe(params=>{
-  if(params['id']) {
-   this.getProducts([params['id']]);
-   console.log('finish')
-  }else {
-   this.getProducts();
- }
- this.getCategories()
-
-   }
-   )
-  }
-
-
-  private getProducts(id? : string[]){
-    this.productService.getProducts(id).subscribe({
-      next : (data)=>{this.products = data
-      console.log(data)},
-      error:(err)=>console.log('Error getting products:', err),
+      },
+      error: (error)=>{
+        console.log(error);
+      }
     })
+
+this.getProductss(this.id, 0)
+
+// this.ActivatedRoute.params.subscribe(params=>{
+//   if(params['id']) {
+//    this.getProducts([params['id']]);
+//    console.log('finish')
+//   }else {
+//    this.getProducts();
+//  }
+//  this.getCategories()
+
+//    }
+  //  )
   }
+
+
+  // private getProducts(id? : string[]){
+  //   this.productService.getProducts(id).subscribe({
+  //     next : (data)=>{this.products = data
+  //     console.log(data)},
+  //     error:(err)=>console.log('Error getting products:', err),
+  //   })
+  // }
   private getCategories(){
     this.CategoriesService.getCategories().pipe(takeUntil(this.endSub$)).subscribe({
       next : (data)=>{this.categories = data},
@@ -79,6 +92,22 @@ this.ActivatedRoute.params.subscribe(params=>{
 
   showToast(){
     this.MessageService.add({ severity: 'success', summary: 'Success', detail: 'Added To Cart' })
+}
+
+getProductss(id: string , index: number)
+{
+
+  this.activeButton = index;
+  this.id = id;
+  this.productService.getSingleCategoryproducts(this.id).subscribe({
+  next : (products)=>{
+    this.products =  products
+
+  },
+  error:(e)=>console.log(e)
+ })
+
+
 }
 
 }

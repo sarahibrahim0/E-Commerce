@@ -1,16 +1,269 @@
-@import '../../../../../styles.scss';
+
+
+
+.layout::before{
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        right: 0;
+       background:  linear-gradient(to bottom, rgba(140,130,130,0.4) 0%, rgba(143,130,133,0.4) 46%, rgba(141,128,130,0.38) 48%, rgba(141,130,133,0.37) 49%, rgba(140,129,129,0.36) 50%, rgba(139,128,130,0.35) 51%, rgba(142,130,130,0.34) 52%, rgba(143,131,131,0.32) 55%, rgba(141,129,132,0.31) 56%, rgba(142,129,132,0.3) 57%, rgba(139,129,129,0.28) 59%, rgba(140,129,133,0.27) 60%, rgba(142,131,131,0.26) 61%, rgba(140,129,129,0.25) 62%, rgba(141,129,129,0.24) 63%, rgba(143,131,131,0.23) 64%, rgba(142,130,130,0.22) 65%, rgba(142,130,130,0.21) 66%, rgba(140,127,132,0.2) 67%, rgba(139,130,130,0.19) 68%, rgba(139,130,130,0.18) 69%, rgba(142,128,128,0.17) 70%, rgba(140,130,130,0.16) 71%, rgba(141,130,135,0.15) 72%, rgba(143,128,133,0.14) 73%, rgba(142,125,130,0.13) 74%, rgba(142,130,130,0.12) 75%, rgba(140,128,134,0.11) 76%, rgba(137,124,131,0.1) 77%, rgba(145,131,131,0.09) 78%, rgba(142,128,135,0.09) 79%, rgba(139,124,131,0.08) 80%, rgba(140,132,132,0.08) 81%, rgba(144,127,127,0.07) 82%, rgba(142,123,132,0.07) 83%, rgba(143,133,133,0.06) 84%, rgba(138,128,128,0.05) 85%, rgba(134,121,121,0.05) 86%, rgba(148,134,134,0.05) 87%, rgba(142,128,128,0.04) 88%, rgba(136,119,119,0.04) 89%, rgba(137,137,137,0.03) 90%, rgba(128,128,128,0.03) 91%, rgba(142,113,113,0.02) 92%, rgba(146,146,146,0.02) 93%, rgba(128,128,128,0.01) 94%, rgba(128,128,128,0.01) 95%, rgba(255,255,255,0) 96%, rgba(0,0,0,0) 97%, rgba(0,0,0,0) 100%);
+
+  }
+
+
+    // @keyframes fadeInUp {
+    //     0% {
+    //         visibility: hidden;
+    //         transform: translate3d(0,100%,0)
+    //     }
+
+    //     to {
+    //         opacity: 1;
+    //         transform: translateZ(0)
+    //     }
+    // }
+
+    .liSide{
+      background: #F2E1D9;
+      text-transform: uppercase;
+      padding: 15px ;
+      color: #1D2547;
+      cursor: pointer;
+      font-weight: 500!important;
+      font-size: 15px!important;
+      display: inline-block;
+      letter-spacing: 1px;
+      line-height: 0;
+      transition:  all .4s linear;
+      position: relative;
+      z-index: 1;
+      border: 0;
+      overflow: hidden;
+      margin: 0;
+      border-radius: 0px;
+
+    }
+
+    .liSide::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 101%;
+      height: 101%;
+      background: #ecd7cd;
+      z-index: 1;
+      border-radius: 0px;
+      transition: transform 0.5s;
+      transition-timing-function: ease;
+      transform-origin: 0 0;
+      transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+      transform: scaleX(0);
+      border-radius: 0px;
+
+  }
+
+  .liSide:hover::before {
+      transform: scaleX(1);
+      color: #1D2547 !important;
+      z-index: -1
+  }
+
+
+  p-sidebar{
+    z-index: 20!important;
+  }
+
+
+
+
+
+    h1{
+        animation-name: fadeInUp;
+        animation-delay: .04s;
+        animation-duration: .7s;
+        animation-fill-mode: backwards;
+
+    }
+    p{
+        animation-name: fadeInUp;
+        animation-delay: .06s;
+        animation-duration: .7s;
+        animation-fill-mode: backwards;
+
+
+
+    }
+
+.fakeNav{
+  opacity: 0;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  visibility: hidden;
+  transform: translateX(1);
+  transition: all .5s ease-in-out;
+  pointer-events: none;
+
+}
+
+.showFakeNav{
+  position: fixed;
+  top: -3px;
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: all .3s ease-in-out;
+  pointer-events: all;
+
+}
 
 .nav{
-    li{
-        list-style: none;
-        display: inline-block;
-        margin-right: 15px;
-    }
-    a{
-        color: var(--surface-500);
-        cursor: pointer;
-        &:hover{
-            color: $primary;
-        }
-    }
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all .3s ease-in-out;
+
+
 }
+
+.showNav{
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transition: all .3s ease-in-out;
+
+}
+    .btn::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 101%;
+        height: 101%;
+        background: #e9855a;
+        z-index: 1;
+        border-radius: 0px;
+        transition: transform 0.5s;
+        transition-timing-function: ease;
+        transform-origin: 0 0;
+        transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+        transform: scaleX(0);
+        border-radius: 0px;
+
+    }
+
+    .btn:hover::before {
+        transform: scaleX(1);
+        color: #fff !important;
+        z-index: -1
+    }
+
+
+    @media(min-width : 320px){
+      svg{
+          width: 50px;
+          height: auto
+      }
+
+      .sideIcon{
+        color: #FD8F5F;
+        transform: rotate(360deg);
+
+
+      }
+
+      .btn {
+        background: #FD8F5F;
+        text-transform: uppercase;
+        padding: 20px;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 500;
+        font-size: 14px;
+        display: inline-block;
+        letter-spacing: 1px;
+        line-height: 0;
+        transition:  all .4s linear;
+        position: relative;
+        z-index: 1;
+        border: 0;
+        overflow: hidden;
+        margin: 0;
+        border-radius: 0px;
+        animation-name: fadeInUp;
+        animation-delay: .07s;
+        animation-duration: .9s;
+        animation-fill-mode: backwards;
+
+
+
+    }
+
+    .main::before{
+        content: "";
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+
+    }
+    }
+
+
+    @media(min-width: 481px){
+          svg{
+          width: 70px;
+          height: auto
+      }
+      .sideIcon{
+        color: #FD8F5F;
+        transform: rotate(360deg);
+
+      }
+      .main::before{
+        content: "";
+        width: 180px;
+        height: 100px;
+        background-color: white;
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+
+    }
+
+    .btn {
+      background: #FD8F5F;
+      text-transform: uppercase;
+      padding: 27px 44px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 15px;
+      display: inline-block;
+      letter-spacing: 1px;
+      line-height: 0;
+      transition:  all .4s linear;
+      position: relative;
+      z-index: 1;
+      border: 0;
+      overflow: hidden;
+      margin: 0;
+      border-radius: 0px;
+      animation-name: fadeInUp;
+      animation-delay: .07s;
+      animation-duration: .9s;
+      animation-fill-mode: backwards;
+
+
+
+  }
+
+     }
+

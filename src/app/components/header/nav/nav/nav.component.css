@@ -1,203 +1,91 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~normalize.css/normalize.css";
-@import "primeicons/primeicons.css";
-@import "~animate.css";
-html {
-  overflow: visible;
-  height: 100vh;
-  min-height: 100vh;
+.main::before {
+  content: "";
+  width: 180px;
+  height: 100px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
-body {
-  font-family: "Open Sans", "sans-serif";
-  font-size: 14px;
-  height: 100vh;
-  min-height: 100vh;
+.layout::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background: linear-gradient(to bottom, rgba(139, 129, 129, 0.4) 0%, rgba(141, 128, 130, 0.38) 1%, rgba(140, 129, 132, 0.36) 2%, rgba(142, 130, 130, 0.34) 3%, rgba(140, 128, 131, 0.32) 4%, rgba(142, 129, 132, 0.3) 5%, rgba(140, 129, 133, 0.28) 6%, rgba(143, 131, 131, 0.26) 7%, rgba(142, 130, 130, 0.24) 8%, rgba(143, 130, 130, 0.22) 9%, rgba(144, 130, 134, 0.2) 10%, rgba(143, 128, 133, 0.18) 11%, rgba(139, 128, 128, 0.16) 12%, rgba(137, 131, 131, 0.14) 13%, rgba(143, 128, 128, 0.12) 14%, rgba(136, 127, 127, 0.1) 15%, rgba(143, 133, 133, 0.08) 16%, rgba(146, 134, 134, 0.06) 17%, rgba(143, 128, 128, 0.05) 18%, rgba(139, 139, 139, 0.03) 19%, rgba(146, 146, 146, 0.02) 20%, rgba(0, 0, 0, 0) 21%, rgba(0, 0, 0, 0) 22%, rgba(0, 0, 0, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#668b8181", endColorstr="#00000000",GradientType=0 );
 }
 
-a {
-  text-decoration: none;
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0);
+  }
 }
-
-.p-button.banner:enabled {
-  background-color: #fff !important;
-  color: #ff3a00;
-  border: 0;
-  border-radius: 15px;
-  height: 50px;
-}
-
-.p-button.add-to-cart:enabled {
-  background-color: #ff3a00 !important;
-  color: white !important;
-  border: 0;
-  border-radius: 20px;
-  height: 35px;
-}
-
-.add-to-cart.p-button:hover {
-  background-color: #ff3a00 !important;
-  color: white !important;
-}
-
-.p-button:enabled:hover {
-  background-color: #ff3a00 !important;
-  color: white !important;
-  border: 0 !important;
-}
-
-.p-button.delete, .p-button.back {
-  background-color: #ff3a00 !important;
-  color: white !important;
-  border: 0 !important;
-}
-
-.banner.p-button:hover {
-  background-color: #fff !important;
-  color: #ff3a00 !important;
-  border: 0;
-  box-shadow: none;
-}
-
-.add-to-cart.p-button:focus,
-.banner.p-button:focus,
-.p-button.details:focus,
-.p-button.back:focus,
-.p-button.delete:focus {
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-}
-
-.p-button.details {
-  background-color: #ff3a00 !important;
-  border: 0;
-}
-
-p-inputNumber .p-button {
-  background-color: #ff3a00 !important;
-}
-p-inputNumber .p-button:enabled {
-  background-color: #ff3a00 !important;
-  border: 0 !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-p-inputNumber .p-inputtext:focus {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-p-inputNumber .p-inputtext:hover {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-p-inputNumber .p-inputtext {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.p-button {
-  background-color: #ff3a00 !important;
-}
-
-.p-button:enabled {
-  background-color: #ff3a00 !important;
-  border: 0 !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.p-inputtext:focus, .p-dropdown {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.p-inputtext:hover, .p-dropdown {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.p-inputtext, .p-dropdown {
-  border: 1px solid #ced4da !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.drop:focus {
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.drop:hover .p-inputtext {
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-.drop .p-inputtext {
-  border: 1px solid #ffffff !important;
-  box-shadow: 0 0 0 0 #ffffff, 0 0 0 0 #ffffff, 0 0 0 0 rgb(255, 255, 255) !important;
-  outline: 0;
-}
-
-p-timeline.p-element {
-  width: 90% !important;
-}
-
-.p-steps .p-steps-item .p-menuitem-link {
-  background: transparent !important;
-}
-
-.p-steps .p-steps-item .p-menuitem-link:not(.p-disabled):focus {
-  outline: 0 none;
-  outline-offset: 0;
-  box-shadow: 0 0 0 0 !important;
-}
-
-p-steps {
-  width: 100% !important;
-}
-
-a.p-menuitem-link:focus {
-  outline-offset: 0;
-  box-shadow: 0 0 0 0 !important;
-}
-
-.ngx-pagination .current {
-  padding: 0.1875rem 0.625rem;
-  background: #ff3a00 !important;
-  color: #fefefe;
-  cursor: default;
-}
-
-.p-menu .p-submenu-header {
-  margin: 0;
-  padding: 0.75rem 1.25rem;
-  color: #ff3a00 !important;
-  background: #ffffff;
-  font-weight: 700;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-}
-
-p-checkbox .p-checkbox-box.p-highlight {
-  border-color: #ff3a00;
-  background-color: #ff3a00;
-}
-
-.nav li {
-  list-style: none;
-  display: inline-block;
-  margin-right: 15px;
-}
-.nav a {
-  color: var(--surface-500);
+.btn {
+  background: #FD8F5F;
+  text-transform: uppercase;
+  padding: 27px 44px;
+  color: #fff;
   cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+  display: inline-block;
+  letter-spacing: 1px;
+  line-height: 0;
+  transition: color 0.4s linear;
+  position: relative;
+  z-index: 1;
+  border: 0;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 0px;
+  animation-name: fadeInUp;
+  animation-delay: 0.7s;
+  animation-duration: 0.5s;
 }
-.nav a:hover {
-  color: #ff3a00;
+
+h1 {
+  animation-name: fadeInUp;
+  animation-delay: 0.4s;
+  animation-duration: 0.9s;
+}
+
+p {
+  animation-name: fadeInUp;
+  animation-delay: 0.6s;
+  animation-duration: 0.7s;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 101%;
+  height: 101%;
+  background: #e9855a;
+  z-index: 1;
+  border-radius: 0px;
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  transform: scaleX(0);
+  border-radius: 0px;
+}
+
+.btn:hover::before {
+  transform: scaleX(1);
+  color: #fff !important;
+  z-index: -1;
 }/*# sourceMappingURL=nav.component.css.map */

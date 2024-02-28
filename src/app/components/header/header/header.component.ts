@@ -52,18 +52,6 @@ private setHidden(){
 
 }
 
-link(){
-  // if(this.token){
-  //   console.log('logout')
-  // return ()=>  this.logout()
-
-  // }else{
-  //   this.icon ='pi pi-fw pi-sign-in';
-  //   this.label ='sign in'
-  //   return ()=>  this.login()
-  // }
-  console.log('hiiis')
-}
 
 private getToken(){
   this.LoginService.$token.subscribe((token)=>{

@@ -1,0 +1,96 @@
+.toggle {
+  transform: rotateX(180deg);
+  transition: all .2s ease-in-out;
+}
+
+.selected{
+  font-weight: 700!important;
+  color: #616875;
+  background-color: #f6f6f6;
+  ;
+}
+
+
+.popDown{
+
+  position: absolute;
+  top: 40px;
+  left: 0;
+  transform: translateZ(15);
+  transition: all .2s ease-in-out;
+  transform-origin:top;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index:  1;
+
+
+}
+
+.popOut{
+
+  position: absolute;
+   top : 48px;
+left: 0;
+transform: translateZ(0);
+transition: all .2s ease-in-out;
+transform-origin:right;
+opacity: 1;
+visibility: visible;
+pointer-events: all;
+z-index:  1;
+}
+
+
+@media
+(min-width : 320px){
+.container{
+  width: calc(100vw - 120px); /* 60px padding on each side */
+}
+}
+
+
+@media
+(min-width : 481px){
+.container{
+  width: calc(100vw - 120px); /* 60px padding on each side */
+}
+}
+
+
+@media
+(min-width : 769px){
+.container{
+  width: calc(100vw - 120px); /* 60px padding on each side */
+}
+}
+
+
+
+@media
+(min-width : 1025px){
+  .container{
+    width: calc(100vw - 120px); /* 60px padding on each side */
+  }
+}
+
+
+@media
+(max-width : 1200px){
+  .container{
+    width: calc(100vw - 120px); /* 60px padding on each side */
+  }
+}
+
+
+@media
+(min-width : 1201px){
+  .container{
+    width: calc(300px); /* 60px padding on each side */
+  }
+}
+
+
+
+
+

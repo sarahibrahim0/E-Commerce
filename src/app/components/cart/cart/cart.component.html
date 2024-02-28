@@ -1,20 +1,20 @@
-<div class="cart-page">
+<div class="cart-page  mt-[100px] transition-all duration-300 ease-in-out">
     <ng-template #cartFull>
-        <div class="grid overflow-x-auto ">
-            <div class="md:col-8">
-                <div>
+        <div class="px-[60px] mb-[100px] grid gap-4 grid-cols-12 overflow-x-auto ">
+            <div class="lg:col-span-8 sm:col-span-12 overflow-x-auto">
+                <!-- <div>
                     <p-button styleClass="back" label="continue shopping" icon="pi pi-arrow-left" (onClick)="backToShop()">
                     </p-button>
-                </div>
-                <div>
+                </div> -->
+                <!-- <div>
                     <h4>
                         my cart : {{cartCount }} item(s)
                     </h4>
                 </div>
                 <div class="cart-shipping mb-5">
                     Shipping after the payment, Delivery time : 1 to 4 working days.
-                </div>
-                <div class="cart-item mb-5" *ngFor="let cartItem of cartItemsDetails | paginate: { itemsPerPage: 2, currentPage: p }">
+                </div> -->
+                <!-- <div class="cart-item mb-5" *ngFor="let cartItem of cartItemsDetails | paginate: { itemsPerPage: 2, currentPage: p }">
                     <div class="grid p-fluid overflow-x-auto">
                         <div class="col-4  md:col-2 cart-item-image">
                             <img [src]="cartItem?.product?.image?.url" [alt]="cartItem?.product?.name">
@@ -45,16 +45,67 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <app-cart-item [cartItem]="cartItem" ></app-cart-item> -->
 
-                </div>
+                </div> -->
+
+
+                <table class=" w-full min-w-[700px]">
+                  <thead class="  border-b-[1px]  ">
+                    <th class="pb-2 text-start text-[#797979] text-[14px] ">Product</th>
+                    <th class="pb-2 text-start text-[#797979] text-[14px]">Price</th>
+                    <th class="pb-2 text-start text-[#797979] text-[14px] ">Quantity</th>
+                    <th class="pb-2  text-start text-[#797979] text-[14px]">Subtotal</th>
+                  </thead>
+                  <tbody class="w-full ">
+                    @for(cartItem of cartItemsDetails; track cartItem?.product?.id  ){
+                      <tr class="border-b-[1px]  ">
+
+                      <td class="whitespace-nowrap  min-w-max min-h-max  py-12">
+                        <img class="inline-block w-[150px] h-[100px] object-cover mr-3" [src]="cartItem?.product?.image?.url" [alt]="cartItem?.product?.name" >
+                         <span class="whitespace-nowrap  inline-block text-[#797979] text-[14px]   text-left">
+                          {{ cartItem?.product?.name}}
+                        </span>
+                      </td>
+                      <td class=" min-w-max min-h-max py-12 text-[14px]">
+                        {{cartItem?.product?.price | currency}}
+                      </td>
+
+                      <td class=" min-w-max min-h-max py-12 text-[14px]" >
+                        <p-inputNumber styleClass="{}" [(ngModel)]="cartItem.quantity" mode="decimal" [showButtons]="true" [styleClass]="'focus:!outline-none'"
+                        inputId="cartItem?.product?.id" [min]="1" [max]="10" (onInput)="updateCartQuantity($event, cartItem)"> </p-inputNumber>
+                      </td>
+
+                      <td class=" min-w-max min-h-max py-12 text-[14px]" >
+                        {{cartItem?.product?.price * cartItem?.quantity |currency}}
+
+                      </td>
+
+                      <td class=" min-w-max min-h-max py-12" >
+                        <button  class="  bi bi-trash text-salmon text-lg"
+                        (click)="deleteCartItem(cartItem)">
+                      </button>
+                      </td>
+
+
+                    </tr>
+
+                    }
+
+                  </tbody>
+                </table>
 
             </div>
-            <div class=" col-12 md:col-4 overflow-x-auto" >
+            <div class="lg:col-span-4 sm:col-span-12" >
                 <app-order>
                     <div class="checkout-button">
-                        <p-button routerLink="/checkout" styleClass="delete" label="checkout" class="checkout"></p-button>
-                    </div>
+                        <button routerLink="/checkout"
+                        class="btn whitespace-nowrap !mt-[25px] "
+
+                         type="button" >checkout </button>
+
+
+
+                      </div>
                 </app-order>
             </div>
 
@@ -62,7 +113,7 @@
     </ng-template>
 
 
-    <div *ngIf="cartItemsDetails.length === 0; else cartFull">
+    <div class="mb-[100px]" *ngIf="cartItemsDetails.length === 0; else cartFull">
    <img src="../../../../assets/EmptyCart_3-Copy.png" alt="empty cart" style="height: 100%; width: 100%; position: relative">
     <!-- <h1 style="position:absolute; top: 50%; left: 40%;">Cart Is Empty</h1> -->
 </div>
@@ -71,11 +122,11 @@
 
 
 
-
+<app-advertise/>
 
 </div>
 
 
-<div class="card flex justify-content-center" *ngIf="cartItemsDetails.length">
+<!-- <div class="card flex justify-center" *ngIf="cartItemsDetails.length">
     <pagination-controls [autoHide]="true"  (pageChange)="p = $event" (pageBoundsCorrection)="p = $event">  </pagination-controls>
-</div>
+</div> -->

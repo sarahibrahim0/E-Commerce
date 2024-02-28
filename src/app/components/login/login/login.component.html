@@ -1,30 +1,133 @@
-<p-toast [breakpoints]="{'900px': {width: '70%', right: '0'}}"></p-toast>
+<p-toast [breakpoints]="{ '900px': { width: '70%', right: '0' } }"></p-toast>
+
+<div
+  class="relative w-full transition-all duration-100 ease-in-out h-screen min-h-screen flex flex-col justify-center items-center sm:space-y-5"
+  style="
+    background-image: url(../../../../../assets/h1_hero.png.webp);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  "
+>
+  <div class="absolute layout w-full h-full"></div>
+  <div class="z-10 overflow-auto w-full h-full pt-10">
+    <form
+      [formGroup]="loginForm"
+      class="z-10 w-[45%] m-auto min-h-[95%] min-w-[500px] bg-white flex flex-col items-start justify-evenly text-left"
+    >
+      <div
+        class="w-full self-center flex flex-col justify-start items-center text-center"
+      >
+        <h3
+          class="bg-white self-center text-[#140c40] text-[30px] font-semibold tracking-wider"
+        >
+          Login
+        </h3>
+        <span
+          class="text-[14px] mt-2 text-[#646D77] leading-[1.4] tracking-wider"
+          >Enter Login details to get access
+        </span>
+      </div>
+
+      <!-- form group with email and password input fields-->
+      <div class="px-12 w-full">
+
+   <label
+          for="email"
+          class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
+          >Email Address</label
+        >
+        <input
+          id="email"
+          (ngModelChange)="clear()"
+          type="text"
+          formControlName="email"
+          placeholder="Email Address"
+          class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
+        />
+        <div
+        *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)"
+        class=""
+      >
+        <span class="text-[12px] text-[#ff4545] " *ngIf="loginForm.get('email').errors?.['required']">Email is required.</span>
+        <span class="text-[12px] text-[#ff4545] " *ngIf="loginForm.get('email').errors?.['email']">
+          Enter valid Email format
+        </span>
+
+      </div>
+
+    </div>
+      <div class="px-12 w-full">
+        <label
+          class="label"
+          for="password"
+          class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
+          >Password</label
+        >
+        <input
+          id="password"
+          (ngModelChange)="clear()"
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+          class="border-[1px] border-solid border-[#c9c9c9] py-3.5 w-full tracking-wider text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
+        />
+
+        <div
+        *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)"
+        class=""
+      >
+        <span class="text-[12px] text-[#ff4545] " *ngIf="loginForm.get('password')?.errors['required']">Password is required.</span>
+        <span class="text-[12px] text-[#ff4545] " *ngIf="loginForm.get('password')?.errors['minLength']">
+          Password should be at least 8 characters
+        </span>
+
+      </div>
 
 
-<div class="form-container">
-    <h3>Log In</h3>
+      </div>
+      <small *ngIf="error" class="text-[12px] text-[#ff4545] self-center ">
+        Wrong Email or Password</small
+      >
 
-    <form [formGroup]="loginForm" class="form">
+      <div class="w-full px-12 flex flex-row justify-between items-center">
+        <div
+          class="flex flex-row justify-center items-start text-[14px] mt-2 text-[#646D77] leading-[1.4] tracking-wider"
+        >
+          <label class="custom-checkbox">
+            <input type="checkbox" />
+            <span class="checkmark"></span>
+          </label>
 
-        <!-- form group with email and password input fields-->
-
-        <div class="field">
-            <label for="email" class="lable">Email</label>
-            <input id="email" (ngModelChange)="clear()" type="text" formControlName="email"
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+          <span
+            class="text-[#140C40] self-center text-left font-semibold uppercase text-[17px] cursor-pointer"
+            >keep me logged in</span
+          >
         </div>
-        <div class="field">
-            <label class="label" for="password">Password</label>
-            <input id="password" (ngModelChange)="clear()" type="password" formControlName="password"
-                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-        </div>
 
+        <span
+          class="uppercase cursor-pointer text-[14px] font-normal text-salmon"
+          >forgot password?</span
+        >
+      </div>
 
-        <button class="mt-2" pButton type="submit" (click)="login()">Sign In</button>
-        <small *ngIf="error" class="p-error fbtn mt-2"> Wrong Email or Password</small>
+      <div class="w-full px-12 flex flex-row justify-between items-center">
+        <span
+          class="text-[14px] mt-2 text-[#646D77] leading-[1.4] tracking-wider"
+          >Don't have an account?
+          <span class="cursor-pointer" routerLink="/register"
+            ><span class="text-salmon">Sign Up</span> here</span
+          ></span
+        >
 
+        <button
+          class="bg-salmon h-[60px] py-[10px] px-[43px] uppercase cursor-pointer text-[16px] text-white"
+          type="submit"
+          (click)="login()"
+        >
+          Login
+        </button>
+      </div>
     </form>
-
-  <span>Don't have an account? <span class="cursor-pointer" style="color: #ff3a00;" routerLink="/register">Sign Up!</span></span>
-
+  </div>
 </div>

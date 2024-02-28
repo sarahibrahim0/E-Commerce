@@ -1,13 +1,26 @@
-<div class="gallery grid" *ngIf="imagesLength">
-    <div class="main-image col-12">
-        <img class="col-12" [src]="selectedImage" alt="" style="border-radius: 3%; height: 378px;"/>
-    </div>
-    <!-- <div class="images" *ngIf="imagesLength"> -->
-      <ul class="  col-12 flex flex-row overflow-hidden ">
-        <!-- <li  *ngFor="let image of images" [ngStyle]="{ 'background-image': 'url(' + image + ')' , 'background-size':' cover'}" ></li> -->
-        <li class="list-none col-3 overflow-hidden " *ngFor="let image of images">
-          <img (click)="changeSelectedImage(image?.url)"   [src]="image?.url" alt="" class="col-12 cursor-pointer" style="border-radius: 3%; height: 70%;">
-        </li>
-      </ul>
-    <!-- </div> -->
-</div>
+<!-- <div class="w-[500px] h-[360px]  flex flex-col justify-between items-center space-y-3" *ngIf="imagesLength" >
+        <img class="object-cover w-full h-full " [src]="selectedImage" alt="" />
+      <ul class=" w-full flex flex-row  h-full transition-all duration-300 ease-in-out">
+        @for(image of images; track image.url)
+
+{
+  <li class="cursor-pointer inline-block h-full transition-all duration-300 ease-in-out ">
+    <img (click)="changeSelectedImage(image?.url)"   [src]="image?.url" alt="" class=" inline-block h-full object-cover cursor-pointer">
+
+  </li>
+}
+</ul>
+</div> -->
+
+@if(imagesLength)
+{<p-galleria [value]="images" [containerStyle]="{ 'max-width': '640px' }" [numVisible]="4">
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item.url" style="width: 100%;" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <div class="grid grid-nogutter justify-content-center">
+            <img [src]="item.url" />
+        </div>
+    </ng-template>
+</p-galleria>
+}

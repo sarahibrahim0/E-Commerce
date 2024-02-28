@@ -1,0 +1,252 @@
+.hoverEff {
+  color: #FD8F5F !important;
+  background-color: #fff;
+  border-bottom: 2px solid #FD8F5F;
+  z-index: 9;
+  position: relative;
+  transition: all 100ms ease-in-out;
+}
+
+
+.categories::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #e7ebf2;
+  bottom: 37px;
+  left: 0
+
+}
+
+
+@keyframes fadeInUp {
+  0% {
+      visibility: hidden;
+      transform: translate3d(0,100%,0)
+  }
+
+  to {
+      opacity: 1;
+      transform: translateZ(0)
+  }
+}
+
+div.product > div:nth-child(1){
+  animation-name: fadeInUp;
+  animation-delay: .04s;
+  animation-duration: .9s;
+  animation-fill-mode: backwards;
+
+}
+
+div.product > div:nth-child(2){
+  animation-name: fadeInUp;
+  animation-delay: .06s;
+  animation-duration: 1.1s;
+  animation-fill-mode: backwards;
+
+}
+
+div.product > div:nth-child(3){
+  animation-name: fadeInUp;
+  animation-delay: .07s;
+  animation-duration: 1.3s;
+  animation-fill-mode: backwards;
+
+}
+h2{
+  animation-name: fadeInUp;
+  animation-delay: .04s;
+  animation-duration: 1.2s;
+  animation-fill-mode: backwards;
+
+}
+p{
+  animation-name: fadeInUp;
+  animation-delay: .06s;
+  animation-duration: 1.2s;
+  animation-fill-mode: backwards;
+
+
+
+}
+
+
+ul:last-child{
+  margin-right: 0!important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 101%;
+  height: 101%;
+  background: #e9855a;
+  z-index: 1;
+  border-radius: 0px;
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  transform: scaleY(0);
+  border-radius: 0px;
+
+}
+
+.btn:hover::before {
+  transform: scaleY(1);
+  color: #fff !important;
+  z-index: -1
+}
+
+
+@media(min-width : 320px){
+
+
+.btn {
+  background: #FD8F5F;
+  text-transform: uppercase;
+  padding: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-block;
+  letter-spacing: 1px;
+  line-height: 0;
+  transition:  all .4s linear;
+  position: relative;
+  z-index: 1;
+  border: 0;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 0px;
+  animation-name: fadeInUp;
+  animation-delay: .07s;
+  animation-duration: .6s;
+  animation-fill-mode: backwards;
+
+
+
+}
+
+
+}
+
+
+@media(min-width: 481px){
+
+.btn {
+background: #FD8F5F;
+text-transform: uppercase;
+padding: 27px 44px;
+color: #fff;
+cursor: pointer;
+font-weight: 500;
+font-size: 15px;
+display: inline-block;
+letter-spacing: 1px;
+line-height: 0;
+transition:  all .4s linear;
+position: relative;
+z-index: 1;
+border: 0;
+overflow: hidden;
+margin: 0;
+border-radius: 0px;
+animation-name: fadeInUp;
+animation-delay: .07s;
+animation-duration: .6s;
+animation-fill-mode: backwards;
+
+
+
+}
+
+}
+
+
+
+.instagram::before{
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #010a44;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  -webkit-transition: .4s;
+  -moz-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s
+}
+
+
+.not{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  top: 45%;
+  color: #fff;
+  font-size: 30px;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: .4s ease-in-out;
+}
+
+.visible{
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  top: 45%;
+  color: #fff;
+  font-size: 30px;
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  transition: .4s ease-in-out;
+  top: 48%;
+  opacity: 1;
+  visibility: visible
+}
+
+.instagram:hover:before{
+  visibility: visible;
+  opacity: .3
+}

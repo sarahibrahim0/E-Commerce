@@ -1,0 +1,138 @@
+
+
+
+
+
+
+
+
+  <div class="w-full flex flex-col justify-start items-start container  ">
+
+    <div class=" relatiev flex flex-row space-x-1 justify-between items-start self-start ">
+      <svg class="mr-[16px] mt-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="12px">
+        <path fill-rule="evenodd" fill="rgb(27, 207, 107)" d="M7.778,12.000 L12.222,12.000 L12.222,10.000 L7.778,10.000 L7.778,12.000 ZM-0.000,-0.000 L-0.000,2.000 L20.000,2.000 L20.000,-0.000 L-0.000,-0.000 ZM3.333,7.000 L16.667,7.000 L16.667,5.000 L3.333,5.000 L3.333,7.000 Z"></path>
+        </svg>
+
+      <h4 class="text-[17px] mb-[27px] tracking-wider font-[400] leading-[1.2]">Filter Product</h4>
+
+    </div>
+
+
+    <div class="relative  px-5  w-full min-w-full shadow-md py-[50px] pb-5  flex flex-col  space-y-5 justify-between items-center ">
+    <div class="relative  w-full  flex flex-row justify-between items-center p-3 border-[1px] cursor-pointer" (click)="toggleIcon('category')">
+
+      <input  placeholder="Category"  [value]="Type"  class="text-[#616875]  inline-block text-[14px] leading-[20px] !border-0 focus:!border-0 focus:!outline-none"
+       >
+
+      <svg [ngClass]="toggle? 'toggle' : '' " xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+        <path  fill="#616875" fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+      </svg>
+
+      @if(categories){
+        <ul [ngClass]="toggle?  'popOut' : 'popDown'" class=" flex flex-col py-3  space-y-2 bg-white  w-full border-[1px] !z-[2]">
+
+          @for(category of categories; track category.id;){
+            <li (click)="setType(category)"
+             class="inline-block w-full  px-3 py-3 text-[#616875]  text-[14px] leading-[20px] cursor-pointer hover:bg-[#f6f6f6] transition-all duration-300 ease-in-out"
+
+             [ngClass]="{'selected' : category?.name === selected?.name}"
+             >
+            {{category.name}}
+          </li>
+
+          }
+      </ul>
+      }
+
+
+
+
+
+    </div>
+
+
+
+    <!--price range-->
+
+
+    <div class="w-full relative flex flex-row justify-between items-center p-3 border-[1px] cursor-pointer" (click)="toggleIcon('price')">
+
+      <input placeholder=" Price Range"  [value]="range" class="text-[#616875]  inline-block text-[14px] leading-[20px] !border-0 focus:!border-0 focus:!outline-none"
+
+     >
+
+      <svg [ngClass]="toggle0? 'toggle' : '' " xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"
+ >
+      >
+        <path  fill="#616875" fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+      </svg>
+
+      <ul [ngClass]="toggle0?  'popOut' : 'popDown'" class="w-full flex flex-col py-3  space-y-1 bg-white  border-[1px] !z-[1]">
+
+            <li
+           *ngFor="let range_ of getObjectKeys(priceRange); let i = index"
+            (click)= "setType0(range_)"
+            class="inline-block w-full px-3 py-3 text-[#616875]  text-[14px] leading-[20px] cursor-pointer hover:bg-[#f6f6f6] transition-all duration-300 ease-in-out"
+            [ngClass]="{'selected' : range_ === range}"
+            >
+             {{range_}}
+          </li>
+
+
+      </ul>
+
+    </div>
+
+
+
+
+
+
+<!--color-->
+    <div class="w-full relative flex flex-row justify-between items-center p-3 border-[1px] cursor-pointer" (click)="toggleIcon('color')">
+
+      <input [value]="color" placeholder="Color" class="text-[#616875]  inline-block text-[14px] leading-[20px] !border-0 focus:!border-0 focus:!outline-none"
+
+     >
+
+      <svg [ngClass]="toggle0? 'toggle' : '' " xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"
+ >
+      >
+        <path  fill="#616875" fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+      </svg>
+
+      <ul [ngClass]="toggleColor?  'popOut' : 'popDown'" class="w-full py-3 flex flex-row flex-wrap  bg-white  border-[1px] !z-[0]">
+
+        <li
+        *ngFor="let product of Products; let i = index"
+        (click)="setColor(product?.color)"
+            class="inline-block w-[1%] h-3 px-3 py-3 text-[#616875]  text-[14px] leading-[20px] cursor-pointer hover:bg-[#f6f6f6] transition-all duration-300 ease-in-out"
+            [ngClass]="{'selected' : product.color === color}"
+            [style.background]="product.color"
+            >
+
+
+          </li>
+
+
+      </ul>
+
+    </div>
+
+
+<div class="flex flex-row justify-between items-start w-full">
+  <button (click)="onFilter()" class="text-[14px] mb-[27px] tracking-wider  leading-[1.2] self-start font-semibold text-[#1BCF6B] p-2 shadow-sm focus:text-[#1bcf66b8] ">Filter</button>
+  <button (click)="clearFilter()" class="text-[14px]  tracking-wider  leading-[1.2]  font-semibold text-[#1BCF6B] p-2 shadow-sm focus:text-[#1bcf66b8] ">Clear</button>
+
+</div>
+
+
+  </div>
+
+
+
+
+  </div>
+
+
+

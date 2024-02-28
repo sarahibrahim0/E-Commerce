@@ -3,7 +3,9 @@ import { CanActivateFn, Router, RouterStateSnapshot } from "@angular/router";
 import { LoginService } from '../services/login/login.service';
 import { environment } from 'src/environments/environment';
 
-export const isLoggedGuard : CanActivateFn = ()=>{
+export const isLoggedGuard : CanActivateFn = ()=>
+
+{
 
   const router = inject(Router);
   const loginService =  inject(LoginService);
@@ -12,8 +14,20 @@ export const isLoggedGuard : CanActivateFn = ()=>{
 
   loginService.$token.subscribe(token=>{
     userToken = token;
+  });
 
-  })
+
+  if(!userToken){
+
+    router.navigate(['/login']);
+    return false;
+
+  }
+
+
+  // router.navigate(['/']);
+
+  return true;
 
 
 

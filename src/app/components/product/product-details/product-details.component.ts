@@ -5,6 +5,7 @@ import { ProductsServiceService } from 'src/app/services/product/product.service
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { DataService } from './../../../services/dataService/data.service';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -22,15 +23,20 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
      private ActivatedRoute: ActivatedRoute,
      private MessageService: MessageService,
      private CartService: CartService,
+     private DataService :DataService,
      private router: Router){
 
   }
 
   ngOnInit(){
     this.ActivatedRoute.params.subscribe((params)=>
-     { if(params['id']){
+     {
+      if(params['id']){
+        this.DataService.changeParams(params['id'])
         this.getProductById(params['id']);
-      }}
+        console.log(params['id'])
+      }
+    }
     )
   }
   private getProductById(id: string){
@@ -56,6 +62,13 @@ addToCart(){
     quantity: this.productQuantity
   }, false)
   this.MessageService.add({ severity: 'success', summary: 'Success', detail: 'Added To Cart'})
+}
+
+increment(){
+  this.productQuantity < 10 ? this.productQuantity++ : ''
+}
+decrement(){
+  this.productQuantity >0 ? this.productQuantity-- : ''
 }
 
 editRating(event, product){

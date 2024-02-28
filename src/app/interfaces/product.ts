@@ -8,6 +8,7 @@ export class Product {
     image?: {url : string, publicId: string};
     images?: [{url : string, publicId: string}];
     brand?: string;
+    color?: string;
     price?: number;
     category?: Category;
     countInStock?: number;

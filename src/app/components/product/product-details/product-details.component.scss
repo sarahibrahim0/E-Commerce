@@ -1,50 +1,142 @@
-.product {
-    &-name {
-      font-size: 1.5em;
-    }
-
-    // &-description {
-    //   // font-size: 1.4em;
-    // }
-
-    &-rating {
-      margin: 15px 0;
-    }
-
-    &-price {
-      color:#ff3a00;
-      // font-size: 2em;
-      font-weight: 600;
-      border-bottom: 1px solid var(--surface-300);
-      padding: 25px 0;
-
-      .price-before {
-        // font-size: 0.7em;
-        margin-left: 10px;
-        font-weight: 200;
-        color: var(--surface-500);
-        text-decoration: line-through;
-      }
-    }
-
-    &-quantity {
-      margin: 25px 0;
-
-      // label {
-      //   // font-size: 1.2em;
-      // }
+.hoverEff {
+  color: #FD8F5F !important;
+  background-color: #fff;
+  border-bottom: 2px solid #FD8F5F;
+  z-index: 9;
+  position: relative;
+  transition: all 100ms ease-in-out;
+}
 
 
-    }
+.categories::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #e7ebf2;
+  bottom: 37px;
+  left: 0
 
-    &-actions {
-      .p-button {
-        background-color: #ff3a00;
-        border: 0;
-      }
-    }
+}
+
+
+@keyframes fadeInUp {
+  0% {
+      visibility: hidden;
+      transform: translate3d(0,100%,0)
   }
 
-  .product-rich-description {
-    line-height: 1.6;
+  to {
+      opacity: 1;
+      transform: translateZ(0)
   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 101%;
+  height: 101%;
+  background: #e9855a;
+  z-index: 1;
+  border-radius: 0px;
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  transform: scaleX(0);
+  border-radius: 0px;
+
+}
+
+
+
+.btn:hover::before {
+  transform: scaleX(1);
+  color: #fff !important;
+  z-index: -1
+}
+
+
+@media(min-width : 320px){
+
+
+.btn {
+  background: #FD8F5F;
+  text-transform: uppercase;
+  padding: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-block;
+  letter-spacing: 1px;
+  line-height: 0;
+  transition:  all .4s linear;
+  position: relative;
+  z-index: 1;
+  border: 0;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 0px;
+
+
+
+}
+
+
+}
+
+
+@media(min-width: 481px){
+
+.btn {
+background: #FD8F5F;
+text-transform: uppercase;
+padding: 27px 44px;
+color: #fff;
+cursor: pointer;
+font-weight: 500;
+font-size: 15px;
+display: inline-block;
+letter-spacing: 1px;
+line-height: 0;
+transition:  all .4s linear;
+position: relative;
+z-index: 1;
+border: 0;
+overflow: hidden;
+margin: 0;
+border-radius: 0px;
+
+
+
+
+}
+
+}
+
+
+
+

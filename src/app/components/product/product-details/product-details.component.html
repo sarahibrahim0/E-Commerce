@@ -1,46 +1,102 @@
-<p-toast [breakpoints]="{'900px': {width: '70%', right: '0'}}"></p-toast>
-    <div class="flex flex-column align-items-center">
-        <div class="grid  justify-content-center ">
-            <div class="col-12 md:col-3">
-                <app-product-gallery [images]="product?.images"></app-product-gallery>
-            </div>
-            <div class=" col-12 md:col-5 product " *ngIf="product">
-                <b class="product-name">{{product.name}}</b>
-                <p class="product-description col-12">{{product.description}}</p>
-                <div class="product-rating">
-                     <p-rating (onRate)="editRating($event, product)" [(ngModel)]="product.rating"
-                        [cancel]="false"></p-rating>
-                </div>
-                <div class="product-price">
-                    {{product.price | currency }} -
-                    <span class="price-before">
-                        {{product.price + 18 | currency}}
-                    </span>
-                </div>
-              <div class="product-quantity">
-                <div class="p-field col-12 md-3 p-0">
-                    <label for="quantity" style="color: #ff3a00;">Quantity</label>
-                        <p-inputNumber [style]="{'margin-left': '10px'}" [(ngModel)]="productQuantity" mode="decimal" [showButtons]="true" inputId="quantity" [min]="0" [max]="100"> </p-inputNumber>
-                </div>
-              </div>
+<p-toast [breakpoints]="{ '900px': { width: '70%', right: '0' } }"></p-toast>
+<div class="flex flex-col justify-between items-center  transition-all duration-300 ease-in-out ">
+  <div class="xl:px-[60px] sm:px-4 pt-[100px]  flex xl:flex-row xl:items-start xl:justify-center sm:flex-col sm:justify-start sm:items-center xl:space-x-12 h-auto">
+    <div class="flex flex-row items-start xl:justify-end sm:justify-center xl:mb-0 sm:mb-5  h-full ">
+      <app-product-gallery [images]="product?.images"></app-product-gallery>
+    </div>
 
-              <div class="product-action">
-                <button pButton  pRipple type="button" label="buy now" (click)="addToCartAndBuy()" class="p-button-rounded details  mr-2"></button>
-                <button pButton  pRipple type="button" label="add to cart" (click)="addToCart()" class="p-button-rounded details"></button>
+    @if(product) {
+    <div
+      class=" flex flex-col items-start justify-start text-left"
+    >
+      <h3 class="text-[24px] !font-bold text-[#2a2a2a] mb-[10px] !mt-0">
+        {{ product.name }}
+      </h3>
 
-              </div>
+      <h2 class="text-salmon mb-[15px] font-bold text-[24px]">
+        {{ product.price | currency }}
+      </h2>
+
+      <ul class="flex flex-col items-start justify-start text-left">
+        <li class="inline-block mb-[5px] text-left">
+          <a class="text-[#555] text-[14px] inline-block">Category</a>
+
+          <span class="text-salmon inline-block text-[14px] cursor-pointer ml-4"
+            >: {{ product?.category?.name }}</span
+          >
+        </li>
+
+        <li class="inline-block mb-[5px] text-left">
+          <a class="text-[#555] text-[14px] inline-block">Availability</a>
+
+          <span class="text-[#555] inline-block text-[14px] cursor-pointer ml-4"
+            >: In Stock</span
+          >
+        </li>
+      </ul>
+      <div class="">
+        <p-rating
+          (onRate)="editRating($event, product)"
+          [(ngModel)]="product.rating"
+          [cancel]="false"
+        ></p-rating>
+      </div>
+
+      <p
+        [innerHTML]="product?.description"
+
+        class=" desc text-[#646D77] !text-[14px] pt-5 w-full border-t-[1px] border-dotted border-[#d5d5d5] my-5 "
+      ></p>
+
+      <div class="product-quantity">
+        <div class="flex flex-row justify-between items-center rounded-full md:py-3 md:px-4  sm:py-1 sm:px-2 border-[1px] border-solid border-[#ddd]">
 
 
-            </div>
+          <span class="inline-block text-xl text-center cursor-pointer"> <i class="bi bi-dash md:text-[25px] sm:text-[15px]" (click)="decrement()"></i> </span>
 
+          <input [(ngModel)]="productQuantity" type="text" min="0" max="10" class="!border-0 w-16 md:text-lg sm:text-base  !outline-none focus:!outline-none !text-center" />
+
+          <span  class="inline-block text-center cursor-pointer">
+            <i class="bi bi-plus md:text-[25px] sm:text-[15px]" (click)="increment()"></i>
+          </span>
         </div>
+      </div>
 
 
-        <div class="product.rich-description col-12 md:col-8 " *ngIf="product" >
-            <b style="color:#ff3a00">Description</b>
-            <div [innerHTML]="product?.richDescription">
-            </div>
+      <div class="product-action">
+
+        <button
+        class="btn whitespace-nowrap !mt-[25px] "
+         type="button"
+        label="add to cart"
+        (click)="addToCart()">
+       add to cart</button>
+
+      </div>
+
+
+
+
     </div>
+    }
+  </div>
 
-    </div>
+  @if(product) {
+  <div class="xl:px-[60px] sm:px-4 pb-[100px]  leading-[1.4] text-[#646D77]  mt-10 transition-all duration-300 ease-in-out">
+    <!-- <b  class="text-salmon">Description</b> -->
+    <!-- <div [innerHTML]="product?.richDescription" class="tracking-wider text-[14px]  mt-5" ></div> -->
 
+    <p-accordion   [activeIndex]="0" styleClass="{background-color : transparent}" >
+      <p-accordionTab header="Description" >
+          <p [innerHTML]="product?.richDescription"  class="tracking-wider text-[14px]  mt-5  transition-all duration-300 ease-in-out">
+          </p>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+  }
+
+  <div class="w-full">
+    <app-advertise/>
+
+  </div>
+</div>
