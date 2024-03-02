@@ -1,28 +1,22 @@
- <div class="container flex flex-row align-content-center justify-items-center overflow-x-auto  bg-slate-500 h-11rem" style="width: 100%;">
-<div class="item-details grid  align-self-center text-center overflow-x-auto" style="width: 100%;">
-<div class="image col-4 md:col-4 ">
-    <img class="sm:mt-1" [src]="orderItem.product?.image.url" [alt]="orderItem.product?.name" style="width:95%; max-height: 150px; min-height: 110px; border:0;  border-radius: 2%; object-fit: cover;">
+ <div class=" w-full flex flex-row items-center justify-center" >
+<div class=" w-full grid grid-cols-12 items-center text-center overflow-x-auto " >
+<div class="image xl:col-span-3 sm:col-span-12 ">
+    <img class="sm:mt-1" [src]="orderItem.product?.image.url" [alt]="orderItem.product?.name" style=" border:0;  border-radius: 2%; object-fit: cover;">
 </div>
+<div class="xl:col-span-9 sm:col-span-12   flex  flex-row  justify-between px-4 min-w-max pb-5" >
+    <div class=" text-left mr-2  ">
+      <strong class="pr-1.5 text-blue-black ">name: </strong> <span class="whitespace-nowrap text-[#797979]"> {{orderItem?.product?.name}}</span>
+    </div>
+    <div class=" text-left mr-2">
+       <strong class="pr-1.5 text-blue-black "> quantity:</strong> <span class="whitespace-nowrap text-[#797979]">{{orderItem?.quantity}}</span>
+    </div>
+    <div class=" text-left mr-2 ">
+        <strong class="pr-1.5 text-blue-black  ">price:</strong> <span class="whitespace-nowrap text-[#797979]">{{orderItem?.product?.price}}</span>
+    </div>
+    <div class=" text-left mr-2">
+        <strong class="pr-1.5 text-blue-black ">category:</strong> <span class="whitespace-nowrap text-[#797979]">{{orderItem?.product?.category?.name}}</span>
+    </div>
 
-<div class="col-8  flex flex-column justify-content-around" >
-<div class="flex col-12 flex-row justify-items-between ">
-    <div class="name col-8 md:col-3 text-left flex flex-row flex-nowrap overflow-hidden">
-      <strong class="details ">name: </strong> <span class="white-space-nowrap"> {{orderItem?.product?.name}}</span>
-    </div>
-    <div class="quantity col-8 md:col-3 text-left ">
-       <strong class="details mr-1"> quantity:</strong> <span class="white-space-nowrap">{{orderItem?.quantity}}</span>
-    </div>
-    <div class="price col-8 md:col-3 text-left ">
-        <strong class="details mr-1">price:</strong> <span class="white-space-nowrap">{{orderItem?.product?.price}}</span>
-    </div>
-    <div class="category col-8 md:col-3 text-left">
-        <strong class="details mr-1">category:</strong> <span class="white-space-nowrap">{{orderItem?.product?.category?.name}}</span>
-    </div>
-</div>
-<div class="col-12" style="min-width: 550px;">
-    <p-steps [model]="items" [readonly]="false" [activeIndex]="orderStatus[status]?.label" ></p-steps>
-
-</div>
 
 </div>
 

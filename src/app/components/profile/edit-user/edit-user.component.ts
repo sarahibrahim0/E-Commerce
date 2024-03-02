@@ -68,6 +68,7 @@ user: User
       street: [this.user?.street, Validators.required],
       shippingAddress1: ['', Validators.required],
       shippingAddress2: ['', Validators.required],
+      isAdmin: ['false'],
 
 
     });
@@ -127,7 +128,7 @@ editUserInfo(){
     let user = {
       name : this.checkoutFormGroup.get("name").value ,
       email : this.checkoutFormGroup.get("email").value,
-      password:this.checkoutFormGroup.get("password").value,
+      // password:this.checkoutFormGroup.get("password").value,
       phone: this.checkoutFormGroup.get("phone").value,
       city: this.checkoutFormGroup.get("city").value,
       country: this.checkoutFormGroup.get("country").value,

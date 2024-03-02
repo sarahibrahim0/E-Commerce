@@ -2,35 +2,32 @@
     <ng-template #cartFull>
         <div class="px-[60px] mb-[100px] grid gap-4 grid-cols-12 overflow-x-auto ">
             <div class="lg:col-span-8 sm:col-span-12 overflow-x-auto">
-
-
                 <table class=" w-full min-w-[700px]">
-                  <thead class="  border-b-[1px]  ">
+                  <thead class="  border-b-[1px] w-full ">
                     <th class="pb-2 text-start text-[#797979] text-[14px] ">Product</th>
-                    <th class="pb-2 text-start text-[#797979] text-[14px]">Price</th>
+                    <th class="pb-2 text-start text-[#797979] text-[14px] ">Price</th>
                     <th class="pb-2 text-start text-[#797979] text-[14px] ">Quantity</th>
-                    <th class="pb-2  text-start text-[#797979] text-[14px]">Subtotal</th>
+                    <th class="pb-2  text-start text-[#797979] text-[14px] pl-3">Subtotal</th>
                   </thead>
                   <tbody class="w-full ">
                     @for(cartItem of cartItemsDetails; track cartItem?.product?.id  ){
-                      <tr class="border-b-[1px]  ">
-
-                      <td class="whitespace-nowrap  min-w-max min-h-max  py-12">
+                      <tr class="border-b-[1px] w-full ">
+                      <td class="whitespace-nowrap max-w-max min-w-max min-h-max  py-12 ">
                         <img class="inline-block w-[150px] h-[100px] object-cover mr-3" [src]="cartItem?.product?.image?.url" [alt]="cartItem?.product?.name" >
-                         <span class="whitespace-nowrap  inline-block text-[#797979] text-[14px]   text-left">
+                         <span class="whitespace-nowrap  inline-block text-[#797979] text-[14px]  text-left">
                           {{ cartItem?.product?.name}}
                         </span>
                       </td>
-                      <td class=" min-w-max min-h-max py-12 text-[14px]">
+                      <td class=" min-w-max max-w-max min-h-max py-12 text-[14px]">
                         {{cartItem?.product?.price | currency}}
                       </td>
 
-                      <td class=" min-w-max min-h-max py-12 text-[14px]" >
+                      <td class=" max-w-[70px]  min-h-max py-12 text-[14px]" >
                         <p-inputNumber styleClass="{}" [(ngModel)]="cartItem.quantity" mode="decimal" [showButtons]="true" [styleClass]="'focus:!outline-none'"
                         inputId="cartItem?.product?.id" [min]="1" [max]="10" (onInput)="updateCartQuantity($event, cartItem)"> </p-inputNumber>
                       </td>
 
-                      <td class=" min-w-max min-h-max py-12 text-[14px]" >
+                      <td class=" min-w-max pl-3 min-h-max py-12 text-[14px]" >
                         {{cartItem?.product?.price * cartItem?.quantity |currency}}
 
                       </td>
@@ -81,6 +78,3 @@
 </div>
 
 
-<!-- <div class="card flex justify-center" *ngIf="cartItemsDetails.length">
-    <pagination-controls [autoHide]="true"  (pageChange)="p = $event" (pageBoundsCorrection)="p = $event">  </pagination-controls>
-</div> -->

@@ -7,12 +7,14 @@ import { OrdersService } from 'src/app/services/order/order.service';
 import { BehaviorSubject, Observable, Observer, Subject, of } from 'rxjs';
 import { DataService } from './../../../services/dataService/data.service';
 
+
 @Component({
   selector: 'app-order-details',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.scss']
 })
 export class OrderDetailsComponent {
+  activeIndex: number = 0;
 
   id: string = ''
   order: Order;
@@ -21,23 +23,17 @@ export class OrderDetailsComponent {
   myObservable : Observable<Order>
   myObserver : Observer<Order>
 
-activeIndex: number = 0;
 
-orderStatuss = {
-  0: { label: 'pending', color: 'primary' },
-  1: { label: 'processed', color: 'warning' },
-  2: { label: 'shipped', color: 'warning' },
-  3: { label: 'delivered', color: 'success' },
-  4: { label: 'failed', color: 'danger' },
-}
 
-orderStatus ={
-  0 : 'Pending',
-  1 :'Processed',
-  2: 'Shipped',
-  3: 'Delivered',
-  4: 'Failed'
-  }
+
+orderStatus  = {
+  0:{ status: 'Pending',  color:'limegreen', label: 0 },
+  1: {status: 'Processed',color: 'yellow', label: 1 },
+  2: {status: 'Shipped', color:'yellow', label: 2} ,
+  3: {status: 'Delivered',color: 'green', label:3} ,
+  4: {status: 'Failed',color: 'red', label: 4} ,
+ }
+
 
 constructor(private DataService: DataService, private ActivatedRoute: ActivatedRoute, private router: Router, private OrdersService: OrdersService, private MessageService: MessageService){
   // if (this.router.getCurrentNavigation() != null) {

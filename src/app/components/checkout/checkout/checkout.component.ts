@@ -16,7 +16,6 @@ import { User } from 'src/app/interfaces/user';
 import { Product } from './../../../interfaces/product';
 import { ProductsServiceService } from './../../../services/product/product.service';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { ApiNinjaService } from './../../../services/api-ninja.service';
 
 declare function require(name: string);
 
@@ -45,7 +44,6 @@ export class CheckoutComponent {
     private LoginService: LoginService,
     private MessageService: MessageService,
     private ProductsServiceService: ProductsServiceService,
-    private ApiNinjaService: ApiNinjaService,
     private stripe: StripeService) {
   }
 
@@ -72,27 +70,10 @@ export class CheckoutComponent {
     this._initCheckoutForm();
     this._getCartItems();
 
-    this.checkoutFormGroup.get('country').valueChanges.subscribe(val => {
-      console.log(`Name has been changed to: ${val}`);
-      this.getCities(val);
-    });
+
 
   }
 
-  private getCities(val){
-    countriesList.registerLocale(require("i18n-iso-countries/langs/en.json"));
-    // this.countryName = this.checkoutFormGroup.controls['country'].value;
-
-const  isoCode = countriesList.getAlpha2Code(val, "en");
-console.log(isoCode)
-this.ApiNinjaService.getCitiesByCountry(isoCode).subscribe((data: any) => {
-  console.log(data)
-  this.cities = data
-});
-
-console.log(this.cities)
-
-  }
 
   private _getUser() {
     this.LoginService.$id.subscribe(id => {

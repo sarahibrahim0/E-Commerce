@@ -1,3 +1,5 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -150,6 +152,41 @@ p-dropdown
 }
 
 
+.p-toast-message-content{
+  padding-left: 10px!important;
+  height: 90px!important;
+  display: flex!important;
+  flex-direction: row!important;
+  align-items: center!important;
+}
+
+p-toastitem{
+  display: block!important;
+  height: 90px!important;
+}
+checkicon{
+  width: 15px!important;
+  height: 20px!important;
+  margin-right: 20px!important;
+
+
+
+}
+.p-toast-message-text{
+
+}
+
+.p-toast-icon-close{
+  align-self: flex-start!important;
+}
+
+.p-toast-message{
+  height: 100%!important;
+
+
+}
+
+
 .p-galleria .p-galleria-thumbnail-container {
   background: transparent!important;
   padding: 1rem 0.25rem;
@@ -223,3 +260,8 @@ p-dropdown{
   padding-left: 10px!important;
 }
 
+
+.p-component-overlay-enter
+{
+  z-index: 0!important
+}

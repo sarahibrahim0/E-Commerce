@@ -1,46 +1,51 @@
 
 
-<div class="container w-full flex flex-col justify-start items-start py-5 px-3 shadow-md " >
+<div class="container w-full flex flex-col justify-start items-start py-5 px-5 shadow-md overflow-auto " >
     <h3 class="text-salmon pb-4 mb-4">Orders</h3>
-        <table class="w-full">
-                <thead>
-                    <th class="text-start text-blue-black">Order Code</th>
-                    <th class="text-start text-blue-black">Ordered At</th>
-                    <th class="text-start text-blue-black">Order Status</th>
-                    <th class="text-start text-blue-black">Order Review</th>
-                    <th class="text-start text-blue-black"></th>
+ <div class="flex flex-row items-start justify-center min-w-max">
+  <table class="w-full">
+    <thead class="w-full">
+        <th class="text-start text-blue-black pr-3">Order Code</th>
+        <th class="text-start text-blue-black pr-3">Ordered At</th>
+        <th class="text-start text-blue-black pr-3">Order Status</th>
+        <th class="text-start text-blue-black pr-3">Order Review</th>
+        <th class="text-start text-blue-black pr-3"></th>
 
 
-                </thead>
-            <tbody >
+    </thead>
+<tbody >
 
-              @for(order of ordersArr; track order.id ){
-                    <tr>
-                        <td>{{order.id | slice: 0: 6}}</td>
+  @for(order of ordersArr; track order.id ){
+        <tr>
+            <td class="whitespace-nowrap text-[#797979] pr-3">{{order.id | slice: 0: 6}}</td>
 
-                        <td class="white-space-nowrap">{{order.dateOrdered | date : 'short'}} </td>
-                        <td>
-                            <svg height="10" width="10">
-                                <circle cx="5" cy="5" r="4" [attr.fill]= "orderStatus[order.status]?.color"/>
-                                Sorry, your browser does not support inline SVG.
-                              </svg>
-                              {{orderStatus[order.status]?.status}}
+            <td class="whitespace-nowrap text-[#797979] pr-3">{{order.dateOrdered | date : 'short'}} </td>
+            <td class="whitespace-nowrap pr-3">
+              <div class="flex flex-row justify-start items-center">
+                <svg height="10" width="10">
+                  <circle cx="5" cy="5" r="4" [attr.fill]= "orderStatus[order.status]?.color"/>
+                  Sorry, your browser does not support inline SVG.
+                </svg>
+              <span class="whitespace-nowrap text-[#797979] ml-1.5">{{orderStatus[order.status]?.status}}</span>
 
-                        </td>
+              </div>
 
-                         <td >
-                            <img *ngFor="let item of order.orderItems " [src]="item?.product?.image.url" [alt]="item?.product?.name" style="width: 70px; height: 70px; margin-left:5px; border-radius: 10%;">
-                         </td>
-<td class="text-xs font-medium text-salmon " >
-   <span [routerLink]="'/profile/orders/'+ order.id"  class="cursor-pointer white-space-nowrap" > VIEW ORDER <i class="cursor-pointer text-xs ml-1 pi pi-arrow-right"></i> </span>
+            </td>
+
+             <td class="flex flex-row whitespace-nowrap pr-3" >
+                <img *ngFor="let item of order.orderItems " [src]="item?.product?.image.url" [alt]="item?.product?.name" style="width: 70px; height: 70px; margin-left:5px; border-radius: 10%;">
+             </td>
+<td class="text-xs font-medium text-salmon   " >
+<span [routerLink]="'/profile/orders/'+ order.id"  class="cursor-pointer whitespace-nowrap" > VIEW ORDER <i class="cursor-pointer text-xs ml-1 bi bi-arrow-right"></i> </span>
 
 </td>
-                    </tr>
-                  }
-            </tbody>
-        </table>
+        </tr>
+      }
+</tbody>
+</table>
 
-     
+
+ </div>
 
 
 </div>

@@ -1,15 +1,14 @@
 
-<div class=" w-full grid grid-cols-12 py-[100px] xl:px-[60px] gap-10  box-border">
-        <div class="side-bar xl:col-span-3 sm:col-span-12  shadow-md flex flex-col items-start px-3 justify-start py-5 h-[200px]">
+<div class=" w-full grid grid-cols-12 py-[100px] xl:px-[60px] xl:gap-10  ">
+        <div class=" xl:col-span-3 sm:col-span-12  shadow-md flex flex-col items-start px-3 justify-start py-5  h-[200px]">
 
-
-            <span class="inline-block w-full text-base text-blue-black mb-4 border-b-[1px] pb-4 tracking-wider">Hello,<strong class="text-salmon text-base tracking-wider ">{{ user?.name }}</strong></span>
-            <ul class="flex flex-col  items-start">
-              <a routerLink="/profile" routerLinkActive="text-salmon" [routerLinkActiveOptions]="{exact: true}" class="cursor-pointer text-blue-black mb-2 tracking-wider  hover:text-salmon transition-all duration-200 ease-in-out">
+            <span class="inline-block w-full text-base text-blue-black mb-4 border-b-[1px] pb-4 tracking-wider pl-5">Hello,<strong class="text-salmon text-base tracking-wider ">{{ user?.name }}</strong></span>
+            <ul class="flex flex-col  items-start pl-5">
+              <a routerLink="/profile" routerLinkActive="text-salmon" [routerLinkActiveOptions]="{exact: true}" class="cursor-pointer text-blue-black mb-4 tracking-wider  hover:text-salmon transition-all duration-200 ease-in-out ">
                 profile
 
               </a>
-              <a routerLink="/profile/orders" routerLinkActive="text-salmon" [routerLinkActiveOptions]="{exact: true}" class="cursor-pointer text-blue-black mb-2 tracking-wider hover:text-salmon transition-all duration-200 ease-in-out">
+              <a routerLink="/profile/orders" routerLinkActive="text-salmon" [routerLinkActiveOptions]="{exact: true}" class="cursor-pointer text-blue-black mb-4 tracking-wider hover:text-salmon transition-all duration-200 ease-in-out">
                 orders
               </a>
             </ul>

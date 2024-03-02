@@ -1,29 +1,53 @@
 <p-toast [breakpoints]="{'900px': {width: '70%', right: '0'}}"></p-toast>
-<div class="main w-full">
+<div class=" w-full flex flex-col items-start justify-start xl:px-0 sm:px-5  ">
+  <h3 class="text-salmon text-lg font-semibold  mt-5  ">Order Details</h3>
+
     <div *ngFor="let item of order?.orderItems" class="mb-4 grid w-full">
         <div class="col-12">
             <app-order-item [orderItem]="item" [status]="order?.status"></app-order-item>
         </div>
     </div>
-    <h3>Order Details</h3>
-    <div class="grid">
-        <div class="col-6 md:col-6 flex flex-column  flex-nowrap " >
+
+
+    <!-- <div class="w-full flex xl:flex-row sm:flex-col xl:justify-between sm:justify-start items-start mt-5">
+        <div class=" sm:col-span-6 flex flex-col flex-nowrap sm:justify-center " >
             <div>
-                <span class="white-space-nowrap"><b class=" mr-1">Invoice Number:</b> {{order?.id | slice: 0: 6}}</span> <br>
+                <span class="whitespace-nowrap text-[#797979]"><b class="pr-1.5 text-blue-black ">Invoice Number:</b> {{order?.id | slice: 0: 6}}</span> <br>
             </div> <br>
             <div>
-                <span class="white-space-wrap"><b class=" mr-1 ">Invoice Date:</b> {{order?.dateOrdered | date :'short'}}</span>
+                <span class="whitespace-wrap text-[#797979]"><b class="pr-1.5 text-blue-black ">Invoice Date:</b> {{order?.dateOrdered | date :'short'}}</span>
             </div>
 
      </div>
-        <div class="col-6 md:col-6 flex flex-column align-items-end ">
+        <div class="sm:col-span-6 flex flex-col items-start ">
             <div>
-                <span class="white-space-nowrap"><b class=" mr-1">Total:</b> {{order?.totalPrice |currency :'EGP'}}</span>
+                <span class="whitespace-nowrap text-[#797979]"><b class="pr-1.5 text-blue-black ">Total:</b> {{order?.totalPrice |currency :'EGP'}}</span>
             </div> <br>
             <div>
-                <span class="white-space-nowrap"> <b class=" mr-1">Delivery Charges:</b> Free</span>
+                <span class="whitespace-nowrap text-[#797979]"> <b class="pr-1.5 text-blue-black ">Delivery Charges:</b> Free</span>
             </div>
 
         </div>
-    </div>
-</div>
+    </div> -->
+
+
+    <div class="w-full flex xl:flex-row sm:flex-col xl:space-x-3  xl:justify-between xl:space-y-0 sm:space-y-5 mt-6">
+          <div class="  whitespace-nowrap " >
+              <span class="whitespace-nowrap text-[#797979]"><b  class="pr-1 text-blue-black ">Status:</b> <strong class="p-1.5 rounded-sm" [ngStyle]="{'background': orderStatus[order?.status]?.color}"> {{orderStatus[order?.status]['status']}}</strong> </span>
+          </div>
+          <div class="   whitespace-nowrap" >
+            <span class="whitespace-nowrap text-[#797979]"><b class="pr-1 text-blue-black ">Invoice Number:</b> {{order?.id | slice: 0: 6}}</span> <br>
+        </div>
+          <div class=" whitespace-nowrap " >
+              <span class="whitespace-wrap text-[#797979]"><b class="pr-1 text-blue-black ">Invoice Date:</b> {{order?.dateOrdered | date :'short'}}</span>
+          </div>
+
+      <div class=" whitespace-nowrap">
+              <span class="whitespace-nowrap text-[#797979]"><b class="pr-1 text-blue-black ">Total:</b> {{order?.totalPrice |currency :'EGP'}}</span>
+          </div>
+          <div class=" whitespace-nowrap " >
+              <span class="whitespace-nowrap text-[#797979]"> <b class="pr-1 text-blue-black ">Delivery Charges:</b> Free</span>
+          </div>
+
+      </div>
+  </div>

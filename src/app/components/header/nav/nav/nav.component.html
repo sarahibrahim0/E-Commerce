@@ -38,13 +38,11 @@
         </li>
         <li
           class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
-        routerLink="/about"
           >
           About
         </li>
         <li
           class="duration-100 leading-[32px] font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
-          routerLink="/contact"
 
           >
           Contact
@@ -142,7 +140,6 @@
           </li>
           <li
             class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
-            routerLink="/about"
 
           >
             <i
@@ -157,7 +154,6 @@
           </li>
           <li
             class="w-full leading-[32px] mx-2 font-semibold text-sm text-blue-black cursor-pointer liSide"
-            routerLink="/contact"
           >
             <i
               class="bi bi-chat-quote text-[27px] not-italic inline-block"
@@ -183,7 +179,8 @@
               >My Account</span
             >
           </li>
-          <li class="w-full mx-2 cursor-pointer 2xl:mr-10 xl:mr-5 liSide">
+          <li class="w-full mx-2 cursor-pointer 2xl:mr-10 xl:mr-5 liSide"
+          routerLink="/cart">
             <app-cart-icon></app-cart-icon>
             <span
               class="text-sm not-italic inline-block ml-4 hover:text-salmon transition-all duration-100"
@@ -274,14 +271,12 @@
         </li>
         <li
           class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
-          routerLink="/about"
 
           >
           About
         </li>
         <li
           class="duration-100 leading-[32px] font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
-          routerLink="/contact"
 
           >
           Contact
@@ -333,126 +328,7 @@
     <div
       class="w-full flex flex-row justify-end items-center xl:hidden bg-almond self-center  z-10"
     >
-      <!-- <p-sidebar
-        [(visible)]="sidebarVisible"
-        styleClass="bg-almond py-3 w-[70%]"
-      >
-        <ul class="flex flex-col justify-between items-start my-4 space-y-4">
-          <li
-            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
-            routerLink="/"
-          >
-            <i
-              class="bi bi-house text-[27px] not-italic inline-block"
-              style="-webkit-text-stroke: 0.6px"
-            ></i>
-            <span
-              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
-              >Home</span
-            >
-          </li>
-          <li
-            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
-            routerLink="/products"
-          >
-            <i
-              class="bi bi-tags text-[27px] not-italic inline-block"
-              style="-webkit-text-stroke: 0.6px"
-            ></i>
-            <span
-              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
-              >Products</span
-            >
-          </li>
-          <li
-            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
-            routerLink=""
-          >
-            <i
-              class="bi bi-list-ul text-[27px] not-italic inline-block"
-              style="-webkit-text-stroke: 0.6px"
-            ></i>
-            <span
-              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
-            >
-              Categories
-            </span>
-          </li>
-          <li
-            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
-          >
-            <i
-              class="bi bi-question-circle text-[27px] not-italic inline-block"
-              style="-webkit-text-stroke: 0.6px"
-            >
-            </i>
-            <span
-              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
-              >About</span
-            >
-          </li>
-          <li
-            class="w-full leading-[32px] mx-2 font-semibold text-sm text-blue-black cursor-pointer liSide"
-          >
-            <i
-              class="bi bi-chat-quote text-[27px] not-italic inline-block"
-              style="-webkit-text-stroke: 0.6px"
-            ></i>
-            <span
-              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
-              >Contact</span
-            >
-          </li>
 
-          <li
-            *ngIf="token"
-            routerLink="/profile"
-            class="w-full whitespace-nowrap mx-2 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
-          >
-            <i
-              class="bi bi-person text-[27px] not-italic inline-block"
-              style="-webkit-text-stroke: 0.6px"
-            ></i>
-            <span
-              class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
-              >My Account</span
-            >
-          </li>
-          <li class="w-full mx-2 cursor-pointer 2xl:mr-10 xl:mr-5 liSide">
-            <app-cart-icon></app-cart-icon>
-            <span
-              class="text-sm not-italic inline-block ml-4 hover:text-salmon transition-all duration-100"
-              >Cart</span
-            >
-          </li>
-          <li
-            class="w-full mx-2 cursor-pointer text-[27px] text-blue-black liSide"
-          >
-            <i
-              [ngStyle]="{}"
-              (click)="login()"
-              *ngIf="!token"
-              class="inline-block w-full bi bi-box-arrow-in-right text-[27px] not-italic"
-              style="-webkit-text-stroke: 0.6px"
-              ><span
-                class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
-                >Log in</span
-              ></i
-            >
-            <i
-              [ngStyle]="{}"
-              (click)="logout()"
-              *ngIf="token"
-              class="inline-block w-full bi bi-box-arrow-right text-[27px] not-italic"
-              style="-webkit-text-stroke: 0.6px"
-              ><span
-                class="text-sm not-italic inline-block ml-2 hover:text-salmon transition-all duration-100"
-                >Log out</span
-              ></i
-            >
-          </li>
-        </ul>
-      </p-sidebar> -->
 
       <svg
         xmlns="http://www.w3.org/2000/svg"
