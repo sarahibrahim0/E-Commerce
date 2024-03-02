@@ -7,6 +7,19 @@ import { Router } from '@angular/router';
 import { OrderItem } from 'src/app/interfaces/order';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/interfaces/user';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import * as countriesList from 'i18n-iso-countries'
+
+declare function require(name: string);
+
+
+export function phoneNumberValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const phoneNumberPattern = /^[0-9 ]{11}$/; // Matches 12 digits or spaces
+    const isValid = phoneNumberPattern.test(control.value);
+    return isValid ? null : { invalidPhoneNumber: true };
+  };
+}
 
 @Component({
   selector: 'app-edit-user',
@@ -39,21 +52,22 @@ user: User
   ngOnInit(): void {
     this.getUser();
     this._initCheckoutForm();
-
+    this.getCountries()
   }
 
   private _initCheckoutForm() {
     this.checkoutFormGroup = this.formBuilder.group({
-      name: [this.user?.name, ],
-      email: [this.user?.email],
-      password:[this.user?.password],
-      phone: [this.user?.phone],
-      city: [this.user?.city ],
-      country: [this.user?.country, ],
-      zip: [this.user?.zip ],
-      apartment: [this.user?.apartment],
-      street: [this.user?.street ],
-      isAdmin:[this.user?.isAdmin]
+
+      name: [this.user?.name, Validators.required],
+      email: [this.user?.email, [Validators.email, Validators.required]],
+      phone: [this.user?.phone,[ Validators.required , phoneNumberValidator()]],
+      city: [this.user?.city, Validators.required],
+      country: [this.user?.country, Validators.required],
+      zip: [this.user?.zip, Validators.required],
+      apartment: [this.user?.apartment, Validators.required],
+      street: [this.user?.street, Validators.required],
+      shippingAddress1: ['', Validators.required],
+      shippingAddress2: ['', Validators.required],
 
 
     });
@@ -61,6 +75,19 @@ user: User
 
 
 
+  private getCountries() {
+    countriesList.registerLocale(require("i18n-iso-countries/langs/en.json"));
+    this.countries = Object.entries(countriesList.getNames("en", { select: "official" })).map(country => {
+      return {
+        id: country[0],
+        name: country[1]
+      }
+    });
+
+
+console.log(this.countries)
+
+  }
 
 
   get checkoutForm() {

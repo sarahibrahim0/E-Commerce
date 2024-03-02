@@ -3,14 +3,18 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { LoginService } from './../../../services/login/login.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { filter, timer } from 'rxjs';
+import {  timer } from 'rxjs';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
+
 })
+
+
+
 export class LoginComponent implements OnInit {
 
 

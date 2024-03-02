@@ -2,51 +2,6 @@
     <ng-template #cartFull>
         <div class="px-[60px] mb-[100px] grid gap-4 grid-cols-12 overflow-x-auto ">
             <div class="lg:col-span-8 sm:col-span-12 overflow-x-auto">
-                <!-- <div>
-                    <p-button styleClass="back" label="continue shopping" icon="pi pi-arrow-left" (onClick)="backToShop()">
-                    </p-button>
-                </div> -->
-                <!-- <div>
-                    <h4>
-                        my cart : {{cartCount }} item(s)
-                    </h4>
-                </div>
-                <div class="cart-shipping mb-5">
-                    Shipping after the payment, Delivery time : 1 to 4 working days.
-                </div> -->
-                <!-- <div class="cart-item mb-5" *ngFor="let cartItem of cartItemsDetails | paginate: { itemsPerPage: 2, currentPage: p }">
-                    <div class="grid p-fluid overflow-x-auto">
-                        <div class="col-4  md:col-2 cart-item-image">
-                            <img [src]="cartItem?.product?.image?.url" [alt]="cartItem?.product?.name">
-                        </div>
-                        <div class="col-5 md:col-7">
-                            <div class="cart-item-name">
-                                {{ cartItem?.product?.name}}
-                            </div>
-                            <div class="cart-item-price">
-                                {{cartItem?.product?.price | currency}}
-                            </div>
-                            <div class="cart-item-remove">
-                                <p-button styleClass="delete" icon="pi pi-trash"
-                                    (onClick)="deleteCartItem(cartItem)"></p-button>
-                            </div>
-
-                        </div>
-                        <div class="col-3 md:col-3">
-                            <div class="p-field cart-item-quantity">
-                                <p-inputNumber styleClass="{}" [(ngModel)]="cartItem.quantity" mode="decimal" [showButtons]="true"
-                                    inputId="cartItem?.product?.id" [min]="1" [max]="100" (onInput)="updateCartQuantity($event, cartItem)"> </p-inputNumber>
-                            </div>
-                            <div class="cart-item-subtotal white-space-nowrap">
-                                Subtotal:
-                                <span class="cart-item-subtotal-value">
-                                    {{cartItem?.product?.price * cartItem?.quantity |currency}}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div> -->
 
 
                 <table class=" w-full min-w-[700px]">
@@ -115,7 +70,6 @@
 
     <div class="mb-[100px]" *ngIf="cartItemsDetails.length === 0; else cartFull">
    <img src="../../../../assets/EmptyCart_3-Copy.png" alt="empty cart" style="height: 100%; width: 100%; position: relative">
-    <!-- <h1 style="position:absolute; top: 50%; left: 40%;">Cart Is Empty</h1> -->
 </div>
 
 

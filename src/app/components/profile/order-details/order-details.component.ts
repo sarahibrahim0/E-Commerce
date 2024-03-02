@@ -5,6 +5,7 @@ import { Route, Router, ActivatedRoute } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 import { OrdersService } from 'src/app/services/order/order.service';
 import { BehaviorSubject, Observable, Observer, Subject, of } from 'rxjs';
+import { DataService } from './../../../services/dataService/data.service';
 
 @Component({
   selector: 'app-order-details',
@@ -38,7 +39,7 @@ orderStatus ={
   4: 'Failed'
   }
 
-constructor(private ActivatedRoute: ActivatedRoute, private router: Router, private OrdersService: OrdersService, private MessageService: MessageService){
+constructor(private DataService: DataService, private ActivatedRoute: ActivatedRoute, private router: Router, private OrdersService: OrdersService, private MessageService: MessageService){
   // if (this.router.getCurrentNavigation() != null) {
   // console.log(this.router.getCurrentNavigation().extras.state)
   // const state = this.router.getCurrentNavigation().extras.state;
@@ -50,9 +51,9 @@ constructor(private ActivatedRoute: ActivatedRoute, private router: Router, priv
 ngOnInit(){
 this.ActivatedRoute.params.subscribe({
   next: (params)=>{
-    console.log(params)
 
     if(params['orderId']){
+      this.DataService.changeParams(params['orderId']);
       let id = params['orderId']
       this.getOrderDetails(id);
 

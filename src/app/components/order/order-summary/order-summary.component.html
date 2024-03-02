@@ -1,0 +1,38 @@
+<div class="bg-[#F4F4F4] xl:py-[30px]  p-[30px]  min-w-max">
+  <h2 class="border-b-[1px] text-[18px] pb-[15px] text-[#2a2a2a]">Your Order</h2>
+  <table class="w-full">
+    <thead class="w-full ">
+    <th class="text-start pt-[15px] !font-light text-[#797979] text-[14px]">Product</th>
+    <th class="text-start pt-[15px] !font-light text-[#797979] text-[14px]"></th>
+
+    <th class="text-end pt-[15px] !font-light text-[#797979] text-[14px]">Total</th>
+
+    </thead>
+    <tbody>
+  @for( product of orders; track product?.product.id){
+  <tr class="">
+    <td class="text-start pt-[15px] !font-light text-[#797979] text-[14px]">{{product?.product?.name | slice:0:10}}</td>
+    <td class="text-start pt-[15px] !font-light text-[#797979] text-[14px] px-4">x{{product?.quantity}}</td>
+    <td class="text-end pt-[15px] !font-light text-[#797979] text-[14px]">{{product.product?.price * product.quantity}} </td>
+
+
+  </tr>
+
+  }
+    </tbody>
+  </table>
+<ul class="w-full">
+  <li class="w-full flex flex-row justify-between items-center border-t-[1px] py-3 mt-3"><span class="uppercase   !font-light text-[14px]">Subtotal</span> <span class="  !font-light text-[#797979] text-[14px]">{{subtotal}}</span> </li>
+  <li class="w-full flex flex-row justify-between items-center border-t-[1px] py-3 space-x-3 "><span class="uppercase  !font-light text-[14px]">Shipping</span> <span class=" !font-light text-[#797979] text-[14px] whitespace-nowrap">Flat Rate: $50.00</span> </li>
+  <li></li>
+  <li class="w-full flex flex-row justify-between items-center border-t-[1px] py-3"><span class="uppercase  !font-light text-[14px]">total</span> <span class="  !font-light text-[#797979] text-[14px]">{{subtotal + 50}}</span> </li>
+
+
+</ul>
+
+<button (click)="placeOrder()"
+class="btn whitespace-nowrap !w-full !mt-[25px] "
+
+ type="button" >place order </button>
+
+</div>

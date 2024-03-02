@@ -1,9 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { Data, Router } from '@angular/router';
+import { Data, Router, RouterModule } from '@angular/router';
 import { DataService } from './../../services/dataService/data.service';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-breadcramp',
+  standalone:true,
+  imports:[BrowserModule, RouterModule],
+
   templateUrl: './breadcramp.component.html',
   styleUrl: './breadcramp.component.scss'
 })
@@ -16,7 +20,8 @@ export class BreadcrampComponent {
 
   ngOnInit(){
     this.DataService.currentParams.subscribe(id=>
-      this.id = id)
+    {  console.log(id)
+      this.id = id})
   }
 
 

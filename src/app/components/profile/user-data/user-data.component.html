@@ -1,18 +1,22 @@
-<div class="container">
-    <h3>User Details</h3>
-    <p-card>
-        <p class="mb-2">
-    <strong>Name</strong> : {{user?.name}}
-        </p>
+<div class=" shadow-md flex flex-col items-start px-3 justify-center py-5">
+  <span class="inline-block w-full text-base text-blue-black mb-4 border-b-[1px] pb-4 tracking-wider">User details</span>
 
-        <p class="mb-2">
-          <strong>Email</strong>   : {{user?.email}}
-                </p>
-                <p >
-                   <strong>Phone</strong>  : {{user?.phone}}
-                        </p>
+  <ul class="flex flex-col  items-start w-full">
+    <li  class="cursor-pointer text-blue-black mb-2 tracking-wider  hover:text-salmon transition-all duration-200 ease-in-out">
+      <strong class="text-salmon">Name</strong> : {{user?.name}}
+    </li>
+    <li  class="cursor-pointer text-blue-black mb-2 tracking-wider hover:text-salmon transition-all duration-200 ease-in-out">
+      <strong class="text-salmon">Email</strong>   : {{user?.email}}
+    </li>
+    <li  class="cursor-pointer text-blue-black mb-2 tracking-wider hover:text-salmon transition-all duration-200 ease-in-out">
+      <strong class="text-salmon">Phone</strong>  : {{user?.phone}}
 
-                        <i routerLink="/profile/user/edit"  class="pi pi-user-edit cursor-pointer " style="font-size: 1.5rem; color: #ff3a00;"> </i>
+    </li>
+  </ul>
 
-    </p-card>
+
+  <i  routerLink="/profile/user/edit" class="bi bi-pencil-square self-end text-salmon text-lg cursor-pointer hover:text-blue-black transition-all duration-200 ease-in-out"></i>
+
+
+
 </div>

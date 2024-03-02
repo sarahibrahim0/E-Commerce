@@ -22,6 +22,72 @@
 
 }
 
+
+@case ('/checkout') {
+  <div
+  class=" md:w-[570px]  sm:h-auto sm:w-full  mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px]  flex flex-col justify-between md:items-start md:text-start sm:items-center "
+>
+  <h1
+    class="text-[#fff] uppercase md:text-[45px] sm:text-[16px]  font-black leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5"
+  >
+    checkout
+  </h1>
+  <div class="text-white flex flex-row space-x-3 items-center">
+    <span class="uppercase font-[500] tracking-wider">Home</span>
+
+    <svg class="uppercase " xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fff" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+
+    <span class="uppercase font-[500] tracking-wider">checkout</span>
+  </div>
+
+</div>
+
+}
+
+
+@case ('/profile') {
+  <div
+  class=" md:w-[570px]  sm:h-auto sm:w-full  mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px]  flex flex-col justify-between md:items-start md:text-start sm:items-center "
+>
+  <h1
+    class="text-[#fff] uppercase md:text-[45px] sm:text-[16px]  font-black leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5"
+  >
+    profile
+  </h1>
+  <div class="text-white flex flex-row space-x-3 items-center">
+    <span class="uppercase font-[500] tracking-wider">Home</span>
+
+    <svg class="uppercase " xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fff" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+
+    <span class="uppercase font-[500] tracking-wider">profile</span>
+  </div>
+
+</div>
+
+}
+
+@case ('/profile/orders') {
+  <div
+  class=" md:w-[570px]  sm:h-auto sm:w-full  mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px]  flex flex-col justify-between md:items-start md:text-start sm:items-center "
+>
+  <h1
+    class="text-[#fff] uppercase md:text-[45px] sm:text-[16px]  font-black leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5"
+  >
+    orders
+  </h1>
+  <div class="text-white flex flex-row space-x-3 items-center">
+    <span class="uppercase font-[500] tracking-wider">Home</span>
+
+    <svg class="uppercase " xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fff" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+
+    <span class="uppercase font-[500] tracking-wider">orders</span>
+  </div>
+
+</div>
+
+}
+
+
 @case ('/about') {
   <div
   class=" md:w-[570px]  sm:h-auto sm:w-full  mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px]  flex flex-col justify-between md:items-start md:text-start sm:items-center "
@@ -83,6 +149,27 @@
 </div>
 }
 
+@case ('/profile/orders/'+id) {
+  <div
+  class=" md:w-[570px]  sm:h-auto sm:w-full  mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px]  flex flex-col justify-between md:items-start md:text-start sm:items-center "
+>
+  <h1
+    class="text-[#fff] whitespace-nowrap uppercase md:text-[45px] sm:text-[16px]  font-black leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5"
+  >
+    order details
+  </h1>
+  <div class="text-white flex flex-row space-x-3 items-center">
+    <span class="uppercase font-[500] tracking-wider">Home</span>
+
+    <svg class="uppercase " xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#fff" d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+
+    <span class="uppercase font-[500] tracking-wider">order details</span>
+  </div>
+
+</div>
+}
+
+
 @case ('/product/' + id) {
   <div
   class=" md:w-[570px]  sm:h-auto sm:w-full  mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px]  flex flex-col justify-between md:items-start md:text-start sm:items-center "
@@ -102,6 +189,9 @@
 
 </div>
 }
+
+
+
 
 
 @case ('/cart') {

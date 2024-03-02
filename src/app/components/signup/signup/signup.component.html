@@ -1,7 +1,7 @@
 <p-toast [breakpoints]="{ '900px': { width: '70%', right: '0' } }"></p-toast>
 
 <div
-  class="relative w-full transition-all duration-100 ease-in-out h-screen min-h-screen flex flex-col justify-center items-center sm:space-y-5"
+  class="relative w-full overflow-auto  transition-all duration-100 ease-in-out h-screen min-h-screen flex flex-col justify-center items-center sm:space-y-5"
   style="
     background-image: url(../../../../../assets/h1_hero.png.webp);
     background-position: center center;
@@ -11,17 +11,26 @@
 >
   <div class="absolute layout w-full h-full"></div>
 
-
-
-  <div class="z-10 overflow-auto w-full h-full pt-10">
+  <div class="z-10 w-full h-full">
     <form
       [formGroup]="SignUpForm"
-      class="z-10 w-[45%] m-auto min-h-[95%] min-w-[500px] bg-white flex flex-col items-start justify-evenly text-left"
+      class="z-10 w-[45%] m-auto py-[100px] min-w-[500px] bg-white flex flex-col items-start px-12 justify-evenly text-left space-y-5"
     >
       <!-- form group with email and password input fields-->
-
-      <div class="px-12 w-full">
-
+      <div
+        class="w-full self-center flex flex-col justify-start items-center text-center"
+      >
+        <h3
+          class="bg-white self-center text-[#140c40] text-[30px] font-semibold tracking-wider"
+        >
+          Signup
+        </h3>
+        <span
+          class="text-[14px] mt-2 text-[#646D77] leading-[1.4] tracking-wider"
+          >Create your account to get full access
+        </span>
+      </div>
+      <div class="w-full">
         <label
           for="firstName"
           class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
@@ -32,11 +41,19 @@
           (ngModelChange)="clear()"
           type="text"
           formControlName="firstName"
+          placeholder="First Name"
           class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
         />
-      </div>
-      <div class="px-12 w-full">
 
+        <div
+        *ngIf="SignUpForm.get('firstName').invalid && (SignUpForm.get('firstName').dirty || SignUpForm.get('firstName').touched)"
+        class="pl-4"
+      >
+        <span class="text-[12px] text-[#ff4545] " *ngIf="SignUpForm.get('firstName').errors?.['required']">first name is required.</span>
+
+      </div>
+      </div>
+      <div class="w-full">
         <label
           class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
           for="lastName"
@@ -47,11 +64,19 @@
           (ngModelChange)="clear()"
           type="text"
           formControlName="lastName"
+          placeholder="Last Name"
           class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
         />
-      </div>
-      <div class="px-12 w-full">
 
+        <div
+        *ngIf="SignUpForm.get('lastName').invalid && (SignUpForm.get('lastName').dirty || SignUpForm.get('lastName').touched)"
+        class="pl-4"
+      >
+        <span class="text-[12px] text-[#ff4545] " *ngIf="SignUpForm.get('lastName').errors?.['required']">last name is required.</span>
+
+      </div>
+      </div>
+      <div class="w-full">
         <label
           for="email"
           class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
@@ -62,11 +87,23 @@
           (ngModelChange)="clear()"
           type="text"
           formControlName="email"
+          placeholder="Email"
+
           class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
         />
-      </div>
-      <div class="px-12 w-full">
 
+        <div
+        *ngIf="SignUpForm.get('email').invalid && (SignUpForm.get('email').dirty || SignUpForm.get('email').touched)"
+        class="pl-4"
+      >
+        <span class="text-[12px] text-[#ff4545] " *ngIf="SignUpForm.get('email').errors?.['required']">Email is required.</span>
+        <span class="text-[12px] text-[#ff4545] " *ngIf="SignUpForm.get('email').errors?.['email']">
+          Enter valid Email format
+        </span>
+
+      </div>
+      </div>
+      <div class="w-full">
         <label
           class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
           for="password"
@@ -77,12 +114,20 @@
           (ngModelChange)="clear()"
           type="password"
           formControlName="password"
+          placeholder="Password"
           class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
         />
+
+        <div
+        *ngIf="SignUpForm.get('password').invalid && (SignUpForm.get('password').dirty || SignUpForm.get('password').touched)"
+        class="pl-4"
+      >
+        <span class="text-[12px] text-[#ff4545] " *ngIf="SignUpForm.get('password').errors?.['required']">password is required.</span>
+
+      </div>
       </div>
 
-      <div class="px-12 w-full">
-
+      <div class="w-full">
         <label
           class="text-[#140C40] text-[17px] font-semibold text-left block uppercase mb-1"
           for="phone"
@@ -93,14 +138,42 @@
           (ngModelChange)="clear()"
           type="phone"
           formControlName="phone"
+          placeholder="Phone"
           class="border-[1px] border-solid border-[#c9c9c9] py-3.5 tracking-wider w-full text-[13px] px-[25px] text-[#000] surface-border border-round outline-none"
         />
+
+        <div
+        *ngIf="SignUpForm.get('phone').invalid && (SignUpForm.get('phone').dirty || SignUpForm.get('phone').touched)"
+        class="pl-4"
+      >
+      <span class="text-[12px] text-[#ff4545]" *ngIf="SignUpForm.get('phone').errors?.['required']">phone is required.  </span>
+      <span class="text-[12px] text-[#ff4545]" *ngIf="SignUpForm.get('phone').errors?.['invalidPhoneNumber']">phone number should be 11 digits</span>
+      </div>
       </div>
 
-      <button
-      class="bg-salmon h-[60px] py-[10px] px-[43px] uppercase cursor-pointer text-[16px] text-white"
-      type="submit"
-      (click)="login()">Sign Up</button>
+      <!-- <small *ngIf="error" class="text-[12px] text-[#ff4545] self-center ">
+        Wrong Email or Password</small
+      > -->
+
+
+      <div class="w-full flex flex-row justify-between items-center">
+        <span
+          class="text-[14px] mt-2 text-[#646D77] leading-[1.4] tracking-wider"
+          >Already have an account ?
+          <span class="cursor-pointer" routerLink="/login"
+            ><span class="text-salmon">login </span> here</span
+          ></span
+        >
+
+        <button
+          class="bg-salmon h-[60px] py-[10px] px-[43px] uppercase cursor-pointer text-[16px] text-white"
+          type="submit"
+          (click)="login()"
+        >
+          Sign Up
+        </button>
+      </div>
+
       <small *ngIf="error" class="p-error fbtn mt-2"> {{ error }}</small>
     </form>
   </div>

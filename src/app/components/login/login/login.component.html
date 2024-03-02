@@ -13,7 +13,7 @@
   <div class="z-10 overflow-auto w-full h-full pt-10">
     <form
       [formGroup]="loginForm"
-      class="z-10 w-[45%] m-auto min-h-[95%] min-w-[500px] bg-white flex flex-col items-start justify-evenly text-left"
+      class="z-10 w-[45%] m-auto min-h-[95%] min-w-[400px] bg-white flex flex-col items-start justify-evenly text-left"
     >
       <div
         class="w-full self-center flex flex-col justify-start items-center text-center"
@@ -47,7 +47,7 @@
         />
         <div
         *ngIf="loginForm.get('email').invalid && (loginForm.get('email').dirty || loginForm.get('email').touched)"
-        class=""
+        class="pl-4"
       >
         <span class="text-[12px] text-[#ff4545] " *ngIf="loginForm.get('email').errors?.['required']">Email is required.</span>
         <span class="text-[12px] text-[#ff4545] " *ngIf="loginForm.get('email').errors?.['email']">
@@ -75,7 +75,7 @@
 
         <div
         *ngIf="loginForm.get('password').invalid && (loginForm.get('password').dirty || loginForm.get('password').touched)"
-        class=""
+        class="pl-4"
       >
         <span class="text-[12px] text-[#ff4545] " *ngIf="loginForm.get('password')?.errors['required']">Password is required.</span>
         <span class="text-[12px] text-[#ff4545] " *ngIf="loginForm.get('password')?.errors['minLength']">
@@ -111,7 +111,7 @@
         >
       </div>
 
-      <div class="w-full px-12 flex flex-row justify-between items-center">
+      <div class=" w-full px-12 flex flex-row justify-between items-center">
         <span
           class="text-[14px] mt-2 text-[#646D77] leading-[1.4] tracking-wider"
           >Don't have an account?
@@ -121,7 +121,7 @@
         >
 
         <button
-          class="bg-salmon h-[60px] py-[10px] px-[43px] uppercase cursor-pointer text-[16px] text-white"
+          class="bg-salmon  h-[60px] py-[10px] px-[43px] uppercase cursor-pointer text-[16px] text-white"
           type="submit"
           (click)="login()"
         >

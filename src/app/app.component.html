@@ -1,11 +1,11 @@
 
 <div class="w-full" #top>
-  @if(token  || url !== '/login' &&  url !== '/register')
+  @if( url !== '/login' &&  url !== '/register')
 {<app-nav></app-nav>
 }
 
 <router-outlet></router-outlet>
-@if(token  || url !== '/login' && url !== '/register' )
+@if( url !== '/login' && url !== '/register' )
 
 {   <app-footer></app-footer>
 

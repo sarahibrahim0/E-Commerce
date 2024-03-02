@@ -13,8 +13,21 @@ import { MessageService } from 'primeng/api';
 import { StripeService } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
 import { User } from 'src/app/interfaces/user';
+import { Product } from './../../../interfaces/product';
+import { ProductsServiceService } from './../../../services/product/product.service';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { ApiNinjaService } from './../../../services/api-ninja.service';
+
 declare function require(name: string);
 
+
+export function phoneNumberValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const phoneNumberPattern = /^[0-9 ]{11}$/; // Matches 12 digits or spaces
+    const isValid = phoneNumberPattern.test(control.value);
+    return isValid ? null : { invalidPhoneNumber: true };
+  };
+}
 
 @Component({
   selector: 'app-checkout',
@@ -31,6 +44,8 @@ export class CheckoutComponent {
     private ordersService: OrdersService,
     private LoginService: LoginService,
     private MessageService: MessageService,
+    private ProductsServiceService: ProductsServiceService,
+    private ApiNinjaService: ApiNinjaService,
     private stripe: StripeService) {
   }
 
@@ -45,7 +60,9 @@ export class CheckoutComponent {
   error
   api = environment.apiUrl;
   cart: Cart
-  user: User
+  user: User;
+  singleProduct: Product
+  cities
 
 
   ngOnInit(): void {
@@ -54,6 +71,27 @@ export class CheckoutComponent {
     this.getCountries();
     this._initCheckoutForm();
     this._getCartItems();
+
+    this.checkoutFormGroup.get('country').valueChanges.subscribe(val => {
+      console.log(`Name has been changed to: ${val}`);
+      this.getCities(val);
+    });
+
+  }
+
+  private getCities(val){
+    countriesList.registerLocale(require("i18n-iso-countries/langs/en.json"));
+    // this.countryName = this.checkoutFormGroup.controls['country'].value;
+
+const  isoCode = countriesList.getAlpha2Code(val, "en");
+console.log(isoCode)
+this.ApiNinjaService.getCitiesByCountry(isoCode).subscribe((data: any) => {
+  console.log(data)
+  this.cities = data
+});
+
+console.log(this.cities)
+
   }
 
   private _getUser() {
@@ -76,7 +114,7 @@ export class CheckoutComponent {
     this.checkoutFormGroup = this.formBuilder.group({
       name: [this.user?.name, Validators.required],
       email: [this.user?.email, [Validators.email, Validators.required]],
-      phone: [this.user?.phone, Validators.required],
+      phone: [this.user?.phone,[ Validators.required , phoneNumberValidator()]],
       city: [this.user?.city, Validators.required],
       country: [this.user?.country, Validators.required],
       zip: [this.user?.zip, Validators.required],
@@ -111,10 +149,11 @@ export class CheckoutComponent {
 
 
 
+
   placeOrder() {
 
     if (this.checkoutFormGroup.invalid) {
-      this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Please Enter Correct info` });
+      this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Please enter all the info` });
 
     } else {
 
@@ -163,7 +202,11 @@ export class CheckoutComponent {
         id: country[0],
         name: country[1]
       }
-    })
+    });
+
+
+console.log(this.countries)
+
   }
 
 

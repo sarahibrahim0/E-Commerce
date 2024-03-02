@@ -67,6 +67,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { LoginService } from './services/login/login.service';
 import { CheckoutHeaderComponent } from './components/checkout/checkout-header/checkout-header.component';
+import { OrderSummaryComponent } from './components/order/order-summary/order-summary.component';
 
 
 
@@ -100,12 +101,13 @@ import { CheckoutHeaderComponent } from './components/checkout/checkout-header/c
     EditUserComponent,
     OrderDetailsComponent,
     OrderItemComponent,
-    BreadcrampComponent,
     AboutComponent,
     ContactComponent,
+    OrderSummaryComponent
 
   ],
   imports: [
+    BreadcrampComponent,
 GalleriaModule,
   BrowserModule,
     AppRoutingModule,

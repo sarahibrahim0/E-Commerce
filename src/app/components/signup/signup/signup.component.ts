@@ -4,6 +4,17 @@ import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+
+
+export function phoneNumberValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const phoneNumberPattern = /^[0-9 ]{11}$/; // Matches 12 digits or spaces
+    const isValid = phoneNumberPattern.test(control.value);
+    return isValid ? null : { invalidPhoneNumber: true };
+  };
+}
+
 
 
 @Component({
@@ -34,7 +45,7 @@ export class SignupComponent {
       password: ['', Validators.required],
       firstName : ['',[ Validators.required]],
       lastName: ['', Validators.required],
-      phone: ['', Validators.required],
+      phone: [,[ Validators.required , phoneNumberValidator()]],
       isAdmin: [false],
       apartment:[''],
       city:[''],

@@ -84,7 +84,8 @@ private getUserOrders(id:string){
               routerLink:'/profile/orders'
           }
       ]}];
-    } },
+    }
+   },
     error:(error)=>{
       this.MessageService.add({ severity: 'error', summary: 'Wrong Info', detail: `Sorry, Couldn't Get User Orders` });
 

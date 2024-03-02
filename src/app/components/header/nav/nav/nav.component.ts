@@ -42,19 +42,11 @@ onScroll(event) {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       this.url = event.url  // This will log the URL of the page whenever it changes
+      console.log(this.url)
     });
 
 
 
-
-    this.ActivatedRoute.paramMap.subscribe((params)=>
-    {
-
-      console.log(params)
-      if(params['id']){
-       console.log('id' + params['id'])
-     }}
-   )
 
     this.getToken();
 
