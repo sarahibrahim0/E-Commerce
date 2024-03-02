@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'categories', component:CategoriesComponent},
   {path: 'cart', component:CartComponent , canActivate: [isLoggedGuard] },
   {path: 'checkout', component:CheckoutComponent , canActivate: [isLoggedGuard]},
-  {path: 'order/success', component:ThankyouComponent},
+  {path: 'https://65e290b27dacf15320f978dc--merry-ganache-664652.netlify.app/order/success', component:ThankyouComponent},
   {path: 'login', component:LoginComponent},
   {path: 'register', component:SignupComponent},
   {path: 'error', component:SignupComponent},
