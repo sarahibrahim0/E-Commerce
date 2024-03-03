@@ -1,4 +1,3 @@
-<p-toast [breakpoints]="{'900px': {width: '70%', right: '0'}}"></p-toast>
 <div class=" w-full flex flex-col items-start justify-start xl:px-0 sm:px-5  ">
   <h3 class="text-salmon text-lg font-semibold  mt-5  ">Order Details</h3>
 
@@ -7,28 +6,6 @@
             <app-order-item [orderItem]="item" [status]="order?.status"></app-order-item>
         </div>
     </div>
-
-
-    <!-- <div class="w-full flex xl:flex-row sm:flex-col xl:justify-between sm:justify-start items-start mt-5">
-        <div class=" sm:col-span-6 flex flex-col flex-nowrap sm:justify-center " >
-            <div>
-                <span class="whitespace-nowrap text-[#797979]"><b class="pr-1.5 text-blue-black ">Invoice Number:</b> {{order?.id | slice: 0: 6}}</span> <br>
-            </div> <br>
-            <div>
-                <span class="whitespace-wrap text-[#797979]"><b class="pr-1.5 text-blue-black ">Invoice Date:</b> {{order?.dateOrdered | date :'short'}}</span>
-            </div>
-
-     </div>
-        <div class="sm:col-span-6 flex flex-col items-start ">
-            <div>
-                <span class="whitespace-nowrap text-[#797979]"><b class="pr-1.5 text-blue-black ">Total:</b> {{order?.totalPrice |currency :'EGP'}}</span>
-            </div> <br>
-            <div>
-                <span class="whitespace-nowrap text-[#797979]"> <b class="pr-1.5 text-blue-black ">Delivery Charges:</b> Free</span>
-            </div>
-
-        </div>
-    </div> -->
 
 
     <div class="w-full flex xl:flex-row sm:flex-col xl:space-x-3  xl:justify-between xl:space-y-0 sm:space-y-5 mt-6">
