@@ -126,7 +126,7 @@
     >
     <img src="../../../../assets/insta.png.webp" alt="" class="cursor-pointer">
       <h1
-        class="text-[#1a1a1a] text-pretty tracking-tighter uppercase md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5"
+        class="text-[#1a1a1a] text-center text-pretty tracking-tighter uppercase md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5"
       >
       get inspired with instagram</h1>
       <p
@@ -172,7 +172,7 @@
   <section class="w-full flex flex-col items-center justify-between  pb-[80px]  ">
     <div class="product pb-[60px]  grid grid-cols-12 xl:gap-x-7  xl:gap-y-0 lg:gap-y-3   md:gap-y-3   sm:gap-y-3 transition-all duration-300 ease-in-out" >
       @for(product of las3Three; track product.id){
-        <div class="xl:col-span-4 sm:col-span-12 transition-all duration-300 ease-in-out ">
+        <div class="w-full xl:col-span-4 sm:col-span-12 transition-all duration-300 ease-in-out ">
           <app-product-item [product]="product"></app-product-item>
 
         </div>

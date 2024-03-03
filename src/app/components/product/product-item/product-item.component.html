@@ -1,6 +1,6 @@
 
 <ng-container class="product-item" *ngIf="product">
-    <div class="w-full border-[1px] border-solid border-[#F6F8FE] pb-5  text-center min-w-max ">
+    <div class="w-full border-[1px] border-solid border-[#F6F8FE] pb-5  text-center ">
         <img [routerLink]="'/product/'+ product.id" [src]="product?.image.url" class=" cursor-pointer inline-block w-full  object-cover" alt="product.name" />
          <h3 class=" w-full !font-[500] tracking-wider md:mt-[31px] sm:mt-[20px]">
           <a
