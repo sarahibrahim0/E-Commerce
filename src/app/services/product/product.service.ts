@@ -33,7 +33,7 @@ export class ProductsServiceService {
 
       // dashboard-pnlv.onrender.com
 
-      return this.http.get<Product[]>('http://localhost:3000/api/v1/products', { params: params });
+      return this.http.get<Product[]>('https://dashboard-pnlv.onrender.com/api/v1/products', { params: params });
     }
 
 
@@ -65,9 +65,9 @@ export class ProductsServiceService {
 
 console.log(params)
 
-      // dashboard-pnlv.onrender.com
+      //
 
-      return this.http.get<Product[]>('http://localhost:3000/api/v1/products', { params: params });
+      return this.http.get<Product[]>('https://dashboard-pnlv.onrender.com/api/v1/products', { params: params });
     }
 
   getProductById(id: string): Observable<Product> {

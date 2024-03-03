@@ -15,7 +15,7 @@
         *ngFor="let category of categories; let index = index"
         [ngClass]="{'hoverEff' : activeButton === index }"
              (click)="getProducts(category?.id , index)"
-        class="inline-block  text-blue-black h-full py-[20px]   md:text-[16px] sm:text-[13px] border-b-[2px] border-solid border-transparent uppercase lg:px-[28px] sm:mr-2 mb-[37px] cursor-pointer transition-all duration-100 ease-in-out" >
+        class="inline-block  text-blue-black h-full py-[20px]  md:text-[16px] sm:text-[13px] border-b-[2px] border-solid border-transparent uppercase lg:px-[28px] sm:mr-2 mb-[37px] cursor-pointer transition-all duration-100 ease-in-out" >
         {{category?.name}}
         </a>
       </ul>
@@ -135,7 +135,7 @@
       >
       Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.
       </p>
-      <button class="btn whitespace-nowrap !bg-white !text-salmon hover:!bg-salmon hover:!text-white !border-[1px] !border-solid !font-[500] !border-salmon ">discover more</button>
+      <button class="btn whitespace-nowrap !bg-white !text-salmon hover:!bg-salmon hover:!text-white !border-[1px] !border-solid !font-[500] !border-salmon relative !z-0 ">discover more</button>
     </div>
 
 
