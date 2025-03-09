@@ -22,7 +22,7 @@
                         {{cartItem?.product?.price | currency}}
                       </td>
 
-                      <td class=" max-w-[70px]  min-h-max py-12 text-[14px]" >
+                      <td class=" max-w-[100px]   min-h-max py-12 text-[14px]" >
                         <p-inputNumber styleClass="{}" [(ngModel)]="cartItem.quantity" mode="decimal" [showButtons]="true" [styleClass]="'focus:!outline-none'"
                         inputId="cartItem?.product?.id" [min]="1" [max]="10" (onInput)="updateCartQuantity($event, cartItem)"> </p-inputNumber>
                       </td>

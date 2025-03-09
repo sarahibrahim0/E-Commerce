@@ -9,10 +9,9 @@
 
     <div class="flex flex-col   items-start w-full   xl:col-span-9 sm:col-span-12">
       <h3 class="whitespace-nowrap text-lg font-semibold tracking-wider my-[30px]">Billing Details </h3>
-        <form [formGroup]="checkoutFormGroup" class="w-full grid grid-cols-12 xl:gap-7 xl:gap-y-0 sm:gap-y-3">
+        <form [formGroup]="checkoutFormGroup" class="w-full grid grid-cols-12 xl:gap-7  sm:gap-y-3">
             <div class=" w-full xl:col-span-6 sm:col-span-12 flex flex-col justify-between items-start ">
               <input  placeholder="Name" formControlName="name" id="name" type="text" class="w-full  focus:!outline-none border-[1px] p-4 border-solid border-[#eee] h-[40px] text-[15px] tracking-wider text-[#797979] rounded-[3px] leading-[1.5]"  />
-
 
               <div
               *ngIf="checkoutFormGroup.get('name').invalid && (checkoutFormGroup.get('name').dirty || checkoutFormGroup.get('name').touched)"
@@ -91,14 +90,13 @@
 
 
 
-            <div class=" w-full xl:col-span-6 sm:col-span-12 flex flex-col justify-between items-start ">
+            <div class=" w-full  xl:col-span-6 sm:col-span-12 flex flex-col justify-between items-start ">
 
             <p-dropdown
-            class="ng-dirty ng-invalid"            formControlName="country"
+            class="ng-dirty ng-invalid"  formControlName="country"
             optionLabel="name"
             optionValue="name"
             [options]="countries" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Select a Country">
-
           </p-dropdown>
 
             <small *ngIf="checkoutForm['country'].invalid && isSubmitted" class="p-error"

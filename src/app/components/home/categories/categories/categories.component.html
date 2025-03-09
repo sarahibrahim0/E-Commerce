@@ -24,12 +24,16 @@
     </div>
 
 
-    <div class=" flex flex-col  ">
-      <span
-        class="xl:self-start sm:self-center inline-block text-[17px] mb-[27px] tracking-wider font-[400] leading-[1.2]"
-        ><strong class="text-salmon"> {{ products?.length }} </strong> Products
+    <div class=" flex flex-col w-full ">
+
+      <div class="w-full flex flex-row 2xl:justify-start sm:justify-center ">
+        <span
+        class="inline-block text-start xl:self-start sm:self-center  text-[17px] mb-[27px] tracking-wider font-[400] leading-[1.2]"
+        ><strong class="text-salmon text-start"> {{ products?.length }} </strong> Products
         Were Found</span
       >
+      </div>
+
 
       <div
         class=" grid grid-cols-12 transition-all duration-300 ease-in-out gap-x-2 gap-y-2  "

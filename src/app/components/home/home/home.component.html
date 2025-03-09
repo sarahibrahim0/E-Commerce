@@ -8,15 +8,15 @@
       <p class=" font-normal leading-[1.6] md:text-base sm:text-[12px] mb-[15px]  px-2">Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
     </div>
 
-    <div class="categories relative lg:w-[77%] sm:w-[95%] ">
-      <ul class="flex flex-row  justify-center items-start px-1  ">
-        <a
+    <div class="categories relative lg:w-[77%] sm:w-full px-2  ">
+      <ul class="w-full flex flex-row  justify-evenly items-start ">
+        <li
         *ngFor="let category of categories; let index = index"
         [ngClass]="{'hoverEff' : activeButton === index }"
              (click)="getProducts(category?.id , index)"
-        class="inline-block  text-blue-black h-full py-[20px]  md:text-[16px] sm:text-[13px] border-b-[2px] border-solid border-transparent uppercase lg:px-[28px] sm:mr-2 mb-[37px] cursor-pointer transition-all duration-100 ease-in-out" >
+        class="inline-block  text-blue-black  py-[10px]  md:text-[16px] sm:text-[12px] border-b-[2px] border-solid border-transparent uppercase lg:px-[28px] sm:mr-1 mb-[37px] cursor-pointer transition-all duration-100 ease-in-out" >
         {{category?.name}}
-        </a>
+        </li>
       </ul>
     </div>
 
@@ -91,34 +91,6 @@
 
 
 
-  <!-- <div class=" flex flex-row justify-center w-full ">
-    <div class="2xl:max-w-[700px] flex flex-col justify-between items-center text-center mb-[60px]">
-      <h2 class="transition-all duration-100 ease-in-out  uppercase text-[#1a1a1a] md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-5 sm:mb-2">POPULAR PRODUCTS  </h2>
-      <p class="text-[#7F85A8] font-normal leading-[1.6] md:text-base sm:text-[12px] mb-[15px]  px-2">Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
-    </div>
-
-  </div>
-
-
-
-
-  <section class="w-full flex flex-col items-center justify-between  pb-[80px]  ">
-    <div class="product pb-[60px]  grid grid-cols-12 xl:gap-x-7  xl:gap-y-0 lg:gap-y-3   md:gap-y-3   sm:gap-y-3 transition-all duration-300 ease-in-out" >
-      @for(product of popular; track product.id){
-        <div class="xl:col-span-4 sm:col-span-12 transition-all duration-300 ease-in-out ">
-          <app-product-item [product]="product"></app-product-item>
-
-        </div>
-
-      }
-    </div>
-
-    <button class="btn whitespace-nowrap !bg-white !text-salmon hover:!bg-salmon hover:!text-white !border-[1px] !border-solid !font-[500] !border-salmon ">discover more</button>
-
-  </section>
- -->
-
-
   <div class="sm:relative xl:static flex xl:flex-row sm:flex-col  justify-between w-full min-h-max h-auto transition-all duration-300 ease-in-out mb-[80px] xl:px-6">
 
 
@@ -156,40 +128,6 @@
 
 
 
-
-
-  <div class=" flex flex-row justify-center w-full ">
-    <div class="2xl:max-w-[700px] flex flex-col justify-between items-center text-center mb-[60px]">
-      <h2 class="transition-all duration-100 ease-in-out  uppercase text-[#1a1a1a] md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-5 sm:mb-2">Top Picks </h2>
-      <p class="text-[#7F85A8] font-normal leading-[1.6] md:text-base sm:text-[12px] mb-[15px]  px-2">Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.</p>
-    </div>
-
-  </div>
-
-
-
-
-  <section class="w-full flex flex-col items-center justify-between  pb-[80px]  ">
-    <div class="product pb-[60px]  grid grid-cols-12 xl:gap-x-7  xl:gap-y-0 lg:gap-y-3   md:gap-y-3   sm:gap-y-3 transition-all duration-300 ease-in-out" >
-      @for(product of las3Three; track product.id){
-        <div class="w-full xl:col-span-4 sm:col-span-12 transition-all duration-300 ease-in-out ">
-          <app-product-item [product]="product"></app-product-item>
-
-        </div>
-
-      }
-    </div>
-
-    <button class="btn whitespace-nowrap !bg-white !text-salmon hover:!bg-salmon hover:!text-white !border-[1px] !border-solid !font-[500] !border-salmon ">discover more</button>
-
-  </section>
-
-  <div class="w-full">
-    <app-advertise></app-advertise>
-  </div>
-
-
-</div>
 
 
 

@@ -15,29 +15,29 @@
       />
     </div>
     <div
-      class="box-border w-full 2xl:pr-0 xl:pr-4 xl:flex flex-row justify-between items-center pl-4 h-[100px] sm:hidden bg-almond"
+      class="box-border w-full 2xl:pr-0 3xl:pr-4 2xl:flex flex-row justify-between items-center pl-4 h-[100px] sm:hidden bg-almond"
     >
       <ul class="flex flex-row justify-between items-center">
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
           routerLink="/"
         >
           Home
         </li>
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
           routerLink="/products"
         >
           Products
         </li>
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
           routerLink="/categories"
         >
           Categories
         </li>
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
           >
           About
         </li>
@@ -51,19 +51,19 @@
 
       <ul class="flex flex-row justify-between items-center">
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer"
         >
           <app-search></app-search>
         </li>
         <li
           *ngIf="token"
           routerLink="/profile"
-          class="whitespace-nowrap duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="whitespace-nowrap duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
         >
           My Account
         </li>
         <li
-          class="transition-all duration-100 cursor-pointer 2xl:mr-10 xl:mr-5"
+          class="transition-all duration-100 cursor-pointer 3xl:mr-10 2xl:mr-5"
         >
           <app-cart-icon></app-cart-icon>
         </li>
@@ -90,7 +90,7 @@
     </div>
 
     <div
-      class="w-full flex flex-row justify-end xl:hidden bg-almond self-center mb-12 "
+      class="w-full flex flex-row justify-end 2xl:hidden bg-almond self-center mb-12 "
     >
       <p-sidebar
         [(visible)]="sidebarVisible"
@@ -98,7 +98,7 @@
       >
         <ul class="flex flex-col justify-between items-start my-4 space-y-4">
           <li
-            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            class="w-full leading-[32px] mx-2 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
             routerLink="/"
           >
             <i
@@ -111,7 +111,7 @@
             >
           </li>
           <li
-            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            class="w-full leading-[32px] mx-2 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
             routerLink="/products"
           >
             <i
@@ -124,7 +124,7 @@
             >
           </li>
           <li
-            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            class="w-full leading-[32px] mx-2 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
             routerLink="/categories"
           >
             <i
@@ -139,7 +139,7 @@
             </span>
           </li>
           <li
-            class="w-full leading-[32px] mx-2 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            class="w-full leading-[32px] mx-2 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
 
           >
             <i
@@ -168,7 +168,7 @@
           <li
             *ngIf="token"
             routerLink="/profile"
-            class="w-full whitespace-nowrap mx-2 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
+            class="w-full whitespace-nowrap mx-2 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black cursor-pointer liSide"
           >
             <i
               class="bi bi-person text-[27px] not-italic inline-block"
@@ -179,7 +179,7 @@
               >My Account</span
             >
           </li>
-          <li class="w-full mx-2 cursor-pointer 2xl:mr-10 xl:mr-5 liSide"
+          <li class="w-full mx-2 cursor-pointer 3xl:mr-10 2xl:mr-5 liSide"
           routerLink="/cart">
             <app-cart-icon></app-cart-icon>
             <span
@@ -247,30 +247,30 @@
       />
     </div>
     <div
-      class="box-border w-full 2xl:pr-0 xl:pr-4 xl:flex flex-row justify-between items-center pl-4 sm:hidden bg-almond"
+      class="box-border w-full 3xl:pr-0 2xl:pr-4 2xl:flex flex-row justify-between items-center pl-4 sm:hidden bg-almond"
     >
       <ul class="flex flex-row justify-between items-center">
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
           routerLink="/"
         >
           Home
         </li>
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
           routerLink="/products"
         >
           Products
         </li>
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
           routerLink="/categories"
 
           >
           Categories
         </li>
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
 
           >
           About
@@ -285,19 +285,19 @@
 
       <ul class="flex flex-row justify-between items-center">
         <li
-          class="duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer"
+          class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer"
         >
           <app-search></app-search>
         </li>
         <li
           *ngIf="token"
           routerLink="/profile"
-          class="whitespace-nowrap duration-100 leading-[32px] 2xl:mr-10 xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
+          class="whitespace-nowrap duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer"
         >
           My Account
         </li>
         <li
-          class="transition-all duration-100 cursor-pointer 2xl:mr-10 xl:mr-5"
+          class="transition-all duration-100 cursor-pointer 3xl:mr-10 2xl:mr-5"
           routerLink="/cart"
         >
 
@@ -326,7 +326,7 @@
     </div>
 
     <div
-      class="w-full flex flex-row justify-end items-center xl:hidden bg-almond self-center  z-10"
+      class="w-full flex flex-row justify-end items-center 2xl:hidden bg-almond self-center  z-10"
     >
 
 
@@ -360,7 +360,7 @@
       "
     >
       <div
-        class="duration-100 leading-[32px] !z-10 md:mt-5  sm:mt-9 sm:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer md:hidden sm:flex"
+        class="duration-100 leading-[32px] !z-10 md:mt-5  sm:mt-9  border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer md:hidden sm:flex"
       >
         <app-search></app-search>
       </div>
