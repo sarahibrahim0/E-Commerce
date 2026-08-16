@@ -1,0 +1,24 @@
+@if (dialog.state(); as state) {
+  <div class="fixed inset-0 z-40 flex items-center justify-center bg-slate-900/50 p-4">
+    <div class="w-full max-w-sm rounded-lg bg-white p-6 shadow-xl" role="alertdialog" aria-modal="true">
+      <h2 class="text-lg font-semibold text-slate-900">{{ state.options.title }}</h2>
+      <p class="mt-2 text-sm text-slate-600">{{ state.options.message }}</p>
+      <div class="mt-6 flex justify-end gap-2">
+        <button
+          type="button"
+          class="rounded-md border border-slate-300 px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+          (click)="cancel()"
+        >
+          {{ state.options.cancelLabel ?? 'Cancel' }}
+        </button>
+        <button
+          type="button"
+          class="rounded-md bg-rose-600 px-4 py-2 text-sm text-white hover:bg-rose-700"
+          (click)="confirm()"
+        >
+          {{ state.options.confirmLabel ?? 'Confirm' }}
+        </button>
+      </div>
+    </div>
+  </div>
+}
