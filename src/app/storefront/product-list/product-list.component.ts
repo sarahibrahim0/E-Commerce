@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { CatalogStore, SortOption } from '../../core/stores/catalog.store';
@@ -12,7 +12,7 @@ import { CartStore } from '../../core/stores/cart.store';
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [RouterLink, FormsModule, ProductCardComponent, LoadingSkeletonComponent, EmptyStateComponent],
+  imports: [FormsModule, ProductCardComponent, LoadingSkeletonComponent, EmptyStateComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
 })

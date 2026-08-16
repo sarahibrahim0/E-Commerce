@@ -69,7 +69,10 @@ export class CatalogStore {
         }),
       );
       this.productsList.set(list);
-      this.page.set(1);
+      const total = Math.max(1, Math.ceil(list.length / this.pageSize()));
+      if (this.page() > total) {
+        this.page.set(total);
+      }
     } catch (err) {
       this.productsError.set(normalizeApiError(err).message);
     } finally {
