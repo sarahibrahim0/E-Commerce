@@ -1,0 +1,74 @@
+<div>
+  <section class="bg-gradient-to-br from-indigo-50 via-white to-indigo-50">
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-20 text-center">
+      <h1 class="max-w-2xl text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">
+        Modern essentials for everyday living
+      </h1>
+      <p class="max-w-xl text-lg text-slate-600">
+        Discover a curated collection of products with reviews, coupons, and fast Stripe checkout.
+      </p>
+      <a routerLink="/products" class="rounded-md bg-indigo-600 px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-indigo-700">
+        Shop now
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-12">
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl font-bold text-slate-900">Categories</h2>
+      <a routerLink="/categories" class="text-sm font-medium text-indigo-600 hover:underline">View all</a>
+    </div>
+    @if (categoriesLoading()) {
+      <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+        @for (_ of [1, 2, 3, 4]; track $index) {
+          <div class="h-24 animate-pulse rounded-lg bg-slate-200"></div>
+        }
+      </div>
+    } @else {
+      <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+        @for (cat of categories(); track cat.id) {
+          <a routerLink="/products" [queryParams]="{ categories: cat.id }"
+             class="flex h-24 items-center justify-center rounded-lg border border-slate-200 text-lg font-semibold transition-shadow hover:shadow-md"
+             [style.color]="cat.color || undefined">
+            {{ cat.name }}
+          </a>
+        }
+      </div>
+    }
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-12">
+    <h2 class="text-2xl font-bold text-slate-900">Featured products</h2>
+    @if (featuredLoading()) {
+      <div class="mt-6"><app-loading-skeleton /></div>
+    } @else if (featured().length === 0) {
+      <app-empty-state message="No featured products yet." />
+    } @else {
+      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        @for (product of featured(); track product.id) {
+          <app-product-card [product]="product" (addToCart)="addToCart($event)" />
+        }
+      </div>
+    }
+  </section>
+
+  @if (recentlyViewed.products().length > 0) {
+    <section class="mx-auto max-w-7xl px-4 py-12">
+      <h2 class="text-2xl font-bold text-slate-900">Recently viewed</h2>
+      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        @for (product of recentlyViewed.products(); track product.id) {
+          <app-product-card [product]="product" (addToCart)="addToCart($event)" />
+        }
+      </div>
+    </section>
+  }
+
+  <section class="bg-slate-900">
+    <div class="mx-auto max-w-7xl px-4 py-16 text-center">
+      <h2 class="text-3xl font-bold text-white">Built to learn, designed to ship</h2>
+      <p class="mx-auto mt-3 max-w-xl text-slate-300">
+        Angular signals, zoneless change detection, a fully driven API, and Stripe test-mode payments.
+      </p>
+    </div>
+  </section>
+</div>
