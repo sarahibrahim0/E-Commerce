@@ -1,59 +1,46 @@
-# EcommerceV2
+# E-Commerce Storefront
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.4.
+Angular 22 storefront — standalone, zoneless, signals-first, Tailwind-only — consuming a REST API with Stripe checkout.
 
-## Development server
-
-To start a local development server, run:
+## Quick Start
 
 ```bash
-ng serve
+npm install
+npm start        # or: npx ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open http://localhost:4200.
 
-## Code scaffolding
+## Backend
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The app targets a REST API at `https://dashboard-pnlv.onrender.com/api/v1/` by default.
+For local development switch the base URL in `src/environments/environment.ts`.
 
-```bash
-ng generate component component-name
-```
+Required backend endpoints: products, categories, auth, orders, coupons, addresses, reviews, and PageContent.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Scripts
 
-```bash
-ng generate --help
-```
+| Command | Description |
+|---------|-------------|
+| `ng serve` | Dev server with HMR |
+| `ng test` | Unit tests — Karma + Jasmine, headless Chrome |
+| `ng build` | Production build |
+| `ng build --configuration production` | Optimised production build |
 
-## Building
+## Stripe Test Mode
 
-To build the project run:
+Use test card **4242 4242 4242 4242** with any future expiry and CVC during checkout.
+Stripe public key is configured in `src/environments/environment.ts`.
 
-```bash
-ng build
-```
+## Page Content
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+About and Contact pages are powered by the backend `PageContent` API (`GET /content/:key`).
+These can be edited from the admin dashboard without redeploying the storefront.
 
-## Running unit tests
+## Tech Stack
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular 22 (standalone components, zoneless change detection)
+- Angular Signals (all state management)
+- Tailwind CSS 4 (utility-first, no component stylesheets)
+- Karma + Jasmine (headless Chrome)
+- Stripe.js v4 (redirect checkout)
