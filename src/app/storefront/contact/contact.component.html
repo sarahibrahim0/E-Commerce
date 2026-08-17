@@ -1,0 +1,66 @@
+<div class="mx-auto max-w-4xl px-4 py-12">
+  @if (loading()) {
+    <app-loading-skeleton />
+  } @else if (error(); as err) {
+    <app-empty-state [message]="err" />
+  } @else if (content(); as page) {
+    <header class="text-center">
+      <h1 class="text-3xl font-bold text-slate-900">{{ page.title }}</h1>
+      @if (page.subtitle) {
+        <p class="mt-2 text-slate-500">{{ page.subtitle }}</p>
+      }
+    </header>
+
+    <div class="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
+      <section class="rounded-lg border border-slate-200 bg-white p-6">
+        <h2 class="text-lg font-semibold text-slate-900">Send us a message</h2>
+        @if (formError(); as err) {
+          <p class="mt-3 rounded-md bg-rose-50 p-3 text-sm text-rose-700">{{ err }}</p>
+        }
+        <form class="mt-4 space-y-4" (ngSubmit)="send()">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <input [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" placeholder="Your name *" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+            <input [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" type="email" placeholder="Your email *" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+          </div>
+          <input [ngModel]="subject()" (ngModelChange)="subject.set($event)" name="subject" placeholder="Subject" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+          <textarea [ngModel]="message()" (ngModelChange)="message.set($event)" name="message" rows="5" placeholder="Your message *" class="w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500"></textarea>
+          <button type="submit" [disabled]="sending()" class="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50">
+            {{ sending() ? 'Sending...' : 'Send message' }}
+          </button>
+        </form>
+      </section>
+
+      <aside class="space-y-4 text-sm">
+        @if (page.contact; as contact) {
+          <div class="rounded-lg border border-slate-200 bg-white p-5">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Contact details</h3>
+            <dl class="mt-3 space-y-2 text-slate-700">
+              @if (contact.email) {
+                <div><dt class="text-slate-500">Email</dt><dd><a [href]="'mailto:' + contact.email" class="text-indigo-600 hover:underline">{{ contact.email }}</a></dd></div>
+              }
+              @if (contact.phone) {
+                <div><dt class="text-slate-500">Phone</dt><dd><a [href]="'tel:' + contact.phone" class="text-indigo-600 hover:underline">{{ contact.phone }}</a></dd></div>
+              }
+              @if (contact.address) {
+                <div><dt class="text-slate-500">Address</dt><dd>{{ contact.address }}</dd></div>
+              }
+              @if (contact.workingHours) {
+                <div><dt class="text-slate-500">Working hours</dt><dd>{{ contact.workingHours }}</dd></div>
+              }
+            </dl>
+            @if (contact.social && (contact.social.facebook || contact.social.instagram || contact.social.twitter || contact.social.whatsapp)) {
+              <div class="mt-4 flex gap-3">
+                @if (contact.social.facebook) { <a [href]="contact.social.facebook" target="_blank" rel="noopener" class="text-indigo-600 hover:underline">Facebook</a> }
+                @if (contact.social.instagram) { <a [href]="contact.social.instagram" target="_blank" rel="noopener" class="text-indigo-600 hover:underline">Instagram</a> }
+                @if (contact.social.twitter) { <a [href]="contact.social.twitter" target="_blank" rel="noopener" class="text-indigo-600 hover:underline">Twitter</a> }
+                @if (contact.social.whatsapp) { <a [href]="contact.social.whatsapp" target="_blank" rel="noopener" class="text-indigo-600 hover:underline">WhatsApp</a> }
+              </div>
+            }
+          </div>
+        }
+      </aside>
+    </div>
+  } @else {
+    <app-empty-state message="Content is not available yet." />
+  }
+</div>
