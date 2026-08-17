@@ -1,0 +1,49 @@
+<div class="mx-auto max-w-5xl px-4 py-8">
+  <h1 class="text-2xl font-bold text-slate-900">Your cart</h1>
+
+  @if (cart.count() === 0) {
+    <app-empty-state message="Your cart is empty." />
+    <div class="text-center">
+      <a routerLink="/products" class="inline-block rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700">
+        Browse products
+      </a>
+    </div>
+  } @else {
+    <ul class="mt-6 divide-y divide-slate-200 rounded-lg border border-slate-200 bg-white">
+      @for (item of cart.items(); track item.product.id) {
+        <li class="flex gap-4 p-4">
+          <a routerLink="/product/{{ item.product.id }}" class="h-24 w-24 shrink-0 overflow-hidden rounded-md bg-slate-100">
+            @if (item.product.image.url) {
+              <img [src]="item.product.image.url" [alt]="item.product.name" class="h-full w-full object-cover" />
+            }
+          </a>
+          <div class="flex flex-1 flex-col justify-between">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <a routerLink="/product/{{ item.product.id }}" class="font-medium text-slate-800 hover:text-indigo-600">{{ item.product.name }}</a>
+                <p class="text-sm text-slate-500">{{ formatPrice(item.product.price) }}</p>
+              </div>
+              <button type="button" class="text-sm text-rose-500 hover:underline" (click)="cart.remove(item.product.id)">Remove</button>
+            </div>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center rounded-md border border-slate-300">
+                <button type="button" class="px-3 py-1 text-slate-600" (click)="cart.updateQuantity(item.product.id, item.quantity - 1)">&minus;</button>
+                <span class="w-10 text-center text-sm" data-testid="qty">{{ item.quantity }}</span>
+                <button type="button" class="px-3 py-1 text-slate-600" (click)="cart.updateQuantity(item.product.id, item.quantity + 1)">+</button>
+              </div>
+              <p class="font-semibold text-slate-900">{{ formatPrice(item.product.price * item.quantity) }}</p>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <div class="mt-6 flex flex-col items-end gap-3">
+      <p class="text-sm text-slate-500">Subtotal ({{ cart.count() }} items)</p>
+      <p class="text-2xl font-bold text-slate-900">{{ subtotal() }}</p>
+      <a routerLink="/checkout" class="rounded-md bg-slate-900 px-6 py-3 text-sm font-medium text-white hover:bg-indigo-600">
+        Proceed to checkout
+      </a>
+    </div>
+  }
+</div>
