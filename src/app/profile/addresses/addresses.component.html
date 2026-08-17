@@ -1,0 +1,65 @@
+<div class="space-y-6">
+  <section>
+    <h2 class="text-lg font-semibold text-slate-900">Saved addresses</h2>
+    @if (store.loading()) {
+      <p class="mt-3 text-sm text-slate-400">Loading...</p>
+    } @else if (store.list().length === 0) {
+      <app-empty-state message="No saved addresses yet." />
+    } @else {
+      <div class="mt-3 grid gap-3 sm:grid-cols-2">
+        @for (address of store.list(); track address.id) {
+          <div class="rounded-lg border border-slate-200 bg-white p-4">
+            <div class="flex items-start justify-between">
+              <div>
+                <p class="font-medium text-slate-900">
+                  {{ address.label }}
+                  @if (address.isDefault) {
+                    <span class="ml-2 rounded bg-indigo-50 px-2 py-0.5 text-xs text-indigo-700">Default</span>
+                  }
+                </p>
+                <p class="mt-1 text-sm text-slate-500">
+                  {{ address.street }}{{ address.apartment ? ', ' + address.apartment : '' }}<br />
+                  {{ address.city }}, {{ address.zip }}<br />
+                  {{ address.country }} &middot; {{ address.phone }}
+                </p>
+              </div>
+              <div class="flex gap-2 text-sm">
+                <button type="button" class="text-indigo-600 hover:underline" (click)="edit(address)">Edit</button>
+                <button type="button" class="text-rose-500 hover:underline" (click)="remove(address)">Delete</button>
+              </div>
+            </div>
+            @if (!address.isDefault) {
+              <button type="button" class="mt-3 text-xs font-medium text-indigo-600 hover:underline" (click)="setDefault(address)">
+                Set as default
+              </button>
+            }
+          </div>
+        }
+      </div>
+    }
+  </section>
+
+  <section class="rounded-lg border border-slate-200 bg-white p-6">
+    <h2 class="text-lg font-semibold text-slate-900">{{ editingId() ? 'Edit address' : 'Add address' }}</h2>
+    @if (error(); as err) {
+      <p class="mt-3 rounded-md bg-rose-50 p-3 text-sm text-rose-700">{{ err }}</p>
+    }
+    <form class="mt-4 grid gap-3 sm:grid-cols-2" (ngSubmit)="save()">
+      <input [ngModel]="label()" (ngModelChange)="label.set($event)" name="label" placeholder="Label (Home, Work...)" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+      <input [ngModel]="street()" (ngModelChange)="street.set($event)" name="street" placeholder="Street *" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+      <input [ngModel]="apartment()" (ngModelChange)="apartment.set($event)" name="apartment" placeholder="Apartment" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+      <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City *" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+      <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+      <input [ngModel]="country()" (ngModelChange)="country.set($event)" name="country" placeholder="Country *" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+      <input [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" placeholder="Phone *" class="rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500 sm:col-span-2" />
+      <div class="flex gap-2 sm:col-span-2">
+        <button type="submit" [disabled]="saving()" class="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50">
+          {{ saving() ? 'Saving...' : (editingId() ? 'Save changes' : 'Add address') }}
+        </button>
+        @if (editingId()) {
+          <button type="button" class="rounded-md border border-slate-300 px-5 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100" (click)="resetForm()">Cancel</button>
+        }
+      </div>
+    </form>
+  </section>
+</div>
