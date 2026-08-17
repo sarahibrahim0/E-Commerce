@@ -1,5 +1,6 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 import { User } from '../models';
 import { AuthService } from '../services/auth.service';
 import { normalizeApiError } from '../services/api-error';
@@ -21,12 +22,18 @@ export class AuthStore {
     this.loading.set(true);
     this.error.set(null);
     try {
-      const res = await firstValueFrom(this.auth.login(email, password));
-      this.token.set(res.token);
-      this.userId.set(res.id);
-      localStorage.setItem('ecom.token', res.token);
-      localStorage.setItem('ecom.userId', res.id);
-      await this.loadUser();
+      await firstValueFrom(
+        this.auth.login(email, password).pipe(
+          tap((res) => {
+            this.token.set(res.token);
+            this.userId.set(res.id);
+            localStorage.setItem('ecom.token', res.token);
+            localStorage.setItem('ecom.userId', res.id);
+          }),
+          switchMap((res) => this.auth.me(res.id)),
+          tap((user) => this.user.set(user)),
+        ),
+      );
     } catch (err) {
       this.error.set(normalizeApiError(err).message);
       throw err;

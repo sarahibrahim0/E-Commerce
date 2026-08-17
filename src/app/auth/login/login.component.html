@@ -1,0 +1,39 @@
+<div class="mx-auto max-w-md px-4 py-16">
+  <h1 class="text-2xl font-bold text-slate-900">Sign in</h1>
+  <p class="mt-1 text-sm text-slate-500">Welcome back!</p>
+
+  @if (auth.error(); as err) {
+    <p class="mt-4 rounded-md bg-rose-50 p-3 text-sm text-rose-700">{{ err }}</p>
+  }
+
+  <form class="mt-6 space-y-4" (ngSubmit)="submit()">
+    <div>
+      <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
+      <input
+        id="email" name="email" type="email" required autocomplete="email"
+        [value]="email()" (input)="email.set($any($event.target).value)"
+        class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500"
+      />
+    </div>
+    <div>
+      <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
+      <input
+        id="password" name="password" type="password" required autocomplete="current-password"
+        [value]="password()" (input)="password.set($any($event.target).value)"
+        class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500"
+      />
+    </div>
+    <button
+      type="submit"
+      data-testid="login-submit"
+      [disabled]="auth.loading()"
+      class="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50"
+    >
+      {{ auth.loading() ? 'Signing in...' : 'Sign in' }}
+    </button>
+  </form>
+
+  <p class="mt-4 text-center text-sm text-slate-500">
+    New here? <a routerLink="/register" class="font-medium text-indigo-600">Create an account</a>
+  </p>
+</div>
