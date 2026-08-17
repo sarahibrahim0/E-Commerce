@@ -1,0 +1,46 @@
+<div class="mx-auto max-w-md px-4 py-16">
+  <h1 class="text-2xl font-bold text-slate-900">Create account</h1>
+  <p class="mt-1 text-sm text-slate-500">Register to place orders and leave reviews.</p>
+
+  @if (formError(); as err) {
+    <p class="mt-4 rounded-md bg-rose-50 p-3 text-sm text-rose-700">{{ err }}</p>
+  } @else if (auth.error(); as err) {
+    <p class="mt-4 rounded-md bg-rose-50 p-3 text-sm text-rose-700">{{ err }}</p>
+  }
+
+  <form class="mt-6 space-y-4" (ngSubmit)="submit()">
+    <div>
+      <label for="name" class="block text-sm font-medium text-slate-700">Name</label>
+      <input id="name" name="name" required autocomplete="name" [ngModel]="name()" (ngModelChange)="name.set($event)"
+             class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-slate-700">Email</label>
+      <input id="email" name="email" type="email" required autocomplete="email" [ngModel]="email()" (ngModelChange)="email.set($event)"
+             class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+    </div>
+    <div>
+      <label for="phone" class="block text-sm font-medium text-slate-700">Phone</label>
+      <input id="phone" name="phone" required autocomplete="tel" [ngModel]="phone()" (ngModelChange)="phone.set($event)"
+             class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+    </div>
+    <div>
+      <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
+      <input id="password" name="password" type="password" required autocomplete="new-password" [ngModel]="password()" (ngModelChange)="password.set($event)"
+             class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+    </div>
+    <div>
+      <label for="confirm" class="block text-sm font-medium text-slate-700">Confirm password</label>
+      <input id="confirm" name="confirm" type="password" required autocomplete="new-password" [ngModel]="confirm()" (ngModelChange)="confirm.set($event)"
+             class="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-indigo-500" />
+    </div>
+    <button type="submit" [disabled]="auth.loading()"
+            class="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 disabled:opacity-50">
+      {{ auth.loading() ? 'Creating account...' : 'Create account' }}
+    </button>
+  </form>
+
+  <p class="mt-4 text-center text-sm text-slate-500">
+    Already have an account? <a routerLink="/login" class="font-medium text-indigo-600">Sign in</a>
+  </p>
+</div>

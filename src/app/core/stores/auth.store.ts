@@ -1,7 +1,7 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { User } from '../models';
+import { RegisterRequest, User } from '../models';
 import { AuthService } from '../services/auth.service';
 import { normalizeApiError } from '../services/api-error';
 import { clearStorageKey } from '../utils/storage';
@@ -34,6 +34,20 @@ export class AuthStore {
           tap((user) => this.user.set(user)),
         ),
       );
+    } catch (err) {
+      this.error.set(normalizeApiError(err).message);
+      throw err;
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  async register(body: RegisterRequest): Promise<void> {
+    this.loading.set(true);
+    this.error.set(null);
+    try {
+      await firstValueFrom(this.auth.register(body));
+      await this.login(body.email, body.password);
     } catch (err) {
       this.error.set(normalizeApiError(err).message);
       throw err;
