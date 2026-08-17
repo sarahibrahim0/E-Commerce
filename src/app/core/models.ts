@@ -131,3 +131,34 @@ export interface CheckoutResponse {
   sessionId: string;
   orderId: string;
 }
+
+export interface ContentSection {
+  heading: string;
+  body: string;
+}
+
+export interface ContactInfo {
+  email: string;
+  phone: string;
+  address: string;
+  workingHours: string;
+  social: { facebook?: string; instagram?: string; twitter?: string; whatsapp?: string };
+}
+
+export interface PageContent {
+  id: string;
+  key: string;
+  title: string;
+  subtitle?: string;
+  image?: { url: string; publicId?: string };
+  sections: ContentSection[];
+  contact?: ContactInfo;
+  updatedAt?: string;
+}
+
+export interface ContactMessage {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}

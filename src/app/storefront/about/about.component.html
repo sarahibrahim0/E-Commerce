@@ -1,0 +1,31 @@
+<div class="mx-auto max-w-3xl px-4 py-12">
+  @if (loading()) {
+    <app-loading-skeleton />
+  } @else if (error(); as err) {
+    <app-empty-state [message]="err" />
+  } @else if (content(); as page) {
+    <header class="text-center">
+      <h1 class="text-3xl font-bold text-slate-900">{{ page.title }}</h1>
+      @if (page.subtitle) {
+        <p class="mt-2 text-slate-500">{{ page.subtitle }}</p>
+      }
+    </header>
+
+    @if (page.image) {
+      <img [src]="page.image.url" alt="" class="mt-8 w-full rounded-xl object-cover" />
+    }
+
+    <div class="mt-8 space-y-8">
+      @for (section of page.sections; track $index) {
+        <section>
+          @if (section.heading) {
+            <h2 class="text-xl font-semibold text-slate-900">{{ section.heading }}</h2>
+          }
+          <p class="mt-2 leading-relaxed text-slate-600">{{ section.body }}</p>
+        </section>
+      }
+    </div>
+  } @else {
+    <app-empty-state message="Content is not available yet." />
+  }
+</div>
