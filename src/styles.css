@@ -1,8 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
 
+@theme {
+  --color-salmon: #FD8F5F;
+  --color-almond: #F2E1D9;
+  --color-dark-purple: #680F18;
+  --color-blue-black: #1D2547;
+  --color-body-gray: #646D77;
+  --color-heading: #1a1a1a;
+  --color-error: #ff4545;
+  --color-hover-salmon: #e9855a;
+  --color-border-light: #c9c9c9;
+  --color-link-gray: #C2C5DB;
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgb(186, 186, 186) #F2E1D9;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  overflow-x: visible;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box !important;
+}
+
+html { overflow-x: hidden; }
+
+a { text-decoration: none !important; }
+ul { list-style: none !important; padding: 0; }
+
 :focus-visible {
-  outline: 2px solid #6366f1;
+  outline: 2px solid #FD8F5F;
   outline-offset: 2px;
+}
+
+@keyframes fadeInUp {
+  0% { visibility: hidden; transform: translate3d(0, 100%, 0); }
+  to { opacity: 1; transform: translateZ(0); }
+}
+
+.p-button {
+  border-radius: 0px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+}
+
+.p-inputtext {
+  border-radius: 3px !important;
+  border: none !important;
+}
+
+.p-dropdown {
+  width: 100% !important;
+}
+
+.p-rating .p-rating-icon.p-rating-icon-active {
+  color: #FD8F5F !important;
+}
+
+.p-rating .p-rating-icon.pi-star-fill {
+  color: #FD8F5F !important;
+}
+
+.p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon:hover {
+  color: #FD8F5F !important;
+}
+
+.p-rating:not(.p-disabled):not(.p-readonly) .p-rating-icon {
+  color: #FD8F5F !important;
 }
