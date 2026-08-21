@@ -160,6 +160,21 @@
         background-repeat: no-repeat;
       "
     >
+      <div class="duration-100 leading-[32px] !z-10 md:mt-5 sm:mt-9 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer md:hidden sm:flex">
+        <form (ngSubmit)="search()" class="flex items-center">
+          <input
+            [ngModel]="searchQuery"
+            (ngModelChange)="searchQuery = $event"
+            [ngModelOptions]="{ standalone: true }"
+            name="searchQuery"
+            placeholder="Search..."
+            class="w-full border-none bg-transparent text-sm outline-none placeholder-[#797979]"
+          />
+          <button type="submit" class="text-blue-black hover:text-salmon">
+            <i class="bi bi-search text-[20px]" style="-webkit-text-stroke: 0.6px"></i>
+          </button>
+        </form>
+      </div>
       @if (isHome) {
         <div class="z-10 md:w-[570px] md:h-[493px] sm:h-auto sm:w-full bg-white mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px] flex flex-col justify-between md:items-start md:text-start sm:items-center">
           <span class="uppercase md:text-2xl sm:text-base font-semibold leading-[1.2] mb-2 block text-[#7F85A8]">
