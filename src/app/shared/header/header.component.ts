@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, NavigationEnd } from '@angular/router';
 import { AuthStore } from '../../core/stores/auth.store';
 import { CartStore } from '../../core/stores/cart.store';
 import { WishlistStore } from '../../core/stores/wishlist.store';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -17,8 +18,18 @@ export class HeaderComponent {
   protected readonly cart = inject(CartStore);
   protected readonly wishlist = inject(WishlistStore);
   protected searchQuery = '';
+  protected isHome = true;
 
   private router = inject(Router);
+
+  constructor() {
+    this.router.events
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe((e) => {
+        this.isHome = e.urlAfterRedirects === '/';
+      });
+    this.isHome = this.router.url === '/';
+  }
 
   search(): void {
     const query = this.searchQuery.trim();

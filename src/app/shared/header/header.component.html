@@ -1,72 +1,109 @@
-<header class="sticky top-0 z-30 border-b border-[#c9c9c9] bg-almond">
-  <div class="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4">
-    <a routerLink="/" class="text-xl font-bold tracking-tight text-blue-black">E&#8209;Shop</a>
+<nav class="w-full flex flex-col justify-between items-center relative main transition-all duration-500 ease-in-out bg-almond xl:pr-[50px]">
+  <!-- Main Nav Bar -->
+  <div class="relative box-border w-full flex flex-row justify-between items-start">
+    <!-- Logo -->
+    <div class="font-semibold text-sm md:w-[165px] md:h-[136px] sm:w-[100px] sm:h-[69px] text-blue-black min-w-max min-h-max z-10">
+      <a routerLink="/" class="block w-full h-full">
+        <span class="text-2xl font-bold text-blue-black">E-Shop</span>
+      </a>
+    </div>
 
-    <nav class="ml-6 hidden items-center gap-1 md:flex" aria-label="Main navigation">
-      <a routerLink="/" routerLinkActive="text-salmon" [routerLinkActiveOptions]="{ exact: true }"
-         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">Home</a>
-      <a routerLink="/products" routerLinkActive="text-salmon"
-         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">Products</a>
-      <a routerLink="/categories" routerLinkActive="text-salmon"
-         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">Categories</a>
-      <a routerLink="/about" routerLinkActive="text-salmon"
-         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">About</a>
-      <a routerLink="/contact" routerLinkActive="text-salmon"
-         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">Contact</a>
-    </nav>
+    <!-- Desktop Nav -->
+    <div class="box-border w-full 2xl:pr-0 3xl:pr-4 2xl:flex flex-row justify-between items-center pl-4 h-[100px] sm:hidden bg-almond">
+      <ul class="flex flex-row justify-between items-center">
+        <li class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer" routerLink="/">
+          Home
+        </li>
+        <li class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer" routerLink="/products">
+          Products
+        </li>
+        <li class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer" routerLink="/categories">
+          Categories
+        </li>
+        <li class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer" routerLink="/about">
+          About
+        </li>
+        <li class="duration-100 leading-[32px] font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer" routerLink="/contact">
+          Contact
+        </li>
+      </ul>
 
-    <form class="ml-auto hidden max-w-xs flex-1 md:flex" (ngSubmit)="search()">
-      <input
-        data-testid="search-input"
-        [ngModel]="searchQuery"
-        (ngModelChange)="searchQuery = $event"
-        [ngModelOptions]="{ standalone: true }"
-        name="searchQuery"
-        placeholder="Search products..."
-        aria-label="Search products"
-        class="w-full rounded-none border border-[#c9c9c9] px-3 py-1.5 text-sm outline-none focus:border-salmon"
-      />
-      <button type="submit" class="rounded-none bg-salmon px-3 py-1.5 text-sm font-medium uppercase tracking-wider text-white hover:bg-[#e9855a]">
-        Search
-      </button>
-    </form>
+      <ul class="flex flex-row justify-between items-center">
+        <li class="duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer">
+          <form (ngSubmit)="search()" class="flex items-center">
+            <input
+              [ngModel]="searchQuery"
+              (ngModelChange)="searchQuery = $event"
+              [ngModelOptions]="{ standalone: true }"
+              name="searchQuery"
+              placeholder="Search..."
+              class="w-full border-none bg-transparent text-sm outline-none placeholder-[#797979]"
+            />
+            <button type="submit" class="text-blue-black hover:text-salmon">
+              <i class="bi bi-search text-[20px]" style="-webkit-text-stroke: 0.6px"></i>
+            </button>
+          </form>
+        </li>
+        @if (auth.isLoggedIn()) {
+          <li class="whitespace-nowrap duration-100 leading-[32px] 3xl:mr-10 2xl:mr-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer" routerLink="/profile">
+            My Account
+          </li>
+        }
+        <li class="transition-all duration-100 cursor-pointer 3xl:mr-10 2xl:mr-5" routerLink="/cart">
+          <div class="relative">
+            <i class="bi bi-handbag text-[27px] text-blue-black" style="-webkit-text-stroke: 0.6px"></i>
+            @if (cart.count() > 0) {
+              <span class="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-salmon px-1 text-[10px] font-bold text-white">
+                {{ cart.count() }}
+              </span>
+            }
+          </div>
+        </li>
+        <li class="transition-all duration-100 cursor-pointer text-[27px] text-blue-black">
+          @if (auth.isLoggedIn()) {
+            <i (click)="logout()" class="bi bi-box-arrow-right text-[27px]" style="-webkit-text-stroke: 0.6px"></i>
+          } @else {
+            <i routerLink="/login" class="bi bi-box-arrow-in-right text-[27px]" style="-webkit-text-stroke: 0.6px"></i>
+          }
+        </li>
+      </ul>
+    </div>
 
-    <a routerLink="/profile" class="relative p-2 text-[#797979] hover:text-blue-black" aria-label="Wishlist" data-testid="wishlist-link">
-      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7.5-4.6-9.5-8.6C.9 9.4 2.6 6 5.6 6c1.9 0 3.2 1 4.4 2.7C11.2 7 12.5 6 14.4 6c3 0 4.7 3.4 3.1 6.4C15.5 16.4 12 21 12 21z" />
+    <!-- Mobile Menu Button -->
+    <div class="w-full flex flex-row justify-end items-center 2xl:hidden bg-almond self-center z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list cursor-pointer text-blue-black hover:text-salmon transition-all duration-150 w-8 h-8" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
       </svg>
-      @if (wishlist.count() > 0) {
-        <span data-testid="wishlist-badge" class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#ff4545] px-1 text-[10px] font-bold text-white">
-          {{ wishlist.count() }}
-        </span>
-      }
-    </a>
-
-    <a routerLink="/cart" class="relative p-2 text-[#797979] hover:text-blue-black" aria-label="Cart" data-testid="cart-link">
-      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l2.6 12.3a2 2 0 002 1.7h7.7a2 2 0 002-1.6L21 7H6" />
-        <circle cx="9.5" cy="20" r="1.5" /><circle cx="17.5" cy="20" r="1.5" />
-      </svg>
-      @if (cart.count() > 0) {
-        <span data-testid="cart-badge" class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-salmon px-1 text-[10px] font-bold text-white">
-          {{ cart.count() }}
-        </span>
-      }
-    </a>
-
-    @if (auth.isLoggedIn()) {
-      <a routerLink="/profile" class="rounded-md px-3 py-1.5 text-sm font-medium text-[#646D77] hover:bg-white/60">Profile</a>
-      <button
-        data-testid="logout-button"
-        type="button"
-        class="rounded-md px-3 py-1.5 text-sm font-medium text-[#797979] hover:text-[#ff4545]"
-        (click)="logout()"
-      >
-        Logout
-      </button>
-    } @else {
-      <a routerLink="/login" data-testid="login-link" class="rounded-md px-3 py-1.5 text-sm font-medium text-[#646D77] hover:bg-white/60">Sign in</a>
-      <a routerLink="/register" class="rounded-md bg-salmon px-3 py-1.5 text-sm font-medium text-white hover:bg-[#e9855a]">Register</a>
-    }
+    </div>
   </div>
-</header>
+
+  <!-- Hero Banner (only on home page) -->
+  @if (isHome) {
+    <div class="w-full h-auto mb-[89px] z-0 relative -mt-10">
+      <div class="absolute layout w-full h-full"></div>
+
+      <div
+        class="w-full transition-all duration-100 ease-in-out md:py-12 flex flex-col justify-center md:items-start sm:items-center lg:pl-[124px] sm:space-y-5"
+        style="
+          background-image: url(assets/h1_hero.png);
+          background-position: center center;
+          background-size: cover;
+          background-repeat: no-repeat;
+        "
+      >
+        <div class="z-10 md:w-[570px] md:h-[493px] sm:h-auto sm:w-full bg-white mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px] flex flex-col justify-between md:items-start md:text-start sm:items-center">
+          <span class="uppercase md:text-2xl sm:text-base font-semibold leading-[1.2] mb-2 block text-[#7F85A8]">
+            New Collection 2026
+          </span>
+          <h1 class="text-[#1a1a1a] uppercase md:text-[60px] sm:text-[16px] font-black leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5">
+            furniture at cost
+          </h1>
+          <p class="box-border text-[#646D77] md:text-[18px] sm:text-[12px] leading-[30px] md:mb-[25px] sm:mb-[14px] md:pr-[49px] sm:px-2 md:text-start sm:text-center">
+            Transform your home with our premium furniture collection. Free shipping on orders over $500.
+          </p>
+          <button class="btn whitespace-nowrap">discover more</button>
+        </div>
+      </div>
+    </div>
+  }
+</nav>
