@@ -11,6 +11,13 @@
   --color-hover-salmon: #e9855a;
   --color-border-light: #c9c9c9;
   --color-link-gray: #C2C5DB;
+
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 481px;
+  --breakpoint-lg: 769px;
+  --breakpoint-xl: 1025px;
+  --breakpoint-2xl: 1201px;
+  --breakpoint-3xl: 1501px;
 }
 
 * {
