@@ -1,18 +1,18 @@
-<header class="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+<header class="sticky top-0 z-30 border-b border-[#c9c9c9] bg-almond">
   <div class="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4">
-    <a routerLink="/" class="text-xl font-bold tracking-tight text-slate-900">E&#8209;Shop</a>
+    <a routerLink="/" class="text-xl font-bold tracking-tight text-blue-black">E&#8209;Shop</a>
 
     <nav class="ml-6 hidden items-center gap-1 md:flex" aria-label="Main navigation">
-      <a routerLink="/" routerLinkActive="text-indigo-600" [routerLinkActiveOptions]="{ exact: true }"
-         class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900">Home</a>
-      <a routerLink="/products" routerLinkActive="text-indigo-600"
-         class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900">Products</a>
-      <a routerLink="/categories" routerLinkActive="text-indigo-600"
-         class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900">Categories</a>
-      <a routerLink="/about" routerLinkActive="text-indigo-600"
-         class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900">About</a>
-      <a routerLink="/contact" routerLinkActive="text-indigo-600"
-         class="px-3 py-2 text-sm font-medium text-slate-600 hover:text-slate-900">Contact</a>
+      <a routerLink="/" routerLinkActive="text-salmon" [routerLinkActiveOptions]="{ exact: true }"
+         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">Home</a>
+      <a routerLink="/products" routerLinkActive="text-salmon"
+         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">Products</a>
+      <a routerLink="/categories" routerLinkActive="text-salmon"
+         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">Categories</a>
+      <a routerLink="/about" routerLinkActive="text-salmon"
+         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">About</a>
+      <a routerLink="/contact" routerLinkActive="text-salmon"
+         class="px-3 py-2 text-sm font-medium text-blue-black hover:text-salmon">Contact</a>
     </nav>
 
     <form class="ml-auto hidden max-w-xs flex-1 md:flex" (ngSubmit)="search()">
@@ -24,14 +24,14 @@
         name="searchQuery"
         placeholder="Search products..."
         aria-label="Search products"
-        class="w-full rounded-l-md border border-slate-300 px-3 py-1.5 text-sm outline-none focus:border-indigo-500"
+        class="w-full rounded-none border border-[#c9c9c9] px-3 py-1.5 text-sm outline-none focus:border-salmon"
       />
-      <button type="submit" class="rounded-r-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700">
+      <button type="submit" class="rounded-none bg-salmon px-3 py-1.5 text-sm font-medium uppercase tracking-wider text-white hover:bg-[#e9855a]">
         Search
       </button>
     </form>
 
-    <a routerLink="/profile" class="relative p-2 text-slate-500 hover:text-slate-900" aria-label="Wishlist" data-testid="wishlist-link">
+    <a routerLink="/profile" class="relative p-2 text-[#797979] hover:text-blue-black" aria-label="Wishlist" data-testid="wishlist-link">
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7.5-4.6-9.5-8.6C.9 9.4 2.6 6 5.6 6c1.9 0 3.2 1 4.4 2.7C11.2 7 12.5 6 14.4 6c3 0 4.7 3.4 3.1 6.4C15.5 16.4 12 21 12 21z" />
       </svg>
@@ -42,31 +42,31 @@
       }
     </a>
 
-    <a routerLink="/cart" class="relative p-2 text-slate-500 hover:text-slate-900" aria-label="Cart" data-testid="cart-link">
+    <a routerLink="/cart" class="relative p-2 text-[#797979] hover:text-blue-black" aria-label="Cart" data-testid="cart-link">
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l2.6 12.3a2 2 0 002 1.7h7.7a2 2 0 002-1.6L21 7H6" />
         <circle cx="9.5" cy="20" r="1.5" /><circle cx="17.5" cy="20" r="1.5" />
       </svg>
       @if (cart.count() > 0) {
-        <span data-testid="cart-badge" class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-indigo-600 px-1 text-[10px] font-bold text-white">
+        <span data-testid="cart-badge" class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-salmon px-1 text-[10px] font-bold text-white">
           {{ cart.count() }}
         </span>
       }
     </a>
 
     @if (auth.isLoggedIn()) {
-      <a routerLink="/profile" class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100">Profile</a>
+      <a routerLink="/profile" class="rounded-md px-3 py-1.5 text-sm font-medium text-[#646D77] hover:bg-white/60">Profile</a>
       <button
         data-testid="logout-button"
         type="button"
-        class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-500 hover:text-rose-600"
+        class="rounded-md px-3 py-1.5 text-sm font-medium text-[#797979] hover:text-rose-600"
         (click)="logout()"
       >
         Logout
       </button>
     } @else {
-      <a routerLink="/login" data-testid="login-link" class="rounded-md px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100">Sign in</a>
-      <a routerLink="/register" class="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700">Register</a>
+      <a routerLink="/login" data-testid="login-link" class="rounded-md px-3 py-1.5 text-sm font-medium text-[#646D77] hover:bg-white/60">Sign in</a>
+      <a routerLink="/register" class="rounded-md bg-salmon px-3 py-1.5 text-sm font-medium text-white hover:bg-[#e9855a]">Register</a>
     }
   </div>
 </header>
