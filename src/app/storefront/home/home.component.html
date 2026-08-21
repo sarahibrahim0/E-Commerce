@@ -1,74 +1,97 @@
-<div>
-  <section class="bg-gradient-to-br from-[#F6F8FE] via-white to-[#F6F8FE]">
-    <div class="mx-auto flex max-w-7xl flex-col items-center gap-6 px-4 py-20 text-center">
-      <h1 class="max-w-2xl text-4xl font-extrabold tracking-tight text-blue-black md:text-5xl">
-        Modern essentials for everyday living
+<div class="w-full flex flex-col justify-between">
+
+  <!-- Popular Products Section -->
+  <section class="w-full flex flex-col items-start justify-between pt-[100px] pb-[80px] px-[60px]">
+    <div class="w-full flex flex-col justify-between items-center text-center mb-[60px]">
+      <h2 class="transition-all duration-100 ease-in-out uppercase text-[#1a1a1a] md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-5 sm:mb-2">POPULAR PRODUCTS</h2>
+      <p class="font-normal leading-[1.6] md:text-base sm:text-[12px] mb-[15px] px-2 text-[#646D77]">Discover our most loved items, handpicked just for you. Quality products at unbeatable prices.</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="categories relative w-full px-2">
+      <ul class="w-full flex flex-row justify-evenly items-start">
+        @for (category of categories(); track category.id; let index = $index) {
+          <li
+            (click)="loadCategoryProducts(category.id, index)"
+            [class.hover-eff]="activeCategoryIndex() === index"
+            class="inline-block text-blue-black py-[10px] md:text-[16px] sm:text-[12px] border-b-[2px] border-solid border-transparent uppercase lg:px-[28px] sm:mr-1 mb-[37px] cursor-pointer transition-all duration-100 ease-in-out">
+            {{ category.name }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="w-full grid grid-cols-12 md:gap-x-7 xl:gap-y-0 lg:gap-y-3 md:gap-y-3 sm:gap-y-3 transition-all duration-300 ease-in-out">
+      @for (product of categoryProducts(); track product.id) {
+        <div class="xl:col-span-4 sm:col-span-12">
+          <app-product-card [product]="product" (addToCart)="addToCart($event)" />
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Showcase Section -->
+  <div class="flex xl:flex-row sm:flex-col justify-between w-full min-h-max h-auto transition-all duration-300 ease-in-out mb-[80px]">
+    <div class="xl:w-[55%] sm:w-full h-[570px] bg-no-repeat bg-cover bg-center bg-slate-200">
+    </div>
+
+    <div class="xl:w-[45%] sm:w-full h-[570px] xl:z-0 xl:relative sm:absolute left-0 top-0 sm:z-10 xl:bg-opacity-100 sm:bg-opacity-95 bg-almond transition-all duration-150 ease-in-out py-[45px] md:px-[65px] flex flex-col justify-center md:items-start md:text-start sm:items-center">
+      <h1 class="text-[#1a1a1a] uppercase md:text-[40px] sm:text-[16px] font-bold leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5">
+        BEST PRODUCTS<br>IN EVERY CATEGORY
       </h1>
-      <p class="max-w-xl text-lg text-[#646D77]">
-        Discover a curated collection of products with reviews, coupons, and fast Stripe checkout.
+      <p class="box-border text-[#646D77] md:text-[18px] sm:text-[12px] leading-[30px] md:mb-[25px] sm:mb-[14px] md:pr-[49px] sm:px-2 md:text-start sm:text-center">
+        Crafting exceptional products since the beginning. We combine timeless design with modern comfort to transform your spaces into dream homes.
       </p>
-      <a routerLink="/products" class="rounded-none uppercase tracking-wider bg-salmon px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-[#e9855a]">
-        Shop now
-      </a>
+      <a routerLink="/products" class="btn whitespace-nowrap">discover more</a>
     </div>
-  </section>
+  </div>
 
-  <section class="mx-auto max-w-7xl px-4 py-12">
-    <div class="flex items-center justify-between">
-      <h2 class="text-2xl font-bold text-blue-black">Categories</h2>
-      <a routerLink="/categories" class="text-sm font-medium text-salmon hover:underline">View all</a>
+  <!-- Featured Products Section -->
+  <div class="w-full flex flex-row justify-center px-[60px]">
+    <div class="w-full flex flex-col justify-between items-center text-center mb-[60px]">
+      <h2 class="transition-all duration-100 ease-in-out uppercase text-[#1a1a1a] md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-5 sm:mb-2">FEATURED PRODUCTS</h2>
+      <p class="text-[#646D77] font-normal leading-[1.6] md:text-base sm:text-[12px] mb-[15px] px-2">Explore our exclusive collection of premium products designed to elevate your style.</p>
     </div>
-    @if (categoriesLoading()) {
-      <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
-        @for (_ of [1, 2, 3, 4]; track $index) {
-          <div class="h-24 animate-pulse rounded-lg bg-[#ecd7cd]"></div>
-        }
-      </div>
-    } @else {
-      <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
-        @for (cat of categories(); track cat.id) {
-          <a routerLink="/products" [queryParams]="{ categories: cat.id }"
-             class="flex h-24 items-center justify-center rounded-lg border border-[#F6F8FE] text-lg font-semibold transition-shadow hover:shadow-md"
-             [style.color]="cat.color || undefined">
-            {{ cat.name }}
-          </a>
-        }
-      </div>
-    }
+  </div>
+
+  <section class="w-full flex flex-col items-start justify-between px-[60px] pb-[80px]">
+    <div class="product pb-[60px] grid grid-cols-12 xl:gap-x-7 xl:gap-y-0 lg:gap-y-3 md:gap-y-3 sm:gap-y-3 transition-all duration-300 ease-in-out">
+      @for (product of featured(); track product.id) {
+        <div class="xl:col-span-4 sm:col-span-12 transition-all duration-300 ease-in-out">
+          <app-product-card [product]="product" (addToCart)="addToCart($event)" />
+        </div>
+      }
+    </div>
+
+    <a routerLink="/products" class="btn whitespace-nowrap !bg-white !text-salmon hover:!bg-salmon hover:!text-white !border-[1px] !border-solid !font-[500] !border-salmon">discover more</a>
   </section>
 
-  <section class="mx-auto max-w-7xl px-4 py-12">
-    <h2 class="text-2xl font-bold text-blue-black">Featured products</h2>
-    @if (featuredLoading()) {
-      <div class="mt-6"><app-loading-skeleton /></div>
-    } @else if (featured().length === 0) {
-      <app-empty-state message="No featured products yet." />
-    } @else {
-      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        @for (product of featured(); track product.id) {
-          <app-product-card [product]="product" (addToCart)="addToCart($event)" />
-        }
-      </div>
-    }
-  </section>
-
-  @if (recentlyViewed.products().length > 0) {
-    <section class="mx-auto max-w-7xl px-4 py-12">
-      <h2 class="text-2xl font-bold text-blue-black">Recently viewed</h2>
-      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        @for (product of recentlyViewed.products(); track product.id) {
-          <app-product-card [product]="product" (addToCart)="addToCart($event)" />
-        }
-      </div>
-    </section>
-  }
-
-  <section class="bg-blue-black">
-    <div class="mx-auto max-w-7xl px-4 py-16 text-center">
-      <h2 class="text-3xl font-bold text-white">Built to learn, designed to ship</h2>
-      <p class="mx-auto mt-3 max-w-xl text-[#c9c9c9]">
-        Angular signals, zoneless change detection, a fully driven API, and Stripe test-mode payments.
+  <!-- Instagram Section -->
+  <div class="sm:relative xl:static flex xl:flex-row sm:flex-col justify-between w-full min-h-max h-auto transition-all duration-300 ease-in-out mb-[80px] px-[60px]">
+    <div class="xl:w-[25%] sm:w-full h-[570px] xl:z-0 xl:relative sm:absolute left-0 top-0 sm:z-10 xl:bg-opacity-100 sm:bg-opacity-95 bg-white transition-all duration-150 ease-in-out py-[45px] flex flex-col justify-center space-y-[30px] md:items-start md:text-start xl:px-0 sm:items-center sm:px-[65px]">
+      <h1 class="text-[#1a1a1a] text-center text-pretty tracking-tighter uppercase md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5">
+        GET INSPIRED WITH US
+      </h1>
+      <p class="box-border text-[#646D77] md:text-[16px] sm:text-[12px] leading-[30px] md:mb-[25px] sm:mb-[14px] md:pr-[49px] sm:px-2 md:text-start sm:text-center">
+        Follow us to see how our products bring joy to homes across the country.
       </p>
+      <a routerLink="/products" class="btn whitespace-nowrap !bg-white !text-salmon hover:!bg-salmon hover:!text-white !border-[1px] !border-solid !font-[500] !border-salmon relative !z-0">discover more</a>
     </div>
-  </section>
+
+    <div
+      (mouseenter)="show(0)"
+      (mouseleave)="hide(0)"
+      class="xl:relative xl:w-[40%] sm:w-full h-[570px] instagram sm:absolute sm:top-0 sm:left-0 sm:z-0 xl:bg-opacity-100 sm:bg-opacity-80 bg-no-repeat bg-cover bg-center bg-slate-300">
+      <svg [class]="isVisible[0]() ? 'visible' : 'not'" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#fff" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </div>
+
+    <div
+      (mouseenter)="show(1)"
+      (mouseleave)="hide(1)"
+      class="xl:w-[40%] sm:w-full h-[570px] xl:relative instagram sm:z-0 xl:bg-opacity-100 sm:bg-opacity-80 bg-no-repeat bg-cover bg-center bg-slate-400">
+      <svg [class]="isVisible[1]() ? 'visible' : 'not'" width="35" height="35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="#fff" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+    </div>
+  </div>
+
 </div>
