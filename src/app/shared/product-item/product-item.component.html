@@ -1,0 +1,11 @@
+<div class="w-full border-[1px] border-solid border-[#F6F8FE] pb-5 text-center">
+  <a [routerLink]="['/product', product.id]" class="block cursor-pointer">
+    <img [src]="product.images?.[0]?.url ?? product.image" class="cursor-pointer inline-block w-full object-cover" [alt]="product.name" />
+  </a>
+  <h3 class="w-full !font-[500] tracking-wider md:mt-[31px] sm:mt-[20px]">
+    <a [routerLink]="['/product', product.id]" class="text-[#1a1a1a] !font-semibold block leading-[1.7] mb-[20px] transition-all duration-300 hover:!underline">
+      {{ product.name }}
+    </a>
+  </h3>
+  <span class="text-dark-purple font-semibold block">{{ product.price | currency }}</span>
+</div>

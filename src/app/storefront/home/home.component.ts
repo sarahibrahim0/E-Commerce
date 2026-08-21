@@ -3,31 +3,27 @@ import { RouterLink } from '@angular/router';
 import { Product, Category } from '../../core/models';
 import { ProductsService } from '../../core/services/products.service';
 import { CategoriesService } from '../../core/services/categories.service';
-import { RecentlyViewedStore } from '../../core/stores/recently-viewed.store';
-import { ProductCardComponent } from '../../shared/product-card/product-card.component';
-import { ToastService } from '../../shared/toast/toast.service';
 import { CartStore } from '../../core/stores/cart.store';
+import { ToastService } from '../../shared/toast/toast.service';
+import { ProductItemComponent } from '../../shared/product-item/product-item.component';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, ProductCardComponent],
+  imports: [RouterLink, ProductItemComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  protected readonly recentlyViewed = inject(RecentlyViewedStore);
+  categories: Category[] = [];
+  products: Product[] = [];
+  activeButton = 0;
+  id = '';
+  popular: Product[] = [];
 
-  readonly featured = signal<Product[]>([]);
-  readonly featuredLoading = signal(false);
-  readonly categories = signal<Category[]>([]);
-  readonly categoriesLoading = signal(false);
-  readonly categoryProducts = signal<Product[]>([]);
-  readonly categoryProductsLoading = signal(false);
-  readonly activeCategoryIndex = signal(0);
-
-  readonly isVisible = [signal(false), signal(false)];
+  isVisible0 = false;
+  isVisible1 = false;
 
   private productsApi = inject(ProductsService);
   private categoriesApi = inject(CategoriesService);
@@ -35,48 +31,48 @@ export class HomeComponent {
   private toasts = inject(ToastService);
 
   constructor() {
-    void this.loadFeatured();
-    void this.loadCategories();
+    void this.init();
+  }
+
+  private async init(): Promise<void> {
+    try {
+      this.categories = await firstValueFrom(this.categoriesApi.list());
+      if (this.categories.length > 0) {
+        this.id = this.categories[0].id;
+        await this.getProducts(this.id, 0);
+      }
+      await this.getPopularProducts();
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   show(index: number): void {
-    this.isVisible[index].set(true);
+    if (index === 0) this.isVisible0 = true;
+    else if (index === 1) this.isVisible1 = true;
   }
 
   hide(index: number): void {
-    this.isVisible[index].set(false);
+    if (index === 0) this.isVisible0 = false;
+    else if (index === 1) this.isVisible1 = false;
   }
 
-  async loadCategoryProducts(categoryId: string, index: number): Promise<void> {
-    this.activeCategoryIndex.set(index);
-    this.categoryProductsLoading.set(true);
+  async getProducts(id: string, index: number): Promise<void> {
+    this.activeButton = index;
+    this.id = id;
     try {
-      const all = await firstValueFrom(this.productsApi.list({ categoryId }));
-      this.categoryProducts.set(all.slice(0, 3));
-    } finally {
-      this.categoryProductsLoading.set(false);
+      const all = await firstValueFrom(this.productsApi.list({ categoryId: id }));
+      this.products = all.slice(0, 3);
+    } catch (e) {
+      console.log(e);
     }
   }
 
-  private async loadFeatured(): Promise<void> {
-    this.featuredLoading.set(true);
+  private async getPopularProducts(): Promise<void> {
     try {
-      this.featured.set(await firstValueFrom(this.productsApi.featured(6)));
-    } finally {
-      this.featuredLoading.set(false);
-    }
-  }
-
-  private async loadCategories(): Promise<void> {
-    this.categoriesLoading.set(true);
-    try {
-      const cats = await firstValueFrom(this.categoriesApi.list());
-      this.categories.set(cats);
-      if (cats.length > 0) {
-        await this.loadCategoryProducts(cats[0].id, 0);
-      }
-    } finally {
-      this.categoriesLoading.set(false);
+      this.popular = await firstValueFrom(this.productsApi.featured(6));
+    } catch (e) {
+      console.log(e);
     }
   }
 
