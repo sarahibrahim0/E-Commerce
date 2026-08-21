@@ -149,7 +149,7 @@
 
   <!-- Hero Banner (always shown) -->
   <div class="w-full h-auto mb-[89px] z-0 relative -mt-10">
-    <div class="absolute layout w-full h-full"></div>
+    <div class="absolute layout w-full h-full !z-[1]"></div>
 
     <div
       class="w-full transition-all duration-100 ease-in-out md:py-12 flex flex-col justify-center md:items-start sm:items-center lg:pl-[124px] sm:space-y-5"
@@ -176,20 +176,20 @@
         </form>
       </div>
       @if (isHome) {
-        <div class="z-10 md:w-[570px] md:h-[493px] sm:h-auto sm:w-full bg-white mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px] flex flex-col justify-between md:items-start md:text-start sm:items-center">
+        <div class="!z-10 md:w-[570px] md:h-[493px] sm:h-auto sm:w-full bg-white mb-2.5 transition-all duration-150 ease-in-out py-[45px] md:px-[65px] flex flex-col justify-between md:items-start md:text-start sm:items-center sm:first:mt-0">
           <span class="uppercase md:text-2xl sm:text-base font-semibold leading-[1.2] mb-2 block text-[#7F85A8]">
-            New Collection 2026
+            70% sale off
           </span>
           <h1 class="text-[#1a1a1a] uppercase md:text-[60px] sm:text-[16px] font-black leading-[1.2] md:mb-[14px] sm:mb-2 md:mr-5">
             furniture at cost
           </h1>
           <p class="box-border text-[#646D77] md:text-[18px] sm:text-[12px] leading-[30px] md:mb-[25px] sm:mb-[14px] md:pr-[49px] sm:px-2 md:text-start sm:text-center">
-            Transform your home with our premium furniture collection. Free shipping on orders over $500.
+            Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.
           </p>
           <button class="btn whitespace-nowrap">discover more</button>
         </div>
       } @else {
-        <div class="z-10">
+        <div class="!z-10 sm:first:mt-0">
           <app-breadcrumb [url]="url"></app-breadcrumb>
         </div>
       }
