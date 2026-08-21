@@ -1,5 +1,5 @@
 <div class="mx-auto max-w-7xl px-4 py-8">
-  <h1 class="text-2xl font-bold text-slate-900">
+  <h1 class="text-2xl font-bold text-blue-black">
     @if (selectedCategoryName()) {
       {{ selectedCategoryName() }}
     } @else if (catalog.search()) {
@@ -10,13 +10,13 @@
   </h1>
 
   <div class="mt-6 grid gap-8 lg:grid-cols-[220px_1fr]">
-    <aside class="space-y-5 rounded-lg border border-slate-200 p-4">
+    <aside class="space-y-5 rounded-lg border border-[#F6F8FE] p-4">
       <div>
-        <label class="text-sm font-medium text-slate-700">Category</label>
+        <label class="text-sm font-medium text-[#646D77]">Category</label>
         <select
           [ngModel]="catalog.categoryId()"
           (ngModelChange)="catalog.categoryId.set($event); syncUrl()"
-          class="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
+          class="mt-1 w-full rounded-md border border-[#c9c9c9] px-2 py-1.5 text-sm"
         >
           <option [ngValue]="null">All</option>
           @for (cat of catalog.categoriesList(); track cat.id) {
@@ -26,21 +26,21 @@
       </div>
 
       <div>
-        <label class="text-sm font-medium text-slate-700">Price</label>
+        <label class="text-sm font-medium text-[#646D77]">Price</label>
         <div class="mt-1 flex items-center gap-2">
-          <input type="number" placeholder="Min" [ngModel]="catalog.minPrice()" (ngModelChange)="catalog.minPrice.set($event)" class="w-1/2 rounded-md border border-slate-300 px-2 py-1.5 text-sm" />
-          <input type="number" placeholder="Max" [ngModel]="catalog.maxPrice()" (ngModelChange)="catalog.maxPrice.set($event)" class="w-1/2 rounded-md border border-slate-300 px-2 py-1.5 text-sm" />
+          <input type="number" placeholder="Min" [ngModel]="catalog.minPrice()" (ngModelChange)="catalog.minPrice.set($event)" class="w-1/2 rounded-md border border-[#c9c9c9] px-2 py-1.5 text-sm" />
+          <input type="number" placeholder="Max" [ngModel]="catalog.maxPrice()" (ngModelChange)="catalog.maxPrice.set($event)" class="w-1/2 rounded-md border border-[#c9c9c9] px-2 py-1.5 text-sm" />
         </div>
       </div>
 
       <div>
-        <label class="text-sm font-medium text-slate-700">Color</label>
-        <input [ngModel]="catalog.color()" (ngModelChange)="catalog.color.set($event)" placeholder="e.g. black" class="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm" />
+        <label class="text-sm font-medium text-[#646D77]">Color</label>
+        <input [ngModel]="catalog.color()" (ngModelChange)="catalog.color.set($event)" placeholder="e.g. black" class="mt-1 w-full rounded-md border border-[#c9c9c9] px-2 py-1.5 text-sm" />
       </div>
 
       <div>
-        <label class="text-sm font-medium text-slate-700">Sort</label>
-        <select [ngModel]="catalog.sort()" (ngModelChange)="catalog.sort.set($event); syncUrl()" class="mt-1 w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm">
+        <label class="text-sm font-medium text-[#646D77]">Sort</label>
+        <select [ngModel]="catalog.sort()" (ngModelChange)="catalog.sort.set($event); syncUrl()" class="mt-1 w-full rounded-md border border-[#c9c9c9] px-2 py-1.5 text-sm">
           <option value="newest">Newest</option>
           <option value="priceAsc">Price: Low to High</option>
           <option value="priceDesc">Price: High to Low</option>
@@ -48,7 +48,7 @@
         </select>
       </div>
 
-      <button type="button" class="w-full rounded-md bg-slate-900 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-600" (click)="applyFilters()">
+      <button type="button" class="w-full rounded-none uppercase tracking-wider bg-salmon px-3 py-2 text-sm font-medium text-white hover:bg-[#e9855a]" (click)="applyFilters()">
         Apply
       </button>
     </aside>
@@ -57,7 +57,7 @@
       @if (catalog.productsLoading()) {
         <app-loading-skeleton />
       } @else if (catalog.productsError(); as error) {
-        <div class="rounded-md bg-rose-50 p-4 text-sm text-rose-700">{{ error }}</div>
+        <div class="rounded-md bg-[#fff5f5] p-4 text-sm text-[#ff4545]">{{ error }}</div>
       } @else if (catalog.paged().length === 0) {
         <app-empty-state message="No products match your filters." />
       } @else {
@@ -70,16 +70,16 @@
         <nav class="mt-8 flex items-center justify-center gap-2" aria-label="Pagination">
           <button
             type="button"
-            class="rounded-md border border-slate-300 px-3 py-1.5 text-sm disabled:opacity-40"
+            class="rounded-md border border-[#c9c9c9] px-3 py-1.5 text-sm disabled:opacity-40"
             [disabled]="catalog.page() <= 1"
             (click)="goToPage(catalog.page() - 1)"
           >
             Previous
           </button>
-          <span class="px-2 text-sm text-slate-600">Page {{ catalog.page() }} of {{ totalPages() }}</span>
+          <span class="px-2 text-sm text-[#646D77]">Page {{ catalog.page() }} of {{ totalPages() }}</span>
           <button
             type="button"
-            class="rounded-md border border-slate-300 px-3 py-1.5 text-sm disabled:opacity-40"
+            class="rounded-md border border-[#c9c9c9] px-3 py-1.5 text-sm disabled:opacity-40"
             [disabled]="catalog.page() >= totalPages()"
             (click)="goToPage(catalog.page() + 1)"
           >

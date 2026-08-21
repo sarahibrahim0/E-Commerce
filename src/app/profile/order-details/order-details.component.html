@@ -1,66 +1,66 @@
 @if (orders.loading()) {
-  <p class="text-sm text-slate-400">Loading order...</p>
+  <p class="text-sm text-[#c9c9c9]">Loading order...</p>
 } @else if (orders.error(); as err) {
-  <p class="rounded-md bg-rose-50 p-3 text-sm text-rose-700">{{ err }}</p>
+  <p class="rounded-md bg-[#fff5f5] p-3 text-sm text-[#ff4545]">{{ err }}</p>
 } @else if (orders.current(); as order) {
   <div class="flex flex-wrap items-center justify-between gap-2">
-    <h2 class="text-lg font-semibold text-slate-900">Order #{{ order.id }}</h2>
+    <h2 class="text-lg font-semibold text-blue-black">Order #{{ order.id }}</h2>
     <div class="flex gap-2">
-      <button type="button" class="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-100" (click)="buyAgain(order)">Buy again</button>
+      <button type="button" class="rounded-md border border-[#c9c9c9] px-3 py-1.5 text-sm text-[#646D77] hover:bg-[#ecd7cd]" (click)="buyAgain(order)">Buy again</button>
       @if (order.status !== 'Cancelled' && order.status !== 'Delivered') {
-        <button type="button" class="rounded-md border border-rose-200 px-3 py-1.5 text-sm text-rose-600 hover:bg-rose-50" (click)="cancel()">Cancel order</button>
+        <button type="button" class="rounded-md border border-[#ffc9c9] px-3 py-1.5 text-sm text-[#ff4545] hover:bg-[#fff5f5]" (click)="cancel()">Cancel order</button>
       }
     </div>
   </div>
 
-  <p class="mt-1 text-sm text-slate-500">Placed {{ order.dateOrdered | date: 'medium' }}</p>
+  <p class="mt-1 text-sm text-[#797979]">Placed {{ order.dateOrdered | date: 'medium' }}</p>
 
-  <section class="mt-6 rounded-lg border border-slate-200 bg-white p-5">
-    <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Status</h3>
+  <section class="mt-6 rounded-lg border border-[#F6F8FE] bg-white p-5">
+    <h3 class="text-sm font-semibold uppercase tracking-wide text-[#797979]">Status</h3>
     <ol class="mt-4 flex items-center gap-2">
       @for (step of steps; track step; let i = $index) {
         <li class="flex items-center gap-2">
           <span class="flex h-7 w-7 items-center justify-center rounded-full text-xs font-medium
-            {{ i <= stepIndex(order.status) ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-400' }}">
+            {{ i <= stepIndex(order.status) ? 'bg-salmon text-white' : 'bg-[#ecd7cd] text-[#c9c9c9]' }}">
             {{ i + 1 }}
           </span>
-          <span class="text-sm {{ i <= stepIndex(order.status) ? 'text-slate-800' : 'text-slate-400' }}">{{ step }}</span>
+          <span class="text-sm {{ i <= stepIndex(order.status) ? 'text-blue-black' : 'text-[#c9c9c9]' }}">{{ step }}</span>
           @if (!$last) {
-            <span class="h-px w-6 bg-slate-300"></span>
+            <span class="h-px w-6 bg-[#c9c9c9]"></span>
           }
         </li>
       }
     </ol>
-    <p class="mt-3 text-sm text-slate-600">Payment: <span class="font-medium">{{ order.paymentStatus }}</span></p>
+    <p class="mt-3 text-sm text-[#646D77]">Payment: <span class="font-medium">{{ order.paymentStatus }}</span></p>
   </section>
 
   <section class="mt-6 grid gap-6 lg:grid-cols-[1fr_280px]">
     <div class="space-y-3">
       @for (item of order.orderItems; track item.id) {
-        <div class="flex items-center gap-4 rounded-lg border border-slate-200 bg-white p-4">
+        <div class="flex items-center gap-4 rounded-lg border border-[#F6F8FE] bg-white p-4">
           @if (item.product.image) {
             <img [src]="item.product.image.url" [alt]="item.product.name" class="h-16 w-16 rounded object-cover" />
           }
           <div class="flex-1">
-            <a routerLink="/product/{{ item.product.id }}" class="font-medium text-slate-900 hover:text-indigo-600">{{ item.product.name }}</a>
-            <p class="text-sm text-slate-500">Qty {{ item.quantity }} &middot; {{ formatPrice(item.product.price * item.quantity) }}</p>
+            <a routerLink="/product/{{ item.product.id }}" class="font-medium text-blue-black hover:text-salmon">{{ item.product.name }}</a>
+            <p class="text-sm text-[#797979]">Qty {{ item.quantity }} &middot; {{ formatPrice(item.product.price * item.quantity) }}</p>
           </div>
-          <p class="font-medium text-slate-900">{{ formatPrice(item.product.price * item.quantity) }}</p>
+          <p class="font-medium text-dark-purple">{{ formatPrice(item.product.price * item.quantity) }}</p>
         </div>
       }
     </div>
 
-    <aside class="rounded-lg border border-slate-200 bg-white p-5 h-fit">
-      <h3 class="text-sm font-semibold uppercase tracking-wide text-slate-500">Summary</h3>
+    <aside class="rounded-lg border border-[#F6F8FE] bg-white p-5 h-fit">
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-[#797979]">Summary</h3>
       <dl class="mt-3 space-y-2 text-sm">
-        <div class="flex justify-between"><dt class="text-slate-500">Subtotal</dt><dd class="text-slate-800">{{ formatPrice(order.totalPrice + order.discount) }}</dd></div>
+        <div class="flex justify-between"><dt class="text-[#797979]">Subtotal</dt><dd class="text-dark-purple">{{ formatPrice(order.totalPrice + order.discount) }}</dd></div>
         @if (order.discount > 0) {
-          <div class="flex justify-between"><dt class="text-slate-500">Discount</dt><dd class="text-emerald-600">&minus; {{ formatPrice(order.discount) }}</dd></div>
+          <div class="flex justify-between"><dt class="text-[#797979]">Discount</dt><dd class="text-emerald-600">&minus; {{ formatPrice(order.discount) }}</dd></div>
         }
-        <div class="flex justify-between border-t border-slate-200 pt-2 font-semibold"><dt class="text-slate-900">Total</dt><dd class="text-slate-900">{{ formatPrice(order.totalPrice) }}</dd></div>
+        <div class="flex justify-between border-t border-[#F6F8FE] pt-2 font-semibold"><dt class="text-dark-purple">Total</dt><dd class="text-dark-purple">{{ formatPrice(order.totalPrice) }}</dd></div>
       </dl>
-      <div class="mt-4 text-sm text-slate-600">
-        <p class="font-semibold text-slate-800">Ship to</p>
+      <div class="mt-4 text-sm text-[#646D77]">
+        <p class="font-semibold text-blue-black">Ship to</p>
         <p class="mt-1">{{ order.shippingAddress1 }}{{ order.shippingAddress2 ? ', ' + order.shippingAddress2 : '' }}</p>
         <p>{{ order.city }}, {{ order.country }} &middot; {{ order.phone }}</p>
       </div>

@@ -1,19 +1,19 @@
 @if (auth.user(); as user) {
-  <section class="rounded-lg border border-slate-200 bg-white p-6">
+  <section class="rounded-lg border border-[#F6F8FE] bg-white p-6">
     <div class="flex items-center justify-between">
-      <h2 class="text-lg font-semibold text-slate-900">{{ user.name }}</h2>
-      <a routerLink="/profile/user/edit" class="text-sm font-medium text-indigo-600 hover:underline">Edit</a>
+      <h2 class="text-lg font-semibold text-blue-black">{{ user.name }}</h2>
+      <a routerLink="/profile/user/edit" class="text-sm font-medium text-salmon hover:underline">Edit</a>
     </div>
     <dl class="mt-4 grid gap-2 text-sm sm:grid-cols-2">
-      <div><dt class="text-slate-500">Email</dt><dd class="text-slate-800">{{ user.email }}</dd></div>
-      <div><dt class="text-slate-500">Phone</dt><dd class="text-slate-800">{{ user.phone }}</dd></div>
-      <div><dt class="text-slate-500">City</dt><dd class="text-slate-800">{{ user.city || '&mdash;' }}</dd></div>
-      <div><dt class="text-slate-500">Country</dt><dd class="text-slate-800">{{ user.country || '&mdash;' }}</dd></div>
+      <div><dt class="text-[#797979]">Email</dt><dd class="text-blue-black">{{ user.email }}</dd></div>
+      <div><dt class="text-[#797979]">Phone</dt><dd class="text-blue-black">{{ user.phone }}</dd></div>
+      <div><dt class="text-[#797979]">City</dt><dd class="text-blue-black">{{ user.city || '&mdash;' }}</dd></div>
+      <div><dt class="text-[#797979]">Country</dt><dd class="text-blue-black">{{ user.country || '&mdash;' }}</dd></div>
     </dl>
   </section>
 
   <section class="mt-8">
-    <h2 class="text-lg font-semibold text-slate-900">My wishlist</h2>
+    <h2 class="text-lg font-semibold text-blue-black">My wishlist</h2>
     @if (wishlist.count() === 0) {
       <app-empty-state message="Nothing saved yet." />
     } @else {
@@ -25,5 +25,5 @@
     }
   </section>
 } @else {
-  <p class="text-slate-500">Loading your account...</p>
+  <p class="text-[#797979]">Loading your account...</p>
 }

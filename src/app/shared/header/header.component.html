@@ -36,7 +36,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7.5-4.6-9.5-8.6C.9 9.4 2.6 6 5.6 6c1.9 0 3.2 1 4.4 2.7C11.2 7 12.5 6 14.4 6c3 0 4.7 3.4 3.1 6.4C15.5 16.4 12 21 12 21z" />
       </svg>
       @if (wishlist.count() > 0) {
-        <span data-testid="wishlist-badge" class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-rose-500 px-1 text-[10px] font-bold text-white">
+        <span data-testid="wishlist-badge" class="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#ff4545] px-1 text-[10px] font-bold text-white">
           {{ wishlist.count() }}
         </span>
       }
@@ -59,7 +59,7 @@
       <button
         data-testid="logout-button"
         type="button"
-        class="rounded-md px-3 py-1.5 text-sm font-medium text-[#797979] hover:text-rose-600"
+        class="rounded-md px-3 py-1.5 text-sm font-medium text-[#797979] hover:text-[#ff4545]"
         (click)="logout()"
       >
         Logout

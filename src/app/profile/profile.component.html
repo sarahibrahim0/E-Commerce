@@ -1,15 +1,15 @@
 <div class="mx-auto max-w-5xl px-4 py-8">
-  <h1 class="text-2xl font-bold text-slate-900">My account</h1>
+  <h1 class="text-2xl font-bold text-blue-black">My account</h1>
   <div class="mt-6 grid gap-8 md:grid-cols-[200px_1fr]">
     <nav class="flex flex-row gap-1 overflow-x-auto md:flex-col" aria-label="Profile">
-      <a routerLink="/profile" routerLinkActive="bg-indigo-50 text-indigo-700" [routerLinkActiveOptions]="{ exact: true }"
-         class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">Account info</a>
-      <a routerLink="/profile/user/edit" routerLinkActive="bg-indigo-50 text-indigo-700"
-         class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">Edit profile</a>
-      <a routerLink="/profile/addresses" routerLinkActive="bg-indigo-50 text-indigo-700"
-         class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">Addresses</a>
-      <a routerLink="/profile/orders" routerLinkActive="bg-indigo-50 text-indigo-700"
-         class="rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">Orders</a>
+      <a routerLink="/profile" routerLinkActive="bg-[#F6F8FE] text-salmon" [routerLinkActiveOptions]="{ exact: true }"
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">Account info</a>
+      <a routerLink="/profile/user/edit" routerLinkActive="bg-[#F6F8FE] text-salmon"
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">Edit profile</a>
+      <a routerLink="/profile/addresses" routerLinkActive="bg-[#F6F8FE] text-salmon"
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">Addresses</a>
+      <a routerLink="/profile/orders" routerLinkActive="bg-[#F6F8FE] text-salmon"
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">Orders</a>
     </nav>
     <router-outlet />
   </div>

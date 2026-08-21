@@ -1,7 +1,7 @@
 <span class="inline-flex items-center gap-0.5" aria-label="Rating {{ rating() }} of 5">
   @for (filled of stars(); track $index) {
     <svg
-      [class]="'inline-block ' + sizeClass() + (filled ? ' text-amber-400' : ' text-slate-300')"
+      [class]="'inline-block ' + sizeClass() + (filled ? ' text-salmon' : ' text-[#c9c9c9]')"
       viewBox="0 0 20 20"
       fill="currentColor"
     >

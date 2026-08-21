@@ -5,9 +5,9 @@
     <app-empty-state [message]="err" />
   } @else if (content(); as page) {
     <header class="text-center">
-      <h1 class="text-3xl font-bold text-slate-900">{{ page.title }}</h1>
+      <h1 class="text-3xl font-bold text-blue-black">{{ page.title }}</h1>
       @if (page.subtitle) {
-        <p class="mt-2 text-slate-500">{{ page.subtitle }}</p>
+        <p class="mt-2 text-[#797979]">{{ page.subtitle }}</p>
       }
     </header>
 
@@ -19,9 +19,9 @@
       @for (section of page.sections; track $index) {
         <section>
           @if (section.heading) {
-            <h2 class="text-xl font-semibold text-slate-900">{{ section.heading }}</h2>
+            <h2 class="text-xl font-semibold text-blue-black">{{ section.heading }}</h2>
           }
-          <p class="mt-2 leading-relaxed text-slate-600">{{ section.body }}</p>
+          <p class="mt-2 leading-relaxed text-[#646D77]">{{ section.body }}</p>
         </section>
       }
     </div>

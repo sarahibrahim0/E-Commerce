@@ -25,9 +25,9 @@ export class OrdersListComponent implements OnInit {
   protected readonly formatPrice = formatPrice;
   protected readonly statusClass = (status: string): string => {
     if (status === 'Delivered') return 'bg-emerald-50 text-emerald-700';
-    if (status === 'Cancelled' || status === 'Refunded') return 'bg-rose-50 text-rose-700';
+    if (status === 'Cancelled' || status === 'Refunded') return 'bg-[#fff5f5] text-[#ff4545]';
     if (status === 'Pending') return 'bg-amber-50 text-amber-700';
-    return 'bg-slate-100 text-slate-600';
+    return 'bg-[#ecd7cd] text-[#646D77]';
   };
 
   private cart = inject(CartStore);

@@ -1,20 +1,20 @@
 <div class="mx-auto max-w-7xl px-4 py-8">
-  <h1 class="text-2xl font-bold text-slate-900">Categories</h1>
+  <h1 class="text-2xl font-bold text-blue-black">Categories</h1>
   @if (loading()) {
     <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
       @for (_ of [1, 2, 3, 4, 5, 6, 7, 8]; track $index) {
-        <div class="h-28 animate-pulse rounded-lg bg-slate-200"></div>
+        <div class="h-28 animate-pulse rounded-lg bg-[#ecd7cd]"></div>
       }
     </div>
   } @else if (error(); as err) {
-    <div class="mt-6 rounded-md bg-rose-50 p-4 text-sm text-rose-700">{{ err }}</div>
+    <div class="mt-6 rounded-md bg-[#fff5f5] p-4 text-sm text-[#ff4545]">{{ err }}</div>
   } @else if (categories().length === 0) {
     <app-empty-state message="No categories yet." />
   } @else {
     <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
       @for (cat of categories(); track cat.id) {
         <a routerLink="/products" [queryParams]="{ categories: cat.id }"
-           class="flex h-28 flex-col items-center justify-center gap-1 rounded-lg border border-slate-200 text-slate-800 transition-shadow hover:shadow-md">
+           class="flex h-28 flex-col items-center justify-center gap-1 rounded-lg border border-[#F6F8FE] text-blue-black transition-shadow hover:shadow-md">
           @if (cat.icon) {
             <span class="text-2xl">{{ cat.icon }}</span>
           }
