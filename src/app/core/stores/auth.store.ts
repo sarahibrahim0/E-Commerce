@@ -15,6 +15,8 @@ export class AuthStore {
   readonly user = signal<User | null>(null);
   readonly loading = signal(false);
   readonly error = signal<string | null>(null);
+  readonly pendingVerificationUserId = signal<string | null>(null);
+  readonly pendingVerificationEmail = signal<string | null>(null);
 
   readonly isLoggedIn = computed(() => this.token() !== null);
 
@@ -34,7 +36,13 @@ export class AuthStore {
           tap((user) => this.user.set(user)),
         ),
       );
-    } catch (err) {
+    } catch (err: any) {
+      if (err?.status === 403 && err?.error?.userId) {
+        this.pendingVerificationUserId.set(err.error.userId);
+        this.pendingVerificationEmail.set(email);
+        this.error.set(err.error.message || 'Email not verified');
+        throw err;
+      }
       this.error.set(normalizeApiError(err).message);
       throw err;
     } finally {
@@ -46,8 +54,9 @@ export class AuthStore {
     this.loading.set(true);
     this.error.set(null);
     try {
-      await firstValueFrom(this.auth.register(body));
-      await this.login(body.email, body.password);
+      const res = await firstValueFrom(this.auth.register(body)) as any;
+      this.pendingVerificationUserId.set(res.userId || null);
+      this.pendingVerificationEmail.set(body.email);
     } catch (err) {
       this.error.set(normalizeApiError(err).message);
       throw err;
@@ -71,7 +80,67 @@ export class AuthStore {
     this.userId.set(null);
     this.user.set(null);
     this.error.set(null);
+    this.pendingVerificationUserId.set(null);
+    this.pendingVerificationEmail.set(null);
     clearStorageKey('ecom.token');
     clearStorageKey('ecom.userId');
+  }
+
+  async verifyEmail(code: string): Promise<void> {
+    const userId = this.pendingVerificationUserId();
+    if (!userId) throw new Error('No pending verification');
+    this.loading.set(true);
+    this.error.set(null);
+    try {
+      await firstValueFrom(this.auth.verifyEmail(userId, code));
+      this.pendingVerificationUserId.set(null);
+      this.pendingVerificationEmail.set(null);
+    } catch (err) {
+      this.error.set(normalizeApiError(err).message);
+      throw err;
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  async resendVerification(): Promise<void> {
+    const email = this.pendingVerificationEmail();
+    if (!email) throw new Error('No pending verification email');
+    this.loading.set(true);
+    this.error.set(null);
+    try {
+      await firstValueFrom(this.auth.resendVerification(email));
+    } catch (err) {
+      this.error.set(normalizeApiError(err).message);
+      throw err;
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  async forgotPassword(email: string): Promise<void> {
+    this.loading.set(true);
+    this.error.set(null);
+    try {
+      await firstValueFrom(this.auth.forgotPassword(email));
+    } catch (err) {
+      this.error.set(normalizeApiError(err).message);
+      throw err;
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  async resetPassword(token: string, password: string): Promise<void> {
+    this.loading.set(true);
+    this.error.set(null);
+    try {
+      await firstValueFrom(this.auth.resetPassword(token, password));
+    } catch (err) {
+      this.error.set(normalizeApiError(err).message);
+      throw err;
+    } finally {
+      this.loading.set(false);
+    }
   }
 }
