@@ -39,7 +39,7 @@ export class RegisterComponent {
         phone: this.phone().trim(),
         password: this.password(),
       });
-      await this.router.navigate(['/']);
+      await this.router.navigate(['/verify-email']);
     } catch {
       // error surfaced via auth.error()
     }

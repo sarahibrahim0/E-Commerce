@@ -25,8 +25,10 @@ export class LoginComponent {
       await this.auth.login(this.email().trim(), this.password());
       const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
       await this.router.navigateByUrl(returnUrl);
-    } catch {
-      // error surfaced via auth.error()
+    } catch (err: any) {
+      if (err?.status === 403) {
+        this.router.navigate(['/verify-email']);
+      }
     }
   }
 }

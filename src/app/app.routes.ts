@@ -10,6 +10,9 @@ export const routes: Routes = [
   { path: 'cart', canActivate: [authGuard], loadComponent: () => import('./storefront/cart/cart.component').then((m) => m.CartComponent) },
   { path: 'checkout', canActivate: [authGuard], loadComponent: () => import('./storefront/checkout/checkout.component').then((m) => m.CheckoutComponent) },
   { path: 'order/success', loadComponent: () => import('./storefront/order-success/order-success.component').then((m) => m.OrderSuccessComponent) },
+  { path: 'verify-email', loadComponent: () => import('./auth/verify-email/verify-email.component').then((m) => m.VerifyEmailComponent) },
+  { path: 'forgot-password', loadComponent: () => import('./auth/forgot-password/forgot-password.component').then((m) => m.ForgotPasswordComponent) },
+  { path: 'reset-password', loadComponent: () => import('./auth/reset-password/reset-password.component').then((m) => m.ResetPasswordComponent) },
   { path: 'login', canActivate: [guestGuard], loadComponent: () => import('./auth/login/login.component').then((m) => m.LoginComponent) },
   { path: 'register', canActivate: [guestGuard], loadComponent: () => import('./auth/register/register.component').then((m) => m.RegisterComponent) },
   {
