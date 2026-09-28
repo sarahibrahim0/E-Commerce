@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/ecommerce-v2/browser",
+    "public": "dist/hosting/en",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {

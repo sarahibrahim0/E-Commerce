@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && node scripts/stage-hosting.js",
     "start:localized": "npm run build && node scripts/serve-localized.mjs",
     "preview:localized": "node scripts/serve-localized.mjs",
     "watch": "ng build --watch --configuration development",
