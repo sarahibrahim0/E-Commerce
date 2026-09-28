@@ -1,0 +1,66 @@
+.rich-text {
+  color: #646d77;
+  line-height: 1.7;
+  font-size: 0.95rem;
+
+  :where(p) {
+    margin-block: 0.75rem;
+  }
+
+  :where(h1, h2, h3, h4) {
+    color: #023047;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-block: 1.25rem 0.5rem;
+  }
+
+  :where(h1) {
+    font-size: 1.5rem;
+  }
+
+  :where(h2) {
+    font-size: 1.25rem;
+  }
+
+  :where(h3) {
+    font-size: 1.1rem;
+  }
+
+  :where(ul, ol) {
+    padding-inline-start: 1.25rem;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  :where(ul) {
+    list-style: disc;
+  }
+
+  :where(ol) {
+    list-style: decimal;
+  }
+
+  :where(a) {
+    color: #e9765a;
+    text-decoration: underline;
+  }
+
+  :where(strong, b) {
+    color: #023047;
+    font-weight: 600;
+  }
+
+  :where(blockquote) {
+    border-inline-start: 3px solid #e9765a;
+    padding-inline-start: 1rem;
+    color: #646d77;
+    font-style: italic;
+    margin-block: 1rem;
+  }
+
+  :where(img) {
+    max-width: 100%;
+    border-radius: 0.75rem;
+    margin-block: 0.5rem;
+  }
+}

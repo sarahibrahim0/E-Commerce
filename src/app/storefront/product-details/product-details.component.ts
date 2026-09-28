@@ -2,8 +2,9 @@ import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { Subscription } from 'rxjs';
-import { Product } from '../../core/models';
+import { Subscription, firstValueFrom, timeout } from 'rxjs';
+import { PaginatedResponse, Product, Review } from '../../core/models';
+import { pickText } from '../../core/utils/localize';
 import { ProductsService } from '../../core/services/products.service';
 import { ReviewsService } from '../../core/services/reviews.service';
 import { AuthStore } from '../../core/stores/auth.store';
@@ -11,9 +12,9 @@ import { CartStore } from '../../core/stores/cart.store';
 import { ReviewsStore } from '../../core/stores/reviews.store';
 import { RecentlyViewedStore } from '../../core/stores/recently-viewed.store';
 import { normalizeApiError } from '../../core/services/api-error';
-import { formatPrice } from '../../core/utils/price';
+import { formatPrice, effectivePrice, onSale } from '../../core/utils/price';
 import { RatingStarsComponent } from '../../shared/rating-stars/rating-stars.component';
-import { LoadingSkeletonComponent } from '../../shared/loading-skeleton/loading-skeleton.component';
+import { LoadingSpinnerComponent } from '../../shared/loading-spinner/loading-spinner.component';
 import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
 import { ToastService } from '../../shared/toast/toast.service';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
@@ -21,7 +22,7 @@ import { ProductCardComponent } from '../../shared/product-card/product-card.com
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [RouterLink, RatingStarsComponent, LoadingSkeletonComponent, EmptyStateComponent, ProductCardComponent, FormsModule, DatePipe],
+  imports: [RouterLink, RatingStarsComponent, LoadingSpinnerComponent, EmptyStateComponent, ProductCardComponent, FormsModule, DatePipe],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss',
 })
@@ -38,12 +39,50 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   readonly activeImage = signal('');
   readonly related = signal<Product[]>([]);
 
-  protected readonly price = computed(() => formatPrice(this.product()?.price ?? 0));
+  protected readonly price = computed(() => formatPrice(effectivePrice(this.product())));
+  protected readonly oldPrice = computed(() => (onSale(this.product()) ? formatPrice(this.product()?.price ?? 0) : ''));
+  protected readonly discountPercent = computed(() => {
+    const p = this.product();
+    if (!p || !onSale(p)) return 0;
+    return Math.round(((p.price - Number(p.salePrice)) / p.price) * 100);
+  });
+  protected readonly displayOldPrice = computed(() => onSale(this.product()));
   protected readonly outOfStock = computed(() => (this.product()?.countInStock ?? 0) <= 0);
+  protected readonly lowStock = computed(() => {
+    const count = this.product()?.countInStock ?? 0;
+    return count > 0 && count <= 5;
+  });
 
-  protected reviewRating = 5;
-  protected reviewComment = '';
-  protected reviewSaving = false;
+  protected readonly productName = computed(() => pickText(this.product()?.name));
+
+  protected readonly categoryName = computed(() => {
+    const c = this.product()?.category;
+    return typeof c === 'string' ? c : pickText(c?.name) ?? '';
+  });
+
+  protected readonly categoryId = computed(() => {
+    const c = this.product()?.category;
+    return typeof c === 'string' ? c : c?.id ?? '';
+  });
+
+  protected readonly sku = computed(() => (this.product()?.id ?? '').slice(0, 8).toUpperCase().replace(/-/g, ''));
+
+  protected readonly isNew = computed(() => {
+    const created = this.product()?.dateCreated;
+    if (!created) return false;
+    return Date.now() - new Date(created).getTime() < 30 * 24 * 60 * 60 * 1000;
+  });
+
+  readonly reviewRating = signal(5);
+  readonly reviewComment = signal('');
+  readonly reviewSaving = signal(false);
+  readonly reviewError = signal<string | null>(null);
+
+  protected readonly reviewSubmitLabel = computed(() =>
+    this.reviewSaving()
+      ? $localize`Submitting...`
+      : $localize`Submit review`,
+  );
 
   private route = inject(ActivatedRoute);
   private productsApi = inject(ProductsService);
@@ -79,10 +118,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       const categoryId =
         typeof product.category === 'string' ? product.category : product.category?.id;
       if (categoryId) {
-        const list = await new Promise<Product[]>((resolve, reject) =>
+        const list = await new Promise<PaginatedResponse<Product>>((resolve, reject) =>
           this.productsApi.list({ categoryId }).subscribe({ next: resolve, error: reject }),
         );
-        this.related.set(list.filter((p) => p.id !== product.id).slice(0, 4));
+        this.related.set(list.data.filter((p) => p.id !== product.id).slice(0, 4));
       }
       void this.reviews.load(id);
     } catch (err) {
@@ -100,26 +139,29 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     const product = this.product();
     if (!product) return;
     this.cart.add(product, this.quantity());
-    this.toasts.show(`${product.name} added to cart`, 'success');
+    this.toasts.show($localize`${pickText(product.name)} added to cart`, 'success');
   }
 
   async submitReview(): Promise<void> {
     const product = this.product();
-    if (!product || this.reviewSaving) return;
-    this.reviewSaving = true;
+    if (!product || this.reviewSaving()) return;
+    this.reviewSaving.set(true);
+    this.reviewError.set(null);
     try {
-      await new Promise<void>((resolve, reject) =>
-        this.reviewsApi.add(product.id, { rating: this.reviewRating, comment: this.reviewComment })
-          .subscribe({ next: () => resolve(), error: reject }),
+      await firstValueFrom(
+        this.reviewsApi.add(product.id, { rating: this.reviewRating(), comment: this.reviewComment() })
+          .pipe(timeout(20000)),
       );
-      this.reviewComment = '';
-      this.reviewRating = 5;
+      this.reviewComment.set('');
+      this.reviewRating.set(5);
       await this.reviews.load(product.id);
-      this.toasts.show('Review submitted', 'success');
-    } catch {
-      this.toasts.show('Could not submit review', 'error');
+      this.toasts.show($localize`Review submitted`, 'success');
+    } catch (err) {
+      const message = normalizeApiError(err).message;
+      this.reviewError.set(message);
+      this.toasts.show(message, 'error');
     } finally {
-      this.reviewSaving = false;
+      this.reviewSaving.set(false);
     }
   }
 
@@ -135,12 +177,25 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     return this.auth.isLoggedIn() && typeof user === 'object' && user.id === this.auth.userId();
   }
 
-  reviewAuthorName(review: import('../../core/models').Review): string {
-    return typeof review.user === 'object' ? review.user.name : 'User';
+  reviewAuthorName(review: Review): string {
+    return typeof review.user === 'object' ? pickText(review.user.name) : $localize`User`;
+  }
+
+  reviewUserImage(review: Review): string {
+    if (typeof review.user !== 'object') return '';
+    const raw = (review.user as { image?: unknown; avatar?: unknown }).image
+      ?? (review.user as { image?: unknown; avatar?: unknown }).avatar;
+    if (!raw) return '';
+    if (typeof raw === 'string') return raw;
+    return (raw as { url?: string }).url ?? '';
+  }
+
+  onAvatarError(event: Event): void {
+    (event.target as HTMLImageElement).style.display = 'none';
   }
 
   addRelatedToCart(product: Product): void {
     this.cart.add(product);
-    this.toasts.show(`${product.name} added to cart`, 'success');
+    this.toasts.show($localize`${pickText(product.name)} added to cart`, 'success');
   }
 }

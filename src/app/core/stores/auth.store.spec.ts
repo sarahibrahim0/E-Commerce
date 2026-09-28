@@ -27,7 +27,7 @@ describe('AuthStore', () => {
     const loginPromise = store.login('a@b.c', 'secret');
     const loginReq = http.expectOne(`${environment.apiUrl}users/login`);
     expect(loginReq.request.method).toBe('POST');
-    loginReq.flush({ user: 'a@b.c', token: 'tok-1', id: 'u1' });
+    loginReq.flush({ user: 'a@b.c', token: 'tok-1', refreshToken: 'rt-1', userId: 'u1' });
 
     await Promise.resolve();
     await Promise.resolve();
@@ -39,6 +39,8 @@ describe('AuthStore', () => {
     });
 
     await loginPromise;
+
+    http.expectOne(`${environment.apiUrl}wishlist`).flush([]);
 
     expect(store.isLoggedIn()).toBe(true);
     expect(store.token()).toBe('tok-1');

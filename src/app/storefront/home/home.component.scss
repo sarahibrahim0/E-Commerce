@@ -12,7 +12,7 @@
   width: 100%;
   height: 2px;
   background: #e7ebf2;
-  bottom: 37px;
+  bottom: var(--spacing-tabs);
   left: 0;
 }
 
@@ -75,7 +75,7 @@ ul:last-child {
   height: 101%;
   background: #e9855a;
   z-index: 1;
-  border-radius: 0px;
+  border-radius: 6px;
   transition: transform 0.5s;
   transition-timing-function: ease;
   transform-origin: 0 0;
@@ -107,7 +107,7 @@ ul:last-child {
     border: 0;
     overflow: hidden;
     margin: 0;
-    border-radius: 0px;
+    border-radius: 6px;
     animation-name: fadeInUp;
     animation-delay: .07s;
     animation-duration: .6s;
@@ -133,7 +133,7 @@ ul:last-child {
     border: 0;
     overflow: hidden;
     margin: 0;
-    border-radius: 0px;
+    border-radius: 6px;
     animation-name: fadeInUp;
     animation-delay: .07s;
     animation-duration: .6s;

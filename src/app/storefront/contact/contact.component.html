@@ -1,66 +1,150 @@
-<div class="mx-auto max-w-4xl px-4 py-12">
+<div class="w-full ps-[175px] pe-[175px] pt-page-x pb-section">
   @if (loading()) {
-    <app-loading-skeleton />
+    <div class="animate-pulse" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@contact.loadingAria">
+      <div class="h-44 rounded-xl bg-[#ecd7cd]"></div>
+      <div class="mt-8 grid items-start gap-8 lg:grid-cols-[1fr_360px]">
+        <section class="rounded-lg border border-[#F6F8FE] bg-white p-6">
+          <div class="h-5 w-44 rounded bg-[#ecd7cd]"></div>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            <div class="h-10 rounded-md bg-[#ecd7cd]"></div>
+            <div class="h-10 rounded-md bg-[#ecd7cd]"></div>
+          </div>
+          <div class="mt-4 h-10 rounded-md bg-[#ecd7cd]"></div>
+          <div class="mt-4 h-32 rounded-md bg-[#ecd7cd]"></div>
+          <div class="mt-4 h-10 w-36 rounded-md bg-[#ecd7cd]"></div>
+        </section>
+        <aside class="space-y-3">
+          <div class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4">
+            <div class="h-10 w-10 rounded-lg bg-[#ecd7cd]"></div>
+            <div class="flex-1 space-y-2">
+              <div class="h-3 w-16 rounded bg-[#ecd7cd]"></div>
+              <div class="h-3 w-32 rounded bg-[#ecd7cd]"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4">
+            <div class="h-10 w-10 rounded-lg bg-[#ecd7cd]"></div>
+            <div class="flex-1 space-y-2">
+              <div class="h-3 w-16 rounded bg-[#ecd7cd]"></div>
+              <div class="h-3 w-32 rounded bg-[#ecd7cd]"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4">
+            <div class="h-10 w-10 rounded-lg bg-[#ecd7cd]"></div>
+            <div class="flex-1 space-y-2">
+              <div class="h-3 w-16 rounded bg-[#ecd7cd]"></div>
+              <div class="h-3 w-32 rounded bg-[#ecd7cd]"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4">
+            <div class="h-10 w-10 rounded-lg bg-[#ecd7cd]"></div>
+            <div class="flex-1 space-y-2">
+              <div class="h-3 w-16 rounded bg-[#ecd7cd]"></div>
+              <div class="h-3 w-40 rounded bg-[#ecd7cd]"></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
   } @else if (error(); as err) {
     <app-empty-state [message]="err" />
   } @else if (content(); as page) {
-    <header class="text-center">
-      <h1 class="text-3xl font-bold text-blue-black">{{ page.title }}</h1>
+    <section class="relative overflow-hidden rounded-2xl bg-[#ecd7cd] px-6 py-16 text-center md:px-12 md:py-20">
+      <span class="pointer-events-none absolute -end-10 -top-14 h-48 w-48 rounded-full bg-white/40"></span>
+      <span class="pointer-events-none absolute -bottom-16 -start-10 h-56 w-56 rounded-full bg-salmon/20"></span>
+      <p class="relative text-xs font-semibold uppercase tracking-[0.2em] text-salmon" i18n="Contact tagline|@@contact.tagline">Get in touch</p>
+      <h1 class="relative mt-3 text-3xl font-bold text-blue-black md:text-4xl">{{ page.title }}</h1>
       @if (page.subtitle) {
-        <p class="mt-2 text-[#797979]">{{ page.subtitle }}</p>
+        <p class="relative mx-auto mt-3 max-w-xl text-[#646D77]">{{ page.subtitle }}</p>
       }
-    </header>
+      @if (page.contact; as contact) {
+        <div class="relative mt-6 flex flex-wrap justify-center gap-2 text-sm">
+          @if (contact.email) {
+            <a [href]="'mailto:' + contact.email" class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 font-medium text-blue-black hover:text-salmon">
+              <i class="bi bi-envelope text-salmon"></i>{{ contact.email }}
+            </a>
+          }
+          @if (contact.phone) {
+            <a [href]="'tel:' + contact.phone" class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 font-medium text-blue-black hover:text-salmon">
+              <i class="bi bi-telephone text-salmon"></i>{{ contact.phone }}
+            </a>
+          }
+        </div>
+      }
+    </section>
 
-    <div class="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
-      <section class="rounded-lg border border-[#F6F8FE] bg-white p-6">
-        <h2 class="text-lg font-semibold text-blue-black">Send us a message</h2>
+    <div class="mt-8 grid items-start gap-8 lg:grid-cols-[1fr_360px]">
+      <section class="rounded-2xl border border-[#F6F8FE] bg-white p-6 md:p-8">
+        <h2 class="text-lg font-semibold text-blue-black" i18n="Contact form heading|@@contact.formTitle">Send us a message</h2>
+        <p class="mt-1 text-sm text-[#797979]" i18n="Contact form message|@@contact.formSubtitle">Fill out the form and we will get back to you shortly.</p>
         @if (formError(); as err) {
           <p class="mt-3 rounded-md bg-[#fff5f5] p-3 text-sm text-[#ff4545]">{{ err }}</p>
         }
-        <form class="mt-4 space-y-4" (ngSubmit)="send()">
+        <form class="mt-5 space-y-4" (ngSubmit)="send()">
           <div class="grid gap-4 sm:grid-cols-2">
-            <input [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" placeholder="Your name *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-            <input [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" type="email" placeholder="Your email *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            <input [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" placeholder="Your name *" i18n-placeholder="Your name placeholder|@@contact.namePlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            <input [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" type="email" placeholder="Your email *" i18n-placeholder="Your email placeholder|@@contact.emailPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
           </div>
-          <input [ngModel]="subject()" (ngModelChange)="subject.set($event)" name="subject" placeholder="Subject" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-          <textarea [ngModel]="message()" (ngModelChange)="message.set($event)" name="message" rows="5" placeholder="Your message *" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon"></textarea>
-          <button type="submit" [disabled]="sending()" class="rounded-none uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
-            {{ sending() ? 'Sending...' : 'Send message' }}
+          <input [ngModel]="subject()" (ngModelChange)="subject.set($event)" name="subject" placeholder="Subject" i18n-placeholder="Subject placeholder|@@contact.subjectPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+          <textarea [ngModel]="message()" (ngModelChange)="message.set($event)" name="message" rows="5" placeholder="Your message *" i18n-placeholder="Your message placeholder|@@contact.messagePlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon"></textarea>
+          <button type="submit" [disabled]="sending()" class="inline-flex items-center gap-2 rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
+            <i class="bi bi-send"></i>{{ sendLabel() }}
           </button>
         </form>
       </section>
 
-      <aside class="space-y-4 text-sm">
-        @if (page.contact; as contact) {
-          <div class="rounded-lg border border-[#F6F8FE] bg-white p-5">
-            <h3 class="text-sm font-semibold uppercase tracking-wide text-[#797979]">Contact details</h3>
-            <dl class="mt-3 space-y-2 text-[#646D77]">
-              @if (contact.email) {
-                <div><dt class="text-[#797979]">Email</dt><dd><a [href]="'mailto:' + contact.email" class="text-salmon hover:underline">{{ contact.email }}</a></dd></div>
-              }
-              @if (contact.phone) {
-                <div><dt class="text-[#797979]">Phone</dt><dd><a [href]="'tel:' + contact.phone" class="text-salmon hover:underline">{{ contact.phone }}</a></dd></div>
-              }
-              @if (contact.address) {
-                <div><dt class="text-[#797979]">Address</dt><dd>{{ contact.address }}</dd></div>
-              }
-              @if (contact.workingHours) {
-                <div><dt class="text-[#797979]">Working hours</dt><dd>{{ contact.workingHours }}</dd></div>
-              }
-            </dl>
-            @if (contact.social && (contact.social.facebook || contact.social.instagram || contact.social.twitter || contact.social.whatsapp)) {
-              <div class="mt-4 flex gap-3">
-                @if (contact.social.facebook) { <a [href]="contact.social.facebook" target="_blank" rel="noopener" class="text-salmon hover:underline">Facebook</a> }
-                @if (contact.social.instagram) { <a [href]="contact.social.instagram" target="_blank" rel="noopener" class="text-salmon hover:underline">Instagram</a> }
-                @if (contact.social.twitter) { <a [href]="contact.social.twitter" target="_blank" rel="noopener" class="text-salmon hover:underline">Twitter</a> }
-                @if (contact.social.whatsapp) { <a [href]="contact.social.whatsapp" target="_blank" rel="noopener" class="text-salmon hover:underline">WhatsApp</a> }
+      @if (page.contact; as contact) {
+        <aside class="space-y-3 text-sm">
+          @if (contact.email) {
+            <a [href]="'mailto:' + contact.email" class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4 hover:border-salmon">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#ecd7cd]/50 text-salmon"><i class="bi bi-envelope"></i></span>
+              <span class="min-w-0">
+                <span class="block text-xs font-semibold uppercase tracking-wide text-[#797979]" i18n="Email label|@@contact.emailLabel">Email</span>
+                <span class="block truncate text-blue-black">{{ contact.email }}</span>
+              </span>
+            </a>
+          }
+          @if (contact.phone) {
+            <a [href]="'tel:' + contact.phone" class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4 hover:border-salmon">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#ecd7cd]/50 text-salmon"><i class="bi bi-telephone"></i></span>
+              <span class="min-w-0">
+                <span class="block text-xs font-semibold uppercase tracking-wide text-[#797979]" i18n="Phone label|@@contact.phoneLabel">Phone</span>
+                <span class="block text-blue-black">{{ contact.phone }}</span>
+              </span>
+            </a>
+          }
+          @if (contact.address) {
+            <div class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#ecd7cd]/50 text-salmon"><i class="bi bi-geo-alt"></i></span>
+              <span class="min-w-0">
+                <span class="block text-xs font-semibold uppercase tracking-wide text-[#797979]" i18n="Address label|@@contact.addressLabel">Address</span>
+                <span class="block text-blue-black">{{ contact.address }}</span>
+              </span>
+            </div>
+          }
+          @if (contact.workingHours) {
+            <div class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#ecd7cd]/50 text-salmon"><i class="bi bi-clock-history"></i></span>
+              <span class="min-w-0">
+                <span class="block text-xs font-semibold uppercase tracking-wide text-[#797979]" i18n="Working hours label|@@contact.workingHoursLabel">Working hours</span>
+                <span class="block text-blue-black">{{ contact.workingHours }}</span>
+              </span>
+            </div>
+          }
+          @if (contact.social && (contact.social.facebook || contact.social.instagram || contact.social.twitter || contact.social.whatsapp)) {
+            <div class="flex items-center gap-3 rounded-lg border border-[#F6F8FE] bg-white p-4">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-[#ecd7cd]/50 text-salmon"><i class="bi bi-share"></i></span>
+              <div class="flex flex-1 gap-2">
+                @if (contact.social.facebook) { <a [href]="contact.social.facebook" target="_blank" rel="noopener" aria-label="Facebook" i18n-aria-label="Facebook social link|@@contact.socialFacebook" class="flex h-8 w-8 items-center justify-center rounded-md bg-salmon text-white hover:bg-[#e9855a]"><i class="bi bi-facebook"></i></a> }
+                @if (contact.social.instagram) { <a [href]="contact.social.instagram" target="_blank" rel="noopener" aria-label="Instagram" i18n-aria-label="Instagram social link|@@contact.socialInstagram" class="flex h-8 w-8 items-center justify-center rounded-md bg-salmon text-white hover:bg-[#e9855a]"><i class="bi bi-instagram"></i></a> }
+                @if (contact.social.twitter) { <a [href]="contact.social.twitter" target="_blank" rel="noopener" aria-label="Twitter" i18n-aria-label="Twitter social link|@@contact.socialTwitter" class="flex h-8 w-8 items-center justify-center rounded-md bg-salmon text-white hover:bg-[#e9855a]"><i class="bi bi-twitter-x"></i></a> }
+                @if (contact.social.whatsapp) { <a [href]="contact.social.whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" i18n-aria-label="WhatsApp social link|@@contact.socialWhatsapp" class="flex h-8 w-8 items-center justify-center rounded-md bg-salmon text-white hover:bg-[#e9855a]"><i class="bi bi-whatsapp"></i></a> }
               </div>
-            }
-          </div>
-        }
-      </aside>
+            </div>
+          }
+        </aside>
+      }
     </div>
   } @else {
-    <app-empty-state message="Content is not available yet." />
+    <app-empty-state message="Content is not available yet." i18n-message="Content not available message|@@contact.noContent" />
   }
 </div>

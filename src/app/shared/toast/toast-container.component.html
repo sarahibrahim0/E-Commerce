@@ -1,4 +1,4 @@
-<div class="pointer-events-none fixed right-4 top-4 z-50 flex w-80 flex-col gap-2">
+<div class="pointer-events-none fixed end-4 top-4 z-50 flex w-80 flex-col gap-2">
   @for (toast of toastService.toasts(); track toast.id) {
     <div
       role="status"
@@ -10,7 +10,8 @@
       <button
         type="button"
         aria-label="Dismiss"
-        class="float-right font-bold"
+        i18n-aria-label="Dismiss toast notification|@@toast.dismissAria"
+        class="float-end font-bold"
         (click)="toastService.dismiss(toast.id)"
       >
         &times;

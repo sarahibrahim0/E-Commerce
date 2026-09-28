@@ -2,20 +2,32 @@
   <section class="rounded-lg border border-[#F6F8FE] bg-white p-6">
     <div class="flex items-center justify-between">
       <h2 class="text-lg font-semibold text-blue-black">{{ user.name }}</h2>
-      <a routerLink="/profile/user/edit" class="text-sm font-medium text-salmon hover:underline">Edit</a>
+      <a routerLink="/profile/user/edit" class="text-sm font-medium text-salmon hover:underline" i18n="Edit action|@@userData.edit">Edit</a>
     </div>
     <dl class="mt-4 grid gap-2 text-sm sm:grid-cols-2">
-      <div><dt class="text-[#797979]">Email</dt><dd class="text-blue-black">{{ user.email }}</dd></div>
-      <div><dt class="text-[#797979]">Phone</dt><dd class="text-blue-black">{{ user.phone }}</dd></div>
-      <div><dt class="text-[#797979]">City</dt><dd class="text-blue-black">{{ user.city || '&mdash;' }}</dd></div>
-      <div><dt class="text-[#797979]">Country</dt><dd class="text-blue-black">{{ user.country || '&mdash;' }}</dd></div>
+      <div><dt class="text-[#797979]" i18n="Email label|@@userData.email">Email</dt><dd class="text-blue-black">{{ user.email }}</dd></div>
+      <div><dt class="text-[#797979]" i18n="Phone label|@@userData.phone">Phone</dt><dd class="text-blue-black">{{ user.phone }}</dd></div>
+      <div><dt class="text-[#797979]" i18n="City label|@@userData.city">City</dt><dd class="text-blue-black">{{ user.city || '&mdash;' }}</dd></div>
+      <div><dt class="text-[#797979]" i18n="Country label|@@userData.country">Country</dt><dd class="text-blue-black">{{ user.country || '&mdash;' }}</dd></div>
     </dl>
   </section>
 
   <section class="mt-8">
-    <h2 class="text-lg font-semibold text-blue-black">My wishlist</h2>
-    @if (wishlist.count() === 0) {
-      <app-empty-state message="Nothing saved yet." />
+    <h2 class="text-lg font-semibold text-blue-black" i18n="My wishlist heading|@@userData.wishlist">My wishlist</h2>
+    @if (wishlist.loading()) {
+      <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-pulse" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@userData.loadingAria">
+        @for (_ of [0, 1, 2]; track $index) {
+          <div class="rounded-lg border border-[#F6F8FE] p-3">
+            <div class="aspect-square rounded bg-[#ecd7cd]"></div>
+            <div class="mt-3 h-3 w-1/4 rounded bg-[#ecd7cd]"></div>
+            <div class="mt-2 h-4 w-3/4 rounded bg-[#ecd7cd]"></div>
+            <div class="mt-2 h-5 w-1/3 rounded bg-[#ecd7cd]"></div>
+            <div class="mt-3 h-9 rounded bg-[#ecd7cd]"></div>
+          </div>
+        }
+      </div>
+    } @else if (wishlist.count() === 0) {
+      <app-empty-state message="Nothing saved yet." i18n-message="Empty wishlist message|@@userData.emptyWishlist" />
     } @else {
       <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         @for (product of wishlist.list(); track product.id) {
@@ -25,5 +37,15 @@
     }
   </section>
 } @else {
-  <p class="text-[#797979]">Loading your account...</p>
+  <div class="animate-pulse space-y-6" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@userData.loadingAria">
+    <section class="rounded-lg border border-[#F6F8FE] bg-white p-6">
+      <div class="h-5 w-40 rounded bg-[#ecd7cd]"></div>
+      <div class="mt-4 grid gap-2 sm:grid-cols-2">
+        <div class="h-4 w-40 rounded bg-[#ecd7cd]"></div>
+        <div class="h-4 w-40 rounded bg-[#ecd7cd]"></div>
+        <div class="h-4 w-32 rounded bg-[#ecd7cd]"></div>
+        <div class="h-4 w-32 rounded bg-[#ecd7cd]"></div>
+      </div>
+    </section>
+  </div>
 }

@@ -6,7 +6,7 @@ import { CouponStore } from './coupon.store';
 import { Coupon } from '../models';
 
 const coupon = (overrides: Partial<Coupon> = {}): Coupon => ({
-  id: 'c1', code: 'SAVE10', type: 'percent', value: 10, maxUses: 100, usedCount: 0,
+  id: 'c1', code: 'SAVE10', type: 'percent', value: 10, minSubtotal: 0, productIds: [], categoryIds: [], maxUses: 100, usedCount: 0,
   active: true, ...overrides,
 });
 
@@ -59,5 +59,41 @@ describe('CouponStore', () => {
     store.clear();
     expect(store.applied()).toBeNull();
     expect(store.code()).toBe('');
+  });
+
+  it('discount only from eligible scoped products', () => {
+    const items = [
+      { product: { id: 'p1', price: 100, salePrice: 0, category: 'c1' } as any, quantity: 2 },
+      { product: { id: 'p2', price: 50, salePrice: 0, category: 'c2' } as any, quantity: 1 },
+    ];
+    store.applied.set(coupon({ productIds: ['p1'] }));
+    expect(store.discountFor(250, items as any)).toBe(20);
+    store.applied.set(coupon({ categoryIds: ['c2'] }));
+    expect(store.discountFor(250, items as any)).toBe(5);
+  });
+
+  it('discount is zero below min subtotal', () => {
+    const items = [
+      { product: { id: 'p1', price: 100, salePrice: 0, category: 'c1' } as any, quantity: 1 },
+    ];
+    store.applied.set(coupon({ minSubtotal: 500 }));
+    expect(store.discountFor(100, items as any)).toBe(0);
+    expect(store.minSubtotalMet(100, items as any)).toBe(false);
+  });
+
+  it('discount uses sale price when product is on sale', () => {
+    const items = [
+      { product: { id: 'p1', price: 100, salePrice: 80, category: 'c1' } as any, quantity: 2 },
+    ];
+    store.applied.set(coupon({ productIds: ['p1'] }));
+    expect(store.discountFor(200, items as any)).toBe(16);
+  });
+
+  it('passes subtotal to the validate endpoint', async () => {
+    const p = store.validate('save10', 3000);
+    const req = http.expectOne(`${environment.apiUrl}coupons/validate`);
+    expect(req.request.body).toEqual({ code: 'save10', subtotal: 3000 });
+    req.flush(coupon());
+    expect(await p).toBe(true);
   });
 });

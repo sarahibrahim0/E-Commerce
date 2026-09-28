@@ -4,7 +4,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "types": [
-      "jasmine"
+      "jasmine",
+      "@angular/localize"
     ]
   },
   "include": [

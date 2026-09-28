@@ -1,0 +1,3356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="forgotPassword.title" datatype="html">
+        <source>Forgot Password?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <note priority="1" from="meaning">Forgot password heading</note>
+      </trans-unit>
+      <trans-unit id="forgotPassword.subtitle" datatype="html">
+        <source>Enter your email to receive a reset link</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">14,17</context>
+        </context-group>
+        <note priority="1" from="meaning">Forgot password message</note>
+      </trans-unit>
+      <trans-unit id="forgotPassword.emailLabel" datatype="html">
+        <source>Email Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">26,29</context>
+        </context-group>
+        <note priority="1" from="meaning">Email address label</note>
+      </trans-unit>
+      <trans-unit id="forgotPassword.emailPlaceholder" datatype="html">
+        <source>Enter your email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+        <note priority="1" from="meaning">Email placeholder</note>
+      </trans-unit>
+      <trans-unit id="forgotPassword.backToLogin" datatype="html">
+        <source>Back to Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">45,51</context>
+        </context-group>
+        <note priority="1" from="meaning">Back to login link</note>
+      </trans-unit>
+      <trans-unit id="1118027788072351320" datatype="html">
+        <source>Sending...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5508458189651454018" datatype="html">
+        <source>Send Reset Link</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4581825606308873944" datatype="html">
+        <source>Check your email for the reset link.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/forgot-password/forgot-password.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login.title" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="meaning">Sign in heading</note>
+      </trans-unit>
+      <trans-unit id="login.welcomeBack" datatype="html">
+        <source>Welcome back!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">4,7</context>
+        </context-group>
+        <note priority="1" from="meaning">Welcome back message</note>
+      </trans-unit>
+      <trans-unit id="login.email" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+        <note priority="1" from="meaning">Email label</note>
+      </trans-unit>
+      <trans-unit id="login.password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+        <note priority="1" from="meaning">Password label</note>
+      </trans-unit>
+      <trans-unit id="login.rememberPassword" datatype="html">
+        <source>Remember password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">43,45</context>
+        </context-group>
+        <note priority="1" from="meaning">Remember password label</note>
+      </trans-unit>
+      <trans-unit id="login.forgotPassword" datatype="html">
+        <source>Forgot password?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">45,49</context>
+        </context-group>
+        <note priority="1" from="meaning">Forgot password link</note>
+      </trans-unit>
+      <trans-unit id="login.newHere" datatype="html">
+        <source>New here? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">58,59</context>
+        </context-group>
+        <note priority="1" from="meaning">New user prompt</note>
+      </trans-unit>
+      <trans-unit id="login.createAccount" datatype="html">
+        <source>Create an account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
+          <context context-type="linenumber">59,63</context>
+        </context-group>
+        <note priority="1" from="meaning">Create account link</note>
+      </trans-unit>
+      <trans-unit id="1858953469563036586" datatype="html">
+        <source>Signing in...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5207635742003539443" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/login/login.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register.title" datatype="html">
+        <source>Create account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="meaning">Create account heading</note>
+      </trans-unit>
+      <trans-unit id="register.subtitle" datatype="html">
+        <source>Register to place orders and leave reviews.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">4,7</context>
+        </context-group>
+        <note priority="1" from="meaning">Register message</note>
+      </trans-unit>
+      <trans-unit id="register.name" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+        <note priority="1" from="meaning">Name label</note>
+      </trans-unit>
+      <trans-unit id="register.email" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <note priority="1" from="meaning">Email label</note>
+      </trans-unit>
+      <trans-unit id="register.country" datatype="html">
+        <source>Country</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+        <note priority="1" from="meaning">Country label</note>
+      </trans-unit>
+      <trans-unit id="register.selectCountry" datatype="html">
+        <source>Select country</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+        <note priority="1" from="meaning">Select country option</note>
+      </trans-unit>
+      <trans-unit id="register.phone" datatype="html">
+        <source>Phone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+        <note priority="1" from="meaning">Phone label</note>
+      </trans-unit>
+      <trans-unit id="register.password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">46,47</context>
+        </context-group>
+        <note priority="1" from="meaning">Password label</note>
+      </trans-unit>
+      <trans-unit id="register.confirmPassword" datatype="html">
+        <source>Confirm password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">51,52</context>
+        </context-group>
+        <note priority="1" from="meaning">Confirm password label</note>
+      </trans-unit>
+      <trans-unit id="register.haveAccount" datatype="html">
+        <source>Already have an account? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">62,63</context>
+        </context-group>
+        <note priority="1" from="meaning">Already have account prompt</note>
+      </trans-unit>
+      <trans-unit id="register.signIn" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.html</context>
+          <context context-type="linenumber">63,67</context>
+        </context-group>
+        <note priority="1" from="meaning">Sign in link</note>
+      </trans-unit>
+      <trans-unit id="3077599139444771356" datatype="html">
+        <source>Creating account...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5907476126990913307" datatype="html">
+        <source>Create account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2903855131362932066" datatype="html">
+        <source>All fields are required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1543538730036692975" datatype="html">
+        <source>Passwords do not match.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/register/register.component.ts</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="resetPassword.title" datatype="html">
+        <source>Reset Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <note priority="1" from="meaning">Reset password heading</note>
+      </trans-unit>
+      <trans-unit id="resetPassword.subtitle" datatype="html">
+        <source>Enter your new password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">14,17</context>
+        </context-group>
+        <note priority="1" from="meaning">Reset password message</note>
+      </trans-unit>
+      <trans-unit id="resetPassword.newPasswordLabel" datatype="html">
+        <source>New Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">26,29</context>
+        </context-group>
+        <note priority="1" from="meaning">New password label</note>
+      </trans-unit>
+      <trans-unit id="resetPassword.newPasswordPlaceholder" datatype="html">
+        <source>Enter new password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+        <note priority="1" from="meaning">New password placeholder</note>
+      </trans-unit>
+      <trans-unit id="resetPassword.confirmLabel" datatype="html">
+        <source>Confirm Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">37,40</context>
+        </context-group>
+        <note priority="1" from="meaning">Confirm password label</note>
+      </trans-unit>
+      <trans-unit id="resetPassword.confirmPlaceholder" datatype="html">
+        <source>Confirm new password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+        <note priority="1" from="meaning">Confirm password placeholder</note>
+      </trans-unit>
+      <trans-unit id="resetPassword.backToLogin" datatype="html">
+        <source>Back to Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">56,62</context>
+        </context-group>
+        <note priority="1" from="meaning">Back to login link</note>
+      </trans-unit>
+      <trans-unit id="5126218690566601508" datatype="html">
+        <source>Resetting...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6972105223770675605" datatype="html">
+        <source>Reset Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6451269955734195952" datatype="html">
+        <source>Passwords do not match</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2511717705004401735" datatype="html">
+        <source>Password updated successfully! Redirecting to login...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/reset-password/reset-password.component.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verifyEmail.title" datatype="html">
+        <source>Verify Your Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <note priority="1" from="meaning">Verify email heading</note>
+      </trans-unit>
+      <trans-unit id="verifyEmail.subtitle" datatype="html">
+        <source>We&apos;ve sent a 6-digit code to your email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">14,17</context>
+        </context-group>
+        <note priority="1" from="meaning">Verify email message</note>
+      </trans-unit>
+      <trans-unit id="verifyEmail.codeLabel" datatype="html">
+        <source>Verification Code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">26,29</context>
+        </context-group>
+        <note priority="1" from="meaning">Verification code label</note>
+      </trans-unit>
+      <trans-unit id="verifyEmail.codePlaceholder" datatype="html">
+        <source>Enter 6-digit code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+        <note priority="1" from="meaning">Verification code placeholder</note>
+      </trans-unit>
+      <trans-unit id="verifyEmail.backToLogin" datatype="html">
+        <source>Back to Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">52,58</context>
+        </context-group>
+        <note priority="1" from="meaning">Back to login link</note>
+      </trans-unit>
+      <trans-unit id="4371485180715105780" datatype="html">
+        <source>Verifying...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8913794084097958305" datatype="html">
+        <source>Verify</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7466242722385507004" datatype="html">
+        <source>Resend in <x id="PH" equiv-text="this.cooldown()"/>s</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3972495142175860210" datatype="html">
+        <source>Resend code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1118848594853292668" datatype="html">
+        <source>Email verified successfully! Redirecting...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/verify-email/verify-email.component.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6462597652961176820" datatype="html">
+        <source>Session expired. Please sign in again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/interceptors/auth.interceptor.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="960665565485640516" datatype="html">
+        <source>Something went wrong</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/services/api-error.ts</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="117052430736458977" datatype="html">
+        <source>No pending verification email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/stores/auth.store.ts</context>
+          <context context-type="linenumber">143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="addresses.title" datatype="html">
+        <source>Saved addresses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+        <note priority="1" from="meaning">Saved addresses heading</note>
+      </trans-unit>
+      <trans-unit id="addresses.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="addresses.empty" datatype="html">
+        <source>No saved addresses yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty addresses message</note>
+      </trans-unit>
+      <trans-unit id="addresses.defaultBadge" datatype="html">
+        <source>Default</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">25,28</context>
+        </context-group>
+        <note priority="1" from="meaning">Default badge</note>
+      </trans-unit>
+      <trans-unit id="addresses.edit" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+        <note priority="1" from="meaning">Edit address action</note>
+      </trans-unit>
+      <trans-unit id="addresses.delete" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">36,39</context>
+        </context-group>
+        <note priority="1" from="meaning">Delete address action</note>
+      </trans-unit>
+      <trans-unit id="addresses.setDefault" datatype="html">
+        <source> Set as default </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">41,44</context>
+        </context-group>
+        <note priority="1" from="meaning">Set default action</note>
+      </trans-unit>
+      <trans-unit id="addresses.editTitle" datatype="html">
+        <source>Edit address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">53,55</context>
+        </context-group>
+        <note priority="1" from="meaning">Edit address heading</note>
+      </trans-unit>
+      <trans-unit id="addresses.addTitle" datatype="html">
+        <source>Add address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">55,58</context>
+        </context-group>
+        <note priority="1" from="meaning">Add address heading</note>
+      </trans-unit>
+      <trans-unit id="addresses.labelPlaceholder" datatype="html">
+        <source>Label (Home, Work...)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+        <note priority="1" from="meaning">Address label placeholder</note>
+      </trans-unit>
+      <trans-unit id="addresses.streetPlaceholder" datatype="html">
+        <source>Street *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <note priority="1" from="meaning">Street placeholder</note>
+      </trans-unit>
+      <trans-unit id="addresses.apartmentPlaceholder" datatype="html">
+        <source>Apartment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <note priority="1" from="meaning">Apartment placeholder</note>
+      </trans-unit>
+      <trans-unit id="addresses.cityPlaceholder" datatype="html">
+        <source>City *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+        <note priority="1" from="meaning">City placeholder</note>
+      </trans-unit>
+      <trans-unit id="addresses.zipPlaceholder" datatype="html">
+        <source>ZIP / Postal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+        <note priority="1" from="meaning">ZIP placeholder</note>
+      </trans-unit>
+      <trans-unit id="addresses.countryPlaceholder" datatype="html">
+        <source>Country *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <note priority="1" from="meaning">Country placeholder</note>
+      </trans-unit>
+      <trans-unit id="addresses.phonePlaceholder" datatype="html">
+        <source>Phone *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <note priority="1" from="meaning">Phone placeholder</note>
+      </trans-unit>
+      <trans-unit id="addresses.cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.html</context>
+          <context context-type="linenumber">74,78</context>
+        </context-group>
+        <note priority="1" from="meaning">Cancel action</note>
+      </trans-unit>
+      <trans-unit id="2821179408673282599" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">426</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3407061818321766940" datatype="html">
+        <source>Saving...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7000649363168371045" datatype="html">
+        <source>Save changes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1443589936173128732" datatype="html">
+        <source>Add address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="698230613646753530" datatype="html">
+        <source>Street, city, country, and phone are required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="229814701210318084" datatype="html">
+        <source>Address saved</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5615387677254217285" datatype="html">
+        <source>Default address updated</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2976214221258436713" datatype="html">
+        <source>Delete address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4369364811458415022" datatype="html">
+        <source>Delete &quot;<x id="PH" equiv-text="pickText(address.label)"/>&quot;?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7022070615528435141" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1575655783253402586" datatype="html">
+        <source>Address deleted</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/addresses/addresses.component.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="editUser.title" datatype="html">
+        <source>Edit profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">2,4</context>
+        </context-group>
+        <note priority="1" from="meaning">Edit profile heading</note>
+      </trans-unit>
+      <trans-unit id="editUser.namePlaceholder" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="meaning">Name placeholder</note>
+      </trans-unit>
+      <trans-unit id="editUser.emailPlaceholder" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="meaning">Email placeholder</note>
+      </trans-unit>
+      <trans-unit id="editUser.phonePlaceholder" datatype="html">
+        <source>Phone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="meaning">Phone placeholder</note>
+      </trans-unit>
+      <trans-unit id="editUser.streetPlaceholder" datatype="html">
+        <source>Street</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="meaning">Street placeholder</note>
+      </trans-unit>
+      <trans-unit id="editUser.apartmentPlaceholder" datatype="html">
+        <source>Apartment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="meaning">Apartment placeholder</note>
+      </trans-unit>
+      <trans-unit id="editUser.cityPlaceholder" datatype="html">
+        <source>City</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="meaning">City placeholder</note>
+      </trans-unit>
+      <trans-unit id="editUser.zipPlaceholder" datatype="html">
+        <source>ZIP / Postal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="meaning">ZIP placeholder</note>
+      </trans-unit>
+      <trans-unit id="editUser.countryPlaceholder" datatype="html">
+        <source>Country</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="meaning">Country placeholder</note>
+      </trans-unit>
+      <trans-unit id="editUser.passwordPlaceholder" datatype="html">
+        <source>New password (optional)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="meaning">New password placeholder</note>
+      </trans-unit>
+      <trans-unit id="1829779471067775299" datatype="html">
+        <source>Profile updated</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/edit-user/edit-user.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="orderDetails.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.tagline" datatype="html">
+        <source>Order details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+        <note priority="1" from="meaning">Order details tagline</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.heading" datatype="html">
+        <source>Order #<x id="INTERPOLATION" equiv-text="{{ shortId(order.id) }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+        <note priority="1" from="meaning">Order number heading</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.placedOn" datatype="html">
+        <source>Placed <x id="INTERPOLATION" equiv-text="{{ order.dateOrdered | date: &apos;medium&apos; }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+        <note priority="1" from="meaning">Order placed date</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.buyAgain" datatype="html">
+        <source>Buy again</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">37,39</context>
+        </context-group>
+        <note priority="1" from="meaning">Buy again action</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.cancelOrder" datatype="html">
+        <source>Cancel order</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">41,45</context>
+        </context-group>
+        <note priority="1" from="meaning">Cancel order action</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.cancelledHeading" datatype="html">
+        <source>This order was cancelled</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">54,56</context>
+        </context-group>
+        <note priority="1" from="meaning">Order cancelled heading</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.cancelledNote" datatype="html">
+        <source>No further updates are expected</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">56,57</context>
+        </context-group>
+        <note priority="1" from="meaning">Order cancelled note</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.refundedSuffix" datatype="html">
+        <source>— your payment has been refunded.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">58,60</context>
+        </context-group>
+        <note priority="1" from="meaning">Refunded suffix</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.statusTitle" datatype="html">
+        <source>Order status</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">71,73</context>
+        </context-group>
+        <note priority="1" from="meaning">Order status heading</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.itemsTitle" datatype="html">
+        <source>Items</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">102,104</context>
+        </context-group>
+        <note priority="1" from="meaning">Items heading</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.singleItem" datatype="html">
+        <source>1 item</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">106,108</context>
+        </context-group>
+        <note priority="1" from="meaning">Single item count</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.multiItem" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ order.orderItems.length }}"/> items</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">108,109</context>
+        </context-group>
+        <note priority="1" from="meaning">Multiple items count</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.summaryTitle" datatype="html">
+        <source>Summary</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">137,139</context>
+        </context-group>
+        <note priority="1" from="meaning">Summary heading</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.subtotal" datatype="html">
+        <source>Subtotal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">141,142</context>
+        </context-group>
+        <note priority="1" from="meaning">Subtotal label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.discount" datatype="html">
+        <source>Discount</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">146,147</context>
+        </context-group>
+        <note priority="1" from="meaning">Discount label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.shipping" datatype="html">
+        <source>Shipping</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">151,153</context>
+        </context-group>
+        <note priority="1" from="meaning">Shipping label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.free" datatype="html">
+        <source>Free</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">154,156</context>
+        </context-group>
+        <note priority="1" from="meaning">Free shipping value</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.total" datatype="html">
+        <source>Total</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">161,162</context>
+        </context-group>
+        <note priority="1" from="meaning">Total label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.deliveryAddress" datatype="html">
+        <source>Delivery address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">170,172</context>
+        </context-group>
+        <note priority="1" from="meaning">Delivery address heading</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.street" datatype="html">
+        <source>Street</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">174,175</context>
+        </context-group>
+        <note priority="1" from="meaning">Street label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.apt" datatype="html">
+        <source>Apt</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">180</context>
+        </context-group>
+        <note priority="1" from="meaning">Apartment label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.city" datatype="html">
+        <source>City</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">184,185</context>
+        </context-group>
+        <note priority="1" from="meaning">City label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.country" datatype="html">
+        <source>Country</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">188,189</context>
+        </context-group>
+        <note priority="1" from="meaning">Country label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.phone" datatype="html">
+        <source>Phone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">192,193</context>
+        </context-group>
+        <note priority="1" from="meaning">Phone label</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.helpTitle" datatype="html">
+        <source>Need help with this order?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">208,209</context>
+        </context-group>
+        <note priority="1" from="meaning">Help CTA heading</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.helpMessage" datatype="html">
+        <source>Our team is happy to answer any questions about delivery, returns, or payments.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">209,210</context>
+        </context-group>
+        <note priority="1" from="meaning">Help CTA message</note>
+      </trans-unit>
+      <trans-unit id="orderDetails.contactUs" datatype="html">
+        <source>Contact us</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.html</context>
+          <context context-type="linenumber">211,216</context>
+        </context-group>
+        <note priority="1" from="meaning">Contact us action</note>
+      </trans-unit>
+      <trans-unit id="6250742806431534479" datatype="html">
+        <source>Cancel order</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8553429886000126228" datatype="html">
+        <source>Cancel order #<x id="PH" equiv-text="order.id"/>? Payment will be refunded if already paid.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1555706403921147765" datatype="html">
+        <source>Order cancelled</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3216071473670332742" datatype="html">
+        <source>Items added to cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/order-details/order-details.component.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ordersList.title" datatype="html">
+        <source>My orders</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.html</context>
+          <context context-type="linenumber">3,7</context>
+        </context-group>
+        <note priority="1" from="meaning">My orders heading</note>
+      </trans-unit>
+      <trans-unit id="ordersList.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="ordersList.empty" datatype="html">
+        <source>No orders yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.html</context>
+          <context context-type="linenumber">30,32</context>
+        </context-group>
+        <note priority="1" from="meaning">No orders message</note>
+      </trans-unit>
+      <trans-unit id="ordersList.orderNumber" datatype="html">
+        <source>Order #<x id="INTERPOLATION" equiv-text="{{ order.id }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.html</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+        <note priority="1" from="meaning">Order number</note>
+      </trans-unit>
+      <trans-unit id="ordersList.orderMeta" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ order.dateOrdered | date: &apos;mediumDate&apos; }}"/> · <x id="INTERPOLATION_1" equiv-text="{{ order.orderItems.length }}"/> item(s) · <x id="INTERPOLATION_2" equiv-text="{{ formatPrice(order.totalPrice) }}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.html</context>
+          <context context-type="linenumber">41,45</context>
+        </context-group>
+        <note priority="1" from="meaning">Order meta line</note>
+      </trans-unit>
+      <trans-unit id="ordersList.view" datatype="html">
+        <source>View</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.html</context>
+          <context context-type="linenumber">57,58</context>
+        </context-group>
+        <note priority="1" from="meaning">View order action</note>
+      </trans-unit>
+      <trans-unit id="ordersList.cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.html</context>
+          <context context-type="linenumber">58,60</context>
+        </context-group>
+        <note priority="1" from="meaning">Cancel order action</note>
+      </trans-unit>
+      <trans-unit id="ordersList.reorder" datatype="html">
+        <source>Buy again</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/orders-list/orders-list.component.html</context>
+          <context context-type="linenumber">60,64</context>
+        </context-group>
+        <note priority="1" from="meaning">Buy again action</note>
+      </trans-unit>
+      <trans-unit id="profile.title" datatype="html">
+        <source>My account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/profile.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+        <note priority="1" from="meaning">My account heading</note>
+      </trans-unit>
+      <trans-unit id="profile.navAria" datatype="html">
+        <source>Profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/profile.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="meaning">Profile navigation</note>
+      </trans-unit>
+      <trans-unit id="profile.accountInfo" datatype="html">
+        <source>Account info</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/profile.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+        <note priority="1" from="meaning">Account info link</note>
+      </trans-unit>
+      <trans-unit id="profile.editProfile" datatype="html">
+        <source>Edit profile</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/profile.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+        <note priority="1" from="meaning">Edit profile link</note>
+      </trans-unit>
+      <trans-unit id="profile.addresses" datatype="html">
+        <source>Addresses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/profile.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+        <note priority="1" from="meaning">Addresses link</note>
+      </trans-unit>
+      <trans-unit id="profile.orders" datatype="html">
+        <source>Orders</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/profile.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+        <note priority="1" from="meaning">Orders link</note>
+      </trans-unit>
+      <trans-unit id="profile.wishlist" datatype="html">
+        <source>Wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/profile.component.html</context>
+          <context context-type="linenumber">14,17</context>
+        </context-group>
+        <note priority="1" from="meaning">Wishlist link</note>
+      </trans-unit>
+      <trans-unit id="userData.edit" datatype="html">
+        <source>Edit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+        <note priority="1" from="meaning">Edit action</note>
+      </trans-unit>
+      <trans-unit id="userData.email" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="meaning">Email label</note>
+      </trans-unit>
+      <trans-unit id="userData.phone" datatype="html">
+        <source>Phone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="meaning">Phone label</note>
+      </trans-unit>
+      <trans-unit id="userData.city" datatype="html">
+        <source>City</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <note priority="1" from="meaning">City label</note>
+      </trans-unit>
+      <trans-unit id="userData.country" datatype="html">
+        <source>Country</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="meaning">Country label</note>
+      </trans-unit>
+      <trans-unit id="userData.wishlist" datatype="html">
+        <source>My wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">16,18</context>
+        </context-group>
+        <note priority="1" from="meaning">My wishlist heading</note>
+      </trans-unit>
+      <trans-unit id="userData.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="userData.emptyWishlist" datatype="html">
+        <source>Nothing saved yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty wishlist message</note>
+      </trans-unit>
+      <trans-unit id="3805244289090839585" datatype="html">
+        <source><x id="PH" equiv-text="pickText(product.name)"/> added to cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/user-data/user-data.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.ts</context>
+          <context context-type="linenumber">142</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.ts</context>
+          <context context-type="linenumber">199</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="breadcrumb.home" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/breadcrumb/breadcrumb.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">66,67</context>
+        </context-group>
+        <note priority="1" from="meaning">Breadcrumb home label</note>
+      </trans-unit>
+      <trans-unit id="confirm.cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/confirm-dialog/confirm-dialog.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="confirm.confirm" datatype="html">
+        <source>Confirm</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/confirm-dialog/confirm-dialog.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="meaning">Footer loading</note>
+      </trans-unit>
+      <trans-unit id="footer.socialFacebook" datatype="html">
+        <source>Facebook</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <note priority="1" from="meaning">Facebook social link</note>
+      </trans-unit>
+      <trans-unit id="footer.socialInstagram" datatype="html">
+        <source>Instagram</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <note priority="1" from="meaning">Instagram social link</note>
+      </trans-unit>
+      <trans-unit id="footer.socialTwitter" datatype="html">
+        <source>Twitter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <note priority="1" from="meaning">Twitter social link</note>
+      </trans-unit>
+      <trans-unit id="footer.socialWhatsapp" datatype="html">
+        <source>WhatsApp</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <note priority="1" from="meaning">WhatsApp social link</note>
+      </trans-unit>
+      <trans-unit id="footer.contactInfo" datatype="html">
+        <source> Contact Info </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.html</context>
+          <context context-type="linenumber">91,93</context>
+        </context-group>
+        <note priority="1" from="meaning">Contact info footer heading</note>
+      </trans-unit>
+      <trans-unit id="footer.defaultTagline" datatype="html">
+        <source>Transform your living spaces with our premium furniture collection. Quality craftsmanship at affordable prices.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultQuickLinks" datatype="html">
+        <source>Quick Links</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultAbout" datatype="html">
+        <source>About Us</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultContact" datatype="html">
+        <source>Contact Us</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultShopAll" datatype="html">
+        <source>Shop All</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultCategoriesLink" datatype="html">
+        <source>Categories</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultCategories" datatype="html">
+        <source>Categories</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultLivingRoom" datatype="html">
+        <source>Living Room</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultBedroom" datatype="html">
+        <source>Bedroom</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultDiningRoom" datatype="html">
+        <source>Dining Room</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultAddress" datatype="html">
+        <source>123 Commerce Street, New York, NY 10001</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="footer.defaultHours" datatype="html">
+        <source>Sat - Thu: 9:00 AM - 9:00 PM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/footer/footer.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.logoAlt" datatype="html">
+        <source>logo</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+        <note priority="1" from="meaning">Site logo</note>
+      </trans-unit>
+      <trans-unit id="nav.home" datatype="html">
+        <source>Home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">105,107</context>
+        </context-group>
+        <note priority="1" from="meaning">Home page link</note>
+      </trans-unit>
+      <trans-unit id="nav.products" datatype="html">
+        <source>Products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">108,110</context>
+        </context-group>
+        <note priority="1" from="meaning">Products page link</note>
+      </trans-unit>
+      <trans-unit id="nav.categories" datatype="html">
+        <source>Categories</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">21,23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">111,113</context>
+        </context-group>
+        <note priority="1" from="meaning">Categories page link</note>
+      </trans-unit>
+      <trans-unit id="nav.about" datatype="html">
+        <source>About</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">114,116</context>
+        </context-group>
+        <note priority="1" from="meaning">About page link</note>
+      </trans-unit>
+      <trans-unit id="nav.contact" datatype="html">
+        <source>Contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">27,31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">117,120</context>
+        </context-group>
+        <note priority="1" from="meaning">Contact page link</note>
+      </trans-unit>
+      <trans-unit id="header.languageSwitch" datatype="html">
+        <source>العربية</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">122,124</context>
+        </context-group>
+        <note priority="1" from="meaning">Switch language link</note>
+      </trans-unit>
+      <trans-unit id="header.searchPlaceholder" datatype="html">
+        <source>Search...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">132,133</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">203,204</context>
+        </context-group>
+        <note priority="1" from="meaning">Search products placeholder</note>
+      </trans-unit>
+      <trans-unit id="header.searchAria" datatype="html">
+        <source>Search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">206</context>
+        </context-group>
+        <note priority="1" from="meaning">Search products</note>
+      </trans-unit>
+      <trans-unit id="header.searchSubmitAria" datatype="html">
+        <source>Submit search</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">209</context>
+        </context-group>
+        <note priority="1" from="meaning">Submit search button</note>
+      </trans-unit>
+      <trans-unit id="nav.myAccount" datatype="html">
+        <source>My Account</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">56,59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">145,148</context>
+        </context-group>
+        <note priority="1" from="meaning">My account link</note>
+      </trans-unit>
+      <trans-unit id="nav.cartAria" datatype="html">
+        <source>Cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+        <note priority="1" from="meaning">Cart link aria</note>
+      </trans-unit>
+      <trans-unit id="nav.wishlistAria" datatype="html">
+        <source>Wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+        <note priority="1" from="meaning">Wishlist link aria</note>
+      </trans-unit>
+      <trans-unit id="nav.logoutAria" datatype="html">
+        <source>Log out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">170</context>
+        </context-group>
+        <note priority="1" from="meaning">Log out action</note>
+      </trans-unit>
+      <trans-unit id="nav.loginAria" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">172</context>
+        </context-group>
+        <note priority="1" from="meaning">Sign in action</note>
+      </trans-unit>
+      <trans-unit id="header.heroSale" datatype="html">
+        <source> 70% sale off </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">217,219</context>
+        </context-group>
+        <note priority="1" from="meaning">Hero sale badge</note>
+      </trans-unit>
+      <trans-unit id="header.heroTitle" datatype="html">
+        <source> furniture at cost </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">220,222</context>
+        </context-group>
+        <note priority="1" from="meaning">Hero main heading</note>
+      </trans-unit>
+      <trans-unit id="header.heroText" datatype="html">
+        <source> Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">223,225</context>
+        </context-group>
+        <note priority="1" from="meaning">Hero subtext</note>
+      </trans-unit>
+      <trans-unit id="header.discoverMore" datatype="html">
+        <source>discover more</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">225,228</context>
+        </context-group>
+        <note priority="1" from="meaning">Discover more action</note>
+      </trans-unit>
+      <trans-unit id="productCard.noImage" datatype="html">
+        <source>No image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/product-card/product-card.component.html</context>
+          <context context-type="linenumber">8,13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">82,84</context>
+        </context-group>
+        <note priority="1" from="meaning">No image placeholder</note>
+      </trans-unit>
+      <trans-unit id="productCard.featured" datatype="html">
+        <source>Featured</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/product-card/product-card.component.html</context>
+          <context context-type="linenumber">14,18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">86,89</context>
+        </context-group>
+        <note priority="1" from="meaning">Featured product badge</note>
+      </trans-unit>
+      <trans-unit id="productCard.toggleWishlistAria" datatype="html">
+        <source>Toggle wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/product-card/product-card.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/product-card/product-card.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+        <note priority="1" from="meaning">Toggle wishlist action</note>
+      </trans-unit>
+      <trans-unit id="productCard.outOfStock" datatype="html">
+        <source>Out of stock</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/product-card/product-card.component.html</context>
+          <context context-type="linenumber">38,42</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">134,136</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">154,156</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">215,217</context>
+        </context-group>
+        <note priority="1" from="meaning">Out of stock label</note>
+      </trans-unit>
+      <trans-unit id="productCard.addToCartAria" datatype="html">
+        <source>Add to cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/product-card/product-card.component.html</context>
+          <context context-type="linenumber">66,67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/product-card/product-card.component.html</context>
+          <context context-type="linenumber">68,69</context>
+        </context-group>
+        <note priority="1" from="meaning">Add to cart action</note>
+      </trans-unit>
+      <trans-unit id="ratingStars.label" datatype="html">
+        <source>Rating <x id="INTERPOLATION" equiv-text="{{ rating() }}"/> of 5</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/rating-stars/rating-stars.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="meaning">Star rating value</note>
+      </trans-unit>
+      <trans-unit id="toast.dismissAria" datatype="html">
+        <source>Dismiss</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/toast/toast-container.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="meaning">Dismiss toast notification</note>
+      </trans-unit>
+      <trans-unit id="about.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/about/about.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="about.tagline" datatype="html">
+        <source>Get to know us</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/about/about.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="meaning">About tagline</note>
+      </trans-unit>
+      <trans-unit id="about.shopCollection" datatype="html">
+        <source> Shop the collection </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/about/about.component.html</context>
+          <context context-type="linenumber">36,41</context>
+        </context-group>
+        <note priority="1" from="meaning">Shop the collection action</note>
+      </trans-unit>
+      <trans-unit id="about.ctaTitle" datatype="html">
+        <source>Ready to start shopping?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/about/about.component.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+        <note priority="1" from="meaning">About CTA heading</note>
+      </trans-unit>
+      <trans-unit id="about.ctaMessage" datatype="html">
+        <source>Browse our collection and find something you will love, delivered right to your door.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/about/about.component.html</context>
+          <context context-type="linenumber">65,66</context>
+        </context-group>
+        <note priority="1" from="meaning">About CTA message</note>
+      </trans-unit>
+      <trans-unit id="about.browseProducts" datatype="html">
+        <source> Browse products </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/about/about.component.html</context>
+          <context context-type="linenumber">67,71</context>
+        </context-group>
+        <note priority="1" from="meaning">Browse products action</note>
+      </trans-unit>
+      <trans-unit id="about.noContent" datatype="html">
+        <source>Content is not available yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/about/about.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <note priority="1" from="meaning">Content not available message</note>
+      </trans-unit>
+      <trans-unit id="cart.title" datatype="html">
+        <source>Shopping Cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">3,6</context>
+        </context-group>
+        <note priority="1" from="meaning">Shopping cart heading</note>
+      </trans-unit>
+      <trans-unit id="cart.emptyImageAria" datatype="html">
+        <source>empty cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty cart image</note>
+      </trans-unit>
+      <trans-unit id="cart.emptyTitle" datatype="html">
+        <source>Your cart is empty</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty cart heading</note>
+      </trans-unit>
+      <trans-unit id="cart.emptyMessage" datatype="html">
+        <source>Looks like you haven&apos;t added any items yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty cart message</note>
+      </trans-unit>
+      <trans-unit id="cart.continueShopping" datatype="html">
+        <source>Continue Shopping</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">10,13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">76,79</context>
+        </context-group>
+        <note priority="1" from="meaning">Continue shopping action</note>
+      </trans-unit>
+      <trans-unit id="cart.decreaseAria" datatype="html">
+        <source>Decrease quantity</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <note priority="1" from="meaning">Decrease quantity action</note>
+      </trans-unit>
+      <trans-unit id="cart.increaseAria" datatype="html">
+        <source>Increase quantity</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <note priority="1" from="meaning">Increase quantity action</note>
+      </trans-unit>
+      <trans-unit id="cart.removeTitle" datatype="html">
+        <source>Remove item</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+        <note priority="1" from="meaning">Remove item action</note>
+      </trans-unit>
+      <trans-unit id="cart.orderSummary" datatype="html">
+        <source>Order Summary</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">85,88</context>
+        </context-group>
+        <note priority="1" from="meaning">Order summary heading</note>
+      </trans-unit>
+      <trans-unit id="cart.subtotal" datatype="html">
+        <source>Subtotal (<x id="INTERPOLATION" equiv-text="{{ cart.count() }}"/> items)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">89,90</context>
+        </context-group>
+        <note priority="1" from="meaning">Subtotal label</note>
+      </trans-unit>
+      <trans-unit id="cart.shipping" datatype="html">
+        <source>Shipping</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">94,95</context>
+        </context-group>
+        <note priority="1" from="meaning">Shipping label</note>
+      </trans-unit>
+      <trans-unit id="cart.couponApplied" datatype="html">
+        <source>Coupon <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ applied.code }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> applied</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">102,103</context>
+        </context-group>
+        <note priority="1" from="meaning">Coupon applied label</note>
+      </trans-unit>
+      <trans-unit id="cart.removeCoupon" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">104,106</context>
+        </context-group>
+        <note priority="1" from="meaning">Remove coupon action</note>
+      </trans-unit>
+      <trans-unit id="cart.couponMinNotMet" datatype="html">
+        <source>Your cart does not meet the minimum order amount for this coupon.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">107,110</context>
+        </context-group>
+        <note priority="1" from="meaning">Coupon minimum not met message</note>
+      </trans-unit>
+      <trans-unit id="cart.couponPlaceholder" datatype="html">
+        <source>Coupon code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">116,117</context>
+        </context-group>
+        <note priority="1" from="meaning">Coupon code placeholder</note>
+      </trans-unit>
+      <trans-unit id="cart.applying" datatype="html">
+        <source>Applying...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">127,129</context>
+        </context-group>
+        <note priority="1" from="meaning">Applying coupon label</note>
+      </trans-unit>
+      <trans-unit id="cart.apply" datatype="html">
+        <source>Apply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">129,131</context>
+        </context-group>
+        <note priority="1" from="meaning">Apply coupon action</note>
+      </trans-unit>
+      <trans-unit id="cart.discount" datatype="html">
+        <source>Discount</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">138,139</context>
+        </context-group>
+        <note priority="1" from="meaning">Discount label</note>
+      </trans-unit>
+      <trans-unit id="cart.total" datatype="html">
+        <source>Total</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">144,145</context>
+        </context-group>
+        <note priority="1" from="meaning">Total label</note>
+      </trans-unit>
+      <trans-unit id="cart.proceedToCheckout" datatype="html">
+        <source> Proceed to Checkout </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.html</context>
+          <context context-type="linenumber">153,157</context>
+        </context-group>
+        <note priority="1" from="meaning">Proceed to checkout action</note>
+      </trans-unit>
+      <trans-unit id="8001583765052354416" datatype="html">
+        <source>Calculating...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5891064527381218201" datatype="html">
+        <source>Free</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8813031028139775170" datatype="html">
+        <source>Add <x id="PH" equiv-text="formatPrice(threshold - this.cart.subtotal())"/> more for free shipping</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8865719526004574955" datatype="html">
+        <source>Coupon applied</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">361</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7756075202098004397" datatype="html">
+        <source>Invalid coupon</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">363</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8576059747584995089" datatype="html">
+        <source>Remove from cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1260906762439612258" datatype="html">
+        <source>Remove &quot;<x id="PH" equiv-text="pickText(product.name)"/>&quot; from your cart?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4814285799071780083" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2430082893128355592" datatype="html">
+        <source>Move to Wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8079081579901316861" datatype="html">
+        <source>Added to your wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5771284758171360120" datatype="html">
+        <source>Could not add to wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3973669986643367936" datatype="html">
+        <source>Log in to save items to your wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6912480950287288441" datatype="html">
+        <source>Item removed from cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/cart/cart.component.ts</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="categories.shopBy" datatype="html">
+        <source>Shop by category</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/categories/categories.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <note priority="1" from="meaning">Shop by category label</note>
+      </trans-unit>
+      <trans-unit id="categories.title" datatype="html">
+        <source>Categories</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/categories/categories.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+        <note priority="1" from="meaning">Categories heading</note>
+      </trans-unit>
+      <trans-unit id="categories.subtitle" datatype="html">
+        <source>Browse our collection by category and find something you will love.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/categories/categories.component.html</context>
+          <context context-type="linenumber">7,11</context>
+        </context-group>
+        <note priority="1" from="meaning">Categories subtext</note>
+      </trans-unit>
+      <trans-unit id="categories.empty" datatype="html">
+        <source>No categories yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/categories/categories.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty categories message</note>
+      </trans-unit>
+      <trans-unit id="checkout.title" datatype="html">
+        <source>Checkout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">2,5</context>
+        </context-group>
+        <note priority="1" from="meaning">Checkout heading</note>
+      </trans-unit>
+      <trans-unit id="checkout.emptyCart" datatype="html">
+        <source>Your cart is empty — add products before checking out.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty cart checkout message</note>
+      </trans-unit>
+      <trans-unit id="checkout.browseProducts" datatype="html">
+        <source>Browse products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">7,10</context>
+        </context-group>
+        <note priority="1" from="meaning">Browse products action</note>
+      </trans-unit>
+      <trans-unit id="checkout.savedAddresses" datatype="html">
+        <source>Saved addresses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+        <note priority="1" from="meaning">Saved addresses heading</note>
+      </trans-unit>
+      <trans-unit id="checkout.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="checkout.shippingAddress" datatype="html">
+        <source>Shipping address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+        <note priority="1" from="meaning">Shipping address heading</note>
+      </trans-unit>
+      <trans-unit id="checkout.streetPlaceholder" datatype="html">
+        <source>Street *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="meaning">Street placeholder</note>
+      </trans-unit>
+      <trans-unit id="checkout.apartmentPlaceholder" datatype="html">
+        <source>Apartment</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="meaning">Apartment placeholder</note>
+      </trans-unit>
+      <trans-unit id="checkout.cityPlaceholder" datatype="html">
+        <source>City *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <note priority="1" from="meaning">City placeholder</note>
+      </trans-unit>
+      <trans-unit id="checkout.zipPlaceholder" datatype="html">
+        <source>ZIP / Postal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <note priority="1" from="meaning">ZIP placeholder</note>
+      </trans-unit>
+      <trans-unit id="checkout.countryLabel" datatype="html">
+        <source>Country *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+        <note priority="1" from="meaning">Country select label</note>
+      </trans-unit>
+      <trans-unit id="checkout.loadingCountries" datatype="html">
+        <source>Loading countries...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">56,59</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading countries message</note>
+      </trans-unit>
+      <trans-unit id="checkout.phonePlaceholder" datatype="html">
+        <source>Phone *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <note priority="1" from="meaning">Phone placeholder</note>
+      </trans-unit>
+      <trans-unit id="checkout.saveAddress" datatype="html">
+        <source>Save this address to my address book</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">69,71</context>
+        </context-group>
+        <note priority="1" from="meaning">Save address label</note>
+      </trans-unit>
+      <trans-unit id="checkout.rememberInfo" datatype="html">
+        <source>Remember my details on this device</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">73,75</context>
+        </context-group>
+        <note priority="1" from="meaning">Remember details label</note>
+      </trans-unit>
+      <trans-unit id="checkout.addressLabelPlaceholder" datatype="html">
+        <source>Address label (e.g. Home, Work)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <note priority="1" from="meaning">Address label placeholder</note>
+      </trans-unit>
+      <trans-unit id="checkout.paymentMethod" datatype="html">
+        <source>Payment method</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">82,84</context>
+        </context-group>
+        <note priority="1" from="meaning">Payment method heading</note>
+      </trans-unit>
+      <trans-unit id="checkout.notAvailable" datatype="html">
+        <source>Not available yet</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">95,98</context>
+        </context-group>
+        <note priority="1" from="meaning">Not available label</note>
+      </trans-unit>
+      <trans-unit id="checkout.cardNote" datatype="html">
+        <source>Online card checkout is available for all countries.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">99,103</context>
+        </context-group>
+        <note priority="1" from="meaning">Card availability note</note>
+      </trans-unit>
+      <trans-unit id="checkout.coupon" datatype="html">
+        <source>Coupon</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">105,106</context>
+        </context-group>
+        <note priority="1" from="meaning">Coupon heading</note>
+      </trans-unit>
+      <trans-unit id="checkout.couponApplied" datatype="html">
+        <source>Coupon <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ applied.code }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> applied</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">109,110</context>
+        </context-group>
+        <note priority="1" from="meaning">Coupon applied label</note>
+      </trans-unit>
+      <trans-unit id="checkout.removeCoupon" datatype="html">
+        <source>Remove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">111,114</context>
+        </context-group>
+        <note priority="1" from="meaning">Remove coupon action</note>
+      </trans-unit>
+      <trans-unit id="checkout.couponPlaceholder" datatype="html">
+        <source>Coupon code</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+        <note priority="1" from="meaning">Coupon code placeholder</note>
+      </trans-unit>
+      <trans-unit id="checkout.applying" datatype="html">
+        <source>Applying...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">118,120</context>
+        </context-group>
+        <note priority="1" from="meaning">Applying coupon label</note>
+      </trans-unit>
+      <trans-unit id="checkout.apply" datatype="html">
+        <source>Apply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">120,122</context>
+        </context-group>
+        <note priority="1" from="meaning">Apply coupon action</note>
+      </trans-unit>
+      <trans-unit id="checkout.orderSummary" datatype="html">
+        <source>Order summary</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">130,131</context>
+        </context-group>
+        <note priority="1" from="meaning">Order summary heading</note>
+      </trans-unit>
+      <trans-unit id="checkout.subtotal" datatype="html">
+        <source>Subtotal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">142,143</context>
+        </context-group>
+        <note priority="1" from="meaning">Subtotal label</note>
+      </trans-unit>
+      <trans-unit id="checkout.discount" datatype="html">
+        <source>Discount</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+        <note priority="1" from="meaning">Discount label</note>
+      </trans-unit>
+      <trans-unit id="checkout.couponMinNotMet" datatype="html">
+        <source>Your cart does not meet the minimum order amount for this coupon yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">147,149</context>
+        </context-group>
+        <note priority="1" from="meaning">Coupon minimum not met message</note>
+      </trans-unit>
+      <trans-unit id="checkout.shipping" datatype="html">
+        <source>Shipping</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">150,152</context>
+        </context-group>
+        <note priority="1" from="meaning">Shipping label</note>
+      </trans-unit>
+      <trans-unit id="checkout.free" datatype="html">
+        <source>Free</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">153,155</context>
+        </context-group>
+        <note priority="1" from="meaning">Free shipping value</note>
+      </trans-unit>
+      <trans-unit id="checkout.total" datatype="html">
+        <source>Total</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">159,160</context>
+        </context-group>
+        <note priority="1" from="meaning">Total label</note>
+      </trans-unit>
+      <trans-unit id="checkout.testCard" datatype="html">
+        <source>Test card: 4242 4242 4242 4242</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">174,179</context>
+        </context-group>
+        <note priority="1" from="meaning">Test card hint</note>
+      </trans-unit>
+      <trans-unit id="4620049945848502227" datatype="html">
+        <source>Could not load countries, please try again</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">277</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4428081059558168074" datatype="html">
+        <source>Processing...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">390</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8453860874637355542" datatype="html">
+        <source>Place order</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">392</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6233908868135907885" datatype="html">
+        <source>Place order (Cash on Delivery)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">393</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7179867768019153760" datatype="html">
+        <source>Pay with Stripe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">394</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8845493150593778100" datatype="html">
+        <source>Pay with <x id="PH" equiv-text="method.name"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">395</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1605519898654578290" datatype="html">
+        <source>Checkout failed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.ts</context>
+          <context context-type="linenumber">452</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="contact.tagline" datatype="html">
+        <source>Get in touch</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+        <note priority="1" from="meaning">Contact tagline</note>
+      </trans-unit>
+      <trans-unit id="contact.formTitle" datatype="html">
+        <source>Send us a message</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">77,78</context>
+        </context-group>
+        <note priority="1" from="meaning">Contact form heading</note>
+      </trans-unit>
+      <trans-unit id="contact.formSubtitle" datatype="html">
+        <source>Fill out the form and we will get back to you shortly.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">78,80</context>
+        </context-group>
+        <note priority="1" from="meaning">Contact form message</note>
+      </trans-unit>
+      <trans-unit id="contact.namePlaceholder" datatype="html">
+        <source>Your name *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+        <note priority="1" from="meaning">Your name placeholder</note>
+      </trans-unit>
+      <trans-unit id="contact.emailPlaceholder" datatype="html">
+        <source>Your email *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <note priority="1" from="meaning">Your email placeholder</note>
+      </trans-unit>
+      <trans-unit id="contact.subjectPlaceholder" datatype="html">
+        <source>Subject</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">87</context>
+        </context-group>
+        <note priority="1" from="meaning">Subject placeholder</note>
+      </trans-unit>
+      <trans-unit id="contact.messagePlaceholder" datatype="html">
+        <source>Your message *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+        <note priority="1" from="meaning">Your message placeholder</note>
+      </trans-unit>
+      <trans-unit id="contact.emailLabel" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">101,102</context>
+        </context-group>
+        <note priority="1" from="meaning">Email label</note>
+      </trans-unit>
+      <trans-unit id="contact.phoneLabel" datatype="html">
+        <source>Phone</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">110,111</context>
+        </context-group>
+        <note priority="1" from="meaning">Phone label</note>
+      </trans-unit>
+      <trans-unit id="contact.addressLabel" datatype="html">
+        <source>Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">119,120</context>
+        </context-group>
+        <note priority="1" from="meaning">Address label</note>
+      </trans-unit>
+      <trans-unit id="contact.workingHoursLabel" datatype="html">
+        <source>Working hours</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">128,129</context>
+        </context-group>
+        <note priority="1" from="meaning">Working hours label</note>
+      </trans-unit>
+      <trans-unit id="contact.socialFacebook" datatype="html">
+        <source>Facebook</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">137</context>
+        </context-group>
+        <note priority="1" from="meaning">Facebook social link</note>
+      </trans-unit>
+      <trans-unit id="contact.socialInstagram" datatype="html">
+        <source>Instagram</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+        <note priority="1" from="meaning">Instagram social link</note>
+      </trans-unit>
+      <trans-unit id="contact.socialTwitter" datatype="html">
+        <source>Twitter</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+        <note priority="1" from="meaning">Twitter social link</note>
+      </trans-unit>
+      <trans-unit id="contact.socialWhatsapp" datatype="html">
+        <source>WhatsApp</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">140</context>
+        </context-group>
+        <note priority="1" from="meaning">WhatsApp social link</note>
+      </trans-unit>
+      <trans-unit id="contact.noContent" datatype="html">
+        <source>Content is not available yet.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.html</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+        <note priority="1" from="meaning">Content not available message</note>
+      </trans-unit>
+      <trans-unit id="8740036082299980043" datatype="html">
+        <source>Send message</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5094971797790077777" datatype="html">
+        <source>Name, email, and message are required.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1192636453787152203" datatype="html">
+        <source>Message sent — we will reply soon.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/contact/contact.component.ts</context>
+          <context context-type="linenumber">62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home.popularProducts" datatype="html">
+        <source>POPULAR PRODUCTS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <note priority="1" from="meaning">Home popular products heading</note>
+      </trans-unit>
+      <trans-unit id="home.popularProductsText" datatype="html">
+        <source>Discover our most loved items, handpicked just for you. Quality furniture at unbeatable prices.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">6,10</context>
+        </context-group>
+        <note priority="1" from="meaning">Home popular products subtext</note>
+      </trans-unit>
+      <trans-unit id="home.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="home.visitHeading" datatype="html">
+        <source> BEST FURNITURE MANUFACTURER </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">58,61</context>
+        </context-group>
+        <note priority="1" from="meaning">Home visit banner heading</note>
+      </trans-unit>
+      <trans-unit id="home.visitText" datatype="html">
+        <source> Crafting exceptional furniture since 1998. We combine timeless design with modern comfort to transform your living spaces into dream homes. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">62,64</context>
+        </context-group>
+        <note priority="1" from="meaning">Home visit banner text</note>
+      </trans-unit>
+      <trans-unit id="home.discoverMore" datatype="html">
+        <source>discover more</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">64,68</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">103,107</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">116,119</context>
+        </context-group>
+        <note priority="1" from="meaning">Discover more action</note>
+      </trans-unit>
+      <trans-unit id="home.featuredProducts" datatype="html">
+        <source>FEATURED PRODUCTS</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">70,71</context>
+        </context-group>
+        <note priority="1" from="meaning">Home featured products heading</note>
+      </trans-unit>
+      <trans-unit id="home.featuredProductsText" datatype="html">
+        <source>Explore our exclusive collection of premium furniture designed to elevate your home style.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">71,75</context>
+        </context-group>
+        <note priority="1" from="meaning">Home featured products subtext</note>
+      </trans-unit>
+      <trans-unit id="home.instagramHeading" datatype="html">
+        <source> get inspired with instagram </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">111,113</context>
+        </context-group>
+        <note priority="1" from="meaning">Home instagram banner heading</note>
+      </trans-unit>
+      <trans-unit id="home.instagramText" datatype="html">
+        <source> Follow us on Instagram to see how our furniture brings joy to homes across the country. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/home/home.component.html</context>
+          <context context-type="linenumber">114,116</context>
+        </context-group>
+        <note priority="1" from="meaning">Home instagram banner text</note>
+      </trans-unit>
+      <trans-unit id="notFound.title" datatype="html">
+        <source>Page not found</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/not-found/not-found.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="meaning">Not found heading</note>
+      </trans-unit>
+      <trans-unit id="notFound.message" datatype="html">
+        <source>The page you are looking for does not exist.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/not-found/not-found.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <note priority="1" from="meaning">Not found message</note>
+      </trans-unit>
+      <trans-unit id="notFound.backHome" datatype="html">
+        <source>Back to home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/not-found/not-found.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <note priority="1" from="meaning">Back to home action</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.noOrderTitle" datatype="html">
+        <source>No order to confirm</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <note priority="1" from="meaning">No order heading</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.noOrderMessage" datatype="html">
+        <source>This page is reached after completing payment.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <note priority="1" from="meaning">No order message</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.backHome" datatype="html">
+        <source>Back home</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+        <note priority="1" from="meaning">Back home action</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.failedTitle" datatype="html">
+        <source>Order not completed</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+        <note priority="1" from="meaning">Order failed heading</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.backToCheckout" datatype="html">
+        <source>Back to checkout</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+        <note priority="1" from="meaning">Back to checkout action</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.orderMeta" datatype="html">
+        <source>Order #<x id="INTERPOLATION" equiv-text="{{ order.id }}"/> · <x id="INTERPOLATION_1" equiv-text="{{ order.status }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">18,19</context>
+        </context-group>
+        <note priority="1" from="meaning">Order reference and status</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.payOnDelivery" datatype="html">
+        <source> · pay cash on delivery</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+        <note priority="1" from="meaning">Cash on delivery note</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.receipt" datatype="html">
+        <source>Receipt</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="meaning">Receipt heading</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.coupon" datatype="html">
+        <source>Coupon <x id="INTERPOLATION" equiv-text="{{ order.couponCode }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">44,45</context>
+        </context-group>
+        <note priority="1" from="meaning">Coupon row label</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.shipping" datatype="html">
+        <source>Shipping</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">50,52</context>
+        </context-group>
+        <note priority="1" from="meaning">Shipping label</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.free" datatype="html">
+        <source>Free</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">53,55</context>
+        </context-group>
+        <note priority="1" from="meaning">Free shipping value</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.total" datatype="html">
+        <source>Total</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <note priority="1" from="meaning">Total label</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.shippingTo" datatype="html">
+        <source> Shipping to <x id="INTERPOLATION" equiv-text="{{ pickText(order.shippingAddress1) }}"/>, <x id="INTERPOLATION_1" equiv-text="{{ pickText(order.city) }}"/>, <x id="INTERPOLATION_2" equiv-text="{{ pickText(order.country) }}"/> · <x id="INTERPOLATION_3" equiv-text="{{ order.phone }}"/> </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">62,64</context>
+        </context-group>
+        <note priority="1" from="meaning">Shipping destination</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.viewOrders" datatype="html">
+        <source>View my orders</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">67,68</context>
+        </context-group>
+        <note priority="1" from="meaning">View orders action</note>
+      </trans-unit>
+      <trans-unit id="orderSuccess.continueShopping" datatype="html">
+        <source>Continue shopping</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.html</context>
+          <context context-type="linenumber">68,71</context>
+        </context-group>
+        <note priority="1" from="meaning">Continue shopping action</note>
+      </trans-unit>
+      <trans-unit id="7568089804086508059" datatype="html">
+        <source>Loading your order...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5877551221886004875" datatype="html">
+        <source>Verifying your payment...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.ts</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7165385056214802323" datatype="html">
+        <source>Your order has been placed!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9009266459055690039" datatype="html">
+        <source>Thank you for your order!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/order-success/order-success.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="productDetails.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="productDetails.backToProducts" datatype="html">
+        <source>Back to products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">61,64</context>
+        </context-group>
+        <note priority="1" from="meaning">Back to products action</note>
+      </trans-unit>
+      <trans-unit id="productDetails.breadcrumbAria" datatype="html">
+        <source>Breadcrumb</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <note priority="1" from="meaning">Breadcrumb navigation</note>
+      </trans-unit>
+      <trans-unit id="productDetails.breadcrumbProducts" datatype="html">
+        <source>Products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">67,69</context>
+        </context-group>
+        <note priority="1" from="meaning">Breadcrumb products</note>
+      </trans-unit>
+      <trans-unit id="productDetails.newBadge" datatype="html">
+        <source>New</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">89,92</context>
+        </context-group>
+        <note priority="1" from="meaning">New badge</note>
+      </trans-unit>
+      <trans-unit id="productDetails.ratingLabel" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ product.rating || &apos;No&apos; }}"/> rating (<x id="INTERPOLATION_1" equiv-text="{{ product.numbReviews }}"/> reviews)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">115,116</context>
+        </context-group>
+        <note priority="1" from="meaning">Rating and reviews label</note>
+      </trans-unit>
+      <trans-unit id="productDetails.lowStock" datatype="html">
+        <source>Only <x id="INTERPOLATION" equiv-text="{{ product.countInStock }}"/> left in stock</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">136,137</context>
+        </context-group>
+        <note priority="1" from="meaning">Low stock count</note>
+      </trans-unit>
+      <trans-unit id="productCard.inStock" datatype="html">
+        <source>In stock</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">138,142</context>
+        </context-group>
+        <note priority="1" from="meaning">In stock status</note>
+      </trans-unit>
+      <trans-unit id="productDetails.decreaseAria" datatype="html">
+        <source>Decrease quantity</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">157</context>
+        </context-group>
+        <note priority="1" from="meaning">Decrease quantity action</note>
+      </trans-unit>
+      <trans-unit id="productDetails.increaseAria" datatype="html">
+        <source>Increase quantity</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">159</context>
+        </context-group>
+        <note priority="1" from="meaning">Increase quantity action</note>
+      </trans-unit>
+      <trans-unit id="productCard.addToCart" datatype="html">
+        <source>Add to cart</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">162,165</context>
+        </context-group>
+        <note priority="1" from="meaning">Add to cart action</note>
+      </trans-unit>
+      <trans-unit id="productDetails.fastDelivery" datatype="html">
+        <source>Fast delivery</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">168,169</context>
+        </context-group>
+        <note priority="1" from="meaning">Fast delivery perk</note>
+      </trans-unit>
+      <trans-unit id="productDetails.easyReturns" datatype="html">
+        <source>Easy returns</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">169,170</context>
+        </context-group>
+        <note priority="1" from="meaning">Easy returns perk</note>
+      </trans-unit>
+      <trans-unit id="productDetails.support" datatype="html">
+        <source>24/7 support</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">170,175</context>
+        </context-group>
+        <note priority="1" from="meaning">24/7 support perk</note>
+      </trans-unit>
+      <trans-unit id="productDetails.description" datatype="html">
+        <source>Description</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">180,182</context>
+        </context-group>
+        <note priority="1" from="meaning">Description heading</note>
+      </trans-unit>
+      <trans-unit id="productDetails.noDescription" datatype="html">
+        <source>No description available for this product.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">187,191</context>
+        </context-group>
+        <note priority="1" from="meaning">No description message</note>
+      </trans-unit>
+      <trans-unit id="productDetails.detailsTitle" datatype="html">
+        <source>Product details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">194,196</context>
+        </context-group>
+        <note priority="1" from="meaning">Product details heading</note>
+      </trans-unit>
+      <trans-unit id="productDetails.category" datatype="html">
+        <source>Category</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">198,199</context>
+        </context-group>
+        <note priority="1" from="meaning">Category detail label</note>
+      </trans-unit>
+      <trans-unit id="productDetails.brand" datatype="html">
+        <source>Brand</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">202,203</context>
+        </context-group>
+        <note priority="1" from="meaning">Brand detail label</note>
+      </trans-unit>
+      <trans-unit id="productDetails.color" datatype="html">
+        <source>Color</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">207,208</context>
+        </context-group>
+        <note priority="1" from="meaning">Color detail label</note>
+      </trans-unit>
+      <trans-unit id="productDetails.availability" datatype="html">
+        <source>Availability</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">212,214</context>
+        </context-group>
+        <note priority="1" from="meaning">Availability detail label</note>
+      </trans-unit>
+      <trans-unit id="productDetails.inStockCount" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ product.countInStock }}"/> in stock</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">217,218</context>
+        </context-group>
+        <note priority="1" from="meaning">In stock count</note>
+      </trans-unit>
+      <trans-unit id="productDetails.sku" datatype="html">
+        <source>SKU</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">222,223</context>
+        </context-group>
+        <note priority="1" from="meaning">SKU detail label</note>
+      </trans-unit>
+      <trans-unit id="productDetails.dateAdded" datatype="html">
+        <source>Date added</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">227,228</context>
+        </context-group>
+        <note priority="1" from="meaning">Date added detail label</note>
+      </trans-unit>
+      <trans-unit id="productDetails.rating" datatype="html">
+        <source>Rating</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">232,233</context>
+        </context-group>
+        <note priority="1" from="meaning">Rating detail label</note>
+      </trans-unit>
+      <trans-unit id="productDetails.ratingValue" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ product.rating || &apos;No&apos; }}"/> (<x id="INTERPOLATION_1" equiv-text="{{ product.numbReviews }}"/> reviews)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">233,234</context>
+        </context-group>
+        <note priority="1" from="meaning">Rating count value</note>
+      </trans-unit>
+      <trans-unit id="productDetails.reviewsTitle" datatype="html">
+        <source>Reviews</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">241,243</context>
+        </context-group>
+        <note priority="1" from="meaning">Reviews heading</note>
+      </trans-unit>
+      <trans-unit id="productDetails.verifiedNote" datatype="html">
+        <source>Only verified purchases can rate and review this product.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">243,245</context>
+        </context-group>
+        <note priority="1" from="meaning">Verified purchases note</note>
+      </trans-unit>
+      <trans-unit id="productDetails.rateStarAria" datatype="html">
+        <source>Rate <x id="INTERPOLATION" equiv-text="{{ star }}"/> star</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">248</context>
+        </context-group>
+        <note priority="1" from="meaning">Star rating action</note>
+      </trans-unit>
+      <trans-unit id="productDetails.reviewPlaceholder" datatype="html">
+        <source>Share your thoughts...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">260,261</context>
+        </context-group>
+        <note priority="1" from="meaning">Review comment placeholder</note>
+      </trans-unit>
+      <trans-unit id="productDetails.signIn" datatype="html">
+        <source>Sign in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">273,274</context>
+        </context-group>
+        <note priority="1" from="meaning">Sign in link</note>
+      </trans-unit>
+      <trans-unit id="productDetails.signInPrompt" datatype="html">
+        <source> to write a review.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">274,278</context>
+        </context-group>
+        <note priority="1" from="meaning">Sign in prompt</note>
+      </trans-unit>
+      <trans-unit id="productDetails.noReviews" datatype="html">
+        <source>No reviews yet. Be the first!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">281</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty reviews message</note>
+      </trans-unit>
+      <trans-unit id="productDetails.verifiedTitle" datatype="html">
+        <source>Verified purchase</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">298</context>
+        </context-group>
+        <note priority="1" from="meaning">Verified purchase title</note>
+      </trans-unit>
+      <trans-unit id="productDetails.verified" datatype="html">
+        <source>Verified</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">299,301</context>
+        </context-group>
+        <note priority="1" from="meaning">Verified badge</note>
+      </trans-unit>
+      <trans-unit id="productDetails.deleteReview" datatype="html">
+        <source>Delete</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">307,310</context>
+        </context-group>
+        <note priority="1" from="meaning">Delete review action</note>
+      </trans-unit>
+      <trans-unit id="productDetails.relatedTitle" datatype="html">
+        <source>Related products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.html</context>
+          <context context-type="linenumber">323,325</context>
+        </context-group>
+        <note priority="1" from="meaning">Related products heading</note>
+      </trans-unit>
+      <trans-unit id="3493126540529865490" datatype="html">
+        <source>Submitting...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.ts</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="286633689821649631" datatype="html">
+        <source>Submit review</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8729817154630975485" datatype="html">
+        <source>Review submitted</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.ts</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2392488717875840729" datatype="html">
+        <source>User</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-details/product-details.component.ts</context>
+          <context context-type="linenumber">181</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="productList.shopLabel" datatype="html">
+        <source>Shop</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="meaning">Shop label</note>
+      </trans-unit>
+      <trans-unit id="productList.resultsFor" datatype="html">
+        <source>Results for &quot;<x id="INTERPOLATION" equiv-text="{{ catalog.search() }}"/>&quot;</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+        <note priority="1" from="meaning">Search results heading</note>
+      </trans-unit>
+      <trans-unit id="productList.allProducts" datatype="html">
+        <source>All Products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">12,15</context>
+        </context-group>
+        <note priority="1" from="meaning">All products heading</note>
+      </trans-unit>
+      <trans-unit id="productList.productsCount" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ catalog.visible().length }}"/> products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">16,18</context>
+        </context-group>
+        <note priority="1" from="meaning">Products count label</note>
+      </trans-unit>
+      <trans-unit id="productList.filters" datatype="html">
+        <source>Filters</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+        <note priority="1" from="meaning">Filters heading</note>
+      </trans-unit>
+      <trans-unit id="productList.category" datatype="html">
+        <source>Category</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">25,27</context>
+        </context-group>
+        <note priority="1" from="meaning">Category filter label</note>
+      </trans-unit>
+      <trans-unit id="productList.allCategories" datatype="html">
+        <source>All</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+        <note priority="1" from="meaning">All categories option</note>
+      </trans-unit>
+      <trans-unit id="productList.price" datatype="html">
+        <source>Price</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+        <note priority="1" from="meaning">Price filter label</note>
+      </trans-unit>
+      <trans-unit id="productList.minPrice" datatype="html">
+        <source>Min</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="meaning">Minimum price placeholder</note>
+      </trans-unit>
+      <trans-unit id="productList.maxPrice" datatype="html">
+        <source>Max</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <note priority="1" from="meaning">Maximum price placeholder</note>
+      </trans-unit>
+      <trans-unit id="productList.color" datatype="html">
+        <source>Color</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+        <note priority="1" from="meaning">Color filter label</note>
+      </trans-unit>
+      <trans-unit id="productList.colorPlaceholder" datatype="html">
+        <source>e.g. black</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <note priority="1" from="meaning">Color filter placeholder</note>
+      </trans-unit>
+      <trans-unit id="productList.sort" datatype="html">
+        <source>Sort</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">52,53</context>
+        </context-group>
+        <note priority="1" from="meaning">Sort filter label</note>
+      </trans-unit>
+      <trans-unit id="productList.sortNewest" datatype="html">
+        <source>Newest</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+        <note priority="1" from="meaning">Newest sort option</note>
+      </trans-unit>
+      <trans-unit id="productList.sortPriceAsc" datatype="html">
+        <source>Price: Low to High</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">55,56</context>
+        </context-group>
+        <note priority="1" from="meaning">Price ascending sort option</note>
+      </trans-unit>
+      <trans-unit id="productList.sortPriceDesc" datatype="html">
+        <source>Price: High to Low</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">56,57</context>
+        </context-group>
+        <note priority="1" from="meaning">Price descending sort option</note>
+      </trans-unit>
+      <trans-unit id="productList.sortRating" datatype="html">
+        <source>Top rated</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">57,61</context>
+        </context-group>
+        <note priority="1" from="meaning">Top rated sort option</note>
+      </trans-unit>
+      <trans-unit id="productList.apply" datatype="html">
+        <source> Apply </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">63,65</context>
+        </context-group>
+        <note priority="1" from="meaning">Apply filters action</note>
+      </trans-unit>
+      <trans-unit id="productList.clearFilters" datatype="html">
+        <source> Clear filters </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">66,70</context>
+        </context-group>
+        <note priority="1" from="meaning">Clear filters action</note>
+      </trans-unit>
+      <trans-unit id="productList.empty" datatype="html">
+        <source>No products match your filters.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty product list message</note>
+      </trans-unit>
+      <trans-unit id="productList.paginationAria" datatype="html">
+        <source>Pagination</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <note priority="1" from="meaning">Pagination navigation</note>
+      </trans-unit>
+      <trans-unit id="productList.previous" datatype="html">
+        <source> Previous </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">94,96</context>
+        </context-group>
+        <note priority="1" from="meaning">Previous page action</note>
+      </trans-unit>
+      <trans-unit id="productList.pageOf" datatype="html">
+        <source>Page <x id="INTERPOLATION" equiv-text="{{ catalog.page() }}"/> of <x id="INTERPOLATION_1" equiv-text="{{ totalPages() }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">96,97</context>
+        </context-group>
+        <note priority="1" from="meaning">Page indicator</note>
+      </trans-unit>
+      <trans-unit id="productList.next" datatype="html">
+        <source> Next </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/product-list/product-list.component.html</context>
+          <context context-type="linenumber">104,107</context>
+        </context-group>
+        <note priority="1" from="meaning">Next page action</note>
+      </trans-unit>
+      <trans-unit id="wishlist.title" datatype="html">
+        <source>My wishlist</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/wishlist/wishlist.component.ts</context>
+          <context context-type="linenumber">15,18</context>
+        </context-group>
+        <note priority="1" from="meaning">Wishlist heading</note>
+      </trans-unit>
+      <trans-unit id="wishlist.loadingAria" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/wishlist/wishlist.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading indicator</note>
+      </trans-unit>
+      <trans-unit id="wishlist.empty" datatype="html">
+        <source>Your wishlist is empty.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/wishlist/wishlist.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <note priority="1" from="meaning">Empty wishlist message</note>
+      </trans-unit>
+      <trans-unit id="wishlist.browseProducts" datatype="html">
+        <source> Browse products </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/wishlist/wishlist.component.ts</context>
+          <context context-type="linenumber">33,37</context>
+        </context-group>
+        <note priority="1" from="meaning">Browse products action</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

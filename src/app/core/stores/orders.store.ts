@@ -17,7 +17,8 @@ export class OrdersStore {
     this.loading.set(true);
     this.error.set(null);
     try {
-      this.orders.set(await firstValueFrom(this.api.listByUser(userId)));
+      const res = await firstValueFrom(this.api.listByUser(userId));
+      this.orders.set(res.data);
     } catch (err) {
       this.error.set(normalizeApiError(err).message);
     } finally {
@@ -55,6 +56,21 @@ export class OrdersStore {
     this.error.set(null);
     try {
       const order = await firstValueFrom(this.api.confirm(sessionId));
+      this.current.set(order);
+      return order;
+    } catch (err) {
+      this.error.set(normalizeApiError(err).message);
+      throw err;
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  async confirmPaypal(orderId: string): Promise<Order> {
+    this.loading.set(true);
+    this.error.set(null);
+    try {
+      const order = await firstValueFrom(this.api.confirmPaypal(orderId));
       this.current.set(order);
       return order;
     } catch (err) {

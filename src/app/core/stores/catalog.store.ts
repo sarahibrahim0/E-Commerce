@@ -68,8 +68,8 @@ export class CatalogStore {
           color: this.color(),
         }),
       );
-      this.productsList.set(list);
-      const total = Math.max(1, Math.ceil(list.length / this.pageSize()));
+      this.productsList.set(list.data);
+      const total = Math.max(1, Math.ceil(list.data.length / this.pageSize()));
       if (this.page() > total) {
         this.page.set(total);
       }

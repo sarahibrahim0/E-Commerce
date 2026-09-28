@@ -36,13 +36,13 @@ describe('authInterceptor', () => {
     expect(req.request.headers.has('Authorization')).toBe(false);
   });
 
-  it('normalizes a 404 to ApiError message', () => {
-    let message = '';
-    products.get('nope').subscribe({ error: (err: { message: string }) => (message = err.message) });
+  it('passes a 404 through as an HttpErrorResponse', () => {
+    let status = 0;
+    products.get('nope').subscribe({ error: (err: { status: number }) => (status = err.status) });
     http.expectOne(environment.apiUrl + 'products/nope').flush(
       { message: 'not found' },
       { status: 404, statusText: 'Not Found' },
     );
-    expect(message).toBe('not found');
+    expect(status).toBe(404);
   });
 });

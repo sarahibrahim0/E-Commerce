@@ -18,6 +18,21 @@
   --breakpoint-xl: 1025px;
   --breakpoint-2xl: 1201px;
   --breakpoint-3xl: 1501px;
+
+  --spacing-page-x: 60px;
+  --spacing-page-top: 100px;
+  --spacing-section: 80px;
+  --spacing-heading: 60px;
+  --spacing-tabs: 37px;
+  --spacing-tab-y: 10px;
+  --spacing-tab-x: 28px;
+  --spacing-paragraph: 15px;
+  --spacing-banner-y: 45px;
+  --spacing-banner-x: 65px;
+  --spacing-banner-heading: 14px;
+  --spacing-banner-para: 25px;
+  --spacing-card-title: 20px;
+  --spacing-stack: 30px;
 }
 
 * {
@@ -33,6 +48,49 @@ body {
   overflow-x: visible;
 }
 
+[dir="rtl"] body {
+  font-family: "Cairo", sans-serif;
+}
+
+[dir="rtl"] button,
+[dir="rtl"] input,
+[dir="rtl"] span,
+[dir="rtl"] p,
+[dir="rtl"] a,
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] dt,
+[dir="rtl"] dd,
+[dir="rtl"] label,
+[dir="rtl"] li {
+  letter-spacing: 0 !important;
+}
+
+[dir="rtl"] .bi-chevron-left,
+[dir="rtl"] .bi-chevron-right,
+[dir="rtl"] .bi-arrow-left,
+[dir="rtl"] .bi-arrow-right,
+[dir="rtl"] .bi-arrow-left-short,
+[dir="rtl"] .bi-arrow-right-short,
+[dir="rtl"] .bi-arrow-return-left,
+[dir="rtl"] .bi-arrow-return-right,
+[dir="rtl"] .bi-box-arrow-left,
+[dir="rtl"] .bi-box-arrow-right,
+[dir="rtl"] .bi-arrow-left-circle,
+[dir="rtl"] .bi-arrow-right-circle,
+[dir="rtl"] .bi-arrow-left-circle-fill,
+[dir="rtl"] .bi-arrow-right-circle-fill {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .bi-arrow-left-right {
+  transform: scaleX(-1);
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -45,6 +103,19 @@ html { overflow-x: hidden; }
 
 a { text-decoration: none !important; }
 ul { list-style: none !important; padding: 0; }
+
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+a[href],
+a[routerLink],
+[role="link"],
+input[type="checkbox"],
+input[type="radio"],
+select,
+label[for],
+summary {
+  cursor: pointer;
+}
 
 :focus-visible {
   outline: 2px solid #FD8F5F;

@@ -21,6 +21,7 @@ export class HomeComponent {
   activeButton = 0;
   id = '';
   popular: Product[] = [];
+  loading = signal(true);
 
   isVisible0 = false;
   isVisible1 = false;
@@ -44,6 +45,8 @@ export class HomeComponent {
       await this.getPopularProducts();
     } catch (e) {
       console.log(e);
+    } finally {
+      this.loading.set(false);
     }
   }
 
@@ -62,7 +65,7 @@ export class HomeComponent {
     this.id = id;
     try {
       const all = await firstValueFrom(this.productsApi.list({ categoryId: id }));
-      this.products = all.slice(0, 3);
+      this.products = all.data.slice(0, 3);
     } catch (e) {
       console.log(e);
     }

@@ -1,6 +1,7 @@
-<div class="mx-auto max-w-md px-4 py-16">
-  <h1 class="text-2xl font-bold text-blue-black">Create account</h1>
-  <p class="mt-1 text-sm text-[#797979]">Register to place orders and leave reviews.</p>
+<div class="w-full ps-[175px] pe-[175px] pt-page-x pb-section">
+  <div class="mx-auto max-w-md">
+  <h1 class="text-2xl font-bold text-blue-black" i18n="Create account heading|@@register.title">Create account</h1>
+  <p class="mt-1 text-sm text-[#797979]" i18n="Register message|@@register.subtitle">Register to place orders and leave reviews.</p>
 
   @if (formError(); as err) {
     <p class="mt-4 rounded-md bg-[#fff5f5] p-3 text-sm text-[#ff4545]">{{ err }}</p>
@@ -10,37 +11,56 @@
 
   <form class="mt-6 space-y-4" (ngSubmit)="submit()">
     <div>
-      <label for="name" class="block text-sm font-medium text-[#646D77]">Name</label>
+      <label for="name" class="block text-sm font-medium text-[#646D77]" i18n="Name label|@@register.name">Name</label>
       <input id="name" name="name" required autocomplete="name" [ngModel]="name()" (ngModelChange)="name.set($event)"
              class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
     </div>
     <div>
-      <label for="email" class="block text-sm font-medium text-[#646D77]">Email</label>
+      <label for="email" class="block text-sm font-medium text-[#646D77]" i18n="Email label|@@register.email">Email</label>
       <input id="email" name="email" type="email" required autocomplete="email" [ngModel]="email()" (ngModelChange)="email.set($event)"
              class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
     </div>
     <div>
-      <label for="phone" class="block text-sm font-medium text-[#646D77]">Phone</label>
-      <input id="phone" name="phone" required autocomplete="tel" [ngModel]="phone()" (ngModelChange)="phone.set($event)"
-             class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+      <label for="country" class="block text-sm font-medium text-[#646D77]" i18n="Country label|@@register.country">Country</label>
+      <select id="country" name="country" [ngModel]="country()" (ngModelChange)="onCountryChange($event)"
+              class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon bg-white">
+        <option value="" disabled i18n="Select country option|@@register.selectCountry">Select country</option>
+        @for (c of countries; track c.code) {
+          <option [value]="c.code">{{ c.flag }} {{ c.name }}</option>
+        }
+      </select>
     </div>
     <div>
-      <label for="password" class="block text-sm font-medium text-[#646D77]">Password</label>
+      <label for="phone" class="block text-sm font-medium text-[#646D77]" i18n="Phone label|@@register.phone">Phone</label>
+      <div class="flex mt-1">
+        <span class="flex items-center rounded-s-md border border-e-0 border-[#c9c9c9] bg-[#f9f9f9] px-2 text-sm text-[#646D77]">
+          {{ phoneDialCode() }}
+        </span>
+        <input id="phone" name="phone" type="tel" required autocomplete="tel"
+               placeholder="7XX XXX XXXX"
+               [ngModel]="phone()" (ngModelChange)="phone.set($event)"
+               class="w-full rounded-e-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+      </div>
+    </div>
+    <div>
+      <label for="password" class="block text-sm font-medium text-[#646D77]" i18n="Password label|@@register.password">Password</label>
       <input id="password" name="password" type="password" required autocomplete="new-password" [ngModel]="password()" (ngModelChange)="password.set($event)"
              class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
     </div>
     <div>
-      <label for="confirm" class="block text-sm font-medium text-[#646D77]">Confirm password</label>
+      <label for="confirm" class="block text-sm font-medium text-[#646D77]" i18n="Confirm password label|@@register.confirmPassword">Confirm password</label>
       <input id="confirm" name="confirm" type="password" required autocomplete="new-password" [ngModel]="confirm()" (ngModelChange)="confirm.set($event)"
              class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
     </div>
     <button type="submit" [disabled]="auth.loading()"
-            class="w-full rounded-none uppercase tracking-wider bg-salmon px-4 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
-      {{ auth.loading() ? 'Creating account...' : 'Create account' }}
+            class="w-full rounded-md uppercase tracking-wider bg-salmon px-4 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
+      {{ submitLabel() }}
     </button>
   </form>
 
   <p class="mt-4 text-center text-sm text-[#797979]">
-    Already have an account? <a routerLink="/login" class="font-medium text-salmon">Sign in</a>
+    <ng-container i18n="Already have account prompt|@@register.haveAccount">Already have an account? </ng-container>
+    <a routerLink="/login" class="font-medium text-salmon" i18n="Sign in link|@@register.signIn">Sign in</a>
   </p>
+  </div>
 </div>

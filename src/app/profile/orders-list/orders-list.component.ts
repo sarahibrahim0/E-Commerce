@@ -6,6 +6,7 @@ import { AuthStore } from '../../core/stores/auth.store';
 import { CartStore } from '../../core/stores/cart.store';
 import { ConfirmDialogService } from '../../shared/confirm-dialog/confirm-dialog.service';
 import { ToastService } from '../../shared/toast/toast.service';
+import { normalizeApiError } from '../../core/services/api-error';
 import { Order } from '../../core/models';
 import { formatPrice } from '../../core/utils/price';
 
@@ -45,19 +46,23 @@ export class OrdersListComponent implements OnInit {
 
   async cancel(order: Order): Promise<void> {
     const ok = await this.confirm.confirm({
-      title: 'Cancel order',
-      message: `Cancel order #${order.id}? Payment will be refunded if already paid.`,
-      confirmLabel: 'Cancel order',
+      title: $localize`Cancel order`,
+      message: $localize`Cancel order #${order.id}? Payment will be refunded if already paid.`,
+      confirmLabel: $localize`Cancel order`,
     });
     if (!ok) return;
-    await this.orders.cancel(order.id);
-    this.toasts.show('Order cancelled', 'success');
+    try {
+      await this.orders.cancel(order.id);
+      this.toasts.show($localize`Order cancelled`, 'success');
+    } catch (err) {
+      this.toasts.show(normalizeApiError(err).message, 'error');
+    }
   }
 
   reorder(order: Order): void {
     for (const item of order.orderItems) {
-      this.cart.add(item.product, item.quantity);
+      this.cart.add(item.product, 1);
     }
-    this.toasts.show('Items added to cart', 'success');
+    this.toasts.show($localize`Items added to cart`, 'success');
   }
 }

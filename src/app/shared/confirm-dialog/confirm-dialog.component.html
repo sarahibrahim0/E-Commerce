@@ -3,21 +3,34 @@
     <div class="w-full max-w-sm rounded-lg bg-white p-6 shadow-xl" role="alertdialog" aria-modal="true">
       <h2 class="text-lg font-semibold text-blue-black">{{ state.options.title }}</h2>
       <p class="mt-2 text-sm text-[#646D77]">{{ state.options.message }}</p>
-      <div class="mt-6 flex justify-end gap-2">
-        <button
-          type="button"
-          class="rounded-md border border-[#c9c9c9] px-4 py-2 text-sm text-[#646D77] hover:bg-[#ecd7cd]"
-          (click)="cancel()"
-        >
-          {{ state.options.cancelLabel ?? 'Cancel' }}
-        </button>
-        <button
-          type="button"
-          class="rounded-md bg-[#ff4545] px-4 py-2 text-sm text-white hover:bg-[#e63e3e]"
-          (click)="confirm()"
-        >
-          {{ state.options.confirmLabel ?? 'Confirm' }}
-        </button>
+      <div class="mt-6 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          @if (state.options.extraLabel) {
+            <button
+              type="button"
+              class="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md bg-salmon px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#e9855a]"
+              (click)="extra()"
+            >
+              <i class="bi bi-heart"></i>{{ state.options.extraLabel }}
+            </button>
+          }
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            class="inline-flex items-center whitespace-nowrap rounded-md border border-[#e0e0e0] bg-white px-4 py-2 text-sm font-medium text-[#646D77] transition-colors hover:bg-[#f5f5f5] hover:text-[#1a1a1a]"
+            (click)="cancel()"
+          >
+            {{ state.options.cancelLabel ?? defaultCancelLabel }}
+          </button>
+          <button
+            type="button"
+            class="inline-flex items-center whitespace-nowrap rounded-md bg-[#ff4545] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#e63e3e]"
+            (click)="confirm()"
+          >
+            {{ state.options.confirmLabel ?? defaultConfirmLabel }}
+          </button>
+        </div>
       </div>
     </div>
   </div>

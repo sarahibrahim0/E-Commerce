@@ -1,46 +1,71 @@
-<div class="mx-auto max-w-2xl px-4 py-12 text-center">
+<div class="w-full ps-[175px] pe-[175px] pt-page-x pb-section text-center">
   @if (missingSession()) {
-    <h1 class="text-2xl font-bold text-blue-black">No order to confirm</h1>
-    <p class="mt-2 text-[#797979]">This page is reached after completing payment.</p>
-    <a routerLink="/" class="mt-6 inline-block rounded-none uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a]">Back home</a>
+    <h1 class="text-2xl font-bold text-blue-black" i18n="No order heading|@@orderSuccess.noOrderTitle">No order to confirm</h1>
+    <p class="mt-2 text-[#797979]" i18n="No order message|@@orderSuccess.noOrderMessage">This page is reached after completing payment.</p>
+    <a routerLink="/" class="mt-6 inline-block rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-hover-salmon" i18n="Back home action|@@orderSuccess.backHome">Back home</a>
   } @else if (confirming()) {
     <div class="animate-pulse py-16">
-      <p class="text-[#797979]">Verifying your payment...</p>
+      <p class="text-[#797979]">{{ confirmingLabel() }}</p>
     </div>
   } @else if (error(); as err) {
-    <h1 class="text-2xl font-bold text-blue-black">Order not completed</h1>
+    <h1 class="text-2xl font-bold text-blue-black" i18n="Order failed heading|@@orderSuccess.failedTitle">Order not completed</h1>
     <p class="mt-2 text-[#ff4545]">{{ err }}</p>
-    <a routerLink="/checkout" class="mt-6 inline-block rounded-none uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a]">Back to checkout</a>
+    <a routerLink="/checkout" class="mt-6 inline-block rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-hover-salmon" i18n="Back to checkout action|@@orderSuccess.backToCheckout">Back to checkout</a>
   } @else if (confirmed(); as order) {
     <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-6">
-      <h1 class="text-2xl font-bold text-emerald-800">Thank you for your order!</h1>
-      <p class="mt-1 text-sm text-emerald-700">Order #{{ order.id }} &middot; {{ order.status }} &middot; {{ order.paymentStatus }}</p>
+      <h1 class="text-2xl font-bold text-emerald-800">{{ placedTitle() }}</h1>
+      <p class="mt-1 text-sm text-emerald-700">
+        <span i18n="Order reference and status|@@orderSuccess.orderMeta">Order #{{ order.id }} &middot; {{ order.status }}</span>
+        @if (cod()) {
+          <span i18n="Cash on delivery note|@@orderSuccess.payOnDelivery"> &middot; pay cash on delivery</span>
+        } @else {
+          <span> &middot; {{ order.paymentStatus }}</span>
+        }
+      </p>
     </div>
 
-    <section class="mt-6 rounded-lg border border-[#F6F8FE] bg-white p-6 text-left">
-      <h2 class="text-lg font-semibold text-blue-black">Receipt</h2>
+    <section class="mt-6 rounded-lg border border-[#F6F8FE] bg-white p-6 text-start">
+      <h2 class="text-lg font-semibold text-blue-black">
+        <ng-container i18n="Receipt heading|@@orderSuccess.receipt">Receipt</ng-container>
+        <span class="text-sm font-normal text-[#797979]">({{ priceCode() }})</span>
+      </h2>
       <ul class="mt-3 space-y-2 text-sm text-[#646D77]">
         @for (item of order.orderItems; track item.id) {
           <li class="flex justify-between">
-            <span>{{ item.product.name }} &times; {{ item.quantity }}</span>
-            <span>{{ formatPrice(item.product.price * item.quantity) }}</span>
+            <span>{{ pickText(item.product.name) }} &times; {{ item.quantity }}</span>
+            <span>{{ fmt(effectivePrice(item.product) * item.quantity) }}</span>
           </li>
         }
       </ul>
       <dl class="mt-4 space-y-1 border-t border-[#F6F8FE] pt-3 text-sm">
         @if (order.couponCode) {
-          <div class="flex justify-between text-emerald-700"><dt>Coupon {{ order.couponCode }}</dt><dd>&minus;{{ formatPrice(order.discount) }}</dd></div>
+          <div class="flex justify-between text-emerald-700">
+            <dt>
+              <ng-container i18n="Coupon row label|@@orderSuccess.coupon">Coupon {{ order.couponCode }}</ng-container>
+            </dt>
+            <dd>&minus;{{ fmt(order.discount) }}</dd>
+          </div>
         }
-        <div class="flex justify-between text-base font-bold text-dark-purple"><dt>Total</dt><dd>{{ formatPrice(order.totalPrice) }}</dd></div>
+        <div class="flex justify-between {{ order.shippingFee === 0 ? 'text-[#3fa32d]' : '' }}">
+          <dt i18n="Shipping label|@@orderSuccess.shipping">Shipping</dt>
+          <dd>
+            @if (order.shippingFee === 0) {
+              <span i18n="Free shipping value|@@orderSuccess.free">Free</span>
+            } @else {
+              {{ fmt(order.shippingFee ?? 0) }}
+            }
+          </dd>
+        </div>
+        <div class="flex justify-between text-base font-bold text-dark-purple"><dt i18n="Total label|@@orderSuccess.total">Total</dt><dd>{{ fmt(order.totalPrice) }}</dd></div>
       </dl>
-      <p class="mt-4 text-sm text-[#797979]">
-        Shipping to {{ order.shippingAddress1 }}, {{ order.city }}, {{ order.country }} &middot; {{ order.phone }}
+      <p class="mt-4 text-sm text-[#797979]" i18n="Shipping destination|@@orderSuccess.shippingTo">
+        Shipping to {{ pickText(order.shippingAddress1) }}, {{ pickText(order.city) }}, {{ pickText(order.country) }} &middot; {{ order.phone }}
       </p>
     </section>
 
     <div class="mt-6 flex justify-center gap-3">
-      <a routerLink="/profile/orders" class="rounded-md border border-[#c9c9c9] px-5 py-2.5 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">View my orders</a>
-      <a routerLink="/products" class="rounded-none uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a]">Continue shopping</a>
+      <a routerLink="/profile/orders" class="rounded-md border border-[#c9c9c9] px-5 py-2.5 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="View orders action|@@orderSuccess.viewOrders">View my orders</a>
+      <a routerLink="/products" class="rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-hover-salmon" i18n="Continue shopping action|@@orderSuccess.continueShopping">Continue shopping</a>
     </div>
   }
 </div>

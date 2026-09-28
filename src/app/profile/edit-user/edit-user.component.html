@@ -1,21 +1,21 @@
 <section class="rounded-lg border border-[#F6F8FE] bg-white p-6">
-  <h2 class="text-lg font-semibold text-blue-black">Edit profile</h2>
+  <h2 class="text-lg font-semibold text-blue-black" i18n="Edit profile heading|@@editUser.title">Edit profile</h2>
   @if (error(); as err) {
     <p class="mt-3 rounded-md bg-[#fff5f5] p-3 text-sm text-[#ff4545]">{{ err }}</p>
   }
   <form class="mt-4 grid gap-4 sm:grid-cols-2" (ngSubmit)="save()">
-    <input [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" placeholder="Name" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" type="email" placeholder="Email" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" placeholder="Phone" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="street()" (ngModelChange)="street.set($event)" name="street" placeholder="Street" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="apartment()" (ngModelChange)="apartment.set($event)" name="apartment" placeholder="Apartment" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="country()" (ngModelChange)="country.set($event)" name="country" placeholder="Country" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="password()" (ngModelChange)="password.set($event)" name="password" type="password" placeholder="New password (optional)" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon sm:col-span-2" />
+    <input [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" placeholder="Name" i18n-placeholder="Name placeholder|@@editUser.namePlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <input [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" type="email" placeholder="Email" i18n-placeholder="Email placeholder|@@editUser.emailPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <input [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" placeholder="Phone" i18n-placeholder="Phone placeholder|@@editUser.phonePlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <input [ngModel]="street()" (ngModelChange)="street.set($event)" name="street" placeholder="Street" i18n-placeholder="Street placeholder|@@editUser.streetPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <input [ngModel]="apartment()" (ngModelChange)="apartment.set($event)" name="apartment" placeholder="Apartment" i18n-placeholder="Apartment placeholder|@@editUser.apartmentPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City" i18n-placeholder="City placeholder|@@editUser.cityPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" i18n-placeholder="ZIP placeholder|@@editUser.zipPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <input [ngModel]="country()" (ngModelChange)="country.set($event)" name="country" placeholder="Country" i18n-placeholder="Country placeholder|@@editUser.countryPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <input [ngModel]="password()" (ngModelChange)="password.set($event)" name="password" type="password" placeholder="New password (optional)" i18n-placeholder="New password placeholder|@@editUser.passwordPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon sm:col-span-2" />
     <div class="sm:col-span-2">
-      <button type="submit" [disabled]="saving()" class="rounded-none uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
-        {{ saving() ? 'Saving...' : 'Save changes' }}
+      <button type="submit" [disabled]="saving()" class="rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
+        {{ saveLabel() }}
       </button>
     </div>
   </form>

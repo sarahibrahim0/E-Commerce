@@ -35,7 +35,7 @@ describe('OrdersStore', () => {
   it('loads the user orders', async () => {
     const p = store.loadOrders('u1');
     const req = http.expectOne(`${environment.apiUrl}orders/getuserorders/u1`);
-    req.flush([order()]);
+    req.flush({ data: [order()], total: 1, page: 1, totalPages: 1 });
     await p;
     expect(store.orders().length).toBe(1);
   });
@@ -72,7 +72,7 @@ describe('OrdersStore', () => {
     store.orders.set([order()]);
     const p = store.cancel('o1');
     const req = http.expectOne(`${environment.apiUrl}orders/o1/cancel`);
-    req.flush(order({ status: 'Cancelled', paymentStatus: 'refunded' }));
+    req.flush({ _id: 'o1', status: 'Cancelled', paymentStatus: 'refunded', orderItems: ['oi1', 'oi2'] });
     await p;
     expect(store.orders()[0].status).toBe('Cancelled');
     expect(store.orders()[0].paymentStatus).toBe('refunded');

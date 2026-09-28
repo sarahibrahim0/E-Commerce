@@ -1,16 +1,20 @@
-<div class="mx-auto max-w-5xl px-4 py-8">
-  <h1 class="text-2xl font-bold text-blue-black">My account</h1>
+<div class="w-full ps-[175px] pe-[175px] pt-page-x pb-section">
+  <h1 class="text-2xl font-bold text-blue-black" i18n="My account heading|@@profile.title">My account</h1>
   <div class="mt-6 grid gap-8 md:grid-cols-[200px_1fr]">
-    <nav class="flex flex-row gap-1 overflow-x-auto md:flex-col" aria-label="Profile">
+    <nav class="flex flex-row gap-1 overflow-x-auto md:flex-col" aria-label="Profile" i18n-aria-label="Profile navigation|@@profile.navAria">
       <a routerLink="/profile" routerLinkActive="bg-[#F6F8FE] text-salmon" [routerLinkActiveOptions]="{ exact: true }"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">Account info</a>
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Account info link|@@profile.accountInfo">Account info</a>
       <a routerLink="/profile/user/edit" routerLinkActive="bg-[#F6F8FE] text-salmon"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">Edit profile</a>
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Edit profile link|@@profile.editProfile">Edit profile</a>
       <a routerLink="/profile/addresses" routerLinkActive="bg-[#F6F8FE] text-salmon"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">Addresses</a>
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Addresses link|@@profile.addresses">Addresses</a>
       <a routerLink="/profile/orders" routerLinkActive="bg-[#F6F8FE] text-salmon"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]">Orders</a>
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Orders link|@@profile.orders">Orders</a>
+      <a routerLink="/wishlist" routerLinkActive="bg-[#F6F8FE] text-salmon"
+         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Wishlist link|@@profile.wishlist">Wishlist</a>
     </nav>
-    <router-outlet />
+    <div class="min-w-0">
+      <router-outlet />
+    </div>
   </div>
 </div>

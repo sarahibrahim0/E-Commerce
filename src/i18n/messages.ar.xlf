@@ -1,0 +1,1619 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" target-language="ar" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="forgotPassword.title" datatype="html">
+        <source>Forgot Password?</source>
+        <target>هل نسيت كلمة المرور؟</target>
+      </trans-unit>
+      <trans-unit id="forgotPassword.subtitle" datatype="html">
+        <source>Enter your email to receive a reset link</source>
+        <target>أدخل بريدك الإلكتروني لاستلام رابط إعادة التعيين</target>
+      </trans-unit>
+      <trans-unit id="forgotPassword.emailLabel" datatype="html">
+        <source>Email Address</source>
+        <target>البريد الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="forgotPassword.emailPlaceholder" datatype="html">
+        <source>Enter your email</source>
+        <target>أدخل بريدك الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="forgotPassword.backToLogin" datatype="html">
+        <source>Back to Login</source>
+        <target>العودة إلى تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="1118027788072351320" datatype="html">
+        <source>Sending...</source>
+        <target>جارٍ الإرسال...</target>
+      </trans-unit>
+      <trans-unit id="5508458189651454018" datatype="html">
+        <source>Send Reset Link</source>
+        <target>إرسال رابط إعادة التعيين</target>
+      </trans-unit>
+      <trans-unit id="4581825606308873944" datatype="html">
+        <source>Check your email for the reset link.</source>
+        <target>تحقق من بريدك الإلكتروني لاستلام رابط إعادة التعيين.</target>
+      </trans-unit>
+      <trans-unit id="login.title" datatype="html">
+        <source>Sign in</source>
+        <target>تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="login.welcomeBack" datatype="html">
+        <source>Welcome back!</source>
+        <target>مرحبًا بعودتك!</target>
+      </trans-unit>
+      <trans-unit id="login.email" datatype="html">
+        <source>Email</source>
+        <target>البريد الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="login.password" datatype="html">
+        <source>Password</source>
+        <target>كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="login.rememberPassword" datatype="html">
+        <source>Remember password</source>
+        <target>تذكر كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="login.forgotPassword" datatype="html">
+        <source>Forgot password?</source>
+        <target>هل نسيت كلمة المرور؟</target>
+      </trans-unit>
+      <trans-unit id="login.newHere" datatype="html">
+        <source>New here? </source>
+        <target>جديد هنا؟ </target>
+      </trans-unit>
+      <trans-unit id="login.createAccount" datatype="html">
+        <source>Create an account</source>
+        <target>إنشاء حساب</target>
+      </trans-unit>
+      <trans-unit id="1858953469563036586" datatype="html">
+        <source>Signing in...</source>
+        <target>جارٍ تسجيل الدخول...</target>
+      </trans-unit>
+      <trans-unit id="5207635742003539443" datatype="html">
+        <source>Sign in</source>
+        <target>تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="register.title" datatype="html">
+        <source>Create account</source>
+        <target>إنشاء حساب</target>
+      </trans-unit>
+      <trans-unit id="register.subtitle" datatype="html">
+        <source>Register to place orders and leave reviews.</source>
+        <target>سجّل لإتمام الطلبات وترك التقييمات.</target>
+      </trans-unit>
+      <trans-unit id="register.name" datatype="html">
+        <source>Name</source>
+        <target>الاسم</target>
+      </trans-unit>
+      <trans-unit id="register.email" datatype="html">
+        <source>Email</source>
+        <target>البريد الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="register.country" datatype="html">
+        <source>Country</source>
+        <target>الدولة</target>
+      </trans-unit>
+      <trans-unit id="register.selectCountry" datatype="html">
+        <source>Select country</source>
+        <target>اختر الدولة</target>
+      </trans-unit>
+      <trans-unit id="register.phone" datatype="html">
+        <source>Phone</source>
+        <target>الهاتف</target>
+      </trans-unit>
+      <trans-unit id="register.password" datatype="html">
+        <source>Password</source>
+        <target>كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="register.confirmPassword" datatype="html">
+        <source>Confirm password</source>
+        <target>تأكيد كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="register.haveAccount" datatype="html">
+        <source>Already have an account? </source>
+        <target>هل لديك حساب بالفعل؟ </target>
+      </trans-unit>
+      <trans-unit id="register.signIn" datatype="html">
+        <source>Sign in</source>
+        <target>تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="3077599139444771356" datatype="html">
+        <source>Creating account...</source>
+        <target>جارٍ إنشاء الحساب...</target>
+      </trans-unit>
+      <trans-unit id="5907476126990913307" datatype="html">
+        <source>Create account</source>
+        <target>إنشاء حساب</target>
+      </trans-unit>
+      <trans-unit id="2903855131362932066" datatype="html">
+        <source>All fields are required.</source>
+        <target>جميع الحقول مطلوبة.</target>
+      </trans-unit>
+      <trans-unit id="1543538730036692975" datatype="html">
+        <source>Passwords do not match.</source>
+        <target>كلمتا المرور غير متطابقتين.</target>
+      </trans-unit>
+      <trans-unit id="resetPassword.title" datatype="html">
+        <source>Reset Password</source>
+        <target>إعادة تعيين كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="resetPassword.subtitle" datatype="html">
+        <source>Enter your new password</source>
+        <target>أدخل كلمة المرور الجديدة</target>
+      </trans-unit>
+      <trans-unit id="resetPassword.newPasswordLabel" datatype="html">
+        <source>New Password</source>
+        <target>كلمة المرور الجديدة</target>
+      </trans-unit>
+      <trans-unit id="resetPassword.newPasswordPlaceholder" datatype="html">
+        <source>Enter new password</source>
+        <target>أدخل كلمة المرور الجديدة</target>
+      </trans-unit>
+      <trans-unit id="resetPassword.confirmLabel" datatype="html">
+        <source>Confirm Password</source>
+        <target>تأكيد كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="resetPassword.confirmPlaceholder" datatype="html">
+        <source>Confirm new password</source>
+        <target>تأكيد كلمة المرور الجديدة</target>
+      </trans-unit>
+      <trans-unit id="resetPassword.backToLogin" datatype="html">
+        <source>Back to Login</source>
+        <target>العودة إلى تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="5126218690566601508" datatype="html">
+        <source>Resetting...</source>
+        <target>جارٍ إعادة التعيين...</target>
+      </trans-unit>
+      <trans-unit id="6972105223770675605" datatype="html">
+        <source>Reset Password</source>
+        <target>إعادة تعيين كلمة المرور</target>
+      </trans-unit>
+      <trans-unit id="6451269955734195952" datatype="html">
+        <source>Passwords do not match</source>
+        <target>كلمتا المرور غير متطابقتين</target>
+      </trans-unit>
+      <trans-unit id="2511717705004401735" datatype="html">
+        <source>Password updated successfully! Redirecting to login...</source>
+        <target>تم تحديث كلمة المرور بنجاح! جارٍ التحويل إلى تسجيل الدخول...</target>
+      </trans-unit>
+      <trans-unit id="verifyEmail.title" datatype="html">
+        <source>Verify Your Email</source>
+        <target>تحقق من بريدك الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="verifyEmail.subtitle" datatype="html">
+        <source>We&apos;ve sent a 6-digit code to your email</source>
+        <target>لقد أرسلنا رمزًا من 6 أرقام إلى بريدك الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="verifyEmail.codeLabel" datatype="html">
+        <source>Verification Code</source>
+        <target>رمز التحقق</target>
+      </trans-unit>
+      <trans-unit id="verifyEmail.codePlaceholder" datatype="html">
+        <source>Enter 6-digit code</source>
+        <target>أدخل الرمز المكوّن من 6 أرقام</target>
+      </trans-unit>
+      <trans-unit id="verifyEmail.backToLogin" datatype="html">
+        <source>Back to Login</source>
+        <target>العودة إلى تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="4371485180715105780" datatype="html">
+        <source>Verifying...</source>
+        <target>جارٍ التحقق...</target>
+      </trans-unit>
+      <trans-unit id="8913794084097958305" datatype="html">
+        <source>Verify</source>
+        <target>تحقق</target>
+      </trans-unit>
+      <trans-unit id="7466242722385507004" datatype="html">
+        <source>Resend in <x id="PH" equiv-text="this.cooldown()"/>s</source>
+        <target>إعادة الإرسال خلال <x id="PH" equiv-text="this.cooldown()"/> ثانية</target>
+      </trans-unit>
+      <trans-unit id="3972495142175860210" datatype="html">
+        <source>Resend code</source>
+        <target>إعادة إرسال الرمز</target>
+      </trans-unit>
+      <trans-unit id="1118848594853292668" datatype="html">
+        <source>Email verified successfully! Redirecting...</source>
+        <target>تم التحقق من البريد الإلكتروني بنجاح! جارٍ التحويل...</target>
+      </trans-unit>
+      <trans-unit id="6462597652961176820" datatype="html">
+        <source>Session expired. Please sign in again.</source>
+        <target>انتهت الجلسة. يرجى تسجيل الدخول مرة أخرى.</target>
+      </trans-unit>
+      <trans-unit id="960665565485640516" datatype="html">
+        <source>Something went wrong</source>
+        <target>حدث خطأ ما</target>
+      </trans-unit>
+      <trans-unit id="117052430736458977" datatype="html">
+        <source>No pending verification email</source>
+        <target>لا يوجد بريد إلكتروني بانتظار التحقق</target>
+      </trans-unit>
+      <trans-unit id="addresses.title" datatype="html">
+        <source>Saved addresses</source>
+        <target>العناوين المحفوظة</target>
+      </trans-unit>
+      <trans-unit id="addresses.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="addresses.empty" datatype="html">
+        <source>No saved addresses yet.</source>
+        <target>لا توجد عناوين محفوظة بعد.</target>
+      </trans-unit>
+      <trans-unit id="addresses.defaultBadge" datatype="html">
+        <source>Default</source>
+        <target>الافتراضي</target>
+      </trans-unit>
+      <trans-unit id="addresses.edit" datatype="html">
+        <source>Edit</source>
+        <target>تعديل</target>
+      </trans-unit>
+      <trans-unit id="addresses.delete" datatype="html">
+        <source>Delete</source>
+        <target>حذف</target>
+      </trans-unit>
+      <trans-unit id="addresses.setDefault" datatype="html">
+        <source> Set as default </source>
+        <target> تعيين كافتراضي </target>
+      </trans-unit>
+      <trans-unit id="addresses.editTitle" datatype="html">
+        <source>Edit address</source>
+        <target>تعديل العنوان</target>
+      </trans-unit>
+      <trans-unit id="addresses.addTitle" datatype="html">
+        <source>Add address</source>
+        <target>إضافة عنوان</target>
+      </trans-unit>
+      <trans-unit id="addresses.labelPlaceholder" datatype="html">
+        <source>Label (Home, Work...)</source>
+        <target>التسمية (المنزل، العمل...)</target>
+      </trans-unit>
+      <trans-unit id="addresses.streetPlaceholder" datatype="html">
+        <source>Street *</source>
+        <target>الشارع *</target>
+      </trans-unit>
+      <trans-unit id="addresses.apartmentPlaceholder" datatype="html">
+        <source>Apartment</source>
+        <target>الشقة</target>
+      </trans-unit>
+      <trans-unit id="addresses.cityPlaceholder" datatype="html">
+        <source>City *</source>
+        <target>المدينة *</target>
+      </trans-unit>
+      <trans-unit id="addresses.zipPlaceholder" datatype="html">
+        <source>ZIP / Postal</source>
+        <target>الرمز البريدي</target>
+      </trans-unit>
+      <trans-unit id="addresses.countryPlaceholder" datatype="html">
+        <source>Country *</source>
+        <target>الدولة *</target>
+      </trans-unit>
+      <trans-unit id="addresses.phonePlaceholder" datatype="html">
+        <source>Phone *</source>
+        <target>الهاتف *</target>
+      </trans-unit>
+      <trans-unit id="addresses.cancel" datatype="html">
+        <source>Cancel</source>
+        <target>إلغاء</target>
+      </trans-unit>
+      <trans-unit id="2821179408673282599" datatype="html">
+        <source>Home</source>
+        <target>الرئيسية</target>
+      </trans-unit>
+      <trans-unit id="3407061818321766940" datatype="html">
+        <source>Saving...</source>
+        <target>جارٍ الحفظ...</target>
+      </trans-unit>
+      <trans-unit id="7000649363168371045" datatype="html">
+        <source>Save changes</source>
+        <target>حفظ التغييرات</target>
+      </trans-unit>
+      <trans-unit id="1443589936173128732" datatype="html">
+        <source>Add address</source>
+        <target>إضافة عنوان</target>
+      </trans-unit>
+      <trans-unit id="698230613646753530" datatype="html">
+        <source>Street, city, country, and phone are required.</source>
+        <target>الشارع والمدينة والدولة والهاتف مطلوبة.</target>
+      </trans-unit>
+      <trans-unit id="229814701210318084" datatype="html">
+        <source>Address saved</source>
+        <target>تم حفظ العنوان</target>
+      </trans-unit>
+      <trans-unit id="5615387677254217285" datatype="html">
+        <source>Default address updated</source>
+        <target>تم تحديث العنوان الافتراضي</target>
+      </trans-unit>
+      <trans-unit id="2976214221258436713" datatype="html">
+        <source>Delete address</source>
+        <target>حذف العنوان</target>
+      </trans-unit>
+      <trans-unit id="4369364811458415022" datatype="html">
+        <source>Delete &quot;<x id="PH" equiv-text="pickText(address.label)"/>&quot;?</source>
+        <target>هل تريد حذف &quot;<x id="PH" equiv-text="pickText(address.label)"/>&quot;؟</target>
+      </trans-unit>
+      <trans-unit id="7022070615528435141" datatype="html">
+        <source>Delete</source>
+        <target>حذف</target>
+      </trans-unit>
+      <trans-unit id="1575655783253402586" datatype="html">
+        <source>Address deleted</source>
+        <target>تم حذف العنوان</target>
+      </trans-unit>
+      <trans-unit id="editUser.title" datatype="html">
+        <source>Edit profile</source>
+        <target>تعديل الملف الشخصي</target>
+      </trans-unit>
+      <trans-unit id="editUser.namePlaceholder" datatype="html">
+        <source>Name</source>
+        <target>الاسم</target>
+      </trans-unit>
+      <trans-unit id="editUser.emailPlaceholder" datatype="html">
+        <source>Email</source>
+        <target>البريد الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="editUser.phonePlaceholder" datatype="html">
+        <source>Phone</source>
+        <target>الهاتف</target>
+      </trans-unit>
+      <trans-unit id="editUser.streetPlaceholder" datatype="html">
+        <source>Street</source>
+        <target>الشارع</target>
+      </trans-unit>
+      <trans-unit id="editUser.apartmentPlaceholder" datatype="html">
+        <source>Apartment</source>
+        <target>الشقة</target>
+      </trans-unit>
+      <trans-unit id="editUser.cityPlaceholder" datatype="html">
+        <source>City</source>
+        <target>المدينة</target>
+      </trans-unit>
+      <trans-unit id="editUser.zipPlaceholder" datatype="html">
+        <source>ZIP / Postal</source>
+        <target>الرمز البريدي</target>
+      </trans-unit>
+      <trans-unit id="editUser.countryPlaceholder" datatype="html">
+        <source>Country</source>
+        <target>الدولة</target>
+      </trans-unit>
+      <trans-unit id="editUser.passwordPlaceholder" datatype="html">
+        <source>New password (optional)</source>
+        <target>كلمة مرور جديدة (اختياري)</target>
+      </trans-unit>
+      <trans-unit id="1829779471067775299" datatype="html">
+        <source>Profile updated</source>
+        <target>تم تحديث الملف الشخصي</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.tagline" datatype="html">
+        <source>Order details</source>
+        <target>تفاصيل الطلب</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.heading" datatype="html">
+        <source>Order #<x id="INTERPOLATION" equiv-text="{{ shortId(order.id) }}"/></source>
+        <target>الطلب رقم <x id="INTERPOLATION" equiv-text="{{ shortId(order.id) }}"/></target>
+      </trans-unit>
+      <trans-unit id="orderDetails.placedOn" datatype="html">
+        <source>Placed <x id="INTERPOLATION" equiv-text="{{ order.dateOrdered | date: &apos;medium&apos; }}"/></source>
+        <target>تم الطلب <x id="INTERPOLATION" equiv-text="{{ order.dateOrdered | date: &apos;medium&apos; }}"/></target>
+      </trans-unit>
+      <trans-unit id="orderDetails.buyAgain" datatype="html">
+        <source>Buy again</source>
+        <target>أعد الشراء</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.cancelOrder" datatype="html">
+        <source>Cancel order</source>
+        <target>إلغاء الطلب</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.cancelledHeading" datatype="html">
+        <source>This order was cancelled</source>
+        <target>تم إلغاء هذا الطلب</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.cancelledNote" datatype="html">
+        <source>No further updates are expected</source>
+        <target>لا يُتوقع أي تحديثات أخرى</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.refundedSuffix" datatype="html">
+        <source>— your payment has been refunded.</source>
+        <target>— تم استرداد مبلغ الدفع الخاص بك.</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.statusTitle" datatype="html">
+        <source>Order status</source>
+        <target>حالة الطلب</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.itemsTitle" datatype="html">
+        <source>Items</source>
+        <target>المنتجات</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.singleItem" datatype="html">
+        <source>1 item</source>
+        <target>منتج واحد</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.multiItem" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ order.orderItems.length }}"/> items</source>
+        <target><x id="INTERPOLATION" equiv-text="{{ order.orderItems.length }}"/> منتجات</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.summaryTitle" datatype="html">
+        <source>Summary</source>
+        <target>الملخص</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.subtotal" datatype="html">
+        <source>Subtotal</source>
+        <target>المجموع الفرعي</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.discount" datatype="html">
+        <source>Discount</source>
+        <target>الخصم</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.shipping" datatype="html">
+        <source>Shipping</source>
+        <target>الشحن</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.free" datatype="html">
+        <source>Free</source>
+        <target>مجاني</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.total" datatype="html">
+        <source>Total</source>
+        <target>الإجمالي</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.deliveryAddress" datatype="html">
+        <source>Delivery address</source>
+        <target>عنوان التوصيل</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.street" datatype="html">
+        <source>Street</source>
+        <target>الشارع</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.apt" datatype="html">
+        <source>Apt</source>
+        <target>الشقة</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.city" datatype="html">
+        <source>City</source>
+        <target>المدينة</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.country" datatype="html">
+        <source>Country</source>
+        <target>الدولة</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.phone" datatype="html">
+        <source>Phone</source>
+        <target>الهاتف</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.helpTitle" datatype="html">
+        <source>Need help with this order?</source>
+        <target>هل تحتاج مساعدة بخصوص هذا الطلب؟</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.helpMessage" datatype="html">
+        <source>Our team is happy to answer any questions about delivery, returns, or payments.</source>
+        <target>فريقنا سعيد بالإجابة عن أي أسئلة حول التوصيل أو الإرجاع أو الدفع.</target>
+      </trans-unit>
+      <trans-unit id="orderDetails.contactUs" datatype="html">
+        <source>Contact us</source>
+        <target>تواصل معنا</target>
+      </trans-unit>
+      <trans-unit id="6250742806431534479" datatype="html">
+        <source>Cancel order</source>
+        <target>إلغاء الطلب</target>
+      </trans-unit>
+      <trans-unit id="8553429886000126228" datatype="html">
+        <source>Cancel order #<x id="PH" equiv-text="order.id"/>? Payment will be refunded if already paid.</source>
+        <target>إلغاء الطلب رقم <x id="PH" equiv-text="order.id"/>؟ سيتم استرداد المبلغ إذا كان قد تم دفعه بالفعل.</target>
+      </trans-unit>
+      <trans-unit id="1555706403921147765" datatype="html">
+        <source>Order cancelled</source>
+        <target>تم إلغاء الطلب</target>
+      </trans-unit>
+      <trans-unit id="3216071473670332742" datatype="html">
+        <source>Items added to cart</source>
+        <target>تمت إضافة المنتجات إلى السلة</target>
+      </trans-unit>
+      <trans-unit id="ordersList.title" datatype="html">
+        <source>My orders</source>
+        <target>طلباتي</target>
+      </trans-unit>
+      <trans-unit id="ordersList.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="ordersList.empty" datatype="html">
+        <source>No orders yet.</source>
+        <target>لا توجد طلبات بعد.</target>
+      </trans-unit>
+      <trans-unit id="ordersList.orderNumber" datatype="html">
+        <source>Order #<x id="INTERPOLATION" equiv-text="{{ order.id }}"/></source>
+        <target>الطلب رقم <x id="INTERPOLATION" equiv-text="{{ order.id }}"/></target>
+      </trans-unit>
+      <trans-unit id="ordersList.orderMeta" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ order.dateOrdered | date: &apos;mediumDate&apos; }}"/> · <x id="INTERPOLATION_1" equiv-text="{{ order.orderItems.length }}"/> item(s) · <x id="INTERPOLATION_2" equiv-text="{{ formatPrice(order.totalPrice) }}"/> </source>
+        <target> <x id="INTERPOLATION" equiv-text="{{ order.dateOrdered | date: &apos;mediumDate&apos; }}"/> · <x id="INTERPOLATION_1" equiv-text="{{ order.orderItems.length }}"/> منتج(ات) · <x id="INTERPOLATION_2" equiv-text="{{ formatPrice(order.totalPrice) }}"/> </target>
+      </trans-unit>
+      <trans-unit id="ordersList.view" datatype="html">
+        <source>View</source>
+        <target>عرض</target>
+      </trans-unit>
+      <trans-unit id="ordersList.cancel" datatype="html">
+        <source>Cancel</source>
+        <target>إلغاء</target>
+      </trans-unit>
+      <trans-unit id="ordersList.reorder" datatype="html">
+        <source>Buy again</source>
+        <target>أعد الشراء</target>
+      </trans-unit>
+      <trans-unit id="profile.title" datatype="html">
+        <source>My account</source>
+        <target>حسابي</target>
+      </trans-unit>
+      <trans-unit id="profile.navAria" datatype="html">
+        <source>Profile</source>
+        <target>الملف الشخصي</target>
+      </trans-unit>
+      <trans-unit id="profile.accountInfo" datatype="html">
+        <source>Account info</source>
+        <target>معلومات الحساب</target>
+      </trans-unit>
+      <trans-unit id="profile.editProfile" datatype="html">
+        <source>Edit profile</source>
+        <target>تعديل الملف الشخصي</target>
+      </trans-unit>
+      <trans-unit id="profile.addresses" datatype="html">
+        <source>Addresses</source>
+        <target>العناوين</target>
+      </trans-unit>
+      <trans-unit id="profile.orders" datatype="html">
+        <source>Orders</source>
+        <target>الطلبات</target>
+      </trans-unit>
+      <trans-unit id="profile.wishlist" datatype="html">
+        <source>Wishlist</source>
+        <target>قائمة الرغبات</target>
+      </trans-unit>
+      <trans-unit id="userData.edit" datatype="html">
+        <source>Edit</source>
+        <target>تعديل</target>
+      </trans-unit>
+      <trans-unit id="userData.email" datatype="html">
+        <source>Email</source>
+        <target>البريد الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="userData.phone" datatype="html">
+        <source>Phone</source>
+        <target>الهاتف</target>
+      </trans-unit>
+      <trans-unit id="userData.city" datatype="html">
+        <source>City</source>
+        <target>المدينة</target>
+      </trans-unit>
+      <trans-unit id="userData.country" datatype="html">
+        <source>Country</source>
+        <target>الدولة</target>
+      </trans-unit>
+      <trans-unit id="userData.wishlist" datatype="html">
+        <source>My wishlist</source>
+        <target>قائمة رغباتي</target>
+      </trans-unit>
+      <trans-unit id="userData.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="userData.emptyWishlist" datatype="html">
+        <source>Nothing saved yet.</source>
+        <target>لم يتم حفظ أي شيء بعد.</target>
+      </trans-unit>
+      <trans-unit id="3805244289090839585" datatype="html">
+        <source><x id="PH" equiv-text="pickText(product.name)"/> added to cart</source>
+        <target>تمت إضافة <x id="PH" equiv-text="pickText(product.name)"/> إلى السلة</target>
+      </trans-unit>
+      <trans-unit id="breadcrumb.home" datatype="html">
+        <source>Home</source>
+        <target>الرئيسية</target>
+      </trans-unit>
+      <trans-unit id="confirm.cancel" datatype="html">
+        <source>Cancel</source>
+        <target>إلغاء</target>
+      </trans-unit>
+      <trans-unit id="confirm.confirm" datatype="html">
+        <source>Confirm</source>
+        <target>تأكيد</target>
+      </trans-unit>
+      <trans-unit id="footer.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="footer.socialFacebook" datatype="html">
+        <source>Facebook</source>
+        <target>فيسبوك</target>
+      </trans-unit>
+      <trans-unit id="footer.socialInstagram" datatype="html">
+        <source>Instagram</source>
+        <target>إنستغرام</target>
+      </trans-unit>
+      <trans-unit id="footer.socialTwitter" datatype="html">
+        <source>Twitter</source>
+        <target>تويتر</target>
+      </trans-unit>
+      <trans-unit id="footer.socialWhatsapp" datatype="html">
+        <source>WhatsApp</source>
+        <target>واتساب</target>
+      </trans-unit>
+      <trans-unit id="footer.contactInfo" datatype="html">
+        <source> Contact Info </source>
+        <target> معلومات التواصل </target>
+      </trans-unit>
+      <trans-unit id="footer.defaultTagline" datatype="html">
+        <source>Transform your living spaces with our premium furniture collection. Quality craftsmanship at affordable prices.</source>
+        <target>حوّل مساحات معيشتك بمجموعتنا الفاخرة من الأثاث. حرفية عالية الجودة بأسعار مناسبة.</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultQuickLinks" datatype="html">
+        <source>Quick Links</source>
+        <target>روابط سريعة</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultAbout" datatype="html">
+        <source>About Us</source>
+        <target>من نحن</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultContact" datatype="html">
+        <source>Contact Us</source>
+        <target>تواصل معنا</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultShopAll" datatype="html">
+        <source>Shop All</source>
+        <target>تسوق الكل</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultCategoriesLink" datatype="html">
+        <source>Categories</source>
+        <target>الفئات</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultCategories" datatype="html">
+        <source>Categories</source>
+        <target>الفئات</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultLivingRoom" datatype="html">
+        <source>Living Room</source>
+        <target>غرفة المعيشة</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultBedroom" datatype="html">
+        <source>Bedroom</source>
+        <target>غرفة النوم</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultDiningRoom" datatype="html">
+        <source>Dining Room</source>
+        <target>غرفة الطعام</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultAddress" datatype="html">
+        <source>123 Commerce Street, New York, NY 10001</source>
+        <target>123 Commerce Street, New York, NY 10001</target>
+      </trans-unit>
+      <trans-unit id="footer.defaultHours" datatype="html">
+        <source>Sat - Thu: 9:00 AM - 9:00 PM</source>
+        <target>السبت - الخميس: 9:00 صباحًا - 9:00 مساءً</target>
+      </trans-unit>
+      <trans-unit id="header.logoAlt" datatype="html">
+        <source>logo</source>
+        <target>الشعار</target>
+      </trans-unit>
+      <trans-unit id="nav.home" datatype="html">
+        <source>Home</source>
+        <target>الرئيسية</target>
+      </trans-unit>
+      <trans-unit id="nav.products" datatype="html">
+        <source>Products</source>
+        <target>المنتجات</target>
+      </trans-unit>
+      <trans-unit id="nav.categories" datatype="html">
+        <source>Categories</source>
+        <target>الفئات</target>
+      </trans-unit>
+      <trans-unit id="nav.about" datatype="html">
+        <source>About</source>
+        <target>من نحن</target>
+      </trans-unit>
+      <trans-unit id="nav.contact" datatype="html">
+        <source>Contact</source>
+        <target>تواصل معنا</target>
+      </trans-unit>
+      <trans-unit id="header.searchPlaceholder" datatype="html">
+        <source>Search...</source>
+        <target>بحث...</target>
+      </trans-unit>
+      <trans-unit id="header.searchAria" datatype="html">
+        <source>Search</source>
+        <target>بحث</target>
+      </trans-unit>
+      <trans-unit id="header.searchSubmitAria" datatype="html">
+        <source>Submit search</source>
+        <target>إرسال البحث</target>
+      </trans-unit>
+      <trans-unit id="nav.myAccount" datatype="html">
+        <source>My Account</source>
+        <target>حسابي</target>
+      </trans-unit>
+      <trans-unit id="nav.cartAria" datatype="html">
+        <source>Cart</source>
+        <target>سلة التسوق</target>
+      </trans-unit>
+      <trans-unit id="nav.wishlistAria" datatype="html">
+        <source>Wishlist</source>
+        <target>قائمة الرغبات</target>
+      </trans-unit>
+      <trans-unit id="nav.logoutAria" datatype="html">
+        <source>Log out</source>
+        <target>تسجيل الخروج</target>
+      </trans-unit>
+      <trans-unit id="nav.loginAria" datatype="html">
+        <source>Sign in</source>
+        <target>تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="header.heroSale" datatype="html">
+        <source> 70% sale off </source>
+        <target> خصم 70% </target>
+      </trans-unit>
+      <trans-unit id="header.heroTitle" datatype="html">
+        <source> furniture at cost </source>
+        <target> أثاث بسعر التكلفة </target>
+      </trans-unit>
+      <trans-unit id="header.heroText" datatype="html">
+        <source> Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla. </source>
+        <target> تمنحك تشكيلتنا المبتكرة من الأثاث جودة استثنائية وأناقة عصرية، مع خبرة تمتد لأكثر من عقدين في التصميم والصناعة. </target>
+      </trans-unit>
+      <trans-unit id="header.discoverMore" datatype="html">
+        <source>discover more</source>
+        <target>اكتشف المزيد</target>
+      </trans-unit>
+      <trans-unit id="productCard.noImage" datatype="html">
+        <source>No image</source>
+        <target>لا توجد صورة</target>
+      </trans-unit>
+      <trans-unit id="productCard.featured" datatype="html">
+        <source>Featured</source>
+        <target>مميز</target>
+      </trans-unit>
+      <trans-unit id="productCard.toggleWishlistAria" datatype="html">
+        <source>Toggle wishlist</source>
+        <target>تبديل قائمة الرغبات</target>
+      </trans-unit>
+      <trans-unit id="productCard.outOfStock" datatype="html">
+        <source>Out of stock</source>
+        <target>غير متوفر</target>
+      </trans-unit>
+      <trans-unit id="productCard.addToCartAria" datatype="html">
+        <source>Add to cart</source>
+        <target>أضف إلى السلة</target>
+      </trans-unit>
+      <trans-unit id="ratingStars.label" datatype="html">
+        <source>Rating <x id="INTERPOLATION" equiv-text="{{ rating() }}"/> of 5</source>
+        <target>التقييم <x id="INTERPOLATION" equiv-text="{{ rating() }}"/> من 5</target>
+      </trans-unit>
+      <trans-unit id="toast.dismissAria" datatype="html">
+        <source>Dismiss</source>
+        <target>إغلاق</target>
+      </trans-unit>
+      <trans-unit id="about.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="about.tagline" datatype="html">
+        <source>Get to know us</source>
+        <target>تعرف علينا</target>
+      </trans-unit>
+      <trans-unit id="about.shopCollection" datatype="html">
+        <source> Shop the collection </source>
+        <target> تسوق المجموعة </target>
+      </trans-unit>
+      <trans-unit id="about.ctaTitle" datatype="html">
+        <source>Ready to start shopping?</source>
+        <target>هل أنت مستعد لبدء التسوق؟</target>
+      </trans-unit>
+      <trans-unit id="about.ctaMessage" datatype="html">
+        <source>Browse our collection and find something you will love, delivered right to your door.</source>
+        <target>تصفح مجموعتنا واعثر على ما تحبه، ونُوصله لك حتى باب منزلك.</target>
+      </trans-unit>
+      <trans-unit id="about.browseProducts" datatype="html">
+        <source> Browse products </source>
+        <target> تصفح المنتجات </target>
+      </trans-unit>
+      <trans-unit id="about.noContent" datatype="html">
+        <source>Content is not available yet.</source>
+        <target>المحتوى غير متاح بعد.</target>
+      </trans-unit>
+      <trans-unit id="cart.title" datatype="html">
+        <source>Shopping Cart</source>
+        <target>سلة التسوق</target>
+      </trans-unit>
+      <trans-unit id="cart.emptyImageAria" datatype="html">
+        <source>empty cart</source>
+        <target>سلة فارغة</target>
+      </trans-unit>
+      <trans-unit id="cart.emptyTitle" datatype="html">
+        <source>Your cart is empty</source>
+        <target>سلة التسوق فارغة</target>
+      </trans-unit>
+      <trans-unit id="cart.emptyMessage" datatype="html">
+        <source>Looks like you haven&apos;t added any items yet.</source>
+        <target>يبدو أنك لم تضف أي منتجات بعد.</target>
+      </trans-unit>
+      <trans-unit id="cart.continueShopping" datatype="html">
+        <source>Continue Shopping</source>
+        <target>مواصلة التسوق</target>
+      </trans-unit>
+      <trans-unit id="cart.decreaseAria" datatype="html">
+        <source>Decrease quantity</source>
+        <target>تقليل الكمية</target>
+      </trans-unit>
+      <trans-unit id="cart.increaseAria" datatype="html">
+        <source>Increase quantity</source>
+        <target>زيادة الكمية</target>
+      </trans-unit>
+      <trans-unit id="cart.removeTitle" datatype="html">
+        <source>Remove item</source>
+        <target>إزالة المنتج</target>
+      </trans-unit>
+      <trans-unit id="cart.orderSummary" datatype="html">
+        <source>Order Summary</source>
+        <target>ملخص الطلب</target>
+      </trans-unit>
+      <trans-unit id="cart.subtotal" datatype="html">
+        <source>Subtotal (<x id="INTERPOLATION" equiv-text="{{ cart.count() }}"/> items)</source>
+        <target>المجموع الفرعي (<x id="INTERPOLATION" equiv-text="{{ cart.count() }}"/> منتجات)</target>
+      </trans-unit>
+      <trans-unit id="cart.shipping" datatype="html">
+        <source>Shipping</source>
+        <target>الشحن</target>
+      </trans-unit>
+      <trans-unit id="cart.couponApplied" datatype="html">
+        <source>Coupon <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ applied.code }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> applied</source>
+        <target>تم تطبيق القسيمة <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ applied.code }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+      </trans-unit>
+      <trans-unit id="cart.removeCoupon" datatype="html">
+        <source>Remove</source>
+        <target>إزالة</target>
+      </trans-unit>
+      <trans-unit id="cart.couponMinNotMet" datatype="html">
+        <source>Your cart does not meet the minimum order amount for this coupon.</source>
+        <target>لا يصل إجمالي سلة التسوق إلى الحد الأدنى المطلوب لاستخدام هذه القسيمة.</target>
+      </trans-unit>
+      <trans-unit id="cart.couponPlaceholder" datatype="html">
+        <source>Coupon code</source>
+        <target>رمز القسيمة</target>
+      </trans-unit>
+      <trans-unit id="cart.applying" datatype="html">
+        <source>Applying...</source>
+        <target>جارٍ التطبيق...</target>
+      </trans-unit>
+      <trans-unit id="cart.apply" datatype="html">
+        <source>Apply</source>
+        <target>تطبيق</target>
+      </trans-unit>
+      <trans-unit id="cart.discount" datatype="html">
+        <source>Discount</source>
+        <target>الخصم</target>
+      </trans-unit>
+      <trans-unit id="cart.total" datatype="html">
+        <source>Total</source>
+        <target>الإجمالي</target>
+      </trans-unit>
+      <trans-unit id="cart.proceedToCheckout" datatype="html">
+        <source> Proceed to Checkout </source>
+        <target> المتابعة إلى إتمام الطلب </target>
+      </trans-unit>
+      <trans-unit id="8001583765052354416" datatype="html">
+        <source>Calculating...</source>
+        <target>جارٍ الحساب...</target>
+      </trans-unit>
+      <trans-unit id="5891064527381218201" datatype="html">
+        <source>Free</source>
+        <target>مجاني</target>
+      </trans-unit>
+      <trans-unit id="8813031028139775170" datatype="html">
+        <source>Add <x id="PH" equiv-text="formatPrice(threshold - this.cart.subtotal())"/> more for free shipping</source>
+        <target>أضف <x id="PH" equiv-text="formatPrice(threshold - this.cart.subtotal())"/> إضافيًا للحصول على شحن مجاني</target>
+      </trans-unit>
+      <trans-unit id="8865719526004574955" datatype="html">
+        <source>Coupon applied</source>
+        <target>تم تطبيق القسيمة</target>
+      </trans-unit>
+      <trans-unit id="7756075202098004397" datatype="html">
+        <source>Invalid coupon</source>
+        <target>قسيمة غير صالحة</target>
+      </trans-unit>
+      <trans-unit id="8576059747584995089" datatype="html">
+        <source>Remove from cart</source>
+        <target>إزالة من السلة</target>
+      </trans-unit>
+      <trans-unit id="1260906762439612258" datatype="html">
+        <source>Remove &quot;<x id="PH" equiv-text="pickText(product.name)"/>&quot; from your cart?</source>
+        <target>هل تريد إزالة &quot;<x id="PH" equiv-text="pickText(product.name)"/>&quot; من سلة التسوق؟</target>
+      </trans-unit>
+      <trans-unit id="4814285799071780083" datatype="html">
+        <source>Remove</source>
+        <target>إزالة</target>
+      </trans-unit>
+      <trans-unit id="2430082893128355592" datatype="html">
+        <source>Move to Wishlist</source>
+        <target>نقل إلى قائمة الرغبات</target>
+      </trans-unit>
+      <trans-unit id="8079081579901316861" datatype="html">
+        <source>Added to your wishlist</source>
+        <target>تمت الإضافة إلى قائمة رغباتك</target>
+      </trans-unit>
+      <trans-unit id="5771284758171360120" datatype="html">
+        <source>Could not add to wishlist</source>
+        <target>تعذرت الإضافة إلى قائمة الرغبات</target>
+      </trans-unit>
+      <trans-unit id="3973669986643367936" datatype="html">
+        <source>Log in to save items to your wishlist</source>
+        <target>سجّل الدخول لحفظ المنتجات في قائمة رغباتك</target>
+      </trans-unit>
+      <trans-unit id="6912480950287288441" datatype="html">
+        <source>Item removed from cart</source>
+        <target>تمت إزالة المنتج من السلة</target>
+      </trans-unit>
+      <trans-unit id="categories.shopBy" datatype="html">
+        <source>Shop by category</source>
+        <target>تسوق حسب الفئة</target>
+      </trans-unit>
+      <trans-unit id="categories.title" datatype="html">
+        <source>Categories</source>
+        <target>الفئات</target>
+      </trans-unit>
+      <trans-unit id="categories.subtitle" datatype="html">
+        <source>Browse our collection by category and find something you will love.</source>
+        <target>تصفح مجموعتنا حسب الفئة واعثر على ما تحبه.</target>
+      </trans-unit>
+      <trans-unit id="categories.empty" datatype="html">
+        <source>No categories yet.</source>
+        <target>لا توجد فئات بعد.</target>
+      </trans-unit>
+      <trans-unit id="checkout.title" datatype="html">
+        <source>Checkout</source>
+        <target>إتمام الطلب</target>
+      </trans-unit>
+      <trans-unit id="checkout.emptyCart" datatype="html">
+        <source>Your cart is empty — add products before checking out.</source>
+        <target>سلة التسوق فارغة — أضف منتجات قبل إتمام الطلب.</target>
+      </trans-unit>
+      <trans-unit id="checkout.browseProducts" datatype="html">
+        <source>Browse products</source>
+        <target>تصفح المنتجات</target>
+      </trans-unit>
+      <trans-unit id="checkout.savedAddresses" datatype="html">
+        <source>Saved addresses</source>
+        <target>العناوين المحفوظة</target>
+      </trans-unit>
+      <trans-unit id="checkout.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="checkout.shippingAddress" datatype="html">
+        <source>Shipping address</source>
+        <target>عنوان الشحن</target>
+      </trans-unit>
+      <trans-unit id="checkout.streetPlaceholder" datatype="html">
+        <source>Street *</source>
+        <target>الشارع *</target>
+      </trans-unit>
+      <trans-unit id="checkout.apartmentPlaceholder" datatype="html">
+        <source>Apartment</source>
+        <target>الشقة</target>
+      </trans-unit>
+      <trans-unit id="checkout.cityPlaceholder" datatype="html">
+        <source>City *</source>
+        <target>المدينة *</target>
+      </trans-unit>
+      <trans-unit id="checkout.zipPlaceholder" datatype="html">
+        <source>ZIP / Postal</source>
+        <target>الرمز البريدي</target>
+      </trans-unit>
+      <trans-unit id="checkout.countryLabel" datatype="html">
+        <source>Country *</source>
+        <target>الدولة *</target>
+      </trans-unit>
+      <trans-unit id="checkout.loadingCountries" datatype="html">
+        <source>Loading countries...</source>
+        <target>جارٍ تحميل الدول...</target>
+      </trans-unit>
+      <trans-unit id="checkout.phonePlaceholder" datatype="html">
+        <source>Phone *</source>
+        <target>الهاتف *</target>
+      </trans-unit>
+      <trans-unit id="checkout.saveAddress" datatype="html">
+        <source>Save this address to my address book</source>
+        <target>احفظ هذا العنوان في دفتر عناويني</target>
+      </trans-unit>
+      <trans-unit id="checkout.rememberInfo" datatype="html">
+        <source>Remember my details on this device</source>
+        <target>تذكر بياناتي على هذا الجهاز</target>
+      </trans-unit>
+      <trans-unit id="checkout.addressLabelPlaceholder" datatype="html">
+        <source>Address label (e.g. Home, Work)</source>
+        <target>تسمية العنوان (مثل: المنزل، العمل)</target>
+      </trans-unit>
+      <trans-unit id="checkout.paymentMethod" datatype="html">
+        <source>Payment method</source>
+        <target>طريقة الدفع</target>
+      </trans-unit>
+      <trans-unit id="checkout.notAvailable" datatype="html">
+        <source>Not available yet</source>
+        <target>غير متاح بعد</target>
+      </trans-unit>
+      <trans-unit id="checkout.cardNote" datatype="html">
+        <source>Online card checkout is available for all countries.</source>
+        <target>الدفع بالبطاقة عبر الإنترنت متاح لجميع الدول.</target>
+      </trans-unit>
+      <trans-unit id="checkout.coupon" datatype="html">
+        <source>Coupon</source>
+        <target>القسيمة</target>
+      </trans-unit>
+      <trans-unit id="checkout.couponApplied" datatype="html">
+        <source>Coupon <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ applied.code }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> applied</source>
+        <target>تم تطبيق القسيمة <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/><x id="INTERPOLATION" equiv-text="{{ applied.code }}"/><x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+      </trans-unit>
+      <trans-unit id="checkout.removeCoupon" datatype="html">
+        <source>Remove</source>
+        <target>إزالة</target>
+      </trans-unit>
+      <trans-unit id="checkout.couponPlaceholder" datatype="html">
+        <source>Coupon code</source>
+        <target>رمز القسيمة</target>
+      </trans-unit>
+      <trans-unit id="checkout.applying" datatype="html">
+        <source>Applying...</source>
+        <target>جارٍ التطبيق...</target>
+      </trans-unit>
+      <trans-unit id="checkout.apply" datatype="html">
+        <source>Apply</source>
+        <target>تطبيق</target>
+      </trans-unit>
+      <trans-unit id="checkout.orderSummary" datatype="html">
+        <source>Order summary</source>
+        <target>ملخص الطلب</target>
+      </trans-unit>
+      <trans-unit id="checkout.subtotal" datatype="html">
+        <source>Subtotal</source>
+        <target>المجموع الفرعي</target>
+      </trans-unit>
+      <trans-unit id="checkout.discount" datatype="html">
+        <source>Discount</source>
+        <target>الخصم</target>
+      </trans-unit>
+      <trans-unit id="checkout.couponMinNotMet" datatype="html">
+        <source>Your cart does not meet the minimum order amount for this coupon yet.</source>
+        <target>لا يصل إجمالي سلة التسوق بعد إلى الحد الأدنى المطلوب لاستخدام هذه القسيمة.</target>
+      </trans-unit>
+      <trans-unit id="checkout.shipping" datatype="html">
+        <source>Shipping</source>
+        <target>الشحن</target>
+      </trans-unit>
+      <trans-unit id="checkout.free" datatype="html">
+        <source>Free</source>
+        <target>مجاني</target>
+      </trans-unit>
+      <trans-unit id="checkout.total" datatype="html">
+        <source>Total</source>
+        <target>الإجمالي</target>
+      </trans-unit>
+      <trans-unit id="checkout.testCard" datatype="html">
+        <source>Test card: 4242 4242 4242 4242</source>
+        <target>بطاقة تجريبية: 4242 4242 4242 4242</target>
+      </trans-unit>
+      <trans-unit id="4620049945848502227" datatype="html">
+        <source>Could not load countries, please try again</source>
+        <target>تعذر تحميل الدول، يرجى المحاولة مرة أخرى</target>
+      </trans-unit>
+      <trans-unit id="4428081059558168074" datatype="html">
+        <source>Processing...</source>
+        <target>جارٍ المعالجة...</target>
+      </trans-unit>
+      <trans-unit id="8453860874637355542" datatype="html">
+        <source>Place order</source>
+        <target>تأكيد الطلب</target>
+      </trans-unit>
+      <trans-unit id="6233908868135907885" datatype="html">
+        <source>Place order (Cash on Delivery)</source>
+        <target>تأكيد الطلب (الدفع عند الاستلام)</target>
+      </trans-unit>
+      <trans-unit id="7179867768019153760" datatype="html">
+        <source>Pay with Stripe</source>
+        <target>الدفع عبر Stripe</target>
+      </trans-unit>
+      <trans-unit id="8845493150593778100" datatype="html">
+        <source>Pay with <x id="PH" equiv-text="method.name"/></source>
+        <target>الدفع عبر <x id="PH" equiv-text="method.name"/></target>
+      </trans-unit>
+      <trans-unit id="1605519898654578290" datatype="html">
+        <source>Checkout failed</source>
+        <target>فشل إتمام الطلب</target>
+      </trans-unit>
+      <trans-unit id="contact.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="contact.tagline" datatype="html">
+        <source>Get in touch</source>
+        <target>تواصل معنا</target>
+      </trans-unit>
+      <trans-unit id="contact.formTitle" datatype="html">
+        <source>Send us a message</source>
+        <target>أرسل لنا رسالة</target>
+      </trans-unit>
+      <trans-unit id="contact.formSubtitle" datatype="html">
+        <source>Fill out the form and we will get back to you shortly.</source>
+        <target>املأ النموذج وسنرد عليك قريبًا.</target>
+      </trans-unit>
+      <trans-unit id="contact.namePlaceholder" datatype="html">
+        <source>Your name *</source>
+        <target>اسمك *</target>
+      </trans-unit>
+      <trans-unit id="contact.emailPlaceholder" datatype="html">
+        <source>Your email *</source>
+        <target>بريدك الإلكتروني *</target>
+      </trans-unit>
+      <trans-unit id="contact.subjectPlaceholder" datatype="html">
+        <source>Subject</source>
+        <target>الموضوع</target>
+      </trans-unit>
+      <trans-unit id="contact.messagePlaceholder" datatype="html">
+        <source>Your message *</source>
+        <target>رسالتك *</target>
+      </trans-unit>
+      <trans-unit id="contact.emailLabel" datatype="html">
+        <source>Email</source>
+        <target>البريد الإلكتروني</target>
+      </trans-unit>
+      <trans-unit id="contact.phoneLabel" datatype="html">
+        <source>Phone</source>
+        <target>الهاتف</target>
+      </trans-unit>
+      <trans-unit id="contact.addressLabel" datatype="html">
+        <source>Address</source>
+        <target>العنوان</target>
+      </trans-unit>
+      <trans-unit id="contact.workingHoursLabel" datatype="html">
+        <source>Working hours</source>
+        <target>ساعات العمل</target>
+      </trans-unit>
+      <trans-unit id="contact.socialFacebook" datatype="html">
+        <source>Facebook</source>
+        <target>فيسبوك</target>
+      </trans-unit>
+      <trans-unit id="contact.socialInstagram" datatype="html">
+        <source>Instagram</source>
+        <target>إنستغرام</target>
+      </trans-unit>
+      <trans-unit id="contact.socialTwitter" datatype="html">
+        <source>Twitter</source>
+        <target>تويتر</target>
+      </trans-unit>
+      <trans-unit id="contact.socialWhatsapp" datatype="html">
+        <source>WhatsApp</source>
+        <target>واتساب</target>
+      </trans-unit>
+      <trans-unit id="contact.noContent" datatype="html">
+        <source>Content is not available yet.</source>
+        <target>المحتوى غير متاح بعد.</target>
+      </trans-unit>
+      <trans-unit id="8740036082299980043" datatype="html">
+        <source>Send message</source>
+        <target>أرسل الرسالة</target>
+      </trans-unit>
+      <trans-unit id="5094971797790077777" datatype="html">
+        <source>Name, email, and message are required.</source>
+        <target>الاسم والبريد الإلكتروني والرسالة مطلوبة.</target>
+      </trans-unit>
+      <trans-unit id="1192636453787152203" datatype="html">
+        <source>Message sent — we will reply soon.</source>
+        <target>تم إرسال الرسالة — سنرد قريبًا.</target>
+      </trans-unit>
+      <trans-unit id="home.popularProducts" datatype="html">
+        <source>POPULAR PRODUCTS</source>
+        <target>المنتجات الأكثر شيوعًا</target>
+      </trans-unit>
+      <trans-unit id="home.popularProductsText" datatype="html">
+        <source>Discover our most loved items, handpicked just for you. Quality furniture at unbeatable prices.</source>
+        <target>اكتشف منتجاتنا الأكثر تفضيلًا، المختارة خصيصًا لك. أثاث عالي الجودة بأسعار لا تُقاوم.</target>
+      </trans-unit>
+      <trans-unit id="home.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="home.visitHeading" datatype="html">
+        <source> BEST FURNITURE MANUFACTURER </source>
+        <target> أفضل مصنع للأثاث </target>
+      </trans-unit>
+      <trans-unit id="home.visitText" datatype="html">
+        <source> Crafting exceptional furniture since 1998. We combine timeless design with modern comfort to transform your living spaces into dream homes. </source>
+        <target> نصنع أثاثًا استثنائيًا منذ عام 1998. نمزج بين التصميم الخالد والراحة العصرية لتحويل مساحات معيشتك إلى منازل الأحلام. </target>
+      </trans-unit>
+      <trans-unit id="home.discoverMore" datatype="html">
+        <source>discover more</source>
+        <target>اكتشف المزيد</target>
+      </trans-unit>
+      <trans-unit id="home.featuredProducts" datatype="html">
+        <source>FEATURED PRODUCTS</source>
+        <target>منتجات مميزة</target>
+      </trans-unit>
+      <trans-unit id="home.featuredProductsText" datatype="html">
+        <source>Explore our exclusive collection of premium furniture designed to elevate your home style.</source>
+        <target>استكشف مجموعتنا الحصرية من الأثاث الفاخر المصمم ليرتقي بأسلوب منزلك.</target>
+      </trans-unit>
+      <trans-unit id="home.instagramHeading" datatype="html">
+        <source> get inspired with instagram </source>
+        <target> استلهم أفكارًا من إنستغرام </target>
+      </trans-unit>
+      <trans-unit id="home.instagramText" datatype="html">
+        <source> Follow us on Instagram to see how our furniture brings joy to homes across the country. </source>
+        <target> تابعنا على إنستغرام لتشاهد كيف يجلب أثاثنا البهجة لمنازل في جميع أنحاء البلاد. </target>
+      </trans-unit>
+      <trans-unit id="notFound.title" datatype="html">
+        <source>Page not found</source>
+        <target>الصفحة غير موجودة</target>
+      </trans-unit>
+      <trans-unit id="notFound.message" datatype="html">
+        <source>The page you are looking for does not exist.</source>
+        <target>الصفحة التي تبحث عنها غير موجودة.</target>
+      </trans-unit>
+      <trans-unit id="notFound.backHome" datatype="html">
+        <source>Back to home</source>
+        <target>العودة إلى الرئيسية</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.noOrderTitle" datatype="html">
+        <source>No order to confirm</source>
+        <target>لا يوجد طلب لتأكيده</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.noOrderMessage" datatype="html">
+        <source>This page is reached after completing payment.</source>
+        <target>تُفتح هذه الصفحة بعد إتمام عملية الدفع.</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.backHome" datatype="html">
+        <source>Back home</source>
+        <target>العودة إلى الرئيسية</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.failedTitle" datatype="html">
+        <source>Order not completed</source>
+        <target>لم يكتمل الطلب</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.backToCheckout" datatype="html">
+        <source>Back to checkout</source>
+        <target>العودة إلى إتمام الطلب</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.orderMeta" datatype="html">
+        <source>Order #<x id="INTERPOLATION" equiv-text="{{ order.id }}"/> · <x id="INTERPOLATION_1" equiv-text="{{ order.status }}"/></source>
+        <target>الطلب رقم <x id="INTERPOLATION" equiv-text="{{ order.id }}"/> · <x id="INTERPOLATION_1" equiv-text="{{ order.status }}"/></target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.payOnDelivery" datatype="html">
+        <source> · pay cash on delivery</source>
+        <target> · ادفع نقدًا عند الاستلام</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.receipt" datatype="html">
+        <source>Receipt</source>
+        <target>الإيصال</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.coupon" datatype="html">
+        <source>Coupon <x id="INTERPOLATION" equiv-text="{{ order.couponCode }}"/></source>
+        <target>القسيمة <x id="INTERPOLATION" equiv-text="{{ order.couponCode }}"/></target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.shipping" datatype="html">
+        <source>Shipping</source>
+        <target>الشحن</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.free" datatype="html">
+        <source>Free</source>
+        <target>مجاني</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.total" datatype="html">
+        <source>Total</source>
+        <target>الإجمالي</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.shippingTo" datatype="html">
+        <source> Shipping to <x id="INTERPOLATION" equiv-text="{{ pickText(order.shippingAddress1) }}"/>, <x id="INTERPOLATION_1" equiv-text="{{ pickText(order.city) }}"/>, <x id="INTERPOLATION_2" equiv-text="{{ pickText(order.country) }}"/> · <x id="INTERPOLATION_3" equiv-text="{{ order.phone }}"/> </source>
+        <target> الشحن إلى <x id="INTERPOLATION" equiv-text="{{ pickText(order.shippingAddress1) }}"/>، <x id="INTERPOLATION_1" equiv-text="{{ pickText(order.city) }}"/>، <x id="INTERPOLATION_2" equiv-text="{{ pickText(order.country) }}"/> · <x id="INTERPOLATION_3" equiv-text="{{ order.phone }}"/> </target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.viewOrders" datatype="html">
+        <source>View my orders</source>
+        <target>عرض طلباتي</target>
+      </trans-unit>
+      <trans-unit id="orderSuccess.continueShopping" datatype="html">
+        <source>Continue shopping</source>
+        <target>مواصلة التسوق</target>
+      </trans-unit>
+      <trans-unit id="7568089804086508059" datatype="html">
+        <source>Loading your order...</source>
+        <target>جارٍ تحميل طلبك...</target>
+      </trans-unit>
+      <trans-unit id="5877551221886004875" datatype="html">
+        <source>Verifying your payment...</source>
+        <target>جارٍ التحقق من عملية الدفع...</target>
+      </trans-unit>
+      <trans-unit id="7165385056214802323" datatype="html">
+        <source>Your order has been placed!</source>
+        <target>تم تأكيد طلبك!</target>
+      </trans-unit>
+      <trans-unit id="9009266459055690039" datatype="html">
+        <source>Thank you for your order!</source>
+        <target>شكرًا لك على طلبك!</target>
+      </trans-unit>
+      <trans-unit id="productDetails.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="productDetails.backToProducts" datatype="html">
+        <source>Back to products</source>
+        <target>العودة إلى المنتجات</target>
+      </trans-unit>
+      <trans-unit id="productDetails.breadcrumbAria" datatype="html">
+        <source>Breadcrumb</source>
+        <target>مسار التنقل</target>
+      </trans-unit>
+      <trans-unit id="productDetails.breadcrumbProducts" datatype="html">
+        <source>Products</source>
+        <target>المنتجات</target>
+      </trans-unit>
+      <trans-unit id="productDetails.newBadge" datatype="html">
+        <source>New</source>
+        <target>جديد</target>
+      </trans-unit>
+      <trans-unit id="productDetails.ratingLabel" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ product.rating || &apos;No&apos; }}"/> rating (<x id="INTERPOLATION_1" equiv-text="{{ product.numbReviews }}"/> reviews)</source>
+        <target>التقييم <x id="INTERPOLATION" equiv-text="{{ product.rating || &apos;No&apos; }}"/> (<x id="INTERPOLATION_1" equiv-text="{{ product.numbReviews }}"/> تقييمات)</target>
+      </trans-unit>
+      <trans-unit id="productDetails.lowStock" datatype="html">
+        <source>Only <x id="INTERPOLATION" equiv-text="{{ product.countInStock }}"/> left in stock</source>
+        <target>لم يتبقَّ سوى <x id="INTERPOLATION" equiv-text="{{ product.countInStock }}"/> في المخزون</target>
+      </trans-unit>
+      <trans-unit id="productCard.inStock" datatype="html">
+        <source>In stock</source>
+        <target>متوفر</target>
+      </trans-unit>
+      <trans-unit id="productDetails.decreaseAria" datatype="html">
+        <source>Decrease quantity</source>
+        <target>تقليل الكمية</target>
+      </trans-unit>
+      <trans-unit id="productDetails.increaseAria" datatype="html">
+        <source>Increase quantity</source>
+        <target>زيادة الكمية</target>
+      </trans-unit>
+      <trans-unit id="productCard.addToCart" datatype="html">
+        <source>Add to cart</source>
+        <target>أضف إلى السلة</target>
+      </trans-unit>
+      <trans-unit id="productDetails.fastDelivery" datatype="html">
+        <source>Fast delivery</source>
+        <target>توصيل سريع</target>
+      </trans-unit>
+      <trans-unit id="productDetails.easyReturns" datatype="html">
+        <source>Easy returns</source>
+        <target>إرجاع سهل</target>
+      </trans-unit>
+      <trans-unit id="productDetails.support" datatype="html">
+        <source>24/7 support</source>
+        <target>دعم على مدار الساعة</target>
+      </trans-unit>
+      <trans-unit id="productDetails.description" datatype="html">
+        <source>Description</source>
+        <target>الوصف</target>
+      </trans-unit>
+      <trans-unit id="productDetails.noDescription" datatype="html">
+        <source>No description available for this product.</source>
+        <target>لا يتوفر وصف لهذا المنتج.</target>
+      </trans-unit>
+      <trans-unit id="productDetails.detailsTitle" datatype="html">
+        <source>Product details</source>
+        <target>تفاصيل المنتج</target>
+      </trans-unit>
+      <trans-unit id="productDetails.category" datatype="html">
+        <source>Category</source>
+        <target>الفئة</target>
+      </trans-unit>
+      <trans-unit id="productDetails.brand" datatype="html">
+        <source>Brand</source>
+        <target>العلامة التجارية</target>
+      </trans-unit>
+      <trans-unit id="productDetails.color" datatype="html">
+        <source>Color</source>
+        <target>اللون</target>
+      </trans-unit>
+      <trans-unit id="productDetails.availability" datatype="html">
+        <source>Availability</source>
+        <target>التوفر</target>
+      </trans-unit>
+      <trans-unit id="productDetails.inStockCount" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ product.countInStock }}"/> in stock</source>
+        <target><x id="INTERPOLATION" equiv-text="{{ product.countInStock }}"/> متوفر في المخزون</target>
+      </trans-unit>
+      <trans-unit id="productDetails.sku" datatype="html">
+        <source>SKU</source>
+        <target>SKU</target>
+      </trans-unit>
+      <trans-unit id="productDetails.dateAdded" datatype="html">
+        <source>Date added</source>
+        <target>تاريخ الإضافة</target>
+      </trans-unit>
+      <trans-unit id="productDetails.rating" datatype="html">
+        <source>Rating</source>
+        <target>التقييم</target>
+      </trans-unit>
+      <trans-unit id="productDetails.ratingValue" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ product.rating || &apos;No&apos; }}"/> (<x id="INTERPOLATION_1" equiv-text="{{ product.numbReviews }}"/> reviews)</source>
+        <target><x id="INTERPOLATION" equiv-text="{{ product.rating || &apos;No&apos; }}"/> (<x id="INTERPOLATION_1" equiv-text="{{ product.numbReviews }}"/> تقييمات)</target>
+      </trans-unit>
+      <trans-unit id="productDetails.reviewsTitle" datatype="html">
+        <source>Reviews</source>
+        <target>التقييمات</target>
+      </trans-unit>
+      <trans-unit id="productDetails.verifiedNote" datatype="html">
+        <source>Only verified purchases can rate and review this product.</source>
+        <target>يمكن لعمليات الشراء الموثقة فقط تقييم هذا المنتج ومراجعته.</target>
+      </trans-unit>
+      <trans-unit id="productDetails.rateStarAria" datatype="html">
+        <source>Rate <x id="INTERPOLATION" equiv-text="{{ star }}"/> star</source>
+        <target>قيّم <x id="INTERPOLATION" equiv-text="{{ star }}"/> نجوم</target>
+      </trans-unit>
+      <trans-unit id="productDetails.reviewPlaceholder" datatype="html">
+        <source>Share your thoughts...</source>
+        <target>شاركنا أفكارك...</target>
+      </trans-unit>
+      <trans-unit id="productDetails.signIn" datatype="html">
+        <source>Sign in</source>
+        <target>تسجيل الدخول</target>
+      </trans-unit>
+      <trans-unit id="productDetails.signInPrompt" datatype="html">
+        <source> to write a review.</source>
+        <target> لكتابة تقييم.</target>
+      </trans-unit>
+      <trans-unit id="productDetails.noReviews" datatype="html">
+        <source>No reviews yet. Be the first!</source>
+        <target>لا توجد تقييمات بعد. كن الأول!</target>
+      </trans-unit>
+      <trans-unit id="productDetails.verifiedTitle" datatype="html">
+        <source>Verified purchase</source>
+        <target>شراء موثق</target>
+      </trans-unit>
+      <trans-unit id="productDetails.verified" datatype="html">
+        <source>Verified</source>
+        <target>موثق</target>
+      </trans-unit>
+      <trans-unit id="productDetails.deleteReview" datatype="html">
+        <source>Delete</source>
+        <target>حذف</target>
+      </trans-unit>
+      <trans-unit id="productDetails.relatedTitle" datatype="html">
+        <source>Related products</source>
+        <target>منتجات مشابهة</target>
+      </trans-unit>
+      <trans-unit id="3493126540529865490" datatype="html">
+        <source>Submitting...</source>
+        <target>جارٍ الإرسال...</target>
+      </trans-unit>
+      <trans-unit id="286633689821649631" datatype="html">
+        <source>Submit review</source>
+        <target>إرسال التقييم</target>
+      </trans-unit>
+      <trans-unit id="8729817154630975485" datatype="html">
+        <source>Review submitted</source>
+        <target>تم إرسال التقييم</target>
+      </trans-unit>
+      <trans-unit id="2392488717875840729" datatype="html">
+        <source>User</source>
+        <target>مستخدم</target>
+      </trans-unit>
+      <trans-unit id="productList.shopLabel" datatype="html">
+        <source>Shop</source>
+        <target>تسوق</target>
+      </trans-unit>
+      <trans-unit id="productList.resultsFor" datatype="html">
+        <source>Results for &quot;<x id="INTERPOLATION" equiv-text="{{ catalog.search() }}"/>&quot;</source>
+        <target>نتائج البحث عن &quot;<x id="INTERPOLATION" equiv-text="{{ catalog.search() }}"/>&quot;</target>
+      </trans-unit>
+      <trans-unit id="productList.allProducts" datatype="html">
+        <source>All Products</source>
+        <target>جميع المنتجات</target>
+      </trans-unit>
+      <trans-unit id="productList.productsCount" datatype="html">
+        <source><x id="INTERPOLATION" equiv-text="{{ catalog.visible().length }}"/> products</source>
+        <target><x id="INTERPOLATION" equiv-text="{{ catalog.visible().length }}"/> منتجات</target>
+      </trans-unit>
+      <trans-unit id="productList.filters" datatype="html">
+        <source>Filters</source>
+        <target>الفلاتر</target>
+      </trans-unit>
+      <trans-unit id="productList.category" datatype="html">
+        <source>Category</source>
+        <target>الفئة</target>
+      </trans-unit>
+      <trans-unit id="productList.allCategories" datatype="html">
+        <source>All</source>
+        <target>الكل</target>
+      </trans-unit>
+      <trans-unit id="productList.price" datatype="html">
+        <source>Price</source>
+        <target>السعر</target>
+      </trans-unit>
+      <trans-unit id="productList.minPrice" datatype="html">
+        <source>Min</source>
+        <target>الأدنى</target>
+      </trans-unit>
+      <trans-unit id="productList.maxPrice" datatype="html">
+        <source>Max</source>
+        <target>الأعلى</target>
+      </trans-unit>
+      <trans-unit id="productList.color" datatype="html">
+        <source>Color</source>
+        <target>اللون</target>
+      </trans-unit>
+      <trans-unit id="productList.colorPlaceholder" datatype="html">
+        <source>e.g. black</source>
+        <target>مثل: أسود</target>
+      </trans-unit>
+      <trans-unit id="productList.sort" datatype="html">
+        <source>Sort</source>
+        <target>الترتيب</target>
+      </trans-unit>
+      <trans-unit id="productList.sortNewest" datatype="html">
+        <source>Newest</source>
+        <target>الأحدث</target>
+      </trans-unit>
+      <trans-unit id="productList.sortPriceAsc" datatype="html">
+        <source>Price: Low to High</source>
+        <target>السعر: من الأقل إلى الأعلى</target>
+      </trans-unit>
+      <trans-unit id="productList.sortPriceDesc" datatype="html">
+        <source>Price: High to Low</source>
+        <target>السعر: من الأعلى إلى الأقل</target>
+      </trans-unit>
+      <trans-unit id="productList.sortRating" datatype="html">
+        <source>Top rated</source>
+        <target>الأعلى تقييمًا</target>
+      </trans-unit>
+      <trans-unit id="productList.apply" datatype="html">
+        <source> Apply </source>
+        <target> تطبيق </target>
+      </trans-unit>
+      <trans-unit id="productList.clearFilters" datatype="html">
+        <source> Clear filters </source>
+        <target> مسح الفلاتر </target>
+      </trans-unit>
+      <trans-unit id="productList.empty" datatype="html">
+        <source>No products match your filters.</source>
+        <target>لا توجد منتجات تطابق الفلاتر المحددة.</target>
+      </trans-unit>
+      <trans-unit id="productList.paginationAria" datatype="html">
+        <source>Pagination</source>
+        <target>ترقيم الصفحات</target>
+      </trans-unit>
+      <trans-unit id="productList.previous" datatype="html">
+        <source> Previous </source>
+        <target> السابق </target>
+      </trans-unit>
+      <trans-unit id="productList.pageOf" datatype="html">
+        <source>Page <x id="INTERPOLATION" equiv-text="{{ catalog.page() }}"/> of <x id="INTERPOLATION_1" equiv-text="{{ totalPages() }}"/></source>
+        <target>الصفحة <x id="INTERPOLATION" equiv-text="{{ catalog.page() }}"/> من <x id="INTERPOLATION_1" equiv-text="{{ totalPages() }}"/></target>
+      </trans-unit>
+      <trans-unit id="productList.next" datatype="html">
+        <source> Next </source>
+        <target> التالي </target>
+      </trans-unit>
+      <trans-unit id="wishlist.title" datatype="html">
+        <source>My wishlist</source>
+        <target>قائمة رغباتي</target>
+      </trans-unit>
+      <trans-unit id="wishlist.loadingAria" datatype="html">
+        <source>Loading</source>
+        <target>جارٍ التحميل</target>
+      </trans-unit>
+      <trans-unit id="wishlist.empty" datatype="html">
+        <source>Your wishlist is empty.</source>
+        <target>قائمة رغباتك فارغة.</target>
+      </trans-unit>
+      <trans-unit id="wishlist.browseProducts" datatype="html">
+        <source> Browse products </source>
+        <target> تصفح المنتجات </target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

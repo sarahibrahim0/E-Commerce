@@ -1,34 +1,104 @@
-<div class="mx-auto max-w-7xl px-4 py-8">
+<div class="w-full ps-[175px] pe-[175px] pt-page-x pb-section">
   @if (loading()) {
-    <app-loading-skeleton />
+    <div class="animate-pulse" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@productDetails.loadingAria">
+      <div class="flex gap-3">
+        <div class="h-3 w-12 rounded bg-[#ecd7cd]"></div>
+        <div class="h-3 w-16 rounded bg-[#ecd7cd]"></div>
+        <div class="h-3 w-24 rounded bg-[#ecd7cd]"></div>
+      </div>
+      <div class="mt-6 grid gap-8 lg:grid-cols-2">
+        <div>
+          <div class="aspect-square rounded-2xl bg-[#ecd7cd]"></div>
+          <div class="mt-3 flex gap-2">
+            <div class="h-20 w-20 rounded-lg bg-[#ecd7cd]"></div>
+            <div class="h-20 w-20 rounded-lg bg-[#ecd7cd]"></div>
+            <div class="h-20 w-20 rounded-lg bg-[#ecd7cd]"></div>
+          </div>
+        </div>
+        <div>
+          <div class="h-3 w-24 rounded bg-[#ecd7cd]"></div>
+          <div class="mt-3 h-8 w-3/4 rounded bg-[#ecd7cd]"></div>
+          <div class="mt-3 h-4 w-40 rounded bg-[#ecd7cd]"></div>
+          <div class="mt-5 h-7 w-32 rounded bg-[#ecd7cd]"></div>
+          <div class="mt-3 h-6 w-28 rounded-full bg-[#ecd7cd]"></div>
+          <div class="mt-5 space-y-2">
+            <div class="h-4 w-full rounded bg-[#ecd7cd]"></div>
+            <div class="h-4 w-full rounded bg-[#ecd7cd]"></div>
+            <div class="h-4 w-2/3 rounded bg-[#ecd7cd]"></div>
+          </div>
+          <div class="mt-6 flex items-center gap-4">
+            <div class="h-12 w-32 rounded-md bg-[#ecd7cd]"></div>
+            <div class="h-12 flex-1 rounded-md bg-[#ecd7cd]"></div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 grid gap-8 lg:grid-cols-[1fr_320px]">
+        <div class="space-y-8">
+          <div class="rounded-2xl border border-[#F6F8FE] p-6">
+            <div class="h-6 w-32 rounded bg-[#ecd7cd]"></div>
+            <div class="mt-4 space-y-2">
+              <div class="h-4 w-full rounded bg-[#ecd7cd]"></div>
+              <div class="h-4 w-full rounded bg-[#ecd7cd]"></div>
+              <div class="h-4 w-3/4 rounded bg-[#ecd7cd]"></div>
+            </div>
+          </div>
+          <div class="rounded-2xl border border-[#F6F8FE] p-6">
+            <div class="h-6 w-40 rounded bg-[#ecd7cd]"></div>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+              <div class="h-10 rounded-md bg-[#ecd7cd]"></div>
+              <div class="h-10 rounded-md bg-[#ecd7cd]"></div>
+              <div class="h-10 rounded-md bg-[#ecd7cd]"></div>
+              <div class="h-10 rounded-md bg-[#ecd7cd]"></div>
+            </div>
+          </div>
+        </div>
+        <div class="h-48 rounded-2xl bg-[#ecd7cd]"></div>
+      </div>
+    </div>
   } @else if (error(); as error) {
     <div class="rounded-md bg-[#fff5f5] p-6 text-center">
       <p class="text-[#ff4545]">{{ error }}</p>
-      <a routerLink="/products" class="mt-3 inline-block text-sm font-medium text-salmon">Back to products</a>
+      <a routerLink="/products" class="mt-3 inline-block text-sm font-medium text-salmon" i18n="Back to products action|@@productDetails.backToProducts">Back to products</a>
     </div>
   } @else if (product(); as product) {
-    <nav class="mb-6 text-sm text-[#797979]" aria-label="Breadcrumb">
-      <a routerLink="/" class="hover:text-blue-black">Home</a>
+    <nav class="mb-6 text-sm text-[#797979]" aria-label="Breadcrumb" i18n-aria-label="Breadcrumb navigation|@@productDetails.breadcrumbAria">
+      <a routerLink="/" class="hover:text-blue-black" i18n="Breadcrumb home|@@breadcrumb.home">Home</a>
       <span class="mx-1">/</span>
-      <a routerLink="/products" class="hover:text-blue-black">Products</a>
+      <a routerLink="/products" class="hover:text-blue-black" i18n="Breadcrumb products|@@productDetails.breadcrumbProducts">Products</a>
+      @if (categoryName()) {
+        <span class="mx-1">/</span>
+        <a routerLink="/products" [queryParams]="{ categories: categoryId() }" class="hover:text-blue-black">{{ categoryName() }}</a>
+      }
       <span class="mx-1">/</span>
-      <span class="text-blue-black">{{ product.name }}</span>
+      <span class="text-blue-black">{{ productName() }}</span>
     </nav>
 
-    <div class="grid gap-8 lg:grid-cols-2">
+    <div class="grid gap-10 lg:grid-cols-2">
       <div>
-        <div class="aspect-square overflow-hidden rounded-lg border border-[#F6F8FE] bg-white">
+        <div class="relative aspect-square overflow-hidden rounded-2xl border border-[#e8e6e3] bg-[#ecd7cd]">
           @if (activeImage()) {
-            <img [src]="activeImage()" [alt]="product.name" class="h-full w-full object-cover" />
+            <img [src]="activeImage()" [alt]="productName()" class="h-full w-full object-cover" />
           } @else {
-            <div class="flex h-full items-center justify-center text-[#c9c9c9]">No image</div>
+            <div class="flex h-full items-center justify-center text-[#c9c9c9]" i18n="No image text|@@productCard.noImage">No image</div>
           }
+          <div class="absolute start-4 top-4 flex gap-2">
+            @if (product.isFeatured) {
+              <span class="rounded-full bg-salmon px-3 py-1 text-xs font-medium text-white" i18n="Featured badge|@@productCard.featured">Featured</span>
+            }
+            @if (isNew()) {
+              <span class="rounded-full bg-blue-black px-3 py-1 text-xs font-medium text-white" i18n="New badge|@@productDetails.newBadge">New</span>
+            }
+          </div>
         </div>
         @if ((product.images?.length ?? 0) > 0) {
-          <div class="mt-3 flex gap-2">
+          <div class="mt-3 grid grid-cols-4 gap-2">
             @for (img of product.images; track img.url) {
-              <button type="button" class="h-20 w-20 overflow-hidden rounded-md border" (click)="activeImage.set(img.url)">
-                <img [src]="img.url" [alt]="product.name" class="h-full w-full object-cover" />
+              <button
+                type="button"
+                class="aspect-square overflow-hidden rounded-lg border-2 transition {{ activeImage() === img.url ? 'border-salmon' : 'border-transparent hover:border-[#c9c9c9]' }}"
+                (click)="activeImage.set(img.url)"
+              >
+                <img [src]="img.url" [alt]="productName()" class="h-full w-full object-cover" />
               </button>
             }
           </div>
@@ -37,103 +107,220 @@
 
       <div>
         @if (product.brand) {
-          <p class="text-xs uppercase tracking-wide text-[#c9c9c9]">{{ product.brand }}</p>
+          <p class="text-xs font-semibold uppercase tracking-widest text-[#b3b3b3]">{{ product.brand }}</p>
         }
-        <h1 class="mt-1 text-3xl font-bold text-blue-black">{{ product.name }}</h1>
+        <h1 class="mt-1 text-2xl font-bold leading-tight text-blue-black md:text-3xl">{{ productName() }}</h1>
         <div class="mt-2 flex items-center gap-2">
           <app-rating-stars [rating]="product.rating" />
-          <span class="text-sm text-[#797979]">{{ product.rating || 'No' }} rating ({{ product.numbReviews }} reviews)</span>
+          <span class="text-sm text-[#797979]" i18n="Rating and reviews label|@@productDetails.ratingLabel">{{ product.rating || 'No' }} rating ({{ product.numbReviews }} reviews)</span>
         </div>
-        <p class="mt-4 text-2xl font-semibold text-dark-purple">{{ price() }}</p>
 
-        @if (product.color) {
-          <p class="mt-3 text-sm text-[#646D77]">Color: {{ product.color }}</p>
+        <p class="mt-4 text-3xl font-bold text-dark-purple">
+          @if (displayOldPrice()) {
+            <span class="me-3 text-xl font-medium text-[#999] line-through">{{ oldPrice() }}</span>
+            <span class="inline-flex items-center gap-2">
+              {{ price() }}
+              <span class="rounded-full bg-[#fff5f5] px-2.5 py-1 text-xs font-semibold text-[#e74c3c]">&minus;{{ discountPercent() }}%</span>
+            </span>
+          } @else {
+            {{ price() }}
+          }
+        </p>
+
+        <span class="mt-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium
+          {{ outOfStock() ? 'bg-[#fff5f5] text-[#ff4545]' : lowStock() ? 'bg-amber-50 text-amber-600' : 'bg-emerald-50 text-emerald-600' }}">
+          <i class="bi {{ outOfStock() ? 'bi-x-circle' : lowStock() ? 'bi-exclamation-triangle' : 'bi-check-circle-fill' }}"></i>
+          @if (outOfStock()) {
+            <span i18n="Out of stock status|@@productCard.outOfStock">Out of stock</span>
+          } @else if (lowStock()) {
+            <ng-container i18n="Low stock count|@@productDetails.lowStock">Only {{ product.countInStock }} left in stock</ng-container>
+          } @else {
+            <span i18n="In stock status|@@productCard.inStock">In stock</span>
+          }
+        </span>
+
+        @if (product.richDescription || product.description) {
+          <div class="mt-5 border-t border-[#F6F8FE] pt-5 leading-relaxed text-[#646D77]">
+            @if (product.richDescription) {
+              <div class="rich-text [&>p:first-child]:mt-0 [&>h1:first-child]:mt-0 [&>h2:first-child]:mt-0 [&>h3:first-child]:mt-0 [&>h4:first-child]:mt-0 [&>ul:first-child]:mt-0 [&>ol:first-child]:mt-0 line-clamp-3" [innerHTML]="product.richDescription"></div>
+            } @else if (product.description) {
+              <div class="rich-text line-clamp-3" [innerHTML]="product.description"></div>
+            }
+          </div>
         }
-
-        <p class="mt-4 text-[#646D77]">{{ product.richDescription || product.description }}</p>
 
         <div class="mt-6 flex items-center gap-4">
           @if (outOfStock()) {
-            <span class="rounded bg-[#ecd7cd] px-3 py-2 text-sm font-medium text-[#797979]">Out of stock</span>
+            <span class="rounded-md bg-[#ecd7cd] px-6 py-3 text-sm font-medium text-[#797979]" i18n="Out of stock action label|@@productCard.outOfStock">Out of stock</span>
           } @else {
             <div class="flex items-center rounded-md border border-[#c9c9c9]">
-              <button type="button" class="px-3 py-2 text-[#646D77]" (click)="setQuantity(quantity() - 1)">&minus;</button>
+              <button type="button" class="px-3.5 py-2.5 text-[#646D77]" (click)="setQuantity(quantity() - 1)" aria-label="Decrease quantity" i18n-aria-label="Decrease quantity action|@@productDetails.decreaseAria">&minus;</button>
               <span class="w-10 text-center" data-testid="quantity">{{ quantity() }}</span>
-              <button type="button" class="px-3 py-2 text-[#646D77]" (click)="setQuantity(quantity() + 1)">+</button>
+              <button type="button" class="px-3.5 py-2.5 text-[#646D77]" (click)="setQuantity(quantity() + 1)" aria-label="Increase quantity" i18n-aria-label="Increase quantity action|@@productDetails.increaseAria">+</button>
             </div>
-            <button type="button" class="rounded-none uppercase tracking-wider bg-salmon px-6 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a]" (click)="addToCart()">
-              Add to cart
+            <button type="button" class="inline-flex items-center gap-2 rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a]" (click)="addToCart()">
+              <i class="bi bi-bag-heart"></i> <span i18n="Add to cart action|@@productCard.addToCart">Add to cart</span>
             </button>
           }
         </div>
 
-        <div class="mt-6 border-t border-[#F6F8FE] pt-4 text-sm text-[#797979]">
-          In stock: {{ product.countInStock }} &middot; {{ product.name }}
+        <div class="mt-6 flex flex-wrap gap-4 border-t border-[#F6F8FE] pt-4 text-sm text-[#797979]">
+          <span class="inline-flex items-center gap-1.5"><i class="bi bi-truck text-salmon"></i> <span i18n="Fast delivery perk|@@productDetails.fastDelivery">Fast delivery</span></span>
+          <span class="inline-flex items-center gap-1.5"><i class="bi bi-arrow-repeat text-salmon"></i> <span i18n="Easy returns perk|@@productDetails.easyReturns">Easy returns</span></span>
+          <span class="inline-flex items-center gap-1.5"><i class="bi bi-headset text-salmon"></i> <span i18n="24/7 support perk|@@productDetails.support">24/7 support</span></span>
         </div>
       </div>
     </div>
 
-    <section class="mt-12 grid gap-8 lg:grid-cols-[1fr_320px]">
-      <div>
-        <h2 class="text-xl font-bold text-blue-black">Reviews</h2>
-        @if (auth.isLoggedIn()) {
-          <form class="mt-4 rounded-lg border border-[#F6F8FE] p-4" (ngSubmit)="submitReview()">
-            <div class="flex items-center gap-1">
-              @for (star of [1, 2, 3, 4, 5]; track star) {
-                <button type="button" class="p-0.5" (click)="reviewRating = star" aria-label="Rate {{ star }} star">
-                  <svg class="h-6 w-6" [class]="star <= reviewRating ? 'fill-salmon text-salmon' : 'fill-[#c9c9c9] text-[#c9c9c9]'" viewBox="0 0 20 20">
-                    <path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
-                  </svg>
-                </button>
-              }
-            </div>
-            <textarea
-              [(ngModel)]="reviewComment"
-              name="comment"
-              rows="3"
-              placeholder="Share your thoughts..."
-              class="mt-3 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon"
-            ></textarea>
-            <button type="submit" [disabled]="reviewSaving" class="mt-2 rounded-none uppercase tracking-wider bg-salmon px-4 py-2 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
-              {{ reviewSaving ? 'Submitting...' : 'Submit review' }}
-            </button>
-          </form>
-        } @else {
-          <p class="mt-4 text-sm text-[#797979]">
-            <a routerLink="/login" class="font-medium text-salmon">Sign in</a> to write a review.
-          </p>
-        }
+    <div class="mt-12 grid gap-8 lg:grid-cols-[1fr_320px]">
+      <div class="min-w-0 space-y-8">
+        <section class="rounded-2xl border border-[#F6F8FE] bg-white p-6 md:p-8">
+          <div class="flex items-center gap-3">
+            <span class="h-8 w-1 rounded-full bg-salmon"></span>
+            <h2 class="text-xl font-bold text-blue-black" i18n="Description heading|@@productDetails.description">Description</h2>
+          </div>
+          @if (product.richDescription) {
+            <div class="rich-text mt-4" [innerHTML]="product.richDescription"></div>
+          } @else if (product.description) {
+            <div class="rich-text mt-4 whitespace-pre-line" [innerHTML]="product.description"></div>
+          } @else {
+            <p class="mt-4 text-[#797979]" i18n="No description message|@@productDetails.noDescription">No description available for this product.</p>
+          }
+        </section>
 
-        @if (reviews.loading()) {
-          <p class="mt-4 text-sm text-[#c9c9c9]">Loading reviews...</p>
-        } @else if (reviews.reviews().length === 0) {
-          <app-empty-state message="No reviews yet. Be the first!" />
-        } @else {
-          <ul class="mt-4 divide-y divide-[#F6F8FE]">
-            @for (review of reviews.reviews(); track review.id) {
-              <li class="py-4">
-                <div class="flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="font-medium text-blue-black">{{ reviewAuthorName(review) }}</span>
-                    <app-rating-stars [rating]="review.rating" size="sm" />
-                  </div>
-                  @if (isReviewOwner(review)) {
-                    <button type="button" class="text-xs text-[#ff4545] hover:underline" (click)="deleteReview(review.id)">Delete</button>
-                  }
-                </div>
-                @if (review.comment) {
-                  <p class="mt-1 text-sm text-[#646D77]">{{ review.comment }}</p>
-                }
-                <p class="mt-1 text-xs text-[#c9c9c9]">{{ review.dateCreated | date: 'mediumDate' }}</p>
-              </li>
+        <section class="rounded-2xl border border-[#F6F8FE] bg-white p-6 md:p-8">
+          <div class="flex items-center gap-3">
+            <span class="h-8 w-1 rounded-full bg-salmon"></span>
+            <h2 class="text-xl font-bold text-blue-black" i18n="Product details heading|@@productDetails.detailsTitle">Product details</h2>
+          </div>
+          <dl class="mt-4 grid gap-x-8 gap-y-4 text-sm sm:grid-cols-2">
+            <div class="flex items-center justify-between gap-4 border-b border-[#F6F8FE] pb-3">
+              <dt class="flex items-center gap-2 text-[#797979]"><i class="bi bi-tags text-salmon"></i> <span i18n="Category detail label|@@productDetails.category">Category</span></dt>
+              <dd class="font-medium text-blue-black">{{ categoryName() || '—' }}</dd>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-b border-[#F6F8FE] pb-3">
+              <dt class="flex items-center gap-2 text-[#797979]"><i class="bi bi-building text-salmon"></i> <span i18n="Brand detail label|@@productDetails.brand">Brand</span></dt>
+              <dd class="font-medium text-blue-black">{{ product.brand || '—' }}</dd>
+            </div>
+            @if (product.color) {
+              <div class="flex items-center justify-between gap-4 border-b border-[#F6F8FE] pb-3">
+                <dt class="flex items-center gap-2 text-[#797979]"><i class="bi bi-droplet text-salmon"></i> <span i18n="Color detail label|@@productDetails.color">Color</span></dt>
+                <dd class="font-medium text-blue-black">{{ product.color }}</dd>
+              </div>
             }
-          </ul>
-        }
+            <div class="flex items-center justify-between gap-4 border-b border-[#F6F8FE] pb-3">
+              <dt class="flex items-center gap-2 text-[#797979]"><i class="bi bi-box-seam text-salmon"></i> <span i18n="Availability detail label|@@productDetails.availability">Availability</span></dt>
+              <dd class="font-medium text-blue-black">
+                @if (outOfStock()) {
+                  <span i18n="Out of stock status|@@productCard.outOfStock">Out of stock</span>
+                } @else {
+                  <ng-container i18n="In stock count|@@productDetails.inStockCount">{{ product.countInStock }} in stock</ng-container>
+                }
+              </dd>
+            </div>
+            <div class="flex items-center justify-between gap-4 border-b border-[#F6F8FE] pb-3">
+              <dt class="flex items-center gap-2 text-[#797979]"><i class="bi bi-upc-scan text-salmon"></i> <span i18n="SKU detail label|@@productDetails.sku">SKU</span></dt>
+              <dd class="font-medium text-blue-black">{{ sku() }}</dd>
+            </div>
+            @if (product.dateCreated) {
+              <div class="flex items-center justify-between gap-4 border-b border-[#F6F8FE] pb-3">
+                <dt class="flex items-center gap-2 text-[#797979]"><i class="bi bi-calendar3 text-salmon"></i> <span i18n="Date added detail label|@@productDetails.dateAdded">Date added</span></dt>
+                <dd class="font-medium text-blue-black">{{ product.dateCreated | date: 'mediumDate' }}</dd>
+              </div>
+            }
+            <div class="flex items-center justify-between gap-4 border-b border-[#F6F8FE] pb-3">
+              <dt class="flex items-center gap-2 text-[#797979]"><i class="bi bi-star text-salmon"></i> <span i18n="Rating detail label|@@productDetails.rating">Rating</span></dt>
+              <dd class="font-medium text-blue-black" i18n="Rating count value|@@productDetails.ratingValue">{{ product.rating || 'No' }} ({{ product.numbReviews }} reviews)</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section>
+          <div class="flex items-center gap-3">
+            <span class="h-8 w-1 rounded-full bg-salmon"></span>
+            <h2 class="text-xl font-bold text-blue-black" i18n="Reviews heading|@@productDetails.reviewsTitle">Reviews</h2>
+          </div>
+          <p class="mt-1 text-xs text-[#797979]" i18n="Verified purchases note|@@productDetails.verifiedNote">Only verified purchases can rate and review this product.</p>
+          @if (auth.isLoggedIn()) {
+            <form class="mt-4 rounded-lg border border-[#F6F8FE] p-4" (ngSubmit)="submitReview()">
+              <div class="flex items-center gap-1">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                  <button type="button" class="p-0.5" (click)="reviewRating.set(star); reviewError.set(null)" aria-label="Rate {{ star }} star" i18n-aria-label="Star rating action|@@productDetails.rateStarAria">
+                    <svg class="h-6 w-6" [class]="star <= reviewRating() ? 'fill-salmon text-salmon' : 'fill-[#c9c9c9] text-[#c9c9c9]'" viewBox="0 0 20 20">
+                      <path d="M10 1.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L1.5 7.7l5.9-.9L10 1.5z" />
+                    </svg>
+                  </button>
+                }
+              </div>
+              <textarea
+                [ngModel]="reviewComment()"
+                (ngModelChange)="reviewComment.set($event); reviewError.set(null)"
+                name="comment"
+                rows="3"
+                placeholder="Share your thoughts..."
+                i18n-placeholder="Review comment placeholder|@@productDetails.reviewPlaceholder"
+                class="mt-3 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon"
+              ></textarea>
+              @if (reviewError(); as err) {
+                <p class="mt-2 rounded-md bg-[#fff5f5] p-2.5 text-sm text-[#ff4545]">{{ err }}</p>
+              }
+              <button type="submit" [disabled]="reviewSaving()" class="mt-2 rounded-md uppercase tracking-wider bg-salmon px-4 py-2 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
+                {{ reviewSubmitLabel() }}
+              </button>
+            </form>
+          } @else {
+            <p class="mt-4 text-sm text-[#797979]">
+              <a routerLink="/login" class="font-medium text-salmon" i18n="Sign in link|@@productDetails.signIn">Sign in</a>
+              <ng-container i18n="Sign in prompt|@@productDetails.signInPrompt"> to write a review.</ng-container>
+            </p>
+          }
+
+          @if (reviews.loading()) {
+            <app-loading-spinner size="sm" />
+          } @else if (reviews.reviews().length === 0) {
+            <app-empty-state message="No reviews yet. Be the first!" i18n-message="Empty reviews message|@@productDetails.noReviews" />
+          } @else {
+            <ul class="mt-4 divide-y divide-[#F6F8FE]">
+              @for (review of reviews.reviews(); track review.id) {
+                <li class="py-4">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#ecd7cd] text-sm font-semibold text-[#646D77]">
+                        @if (reviewUserImage(review); as img) {
+                          <img [src]="img" [alt]="reviewAuthorName(review)" class="absolute inset-0 h-full w-full object-cover" (error)="onAvatarError($event)" />
+                        }
+                        {{ reviewAuthorName(review).charAt(0) }}
+                      </span>
+                      <div>
+                        <span class="flex items-center gap-1.5 font-medium text-blue-black">
+                          {{ reviewAuthorName(review) }}
+                          @if (review.verifiedPurchase) {
+                            <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-600" title="Verified purchase" i18n-title="Verified purchase title|@@productDetails.verifiedTitle">
+                              <i class="bi bi-patch-check-fill"></i> <span i18n="Verified badge|@@productDetails.verified">Verified</span>
+                            </span>
+                          }
+                        </span>
+                        <app-rating-stars [rating]="review.rating" size="sm" />
+                      </div>
+                    </div>
+                    @if (isReviewOwner(review)) {
+                      <button type="button" class="text-xs text-[#ff4545] hover:underline" (click)="deleteReview(review.id)" i18n="Delete review action|@@productDetails.deleteReview">Delete</button>
+                    }
+                  </div>
+                  @if (review.comment) {
+                    <p class="mt-2 text-sm text-[#646D77]">{{ review.comment }}</p>
+                  }
+                  <p class="mt-1 text-xs text-[#c9c9c9]">{{ review.dateCreated | date: 'mediumDate' }}</p>
+                </li>
+              }
+            </ul>
+          }
+        </section>
       </div>
 
       @if (related().length > 0) {
         <aside>
-          <h2 class="text-xl font-bold text-blue-black">Related products</h2>
+          <h2 class="text-xl font-bold text-blue-black" i18n="Related products heading|@@productDetails.relatedTitle">Related products</h2>
           <div class="mt-4 grid gap-4">
             @for (item of related(); track item.id) {
               <app-product-card [product]="item" (addToCart)="addRelatedToCart($event)" />
@@ -141,6 +328,6 @@
           </div>
         </aside>
       }
-    </section>
+    </div>
   }
 </div>

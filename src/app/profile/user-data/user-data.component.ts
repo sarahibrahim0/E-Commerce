@@ -7,6 +7,7 @@ import { ProductCardComponent } from '../../shared/product-card/product-card.com
 import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
 import { ToastService } from '../../shared/toast/toast.service';
 import { Product } from '../../core/models';
+import { pickText } from '../../core/utils/localize';
 
 @Component({
   selector: 'app-user-data',
@@ -24,6 +25,6 @@ export class UserDataComponent {
 
   addToCart(product: Product): void {
     this.cart.add(product);
-    this.toasts.show(`${product.name} added to cart`, 'success');
+    this.toasts.show($localize`${pickText(product.name)} added to cart`, 'success');
   }
 }

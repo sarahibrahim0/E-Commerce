@@ -17,7 +17,7 @@ export function normalizeApiError(err: unknown): ApiError {
   if (err instanceof ApiError) return err;
   const http = err as HttpErrorLike;
   const status = http.status ?? 0;
-  let message = 'Something went wrong';
+  let message = $localize`Something went wrong`;
   if (typeof http.error === 'string') {
     message = http.error;
   } else if (http.error?.message) {

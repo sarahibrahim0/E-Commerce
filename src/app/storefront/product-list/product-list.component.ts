@@ -18,11 +18,6 @@ import { CartStore } from '../../core/stores/cart.store';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   protected readonly catalog = inject(CatalogStore);
-  protected readonly sort = this.catalog.sort;
-  protected readonly minPrice = this.catalog.minPrice;
-  protected readonly maxPrice = this.catalog.maxPrice;
-  protected readonly color = this.catalog.color;
-  protected readonly page = this.catalog.page;
   protected readonly totalPages = this.catalog.totalPages;
 
   private route = inject(ActivatedRoute);
@@ -91,6 +86,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   async applyFilters(): Promise<void> {
     await this.syncUrl();
+  }
+
+  clearFilters(): void {
+    this.catalog.categoryId.set(null);
+    this.catalog.search.set('');
+    this.catalog.minPrice.set(null);
+    this.catalog.maxPrice.set(null);
+    this.catalog.color.set(null);
+    this.catalog.sort.set('newest');
+    this.catalog.page.set(1);
+    void this.syncUrl();
   }
 
   async goToPage(page: number): Promise<void> {

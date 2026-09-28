@@ -1,6 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { AboutComponent } from './about.component';
 
@@ -8,7 +9,7 @@ describe('AboutComponent', () => {
   it('renders content from the API', () => {
     TestBed.configureTestingModule({
       imports: [AboutComponent],
-      providers: [provideHttpClient(), provideHttpClientTesting()],
+      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
     });
     const fixture = TestBed.createComponent(AboutComponent);
     fixture.detectChanges();

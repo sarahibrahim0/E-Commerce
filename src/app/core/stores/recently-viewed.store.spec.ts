@@ -3,7 +3,7 @@ import { RecentlyViewedStore } from './recently-viewed.store';
 import { Product } from '../models';
 
 const product = (id: string): Product => ({
-  id, name: id, description: '', richDescription: '', price: 10, rating: 0, numbReviews: 0,
+  id, name: id, description: '', richDescription: '', price: 10, salePrice: 0, rating: 0, numbReviews: 0,
   countInStock: 5, isFeatured: false, dateCreated: '2026-01-01T00:00:00Z',
   image: { url: '', publicId: '' }, images: [], brand: '', category: 'c1',
 });

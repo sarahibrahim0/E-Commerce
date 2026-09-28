@@ -10,6 +10,8 @@ import { ConfirmDialogService } from './confirm-dialog.service';
 })
 export class ConfirmDialogComponent {
   protected readonly dialog = inject(ConfirmDialogService);
+  protected readonly defaultCancelLabel = $localize`:@@confirm.cancel:Cancel`;
+  protected readonly defaultConfirmLabel = $localize`:@@confirm.confirm:Confirm`;
 
   confirm(): void {
     this.dialog.close(true);
@@ -17,5 +19,9 @@ export class ConfirmDialogComponent {
 
   cancel(): void {
     this.dialog.close(false);
+  }
+
+  extra(): void {
+    this.dialog.close('extra');
   }
 }

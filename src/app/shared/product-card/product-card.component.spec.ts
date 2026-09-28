@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ProductCardComponent } from './product-card.component';
 import { WishlistStore } from '../../core/stores/wishlist.store';
 import { Product } from '../../core/models';
+import { environment } from '../../../environments/environment';
 
 const product: Product = {
-  id: 'p1', name: 'Sneakers', description: 'D', richDescription: '', price: 120,
+  id: 'p1', name: 'Sneakers', description: 'D', richDescription: '', price: 120, salePrice: 0,
   rating: 4, numbReviews: 3, countInStock: 5, isFeatured: false,
   dateCreated: '2026-01-01T00:00:00Z',
   image: { url: 'https://example.com/img.png', publicId: 'x' },
@@ -20,7 +23,7 @@ describe('ProductCardComponent', () => {
     localStorage.clear();
     TestBed.configureTestingModule({
       imports: [ProductCardComponent],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
     });
   });
 
@@ -45,14 +48,17 @@ describe('ProductCardComponent', () => {
   });
 
   it('toggles wishlist state', () => {
+    localStorage.setItem('ecom.token', 't');
     const fixture = TestBed.createComponent(ProductCardComponent);
     fixture.componentRef.setInput('product', product);
     fixture.detectChanges();
     const wishlist = TestBed.inject(WishlistStore);
+    const http = TestBed.inject(HttpTestingController);
     const heart = fixture.nativeElement.querySelector('[data-testid="wishlist-heart"]');
     heart.click();
     expect(wishlist.contains('p1')).toBe(true);
     fixture.detectChanges();
     expect(heart.getAttribute('data-wishlisted')).toBe('true');
+    http.expectOne(`${environment.apiUrl}wishlist/p1`).flush([]);
   });
 });

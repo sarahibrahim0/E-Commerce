@@ -49,25 +49,33 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "ar": {
+            "translation": "src/i18n/messages.ar.xlf",
+            "baseHref": "/ar/"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
+            "polyfills": ["@angular/localize/init"],
             "assets": [
               {
                 "glob": "**/*",
                 "input": "public"
               }
             ],
-            "styles": [
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
-              "src/styles.css"
-            ]
+            "styles": ["node_modules/bootstrap-icons/font/bootstrap-icons.css", "src/styles.css"]
           },
           "configurations": {
             "production": {
+              "localize": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -92,6 +100,9 @@
                   "with": "src/environments/environment.development.ts"
                 }
               ]
+            },
+            "ar": {
+              "localize": ["ar"]
             }
           },
           "defaultConfiguration": "production"
@@ -107,6 +118,12 @@
             }
           },
           "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n",
+          "options": {
+            "buildTarget": "ecommerce-v2:build"
+          }
         },
         "test": {
           "builder": "@angular/build:unit-test",

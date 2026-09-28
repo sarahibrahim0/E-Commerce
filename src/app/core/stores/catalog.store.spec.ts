@@ -6,7 +6,7 @@ import { CatalogStore } from './catalog.store';
 import { Product, Category } from '../models';
 
 const product = (id: string, price = 10): Product => ({
-  id, name: id, description: '', richDescription: '', price, rating: 0, numbReviews: 0,
+  id, name: id, description: '', richDescription: '', price, salePrice: 0, rating: 0, numbReviews: 0,
   countInStock: 5, isFeatured: false, dateCreated: '2026-01-01T00:00:00Z',
   image: { url: '', publicId: '' }, images: [], brand: '', category: 'c1',
 });
@@ -31,7 +31,7 @@ describe('CatalogStore', () => {
     const p = store.loadProducts();
     const req = http.expectOne(environment.apiUrl + 'products');
     expect(req.request.method).toBe('GET');
-    req.flush([product('p1'), product('p2')]);
+    req.flush({ data: [product('p1'), product('p2')], total: 2, page: 1, totalPages: 1 });
     await p;
     expect(store.productsList().length).toBe(2);
     expect(store.productsLoading()).toBe(false);
@@ -44,7 +44,7 @@ describe('CatalogStore', () => {
     const req = http.expectOne((r) => r.url === environment.apiUrl + 'products');
     expect(req.request.params.get('categories')).toBe('c1');
     expect(req.request.params.get('name')).toBe('shoes');
-    req.flush([]);
+    req.flush({ data: [], total: 0, page: 1, totalPages: 0 });
     await p;
   });
 

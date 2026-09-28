@@ -1,24 +1,36 @@
-<div class="mx-auto max-w-5xl px-4 py-8">
-  <h1 class="text-2xl font-bold text-blue-black">Checkout</h1>
+<div class="w-full ps-[175px] pe-[175px] pt-page-x pb-section">
+  <h1 class="text-2xl font-bold text-blue-black" i18n="Checkout heading|@@checkout.title">Checkout</h1>
 
   @if (cart.count() === 0) {
-    <app-empty-state message="Your cart is empty — add products before checking out." />
+    <app-empty-state message="Your cart is empty — add products before checking out." i18n-message="Empty cart checkout message|@@checkout.emptyCart" />
     <div class="text-center">
-      <a routerLink="/products" class="inline-block rounded-none uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a]">Browse products</a>
+      <a routerLink="/products" class="inline-block rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-hover-salmon" i18n="Browse products action|@@checkout.browseProducts">Browse products</a>
     </div>
   } @else {
     <div class="mt-6 grid gap-8 lg:grid-cols-[1fr_360px]">
       <div class="space-y-6">
-        @if (addresses.list().length > 0) {
+        @if (addresses.loading()) {
           <section>
-            <h2 class="text-lg font-semibold text-blue-black">Saved addresses</h2>
+            <h2 class="text-lg font-semibold text-blue-black" i18n="Saved addresses heading|@@checkout.savedAddresses">Saved addresses</h2>
+            <div class="mt-3 grid gap-2 sm:grid-cols-2 animate-pulse" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@checkout.loadingAria">
+              @for (_ of [0, 1]; track $index) {
+                <div class="h-16 rounded-lg border border-[#F6F8FE] p-3">
+                  <div class="h-3 w-20 rounded bg-[#ecd7cd]"></div>
+                  <div class="mt-2 h-3 w-40 rounded bg-[#ecd7cd]"></div>
+                </div>
+              }
+            </div>
+          </section>
+        } @else if (addresses.list().length > 0) {
+          <section>
+            <h2 class="text-lg font-semibold text-blue-black" i18n="Saved addresses heading|@@checkout.savedAddresses">Saved addresses</h2>
             <div class="mt-3 grid gap-2 sm:grid-cols-2">
               @for (address of addresses.list(); track address.id) {
                 <button type="button"
-                        class="rounded-lg border border-[#F6F8FE] p-3 text-left text-sm hover:border-salmon"
+                        class="rounded-lg border border-[#F6F8FE] p-3 text-start text-sm hover:border-salmon"
                         (click)="applyAddress(address)">
-                  <span class="font-medium">{{ address.label }}</span>
-                  <span class="mt-1 block text-[#797979]">{{ address.street }}, {{ address.city }}, {{ address.country }}</span>
+                  <span class="font-medium">{{ pickText(address.label) }}</span>
+                  <span class="mt-1 block text-[#797979]">{{ pickText(address.street) }}, {{ pickText(address.city) }}, {{ pickText(address.country) }}</span>
                 </button>
               }
             </div>
@@ -26,36 +38,87 @@
         }
 
         <section>
-          <h2 class="text-lg font-semibold text-blue-black">Shipping address</h2>
+          <h2 class="text-lg font-semibold text-blue-black" i18n="Shipping address heading|@@checkout.shippingAddress">Shipping address</h2>
           <div class="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <input [ngModel]="street()" (ngModelChange)="street.set($event)" name="street" placeholder="Street *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon sm:col-span-2" />
-            <input [ngModel]="apartment()" (ngModelChange)="apartment.set($event)" name="apartment" placeholder="Apartment" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-            <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-            <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-            <input [ngModel]="country()" (ngModelChange)="country.set($event)" name="country" placeholder="Country *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-            <input [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" placeholder="Phone *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon sm:col-span-2" />
+            <input [ngModel]="street()" (ngModelChange)="street.set($event)" name="street" placeholder="Street *" i18n-placeholder="Street placeholder|@@checkout.streetPlaceholder" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon sm:col-span-2" />
+            <input [ngModel]="apartment()" (ngModelChange)="apartment.set($event)" name="apartment" placeholder="Apartment" i18n-placeholder="Apartment placeholder|@@checkout.apartmentPlaceholder" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City *" i18n-placeholder="City placeholder|@@checkout.cityPlaceholder" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" i18n-placeholder="ZIP placeholder|@@checkout.zipPlaceholder" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            <div class="sm:col-span-2">
+              <select name="country" [ngModel]="countryCode()" (ngModelChange)="onCountryChange($event)"
+                      class="w-full rounded-md border border-[#c9c9c9] bg-white px-3 py-2 text-sm outline-none focus:border-salmon">
+                <option value="" disabled i18n="Country select label|@@checkout.countryLabel">Country *</option>
+                @for (c of countries(); track c.code) {
+                  <option [value]="c.code">{{ c.flag }} {{ c.name }}</option>
+                }
+              </select>
+              @if (countriesLoading()) {
+                <p class="mt-1 text-xs text-[#c9c9c9]" i18n="Loading countries message|@@checkout.loadingCountries">Loading countries...</p>
+              }
+            </div>
+            <div class="sm:col-span-2 flex mt-1">
+              <span class="flex items-center rounded-s-md border border-e-0 border-[#c9c9c9] bg-[#f9f9f9] px-3 py-2 text-sm text-[#646D77]">
+                {{ phoneDialCode() }}
+              </span>
+              <input [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" type="tel"
+                     placeholder="Phone *" i18n-placeholder="Phone placeholder|@@checkout.phonePlaceholder" class="w-full rounded-e-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            </div>
           </div>
           <label class="mt-3 flex items-center gap-2 text-sm text-[#646D77]">
             <input type="checkbox" [ngModel]="saveAsAddress()" (ngModelChange)="saveAsAddress.set($event)" name="saveAddress" />
-            Save this address to my address book
+            <span i18n="Save address label|@@checkout.saveAddress">Save this address to my address book</span>
+          </label>
+          <label class="mt-2 flex items-center gap-2 text-sm text-[#646D77]">
+            <input type="checkbox" [ngModel]="rememberInfo()" (ngModelChange)="rememberInfo.set($event)" name="rememberInfo" />
+            <span i18n="Remember details label|@@checkout.rememberInfo">Remember my details on this device</span>
           </label>
           @if (saveAsAddress()) {
-            <input [ngModel]="addressLabel()" (ngModelChange)="addressLabel.set($event)" name="addressLabel" placeholder="Address label (e.g. Home, Work)" class="mt-2 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            <input [ngModel]="addressLabel()" (ngModelChange)="addressLabel.set($event)" name="addressLabel" placeholder="Address label (e.g. Home, Work)" i18n-placeholder="Address label placeholder|@@checkout.addressLabelPlaceholder" class="mt-2 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
           }
         </section>
 
+        @if (selectedCountry()) {
+          <section>
+            <h2 class="text-lg font-semibold text-blue-black" i18n="Payment method heading|@@checkout.paymentMethod">Payment method</h2>
+            <div class="mt-3 space-y-2">
+              @for (m of paymentOptions(); track m.code) {
+                <label class="flex cursor-pointer items-center gap-3 rounded-lg border border-[#F6F8FE] p-3 text-sm hover:border-salmon"
+                       [class.border-salmon]="paymentGateway() === m.code"
+                       [class.opacity-50]="!m.enabled"
+                       [class.cursor-not-allowed]="!m.enabled">
+                  <input type="radio" name="gateway" class="accent-salmon" [value]="m.code"
+                         [ngModel]="paymentGateway()" (ngModelChange)="selectGateway(m.code)"
+                         [disabled]="!m.enabled" />
+                  <i [class]="m.icon" class="text-lg" [style.color]="m.color"></i>
+                  <span class="text-blue-black">{{ m.name }}</span>
+                  @if (!m.enabled) {
+                    <span class="ms-auto text-xs text-[#c9c9c9]" i18n="Not available label|@@checkout.notAvailable">Not available yet</span>
+                  }
+                </label>
+              }
+              <p class="mt-2 text-xs text-[#c9c9c9]" i18n="Card availability note|@@checkout.cardNote">Online card checkout is available for all countries.</p>
+            </div>
+          </section>
+        }
+
         <section>
-          <h2 class="text-lg font-semibold text-blue-black">Coupon</h2>
+          <h2 class="text-lg font-semibold text-blue-black" i18n="Coupon heading|@@checkout.coupon">Coupon</h2>
           @if (coupon.applied(); as applied) {
             <div class="mt-3 flex items-center justify-between rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
-              <span>Coupon <strong>{{ applied.code }}</strong> applied</span>
-              <button type="button" class="text-emerald-700 underline" (click)="removeCoupon()">Remove</button>
+              <span>
+                <ng-container i18n="Coupon applied label|@@checkout.couponApplied">Coupon <strong>{{ applied.code }}</strong> applied</ng-container>
+              </span>
+              <button type="button" class="text-emerald-700 underline" (click)="removeCoupon()" i18n="Remove coupon action|@@checkout.removeCoupon">Remove</button>
             </div>
           } @else {
             <div class="mt-3 flex gap-2">
-              <input [ngModel]="couponCode()" (ngModelChange)="couponCode.set($event)" name="couponCode" placeholder="Coupon code" class="flex-1 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-              <button type="button" [disabled]="coupon.validating()" class="rounded-none uppercase tracking-wider bg-salmon px-4 py-2 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50" (click)="applyCoupon()">
-                Apply
+              <input [ngModel]="couponCode()" (ngModelChange)="couponCode.set($event)" name="couponCode" placeholder="Coupon code" i18n-placeholder="Coupon code placeholder|@@checkout.couponPlaceholder" class="flex-1 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+              <button type="button" [disabled]="coupon.validating()" class="rounded-md uppercase tracking-wider bg-salmon px-4 py-2 text-sm font-medium text-white hover:bg-hover-salmon disabled:opacity-50" (click)="applyCoupon()">
+                @if (coupon.validating()) {
+                  <span i18n="Applying coupon label|@@checkout.applying">Applying...</span>
+                } @else {
+                  <span i18n="Apply coupon action|@@checkout.apply">Apply</span>
+                }
               </button>
             </div>
           }
@@ -63,21 +126,37 @@
       </div>
 
       <aside class="h-fit rounded-lg border border-[#F6F8FE] bg-white p-4">
-        <h2 class="text-lg font-semibold text-blue-black">Order summary</h2>
+        <h2 class="text-lg font-semibold text-blue-black">
+          <ng-container i18n="Order summary heading|@@checkout.orderSummary">Order summary</ng-container>
+          <span class="text-sm font-normal text-[#797979]">({{ currencyInfo().code }})</span>
+        </h2>
         <ul class="mt-3 max-h-64 space-y-2 overflow-auto text-sm text-[#646D77]">
           @for (item of cart.items(); track item.product.id) {
             <li class="flex justify-between gap-3">
-              <span>{{ item.product.name }} &times; {{ item.quantity }}</span>
-              <span>{{ formatPrice(item.product.price * item.quantity) }}</span>
+              <span>{{ pickText(item.product.name) }} &times; {{ item.quantity }}</span>
+              <span>{{ fmt(effectivePrice(item.product) * item.quantity) }}</span>
             </li>
           }
         </ul>
         <dl class="mt-4 space-y-1 border-t border-[#F6F8FE] pt-3 text-sm">
-          <div class="flex justify-between"><dt class="text-[#797979]">Subtotal</dt><dd>{{ formatPrice(subtotal()) }}</dd></div>
+          <div class="flex justify-between"><dt class="text-[#797979]" i18n="Subtotal label|@@checkout.subtotal">Subtotal</dt><dd>{{ fmt(subtotal()) }}</dd></div>
           @if (discount() > 0) {
-            <div class="flex justify-between text-emerald-700"><dt>Discount</dt><dd>&minus;{{ formatPrice(discount()) }}</dd></div>
+            <div class="flex justify-between text-emerald-700"><dt i18n="Discount label|@@checkout.discount">Discount</dt><dd>&minus;{{ fmt(discount()) }}</dd></div>
           }
-          <div class="flex justify-between text-base font-bold text-dark-purple"><dt>Total</dt><dd>{{ formatPrice(total()) }}</dd></div>
+          @if (minSubtotalNotMet()) {
+            <p class="mt-2 rounded-md bg-amber-50 p-2 text-xs text-amber-700" i18n="Coupon minimum not met message|@@checkout.couponMinNotMet">Your cart does not meet the minimum order amount for this coupon yet.</p>
+          }
+          <div class="flex justify-between {{ shippingFee() === 0 ? 'text-[#3fa32d]' : '' }}">
+            <dt class="text-[#797979]" i18n="Shipping label|@@checkout.shipping">Shipping</dt>
+            <dd>
+              @if (shippingFee() === 0) {
+                <span i18n="Free shipping value|@@checkout.free">Free</span>
+              } @else {
+                {{ fmt(shippingFee()) }}
+              }
+            </dd>
+          </div>
+          <div class="flex justify-between text-base font-bold text-dark-purple"><dt i18n="Total label|@@checkout.total">Total</dt><dd>{{ fmt(total()) }}</dd></div>
         </dl>
         @if (error(); as err) {
           <p class="mt-3 rounded-md bg-[#fff5f5] p-2 text-sm text-[#ff4545]">{{ err }}</p>
@@ -86,12 +165,14 @@
           type="button"
           data-testid="pay-button"
           [disabled]="!canPay() || paying()"
-          class="mt-4 w-full rounded-none uppercase tracking-wider bg-salmon px-4 py-3 text-sm font-semibold text-white hover:bg-[#e9855a] disabled:opacity-50"
+          class="mt-4 w-full rounded-md uppercase tracking-wider bg-salmon px-4 py-3 text-sm font-semibold text-white hover:bg-hover-salmon disabled:opacity-50"
           (click)="pay()"
         >
-          {{ paying() ? 'Redirecting to Stripe...' : 'Pay with Stripe' }}
+          {{ payButtonLabel() }}
         </button>
-        <p class="mt-2 text-center text-xs text-[#c9c9c9]">Test card: 4242 4242 4242 4242</p>
+        @if (selectedPayMethod()?.stripe) {
+          <p class="mt-2 text-center text-xs text-[#c9c9c9]" i18n="Test card hint|@@checkout.testCard">Test card: 4242 4242 4242 4242</p>
+        }
       </aside>
     </div>
   }

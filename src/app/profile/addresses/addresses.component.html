@@ -1,10 +1,18 @@
 <div class="space-y-6">
   <section>
-    <h2 class="text-lg font-semibold text-blue-black">Saved addresses</h2>
+    <h2 class="text-lg font-semibold text-blue-black" i18n="Saved addresses heading|@@addresses.title">Saved addresses</h2>
     @if (store.loading()) {
-      <p class="mt-3 text-sm text-[#c9c9c9]">Loading...</p>
+      <div class="mt-3 grid gap-3 sm:grid-cols-2 animate-pulse" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@addresses.loadingAria">
+        @for (_ of [0, 1, 2]; track $index) {
+          <div class="rounded-lg border border-[#F6F8FE] bg-white p-4">
+            <div class="h-4 w-24 rounded bg-[#ecd7cd]"></div>
+            <div class="mt-3 h-3 w-40 rounded bg-[#ecd7cd]"></div>
+            <div class="mt-2 h-3 w-32 rounded bg-[#ecd7cd]"></div>
+          </div>
+        }
+      </div>
     } @else if (store.list().length === 0) {
-      <app-empty-state message="No saved addresses yet." />
+      <app-empty-state message="No saved addresses yet." i18n-message="Empty addresses message|@@addresses.empty" />
     } @else {
       <div class="mt-3 grid gap-3 sm:grid-cols-2">
         @for (address of store.list(); track address.id) {
@@ -12,24 +20,24 @@
             <div class="flex items-start justify-between">
               <div>
                 <p class="font-medium text-blue-black">
-                  {{ address.label }}
+                  {{ pickText(address.label) }}
                   @if (address.isDefault) {
-                    <span class="ml-2 rounded bg-[#F6F8FE] px-2 py-0.5 text-xs text-salmon">Default</span>
+                    <span class="ms-2 rounded bg-[#F6F8FE] px-2 py-0.5 text-xs text-salmon" i18n="Default badge|@@addresses.defaultBadge">Default</span>
                   }
                 </p>
                 <p class="mt-1 text-sm text-[#797979]">
-                  {{ address.street }}{{ address.apartment ? ', ' + address.apartment : '' }}<br />
-                  {{ address.city }}, {{ address.zip }}<br />
-                  {{ address.country }} &middot; {{ address.phone }}
+                  {{ pickText(address.street) }}{{ address.apartment ? ', ' + pickText(address.apartment) : '' }}<br />
+                  {{ pickText(address.city) }}, {{ address.zip }}<br />
+                  {{ pickText(address.country) }} &middot; {{ address.phone }}
                 </p>
               </div>
               <div class="flex gap-2 text-sm">
-                <button type="button" class="text-salmon hover:underline" (click)="edit(address)">Edit</button>
-                <button type="button" class="text-[#ff4545] hover:underline" (click)="remove(address)">Delete</button>
+                <button type="button" class="text-salmon hover:underline" (click)="edit(address)" i18n="Edit address action|@@addresses.edit">Edit</button>
+                <button type="button" class="text-[#ff4545] hover:underline" (click)="remove(address)" i18n="Delete address action|@@addresses.delete">Delete</button>
               </div>
             </div>
             @if (!address.isDefault) {
-              <button type="button" class="mt-3 text-xs font-medium text-salmon hover:underline" (click)="setDefault(address)">
+              <button type="button" class="mt-3 text-xs font-medium text-salmon hover:underline" (click)="setDefault(address)" i18n="Set default action|@@addresses.setDefault">
                 Set as default
               </button>
             }
@@ -40,24 +48,30 @@
   </section>
 
   <section class="rounded-lg border border-[#F6F8FE] bg-white p-6">
-    <h2 class="text-lg font-semibold text-blue-black">{{ editingId() ? 'Edit address' : 'Add address' }}</h2>
+    <h2 class="text-lg font-semibold text-blue-black">
+      @if (editingId()) {
+        <span i18n="Edit address heading|@@addresses.editTitle">Edit address</span>
+      } @else {
+        <span i18n="Add address heading|@@addresses.addTitle">Add address</span>
+      }
+    </h2>
     @if (error(); as err) {
       <p class="mt-3 rounded-md bg-[#fff5f5] p-3 text-sm text-[#ff4545]">{{ err }}</p>
     }
     <form class="mt-4 grid gap-3 sm:grid-cols-2" (ngSubmit)="save()">
-      <input [ngModel]="label()" (ngModelChange)="label.set($event)" name="label" placeholder="Label (Home, Work...)" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-      <input [ngModel]="street()" (ngModelChange)="street.set($event)" name="street" placeholder="Street *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-      <input [ngModel]="apartment()" (ngModelChange)="apartment.set($event)" name="apartment" placeholder="Apartment" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-      <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-      <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-      <input [ngModel]="country()" (ngModelChange)="country.set($event)" name="country" placeholder="Country *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-      <input [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" placeholder="Phone *" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon sm:col-span-2" />
+      <input [ngModel]="label()" (ngModelChange)="label.set($event)" name="label" placeholder="Label (Home, Work...)" i18n-placeholder="Address label placeholder|@@addresses.labelPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+      <input [ngModel]="street()" (ngModelChange)="street.set($event)" name="street" placeholder="Street *" i18n-placeholder="Street placeholder|@@addresses.streetPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+      <input [ngModel]="apartment()" (ngModelChange)="apartment.set($event)" name="apartment" placeholder="Apartment" i18n-placeholder="Apartment placeholder|@@addresses.apartmentPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+      <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City *" i18n-placeholder="City placeholder|@@addresses.cityPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+      <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" i18n-placeholder="ZIP placeholder|@@addresses.zipPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+      <input [ngModel]="country()" (ngModelChange)="country.set($event)" name="country" placeholder="Country *" i18n-placeholder="Country placeholder|@@addresses.countryPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+      <input [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" placeholder="Phone *" i18n-placeholder="Phone placeholder|@@addresses.phonePlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon sm:col-span-2" />
       <div class="flex gap-2 sm:col-span-2">
-        <button type="submit" [disabled]="saving()" class="rounded-none uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
-          {{ saving() ? 'Saving...' : (editingId() ? 'Save changes' : 'Add address') }}
+        <button type="submit" [disabled]="saving()" class="rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">
+          {{ saveLabel() }}
         </button>
         @if (editingId()) {
-          <button type="button" class="rounded-md border border-[#c9c9c9] px-5 py-2.5 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" (click)="resetForm()">Cancel</button>
+          <button type="button" class="rounded-md border border-[#c9c9c9] px-5 py-2.5 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" (click)="resetForm()" i18n="Cancel action|@@addresses.cancel">Cancel</button>
         }
       </div>
     </form>

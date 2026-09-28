@@ -5,14 +5,14 @@ import { AuthStore } from '../../core/stores/auth.store';
 import { ConfirmDialogService } from '../../shared/confirm-dialog/confirm-dialog.service';
 import { ToastService } from '../../shared/toast/toast.service';
 import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
-import { LoadingSkeletonComponent } from '../../shared/loading-skeleton/loading-skeleton.component';
 import { Address } from '../../core/models';
+import { pickText } from '../../core/utils/localize';
 import { normalizeApiError } from '../../core/services/api-error';
 
 @Component({
   selector: 'app-addresses',
   standalone: true,
-  imports: [FormsModule, EmptyStateComponent, LoadingSkeletonComponent],
+  imports: [FormsModule, EmptyStateComponent],
   templateUrl: './addresses.component.html',
   styleUrl: './addresses.component.scss',
 })
@@ -20,7 +20,7 @@ export class AddressesComponent implements OnInit {
   protected readonly store = inject(AddressStore);
   protected readonly auth = inject(AuthStore);
 
-  readonly label = signal('Home');
+  readonly label = signal($localize`Home`);
   readonly street = signal('');
   readonly apartment = signal('');
   readonly city = signal('');
@@ -32,6 +32,13 @@ export class AddressesComponent implements OnInit {
   readonly error = signal<string | null>(null);
 
   protected readonly isDefault = computed(() => this.store.default());
+
+  protected readonly pickText = pickText;
+
+  protected readonly saveLabel = computed(() => {
+    if (this.saving()) return $localize`Saving...`;
+    return this.editingId() ? $localize`Save changes` : $localize`Add address`;
+  });
 
   private confirm = inject(ConfirmDialogService);
   private toasts = inject(ToastService);
@@ -54,7 +61,7 @@ export class AddressesComponent implements OnInit {
 
   resetForm(): void {
     this.editingId.set(null);
-    this.label.set('Home');
+    this.label.set($localize`Home`);
     this.street.set('');
     this.apartment.set('');
     this.city.set('');
@@ -65,13 +72,13 @@ export class AddressesComponent implements OnInit {
 
   async save(): Promise<void> {
     if (!this.street().trim() || !this.city().trim() || !this.country().trim() || !this.phone().trim()) {
-      this.error.set('Street, city, country, and phone are required.');
+      this.error.set($localize`Street, city, country, and phone are required.`);
       return;
     }
     this.saving.set(true);
     this.error.set(null);
     const body = {
-      label: this.label().trim() || 'Home',
+      label: this.label().trim() || $localize`Home`,
       street: this.street().trim(),
       apartment: this.apartment().trim(),
       city: this.city().trim(),
@@ -87,7 +94,7 @@ export class AddressesComponent implements OnInit {
         await this.store.create(body);
       }
       this.resetForm();
-      this.toasts.show('Address saved', 'success');
+      this.toasts.show($localize`Address saved`, 'success');
     } catch (err) {
       this.error.set(normalizeApiError(err).message);
     } finally {
@@ -98,17 +105,17 @@ export class AddressesComponent implements OnInit {
   async setDefault(address: Address): Promise<void> {
     if (address.isDefault) return;
     await this.store.update(address.id, { isDefault: true });
-    this.toasts.show('Default address updated', 'success');
+    this.toasts.show($localize`Default address updated`, 'success');
   }
 
   async remove(address: Address): Promise<void> {
     const ok = await this.confirm.confirm({
-      title: 'Delete address',
-      message: `Delete "${address.label}"?`,
-      confirmLabel: 'Delete',
+      title: $localize`Delete address`,
+      message: $localize`Delete "${pickText(address.label)}"?`,
+      confirmLabel: $localize`Delete`,
     });
     if (!ok) return;
     await this.store.remove(address.id);
-    this.toasts.show('Address deleted', 'success');
+    this.toasts.show($localize`Address deleted`, 'success');
   }
 }

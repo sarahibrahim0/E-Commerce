@@ -18,7 +18,8 @@ export class ReviewsStore {
     this.loading.set(true);
     this.error.set(null);
     try {
-      this.reviews.set(await firstValueFrom(this.api.list(productId)));
+      const res = await firstValueFrom(this.api.list(productId));
+      this.reviews.set(res.data);
     } catch (err) {
       this.error.set(normalizeApiError(err).message);
     } finally {

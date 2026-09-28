@@ -1,4 +1,4 @@
-<span class="inline-flex items-center gap-0.5" aria-label="Rating {{ rating() }} of 5">
+<span class="inline-flex items-center gap-0.5" aria-label="Rating {{ rating() }} of 5" i18n-aria-label="Star rating value|@@ratingStars.label">
   @for (filled of stars(); track $index) {
     <svg
       [class]="'inline-block ' + sizeClass() + (filled ? ' text-salmon' : ' text-[#c9c9c9]')"

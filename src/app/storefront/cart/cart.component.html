@@ -1,49 +1,160 @@
-<div class="mx-auto max-w-5xl px-4 py-8">
-  <h1 class="text-2xl font-bold text-blue-black">Your cart</h1>
+<div class="cart-page transition-all duration-300 ease-in-out">
+  <div class="ps-[175px] pe-[175px] pt-page-x pb-section">
+    <h3 class="text-lg font-semibold tracking-wider my-[30px] text-[#1a1a1a]" i18n="Shopping cart heading|@@cart.title">Shopping Cart</h3>
 
-  @if (cart.count() === 0) {
-    <app-empty-state message="Your cart is empty." />
-    <div class="text-center">
-      <a routerLink="/products" class="inline-block rounded-none uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a]">
-        Browse products
-      </a>
-    </div>
-  } @else {
-    <ul class="mt-6 divide-y divide-[#F6F8FE] rounded-lg border border-[#F6F8FE] bg-white">
-      @for (item of cart.items(); track item.product.id) {
-        <li class="flex gap-4 p-4">
-          <a routerLink="/product/{{ item.product.id }}" class="h-24 w-24 shrink-0 overflow-hidden rounded-md bg-[#ecd7cd]">
-            @if (item.product.image.url) {
-              <img [src]="item.product.image.url" [alt]="item.product.name" class="h-full w-full object-cover" />
-            }
-          </a>
-          <div class="flex flex-1 flex-col justify-between">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <a routerLink="/product/{{ item.product.id }}" class="font-medium text-blue-black hover:text-salmon">{{ item.product.name }}</a>
-                <p class="text-sm text-[#797979]">{{ formatPrice(item.product.price) }}</p>
+    @if (cart.count() === 0) {
+      <div class="flex flex-col items-center justify-center py-20">
+        <img src="assets/EmptyCart_3-Copy.png" alt="empty cart" i18n-alt="Empty cart image|@@cart.emptyImageAria" class="max-w-[300px] mb-6 opacity-80">
+        <h3 class="text-[20px] text-[#646D77] mb-3" i18n="Empty cart heading|@@cart.emptyTitle">Your cart is empty</h3>
+        <p class="text-[14px] text-[#999] mb-6" i18n="Empty cart message|@@cart.emptyMessage">Looks like you haven't added any items yet.</p>
+        <a routerLink="/products" class="btn whitespace-nowrap bg-salmon text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-[#e9855a]" i18n="Continue shopping action|@@cart.continueShopping">Continue Shopping</a>
+      </div>
+    } @else {
+      <div class="grid grid-cols-12 xl:gap-8">
+        <!-- Cart Items -->
+        <div class="xl:col-span-8 sm:col-span-12">
+          @for (item of cart.items(); track item.product.id) {
+            <div class="flex items-center gap-5 py-6 border-b-[1px] border-[#eee]">
+              <!-- Product Image -->
+              <div class="flex-shrink-0">
+                <img
+                  [routerLink]="'/product/' + item.product.id"
+                  class="w-[120px] h-[80px] object-cover rounded-[3px] cursor-pointer hover:opacity-80 transition-opacity"
+                  [src]="item.product.image.url"
+                  [alt]="pickText(item.product.name)">
               </div>
-              <button type="button" class="text-sm text-[#ff4545] hover:underline" (click)="cart.remove(item.product.id)">Remove</button>
-            </div>
-            <div class="flex items-center justify-between">
-              <div class="flex items-center rounded-md border border-[#c9c9c9]">
-                <button type="button" class="px-3 py-1 text-[#646D77]" (click)="cart.updateQuantity(item.product.id, item.quantity - 1)">&minus;</button>
-                <span class="w-10 text-center text-sm" data-testid="qty">{{ item.quantity }}</span>
-                <button type="button" class="px-3 py-1 text-[#646D77]" (click)="cart.updateQuantity(item.product.id, item.quantity + 1)">+</button>
+
+              <!-- Product Info -->
+              <div class="flex-1 min-w-0">
+                <a [routerLink]="'/product/' + item.product.id"
+                   class="text-[15px] font-semibold text-[#1a1a1a] hover:text-salmon transition-colors block truncate">
+                  {{ pickText(item.product.name) }}
+                </a>
+                <span class="text-[14px] text-[#797979] mt-1 block">
+                  @if (item.product.salePrice > 0 && item.product.salePrice < item.product.price) {
+                    <span class="me-2 text-[#999] line-through">{{ formatPrice(item.product.price) }}</span>
+                    <span class="text-[#e74c3c]">{{ formatPrice(item.product.salePrice) }}</span>
+                  } @else {
+                    {{ formatPrice(effectivePrice(item.product)) }}
+                  }
+                </span>
               </div>
-              <p class="font-semibold text-dark-purple">{{ formatPrice(item.product.price * item.quantity) }}</p>
+
+              <!-- Quantity -->
+              <div class="flex-shrink-0">
+                <div class="flex items-center rounded-md border border-[#c9c9c9]">
+                  <button type="button" class="px-3 py-1 text-[#646D77] hover:text-salmon" (click)="cart.updateQuantity(item.product.id, item.quantity - 1)" aria-label="Decrease quantity" i18n-aria-label="Decrease quantity action|@@cart.decreaseAria">&minus;</button>
+                  <span class="w-10 text-center text-sm font-medium" data-testid="qty">{{ item.quantity }}</span>
+                  <button type="button" class="px-3 py-1 text-[#646D77] hover:text-salmon" (click)="cart.updateQuantity(item.product.id, item.quantity + 1)" aria-label="Increase quantity" i18n-aria-label="Increase quantity action|@@cart.increaseAria">+</button>
+                </div>
+              </div>
+
+              <!-- Subtotal -->
+              <div class="flex-shrink-0 w-[100px] text-end hidden sm:block">
+                <span class="text-[15px] font-semibold text-[#1a1a1a]">
+                  {{ formatPrice(effectivePrice(item.product) * item.quantity) }}
+                </span>
+              </div>
+
+              <!-- Remove -->
+              <div class="flex-shrink-0">
+                <button
+                  class="text-[#999] hover:text-[#e74c3c] transition-colors cursor-pointer"
+                  (click)="removeItem(item.product)"
+                  title="Remove item"
+                  i18n-title="Remove item action|@@cart.removeTitle">
+                  <i class="bi bi-trash text-[18px]"></i>
+                </button>
+              </div>
             </div>
+          }
+
+          <!-- Continue Shopping -->
+          <div class="mt-6">
+            <a routerLink="/products" class="text-salmon text-[14px] font-semibold hover:underline cursor-pointer">
+              <i class="bi bi-arrow-left me-2"></i>
+              <ng-container i18n="Continue shopping action|@@cart.continueShopping">Continue Shopping</ng-container>
+            </a>
           </div>
-        </li>
-      }
-    </ul>
+        </div>
 
-    <div class="mt-6 flex flex-col items-end gap-3">
-      <p class="text-sm text-[#797979]">Subtotal ({{ cart.count() }} items)</p>
-      <p class="text-2xl font-bold text-dark-purple">{{ subtotal() }}</p>
-      <a routerLink="/checkout" class="rounded-none uppercase tracking-wider bg-salmon px-6 py-3 text-sm font-medium text-white hover:bg-[#e9855a]">
-        Proceed to checkout
-      </a>
-    </div>
-  }
+        <!-- Order Summary -->
+        <div class="xl:col-span-4 sm:col-span-12 mt-12 xl:mt-0">
+          <div class="bg-[#f9f9f9] p-6 rounded-[3px]">
+            <h3 class="text-[16px] font-bold text-[#1a1a1a] pb-4 border-b-[1px] border-[#ddd] mb-4">
+              <ng-container i18n="Order summary heading|@@cart.orderSummary">Order Summary</ng-container>
+            </h3>
+
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-[14px] text-[#797979]" i18n="Subtotal label|@@cart.subtotal">Subtotal ({{ cart.count() }} items)</span>
+              <span class="text-[14px] text-[#1a1a1a] font-semibold">{{ subtotal() }}</span>
+            </div>
+
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-[14px] text-[#797979]" i18n="Shipping label|@@cart.shipping">Shipping</span>
+              <span class="text-[14px] font-semibold {{ freeShipping() ? 'text-[#3fa32d]' : 'text-[#646D77]' }}">{{ shippingLabel() }}</span>
+            </div>
+
+            <div class="mb-4 border-t-[1px] border-[#ddd] pt-4">
+              @if (coupon.applied(); as applied) {
+                <div class="flex items-center justify-between rounded-[3px] bg-emerald-50 px-3 py-2 text-sm text-emerald-800">
+                  <span>
+                    <ng-container i18n="Coupon applied label|@@cart.couponApplied">Coupon <strong>{{ applied.code }}</strong> applied</ng-container>
+                  </span>
+                  <button type="button" class="text-emerald-700 underline" (click)="removeCoupon()" i18n="Remove coupon action|@@cart.removeCoupon">Remove</button>
+                </div>
+                @if (minSubtotalNotMet()) {
+                  <p class="mt-2 text-xs text-[#ff4545]" i18n="Coupon minimum not met message|@@cart.couponMinNotMet">Your cart does not meet the minimum order amount for this coupon.</p>
+                }
+              } @else {
+                <div class="flex gap-2">
+                  <input
+                    #couponInput
+                    [value]="couponCode()"
+                    (input)="couponCode.set(couponInput.value)"
+                    type="text"
+                    placeholder="Coupon code"
+                    i18n-placeholder="Coupon code placeholder|@@cart.couponPlaceholder"
+                    class="flex-1 rounded-[3px] border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon"
+                  />
+                  <button
+                    type="button"
+                    [disabled]="coupon.validating()"
+                    class="whitespace-nowrap rounded-[3px] uppercase tracking-wider bg-salmon px-4 py-2 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50"
+                    (click)="applyCoupon()"
+                  >
+                    @if (coupon.validating()) {
+                      <span i18n="Applying coupon label|@@cart.applying">Applying...</span>
+                    } @else {
+                      <span i18n="Apply coupon action|@@cart.apply">Apply</span>
+                    }
+                  </button>
+                </div>
+              }
+            </div>
+
+            @if (discount() > 0) {
+              <div class="flex justify-between items-center mb-3 text-emerald-700">
+                <span class="text-[14px] text-emerald-700" i18n="Discount label|@@cart.discount">Discount</span>
+                <span class="text-[14px] font-semibold">&minus; {{ formatPrice(discount()) }}</span>
+              </div>
+            }
+
+            <div class="flex justify-between items-center pt-4 border-t-[1px] border-[#ddd] mb-6">
+              <span class="text-[16px] font-bold text-[#1a1a1a]" i18n="Total label|@@cart.total">Total</span>
+              <span class="text-[16px] font-bold text-salmon">{{ total() }}</span>
+            </div>
+
+            <a
+              routerLink="/checkout"
+              class="btn w-full text-center whitespace-nowrap bg-salmon text-white px-6 py-3 text-sm font-semibold uppercase tracking-wider hover:bg-[#e9855a] block"
+              i18n="Proceed to checkout action|@@cart.proceedToCheckout"
+            >
+              Proceed to Checkout
+            </a>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
 </div>

@@ -29,6 +29,14 @@ API_URL=/api/v1
 FRONTEND_URL=https://<your-firebase-app>.web.app
 STRIPE_SECRET=sk_test_51NWyWY...
 STRIPE_WEBHOOK_SECRET=whsec_<from-stripe-dashboard>
+PAYMOB_API_KEY=
+PAYMOB_INTEGRATION_ID=
+PAYMOB_IFRAME_ID=
+PAYMOB_WALLET_INTEGRATION_ID=
+PAYMOB_HMAC_SECRET=<from-paymob-dashboard-settings>
+PAYPAL_MODE=sandbox
+PAYPAL_CLIENT_ID=
+PAYPAL_CLIENT_SECRET=
 EMAIL_USER=<gmail-address>
 EMAIL_PASS=<gmail-app-password>
 CONTACT_EMAIL=<your-inbox>
@@ -76,6 +84,28 @@ Firebase gives you `https://<project>.web.app`.
 3. Copy the signing secret (`whsec_...`)
 4. Update `STRIPE_WEBHOOK_SECRET` in Render env vars
 5. Redeploy the backend (or restart the service)
+
+---
+
+## 3a. Paymob Webhook
+
+1. In the Paymob dashboard → **Settings → Account Info**, copy the **HMAC** value.
+2. Set `PAYMOB_HMAC_SECRET` in Render env vars.
+3. For each payment integration (card, wallet, kiosk), set the transaction callback URL to:
+   `https://your-app.onrender.com/api/v1/webhooks/paymob`
+
+The endpoint verifies Paymob's HMAC signature before touching an order and returns:
+
+| Status | Meaning |
+| --- | --- |
+| `200` | Callback accepted (or already settled — safe to retry) |
+| `401` | Missing or invalid HMAC — the callback is rejected |
+| `409` | Signature is valid but the callback does not match the order, or the amount differs |
+| `503` | `PAYMOB_HMAC_SECRET` is not configured yet |
+
+> If `PAYMOB_HMAC_SECRET` is unset every callback is refused. This is intentional — set it
+> before going live. Orders created before this was configured have no stored Paymob order id
+> and will be rejected with `409`; cancel and re-place them.
 
 ---
 

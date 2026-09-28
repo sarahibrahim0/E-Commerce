@@ -8,7 +8,8 @@ import { Coupon } from '../models';
 export class CouponsService {
   private http = inject(HttpClient);
 
-  validate(code: string): Observable<Coupon> {
-    return this.http.post<Coupon>(`${environment.apiUrl}coupons/validate`, { code });
+  validate(code: string, subtotal?: number): Observable<Coupon> {
+    const body = subtotal != null ? { code, subtotal } : { code };
+    return this.http.post<Coupon>(`${environment.apiUrl}coupons/validate`, body);
   }
 }

@@ -1,14 +1,33 @@
 <section>
   <div class="flex items-center justify-between">
-    <h2 class="text-lg font-semibold text-blue-black">My orders</h2>
+    <h2 class="text-lg font-semibold text-blue-black" i18n="My orders heading|@@ordersList.title">My orders</h2>
   </div>
 
   @if (orders.loading()) {
-    <p class="mt-4 text-sm text-[#c9c9c9]">Loading orders...</p>
+    <div class="mt-4 space-y-3 animate-pulse" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@ordersList.loadingAria">
+      @for (_ of [0, 1, 2]; track $index) {
+        <div class="rounded-lg border border-[#F6F8FE] bg-white p-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <div class="h-4 w-36 rounded bg-[#ecd7cd]"></div>
+              <div class="mt-2 h-3 w-52 rounded bg-[#ecd7cd]"></div>
+            </div>
+            <div class="flex gap-2">
+              <div class="h-6 w-20 rounded-full bg-[#ecd7cd]"></div>
+              <div class="h-6 w-20 rounded-full bg-[#ecd7cd]"></div>
+            </div>
+          </div>
+          <div class="mt-3 flex gap-2">
+            <div class="h-8 w-16 rounded-md bg-[#ecd7cd]"></div>
+            <div class="h-8 w-16 rounded-md bg-[#ecd7cd]"></div>
+          </div>
+        </div>
+      }
+    </div>
   } @else if (orders.error(); as err) {
     <p class="mt-4 rounded-md bg-[#fff5f5] p-3 text-sm text-[#ff4545]">{{ err }}</p>
   } @else if (orders.orders().length === 0) {
-    <p class="mt-4 text-sm text-[#797979]">No orders yet.</p>
+    <p class="mt-4 text-sm text-[#797979]" i18n="No orders message|@@ordersList.empty">No orders yet.</p>
   } @else {
     <div class="mt-4 space-y-3">
       @for (order of orders.orders(); track order.id) {
@@ -16,9 +35,9 @@
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div>
               <a routerLink="/profile/orders/{{ order.id }}" class="font-medium text-salmon hover:underline">
-                Order #{{ order.id }}
+                <ng-container i18n="Order number|@@ordersList.orderNumber">Order #{{ order.id }}</ng-container>
               </a>
-              <p class="text-sm text-[#797979]">
+              <p class="text-sm text-[#797979]" i18n="Order meta line|@@ordersList.orderMeta">
                 {{ order.dateOrdered | date: 'mediumDate' }} &middot;
                 {{ order.orderItems.length }} item(s) &middot;
                 {{ formatPrice(order.totalPrice) }}
@@ -34,11 +53,11 @@
             </div>
           </div>
           <div class="mt-3 flex gap-2">
-            <a routerLink="/profile/orders/{{ order.id }}" class="rounded-md border border-[#c9c9c9] px-3 py-1.5 text-sm text-[#646D77] hover:bg-[#ecd7cd]">View</a>
+            <a routerLink="/profile/orders/{{ order.id }}" class="rounded-md border border-[#c9c9c9] px-3 py-1.5 text-sm text-[#646D77] hover:bg-[#ecd7cd]" i18n="View order action|@@ordersList.view">View</a>
             @if (canCancel(order)) {
-              <button type="button" class="rounded-md border border-[#ffc9c9] px-3 py-1.5 text-sm text-[#ff4545] hover:bg-[#fff5f5]" (click)="cancel(order)">Cancel</button>
+              <button type="button" class="rounded-md border border-[#ffc9c9] px-3 py-1.5 text-sm text-[#ff4545] hover:bg-[#fff5f5]" (click)="cancel(order)" i18n="Cancel order action|@@ordersList.cancel">Cancel</button>
             }
-            <button type="button" class="rounded-md border border-[#c9c9c9] px-3 py-1.5 text-sm text-[#646D77] hover:bg-[#ecd7cd]" (click)="reorder(order)">Buy again</button>
+            <button type="button" class="rounded-md border border-[#c9c9c9] px-3 py-1.5 text-sm text-[#646D77] hover:bg-[#ecd7cd]" (click)="reorder(order)" i18n="Buy again action|@@ordersList.reorder">Buy again</button>
           </div>
         </div>
       }

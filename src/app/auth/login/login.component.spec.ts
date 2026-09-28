@@ -29,7 +29,7 @@ describe('LoginComponent', () => {
 
     const http = TestBed.inject(HttpTestingController);
     const loginReq = http.expectOne(`${environment.apiUrl}users/login`);
-    loginReq.flush({ user: 'a@b.c', token: 'tok', id: 'u1' });
+    loginReq.flush({ user: 'a@b.c', token: 'tok', userId: 'u1' });
     const meReq = http.expectOne(`${environment.apiUrl}users/u1`);
     meReq.flush({
       id: 'u1', name: 'A', email: 'a@b.c', phone: '1', isAdmin: false,
@@ -40,6 +40,7 @@ describe('LoginComponent', () => {
     await new Promise((r) => setTimeout(r, 0));
 
     expect(nav).toHaveBeenCalledWith('/');
+    http.expectOne(`${environment.apiUrl}wishlist`).flush([]);
     http.verify();
   });
 
@@ -71,6 +72,59 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
 
     expect(fixture.nativeElement.textContent).toContain('password is wrong');
+    http.verify();
+  });
+
+  it('restores remembered credentials and saves them after login', async () => {
+    TestBed.configureTestingModule({
+      imports: [LoginComponent],
+      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
+    });
+    localStorage.setItem('ecom.rememberedCredentials', JSON.stringify({ email: 'saved@example.com', password: 'saved-secret' }));
+    const fixture = TestBed.createComponent(LoginComponent);
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('input[name="email"]').value).toBe('saved@example.com');
+    expect(fixture.nativeElement.querySelector('input[name="password"]').value).toBe('saved-secret');
+    expect(fixture.nativeElement.querySelector('input[name="rememberPassword"]').checked).toBeTrue();
+
+    fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
+    const http = TestBed.inject(HttpTestingController);
+    http.expectOne(`${environment.apiUrl}users/login`).flush({ user: 'saved@example.com', token: 'tok', userId: 'u1' });
+    http.expectOne(`${environment.apiUrl}users/u1`).flush({
+      id: 'u1', name: 'A', email: 'saved@example.com', phone: '1', isAdmin: false,
+      street: '', apartment: '', city: '', zip: '', country: '',
+    });
+
+    await fixture.whenStable();
+    expect(JSON.parse(localStorage.getItem('ecom.rememberedCredentials')!)).toEqual({
+      email: 'saved@example.com', password: 'saved-secret',
+    });
+    http.expectOne(`${environment.apiUrl}wishlist`).flush([]);
+    http.verify();
+  });
+
+  it('removes remembered credentials when the option is unchecked', async () => {
+    TestBed.configureTestingModule({
+      imports: [LoginComponent],
+      providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
+    });
+    localStorage.setItem('ecom.rememberedCredentials', JSON.stringify({ email: 'saved@example.com', password: 'saved-secret' }));
+    const fixture = TestBed.createComponent(LoginComponent);
+    fixture.detectChanges();
+
+    fixture.nativeElement.querySelector('input[name="rememberPassword"]').click();
+    fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
+    const http = TestBed.inject(HttpTestingController);
+    http.expectOne(`${environment.apiUrl}users/login`).flush({ user: 'saved@example.com', token: 'tok', userId: 'u1' });
+    http.expectOne(`${environment.apiUrl}users/u1`).flush({
+      id: 'u1', name: 'A', email: 'saved@example.com', phone: '1', isAdmin: false,
+      street: '', apartment: '', city: '', zip: '', country: '',
+    });
+
+    await fixture.whenStable();
+    expect(localStorage.getItem('ecom.rememberedCredentials')).toBeNull();
+    http.expectOne(`${environment.apiUrl}wishlist`).flush([]);
     http.verify();
   });
 });

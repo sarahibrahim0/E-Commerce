@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthStore } from '../../core/stores/auth.store';
 import { AuthService } from '../../core/services/auth.service';
@@ -27,6 +27,10 @@ export class EditUserComponent implements OnInit {
   readonly password = signal('');
   readonly saving = signal(false);
   readonly error = signal<string | null>(null);
+
+  protected readonly saveLabel = computed(() =>
+    this.saving() ? $localize`Saving...` : $localize`Save changes`,
+  );
 
   private api = inject(AuthService);
   private toasts = inject(ToastService);
@@ -66,7 +70,7 @@ export class EditUserComponent implements OnInit {
       );
       await this.auth.loadUser();
       this.password.set('');
-      this.toasts.show('Profile updated', 'success');
+      this.toasts.show($localize`Profile updated`, 'success');
     } catch (err) {
       this.error.set(normalizeApiError(err).message);
     } finally {

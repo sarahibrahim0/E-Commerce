@@ -1,24 +1,43 @@
-<div class="mx-auto max-w-7xl px-4 py-8">
-  <h1 class="text-2xl font-bold text-blue-black">Categories</h1>
+<div class="w-full ps-[175px] pe-[175px] pt-page-x pb-section">
+  <section class="relative overflow-hidden rounded-2xl bg-[#ecd7cd] px-6 py-14 text-center md:px-12 md:py-16">
+    <span class="pointer-events-none absolute -end-10 -top-14 h-48 w-48 rounded-full bg-white/40"></span>
+    <span class="pointer-events-none absolute -bottom-16 -start-10 h-56 w-56 rounded-full bg-salmon/20"></span>
+    <p class="relative text-xs font-semibold uppercase tracking-[0.2em] text-salmon" i18n="Shop by category label|@@categories.shopBy">Shop by category</p>
+    <h1 class="relative mt-3 text-3xl font-bold text-blue-black md:text-4xl" i18n="Categories heading|@@categories.title">Categories</h1>
+    <p class="relative mx-auto mt-3 max-w-xl text-[#646D77]" i18n="Categories subtext|@@categories.subtitle">Browse our collection by category and find something you will love.</p>
+  </section>
+
   @if (loading()) {
-    <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+    <div class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 md:gap-5">
       @for (_ of [1, 2, 3, 4, 5, 6, 7, 8]; track $index) {
-        <div class="h-28 animate-pulse rounded-lg bg-[#ecd7cd]"></div>
+        <div class="h-32 animate-pulse rounded-2xl bg-[#ecd7cd]"></div>
       }
     </div>
   } @else if (error(); as err) {
-    <div class="mt-6 rounded-md bg-[#fff5f5] p-4 text-sm text-[#ff4545]">{{ err }}</div>
+    <div class="mt-8 rounded-md bg-[#fff5f5] p-4 text-sm text-[#ff4545]">{{ err }}</div>
   } @else if (categories().length === 0) {
-    <app-empty-state message="No categories yet." />
+    <div class="mt-8">
+      <app-empty-state message="No categories yet." i18n-message="Empty categories message|@@categories.empty" />
+    </div>
   } @else {
-    <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+    <div class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 md:gap-5">
       @for (cat of categories(); track cat.id) {
-        <a routerLink="/products" [queryParams]="{ categories: cat.id }"
-           class="flex h-28 flex-col items-center justify-center gap-1 rounded-lg border border-[#F6F8FE] text-blue-black transition-shadow hover:shadow-md">
-          @if (cat.icon) {
-            <span class="text-2xl">{{ cat.icon }}</span>
+        <a
+          routerLink="/products"
+          [queryParams]="{ categories: cat.id }"
+          [class.cat-bg]="!!cat.image?.url"
+          [style.background-image]="cat.image?.url ? 'url(' + cat.image.url + ')' : null"
+          class="relative flex h-36 flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-[#F6F8FE] transition hover:scale-[1.02] hover:shadow-md"
+        >
+          @if (!cat.image?.url) {
+            @if (cat.icon) {
+              <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ecd7cd]/50 text-2xl text-salmon">{{ cat.icon }}</span>
+            }
+            <span class="font-semibold text-blue-black">{{ cat.name }}</span>
+          } @else {
+            <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-black/85 via-blue-black/30 to-blue-black/10"></span>
+            <span class="relative z-10 rounded-full bg-white/20 px-4 py-1.5 text-sm font-bold uppercase tracking-wide text-white backdrop-blur-sm">{{ cat.icon ? cat.icon + ' ' : '' }}{{ cat.name }}</span>
           }
-          <span class="font-semibold">{{ cat.name }}</span>
         </a>
       }
     </div>
