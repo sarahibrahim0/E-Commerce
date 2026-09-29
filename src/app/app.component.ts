@@ -4,10 +4,18 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ToastContainerComponent } from './shared/toast/toast-container.component';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { ConnectivityBannerComponent } from './shared/connectivity-banner/connectivity-banner.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, ToastContainerComponent, ConfirmDialogComponent],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    ToastContainerComponent,
+    ConfirmDialogComponent,
+    ConnectivityBannerComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

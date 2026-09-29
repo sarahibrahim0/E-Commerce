@@ -3351,6 +3351,34 @@
         </context-group>
         <note priority="1" from="meaning">Browse products action</note>
       </trans-unit>
+      <trans-unit id="networkOffline" datatype="html">
+        <source>You appear to be offline. Check your connection and try again.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/services/api-error.ts</context>
+        </context-group>
+        <note priority="1" from="meaning">Shown when the browser has no network connection</note>
+      </trans-unit>
+      <trans-unit id="networkUnreachable" datatype="html">
+        <source>We could not reach the server. Please try again in a moment.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/services/api-error.ts</context>
+        </context-group>
+        <note priority="1" from="meaning">Shown when the API cannot be reached</note>
+      </trans-unit>
+      <trans-unit id="networkBannerOffline" datatype="html">
+        <source>You are offline. Some features will not work until you reconnect.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/connectivity-banner/connectivity-banner.component.ts</context>
+        </context-group>
+        <note priority="1" from="meaning">Offline banner text</note>
+      </trans-unit>
+      <trans-unit id="networkBannerServer" datatype="html">
+        <source>The store is temporarily unreachable. We will keep trying.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/connectivity-banner/connectivity-banner.component.ts</context>
+        </context-group>
+        <note priority="1" from="meaning">Server unreachable banner text</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

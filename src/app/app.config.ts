@@ -12,6 +12,7 @@ import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
 import { routes } from './app.routes';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { networkInterceptor } from './core/interceptors/network.interceptor';
 import { initAppLocale } from './core/utils/locale';
 import localeAr from '@angular/common/locales/ar';
 
@@ -34,7 +35,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptors([authInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, networkInterceptor])),
     provideAnimationsAsync(),
     providePrimeNG({
       theme: {

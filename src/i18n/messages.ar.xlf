@@ -1614,6 +1614,22 @@
         <source> Browse products </source>
         <target> تصفح المنتجات </target>
       </trans-unit>
+      <trans-unit id="networkOffline" datatype="html">
+        <source>You appear to be offline. Check your connection and try again.</source>
+        <target>يبدو أنك غير متصل بالإنترنت. تحقق من اتصالك وحاول مرة أخرى.</target>
+      </trans-unit>
+      <trans-unit id="networkUnreachable" datatype="html">
+        <source>We could not reach the server. Please try again in a moment.</source>
+        <target>تعذر الوصول إلى الخادم. يرجى المحاولة مرة أخرى بعد قليل.</target>
+      </trans-unit>
+      <trans-unit id="networkBannerOffline" datatype="html">
+        <source>You are offline. Some features will not work until you reconnect.</source>
+        <target>أنت غير متصل بالإنترنت. بعض الميزات لن تعمل حتى تعيد الاتصال.</target>
+      </trans-unit>
+      <trans-unit id="networkBannerServer" datatype="html">
+        <source>The store is temporarily unreachable. We will keep trying.</source>
+        <target>المتجر غير متاح مؤقتًا. سنواصل المحاولة.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
