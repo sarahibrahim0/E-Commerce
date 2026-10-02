@@ -670,7 +670,11 @@
         <source>Categories</source>
         <target>الفئات</target>
       </trans-unit>
-      <trans-unit id="footer.defaultCategories" datatype="html">
+<trans-unit id="footer.defaultCategories" datatype="html">
+        <source>Categories</source>
+        <target>الفئات</target>
+      </trans-unit>
+      <trans-unit id="footer.categoriesHeading" datatype="html">
         <source>Categories</source>
         <target>الفئات</target>
       </trans-unit>

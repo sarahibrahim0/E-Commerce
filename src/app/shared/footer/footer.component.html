@@ -24,30 +24,30 @@
       <div class="bg-transparent mb-[35px]">
         <img src="assets/logo2_footer.png.webp" class="object-cover" alt="" />
       </div>
-      @if (data.tagline) {
+      @if (tagline()) {
         <p class="text-[#C2C5DB] mb-[50px] text-[14px] leading-[1.8] pe-0 xl:pe-[52px]">
-          {{ data.tagline }}
+          {{ tagline() }}
         </p>
       }
-      @if (data.contact?.social && (data.contact.social.facebook || data.contact.social.instagram || data.contact.social.twitter || data.contact.social.whatsapp)) {
+      @if (contact()?.social?.facebook || contact()?.social?.instagram || contact()?.social?.twitter || contact()?.social?.whatsapp) {
         <div class="flex flex-row space-x-4">
-          @if (data.contact.social.facebook) {
-            <a [href]="data.contact.social.facebook" target="_blank" rel="noopener" aria-label="Facebook" i18n-aria-label="Facebook social link|@@footer.socialFacebook" class="flex h-10 w-10 items-center justify-center rounded-md border border-white text-white transition hover:bg-salmon hover:border-transparent">
+          @if (contact()?.social?.facebook) {
+            <a [href]="contact()!.social.facebook" target="_blank" rel="noopener" aria-label="Facebook" i18n-aria-label="Facebook social link|@@footer.socialFacebook" class="flex h-10 w-10 items-center justify-center rounded-md border border-white text-white transition hover:bg-salmon hover:border-transparent">
               <i class="bi bi-facebook text-sm"></i>
             </a>
           }
-          @if (data.contact.social.instagram) {
-            <a [href]="data.contact.social.instagram" target="_blank" rel="noopener" aria-label="Instagram" i18n-aria-label="Instagram social link|@@footer.socialInstagram" class="flex h-10 w-10 items-center justify-center rounded-md border border-white text-white transition hover:bg-salmon hover:border-transparent">
+          @if (contact()?.social?.instagram) {
+            <a [href]="contact()!.social.instagram" target="_blank" rel="noopener" aria-label="Instagram" i18n-aria-label="Instagram social link|@@footer.socialInstagram" class="flex h-10 w-10 items-center justify-center rounded-md border border-white text-white transition hover:bg-salmon hover:border-transparent">
               <i class="bi bi-instagram text-sm"></i>
             </a>
           }
-          @if (data.contact.social.twitter) {
-            <a [href]="data.contact.social.twitter" target="_blank" rel="noopener" aria-label="Twitter" i18n-aria-label="Twitter social link|@@footer.socialTwitter" class="flex h-10 w-10 items-center justify-center rounded-md border border-white text-white transition hover:bg-salmon hover:border-transparent">
+          @if (contact()?.social?.twitter) {
+            <a [href]="contact()!.social.twitter" target="_blank" rel="noopener" aria-label="Twitter" i18n-aria-label="Twitter social link|@@footer.socialTwitter" class="flex h-10 w-10 items-center justify-center rounded-md border border-white text-white transition hover:bg-salmon hover:border-transparent">
               <i class="bi bi-twitter-x text-sm"></i>
             </a>
           }
-          @if (data.contact.social.whatsapp) {
-            <a [href]="data.contact.social.whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" i18n-aria-label="WhatsApp social link|@@footer.socialWhatsapp" class="flex h-10 w-10 items-center justify-center rounded-md border border-white text-white transition hover:bg-salmon hover:border-transparent">
+          @if (contact()?.social?.whatsapp) {
+            <a [href]="contact()!.social.whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp" i18n-aria-label="WhatsApp social link|@@footer.socialWhatsapp" class="flex h-10 w-10 items-center justify-center rounded-md border border-white text-white transition hover:bg-salmon hover:border-transparent">
               <i class="bi bi-whatsapp text-sm"></i>
             </a>
           }
@@ -55,7 +55,7 @@
       }
     </div>
 
-    @for (section of data.sections; track $index) {
+    @for (section of footerSections(); track $index) {
       <figure class="mt-8 sm:mt-0 sm:flex-1 sm:basis-0">
         @if (section.heading) {
           <figcaption class="text-white font-semibold text-[17px] mb-[25px]">
@@ -66,7 +66,7 @@
           @for (link of section.links || []; track $index) {
             <li class="mb-paragraph">
               @if (isInternal(link.href)) {
-                <a [routerLink]="link.href" class="text-[#C2C5DB] cursor-pointer font-[300] text-[14px] hover:!underline hover:text-salmon transition-all duration-300 ease-in-out">
+                <a [routerLink]="link.href" [queryParams]="link.queryParams ?? null" class="text-[#C2C5DB] cursor-pointer font-[300] text-[14px] hover:!underline hover:text-salmon transition-all duration-300 ease-in-out">
                   {{ link.label || link.href }}
                 </a>
               } @else {
@@ -85,27 +85,27 @@
       </figure>
     }
 
-    @if (data.contact && (data.contact.address || data.contact.email || data.contact.phone || data.contact.workingHours)) {
+    @if (contact() && (contact()!.address || contact()!.email || contact()!.phone || contact()!.workingHours)) {
       <figure class="mt-8 sm:mt-0 sm:flex-1 sm:basis-0">
         <figcaption class="text-white font-semibold text-[17px] mb-[25px]" i18n="Contact info footer heading|@@footer.contactInfo">
           Contact Info
         </figcaption>
         <ul class="flex flex-col justify-between items-start">
-          @if (data.contact.address) {
-            <li class="mb-paragraph text-[#C2C5DB] text-[14px]">{{ data.contact.address }}</li>
+          @if (contact()!.address) {
+            <li class="mb-paragraph text-[#C2C5DB] text-[14px]">{{ contact()!.address }}</li>
           }
-          @if (data.contact.email) {
+          @if (contact()!.email) {
             <li class="mb-paragraph">
-              <a [href]="'mailto:' + data.contact.email" class="text-[#C2C5DB] cursor-pointer font-[300] text-[14px] hover:underline hover:text-salmon transition-all duration-300 ease-in-out">{{ data.contact.email }}</a>
+              <a [href]="'mailto:' + contact()!.email" class="text-[#C2C5DB] cursor-pointer font-[300] text-[14px] hover:underline hover:text-salmon transition-all duration-300 ease-in-out">{{ contact()!.email }}</a>
             </li>
           }
-          @if (data.contact.phone) {
+          @if (contact()!.phone) {
             <li class="mb-paragraph">
-              <a [href]="'tel:' + data.contact.phone" class="text-[#C2C5DB] cursor-pointer font-[300] text-[14px] hover:underline hover:text-salmon transition-all duration-300 ease-in-out">{{ data.contact.phone }}</a>
+              <a [href]="'tel:' + contact()!.phone" class="text-[#C2C5DB] cursor-pointer font-[300] text-[14px] hover:underline hover:text-salmon transition-all duration-300 ease-in-out">{{ contact()!.phone }}</a>
             </li>
           }
-          @if (data.contact.workingHours) {
-            <li class="mb-paragraph text-[#C2C5DB] text-[14px]">{{ data.contact.workingHours }}</li>
+          @if (contact()!.workingHours) {
+            <li class="mb-paragraph text-[#C2C5DB] text-[14px]">{{ contact()!.workingHours }}</li>
           }
         </ul>
       </figure>

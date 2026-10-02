@@ -53,6 +53,8 @@ export function normalizeCategory(raw: any): Category {
     color: raw.color ?? '',
     icon: raw.icon ?? '',
     image: raw.image,
+    // Matches the backend `activeFlag` default: a missing flag counts as active.
+    isActive: raw.isActive !== false,
   } as Category;
 }
 

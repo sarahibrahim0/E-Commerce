@@ -23,6 +23,7 @@ export interface Category {
   color: string;
   icon: string;
   image?: { url: string; publicId: string };
+  isActive?: boolean;
 }
 
 export interface CartItem {
@@ -197,6 +198,34 @@ export interface PageContent {
   sections: ContentSection[];
   contact?: ContactInfo;
   updatedAt?: string;
+}
+
+export type LocalizedText = string | { en?: string; ar?: string };
+
+export interface SiteSettings {
+  title: LocalizedText;
+  description: LocalizedText;
+  keywords: LocalizedText;
+  about: LocalizedText;
+  faq: LocalizedText;
+  terms: LocalizedText;
+  logoUrl: string;
+  faviconUrl: string;
+  socialImageUrl: string;
+  canonicalUrl: string;
+  footerAddress: string;
+  footerPhone: string;
+  footerEmail: string;
+  footerWhatsapp: string;
+  businessHours: string;
+  footerFacebook: string;
+  footerTwitter: string;
+  footerInstagram: string;
+  footerAboutEn: string;
+  footerAboutAr: string;
+  footerCategories: string[];
+  defaultCurrency: string;
+  enableCashOnDelivery: boolean;
 }
 
 export interface ContactMessage {
