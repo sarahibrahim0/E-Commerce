@@ -550,6 +550,10 @@
         <source>My account</source>
         <target>حسابي</target>
       </trans-unit>
+      <trans-unit id="profile.subtitle" datatype="html">
+        <source>Manage your account details</source>
+        <target>إدارة بيانات حسابك</target>
+      </trans-unit>
       <trans-unit id="profile.navAria" datatype="html">
         <source>Profile</source>
         <target>الملف الشخصي</target>

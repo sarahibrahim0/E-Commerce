@@ -1,20 +1,50 @@
 <div class="w-full page-x pt-page-x pb-section">
-  <h1 class="text-2xl font-bold text-blue-black" i18n="My account heading|@@profile.title">My account</h1>
-  <div class="mt-6 grid gap-8 md:grid-cols-[200px_1fr]">
-    <nav class="flex flex-row gap-1 overflow-x-auto md:flex-col" aria-label="Profile" i18n-aria-label="Profile navigation|@@profile.navAria">
-      <a routerLink="/profile" routerLinkActive="bg-[#F6F8FE] text-salmon" [routerLinkActiveOptions]="{ exact: true }"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Account info link|@@profile.accountInfo">Account info</a>
-      <a routerLink="/profile/user/edit" routerLinkActive="bg-[#F6F8FE] text-salmon"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Edit profile link|@@profile.editProfile">Edit profile</a>
-      <a routerLink="/profile/addresses" routerLinkActive="bg-[#F6F8FE] text-salmon"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Addresses link|@@profile.addresses">Addresses</a>
-      <a routerLink="/profile/orders" routerLinkActive="bg-[#F6F8FE] text-salmon"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Orders link|@@profile.orders">Orders</a>
-      <a routerLink="/wishlist" routerLinkActive="bg-[#F6F8FE] text-salmon"
-         class="rounded-md px-3 py-2 text-sm font-medium text-[#646D77] hover:bg-[#ecd7cd]" i18n="Wishlist link|@@profile.wishlist">Wishlist</a>
-    </nav>
-    <div class="min-w-0">
-      <router-outlet />
+  <div class="mx-auto w-full max-w-5xl">
+    <h1 class="text-2xl font-bold text-blue-black md:text-3xl" i18n="My account heading|@@profile.title">My account</h1>
+    <p class="mt-1.5 text-sm text-body-gray" i18n="Profile subtitle|@@profile.subtitle">Manage your account details</p>
+
+    <div class="mt-6 grid gap-6 md:grid-cols-[260px_minmax(0,1fr)]">
+      <aside class="flex h-max flex-col gap-2 rounded-2xl border border-[#EFE6E0] bg-white p-3 shadow-sm">
+        <div class="flex items-center gap-3 rounded-xl bg-[#FBF4F0] p-3">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-salmon/15 text-sm font-bold text-salmon">{{ initials() }}</span>
+          <div class="min-w-0">
+            <p class="truncate text-sm font-semibold text-blue-black">{{ auth.user()?.name || '—' }}</p>
+            <p class="truncate text-xs text-body-gray">{{ auth.user()?.email || '' }}</p>
+          </div>
+        </div>
+
+        <nav class="flex flex-row gap-1 overflow-x-auto md:flex-col" aria-label="Profile" i18n-aria-label="Profile navigation|@@profile.navAria">
+          <a routerLink="/profile" routerLinkActive="border-salmon bg-salmon/10 text-salmon" [routerLinkActiveOptions]="{ exact: true }"
+             class="flex items-center gap-3 whitespace-nowrap rounded-xl border-s-[3px] border-transparent px-3 py-2.5 text-sm font-medium text-body-gray transition hover:bg-[#FBF4F0] hover:text-blue-black">
+            <i class="bi bi-person text-base" aria-hidden="true"></i>
+            <span i18n="Account info link|@@profile.accountInfo">Account info</span>
+          </a>
+          <a routerLink="/profile/user/edit" routerLinkActive="border-salmon bg-salmon/10 text-salmon"
+             class="flex items-center gap-3 whitespace-nowrap rounded-xl border-s-[3px] border-transparent px-3 py-2.5 text-sm font-medium text-body-gray transition hover:bg-[#FBF4F0] hover:text-blue-black">
+            <i class="bi bi-pencil-square text-base" aria-hidden="true"></i>
+            <span i18n="Edit profile link|@@profile.editProfile">Edit profile</span>
+          </a>
+          <a routerLink="/profile/addresses" routerLinkActive="border-salmon bg-salmon/10 text-salmon"
+             class="flex items-center gap-3 whitespace-nowrap rounded-xl border-s-[3px] border-transparent px-3 py-2.5 text-sm font-medium text-body-gray transition hover:bg-[#FBF4F0] hover:text-blue-black">
+            <i class="bi bi-geo-alt text-base" aria-hidden="true"></i>
+            <span i18n="Addresses link|@@profile.addresses">Addresses</span>
+          </a>
+          <a routerLink="/profile/orders" routerLinkActive="border-salmon bg-salmon/10 text-salmon"
+             class="flex items-center gap-3 whitespace-nowrap rounded-xl border-s-[3px] border-transparent px-3 py-2.5 text-sm font-medium text-body-gray transition hover:bg-[#FBF4F0] hover:text-blue-black">
+            <i class="bi bi-box-seam text-base" aria-hidden="true"></i>
+            <span i18n="Orders link|@@profile.orders">Orders</span>
+          </a>
+          <a routerLink="/wishlist" routerLinkActive="border-salmon bg-salmon/10 text-salmon"
+             class="flex items-center gap-3 whitespace-nowrap rounded-xl border-s-[3px] border-transparent px-3 py-2.5 text-sm font-medium text-body-gray transition hover:bg-[#FBF4F0] hover:text-blue-black">
+            <i class="bi bi-heart text-base" aria-hidden="true"></i>
+            <span i18n="Wishlist link|@@profile.wishlist">Wishlist</span>
+          </a>
+        </nav>
+      </aside>
+
+      <section class="min-w-0">
+        <router-outlet />
+      </section>
     </div>
   </div>
 </div>

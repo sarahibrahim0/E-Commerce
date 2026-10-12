@@ -1117,6 +1117,14 @@
         </context-group>
         <note priority="1" from="meaning">My account heading</note>
       </trans-unit>
+      <trans-unit id="profile.subtitle" datatype="html">
+        <source>Manage your account details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/profile.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="meaning">Profile subtitle</note>
+      </trans-unit>
       <trans-unit id="profile.navAria" datatype="html">
         <source>Profile</source>
         <context-group purpose="location">

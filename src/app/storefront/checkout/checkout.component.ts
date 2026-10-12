@@ -33,7 +33,6 @@ interface PaymentOption {
   color: string;
   stripe: boolean;
   cod: boolean;
-  bankTransfer: boolean;
   enabled: boolean;
 }
 
@@ -70,7 +69,6 @@ const FALLBACK_CARD: ServerPaymentMethod = {
 const ENABLED_METHODS = new Set([
   'credit-card',
   'cod',
-  'bank-transfer',
   'paypal',
   // Paymob card checkout. The backend only marks this active once a real card
   // integration is configured, so the server list gates it either way.
@@ -169,7 +167,6 @@ export class CheckoutComponent implements OnInit {
       color: m.color || '#6366F1',
       stripe: code === 'credit-card',
       cod: code === 'cod',
-      bankTransfer: code === 'bank-transfer',
       enabled,
     };
   }
