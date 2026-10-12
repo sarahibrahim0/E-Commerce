@@ -11,7 +11,7 @@ import { ProductCardComponent } from '../../shared/product-card/product-card.com
   standalone: true,
   imports: [RouterLink, EmptyStateComponent, ProductCardComponent],
   template: `
-    <div class="w-full ps-[175px] pe-[175px] pt-page-x pb-section">
+    <div class="w-full page-x pt-page-x pb-section">
       <h1 class="text-2xl font-bold text-blue-black" i18n="Wishlist heading|@@wishlist.title">My wishlist</h1>
 
       @if (wishlist.loading()) {

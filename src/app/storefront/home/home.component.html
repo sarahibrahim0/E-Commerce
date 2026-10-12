@@ -1,7 +1,7 @@
 <div class="w-full flex flex-col justify-between">
 
   <section class="w-full flex flex-col items-start justify-between pt-page-x pb-section page-x">
-    <div class="w-full flex flex-col justify-between items-center text-center mb-heading">
+    <div class="w-full flex flex-col justify-between items-start text-start mb-heading">
       <h2 class="transition-all duration-100 ease-in-out uppercase text-[#1a1a1a] md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-5 sm:mb-2" i18n="Home popular products heading|@@home.popularProducts">POPULAR PRODUCTS</h2>
       <p class="font-normal leading-[1.6] md:text-base sm:text-[12px] mb-paragraph px-2" i18n="Home popular products subtext|@@home.popularProductsText">Discover our most loved items, handpicked just for you. Quality furniture at unbeatable prices.</p>
     </div>
@@ -27,7 +27,7 @@
       </div>
     } @else {
       <div class="categories relative w-full">
-      <ul class="w-full flex flex-row flex-wrap justify-center gap-x-6 gap-y-1 items-start">
+      <ul class="w-full flex flex-row flex-wrap justify-start gap-x-6 gap-y-1 items-start">
         @for (category of categories; track category.id; let index = $index) {
           <li
             (click)="getProducts(category.id, index)"
@@ -65,14 +65,14 @@
     </div>
   </div>
 
-  <div class="w-full flex flex-row justify-center page-x">
-    <div class="w-full flex flex-col justify-between items-center text-center mb-heading">
+  <div class="w-full flex flex-row justify-start page-x">
+    <div class="w-full flex flex-col justify-between items-start text-start mb-heading">
       <h2 class="transition-all duration-100 ease-in-out uppercase text-[#1a1a1a] md:text-[36px] sm:text-[16px] font-bold leading-[1.2] md:mb-5 sm:mb-2" i18n="Home featured products heading|@@home.featuredProducts">FEATURED PRODUCTS</h2>
       <p class="text-[#7F85A8] font-normal leading-[1.6] md:text-base sm:text-[12px] mb-paragraph px-2" i18n="Home featured products subtext|@@home.featuredProductsText">Explore our exclusive collection of premium furniture designed to elevate your home style.</p>
     </div>
   </div>
 
-  <section class="w-full flex flex-col items-center justify-between page-x pb-section">
+  <section class="w-full flex flex-col items-start justify-between page-x pb-section">
     @if (loading()) {
       <div class="w-full pb-heading grid grid-cols-12 xl:gap-x-7 gap-y-3" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@home.loadingAria">
         <div class="xl:col-span-4 sm:col-span-12 animate-pulse">

@@ -48,16 +48,16 @@
   } @else if (error(); as err) {
     <app-empty-state [message]="err" />
   } @else if (content(); as page) {
-    <section class="relative overflow-hidden rounded-2xl bg-[#ecd7cd] px-6 py-16 text-center md:px-12 md:py-20">
+    <section class="relative overflow-hidden rounded-2xl bg-[#ecd7cd] px-6 py-16 text-start md:px-12 md:py-20">
       <span class="pointer-events-none absolute -end-10 -top-14 h-48 w-48 rounded-full bg-white/40"></span>
       <span class="pointer-events-none absolute -bottom-16 -start-10 h-56 w-56 rounded-full bg-salmon/20"></span>
       <p class="relative text-xs font-semibold uppercase tracking-[0.2em] text-salmon" i18n="Contact tagline|@@contact.tagline">Get in touch</p>
       <h1 class="relative mt-3 text-3xl font-bold text-blue-black md:text-4xl">{{ page.title }}</h1>
       @if (page.subtitle) {
-        <p class="relative mx-auto mt-3 max-w-xl text-[#646D77]">{{ page.subtitle }}</p>
+        <p class="relative mt-3 max-w-xl text-[#646D77]">{{ page.subtitle }}</p>
       }
       @if (page.contact; as contact) {
-        <div class="relative mt-6 flex flex-wrap justify-center gap-2 text-sm">
+        <div class="relative mt-6 flex flex-wrap justify-start gap-2 text-sm">
           @if (contact.email) {
             <a [href]="'mailto:' + contact.email" class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 font-medium text-blue-black hover:text-salmon">
               <i class="bi bi-envelope text-salmon"></i>{{ contact.email }}
