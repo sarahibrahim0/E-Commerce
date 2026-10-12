@@ -99,6 +99,40 @@ html, body {
   box-sizing: border-box !important;
 }
 
+/* Responsive horizontal page gutter (logical, so it works in RTL too). */
+.page-x {
+  padding-inline-start: 16px !important;
+  padding-inline-end: 16px !important;
+}
+
+@media (min-width: 481px) {
+  .page-x {
+    padding-inline-start: 24px !important;
+    padding-inline-end: 24px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .page-x {
+    padding-inline-start: 40px !important;
+    padding-inline-end: 40px !important;
+  }
+}
+
+@media (min-width: 1201px) {
+  .page-x {
+    padding-inline-start: 64px !important;
+    padding-inline-end: 64px !important;
+  }
+}
+
+@media (min-width: 1501px) {
+  .page-x {
+    padding-inline-start: 175px !important;
+    padding-inline-end: 175px !important;
+  }
+}
+
 html { overflow-x: hidden; }
 
 a { text-decoration: none !important; }

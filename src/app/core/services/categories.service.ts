@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, map, shareReplay } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Category, PaginatedResponse } from '../models';
-import { normalizeCategory } from '../utils/localize';
+import { normalizeCategory, pickText } from '../utils/localize';
 
 @Injectable({ providedIn: 'root' })
 export class CategoriesService {
@@ -13,7 +13,11 @@ export class CategoriesService {
   private readonly list$ = this.http
     .get<PaginatedResponse<Category> | Category[]>(`${environment.apiUrl}categories`)
     .pipe(
-      map((categories) => (Array.isArray(categories) ? categories : categories.data).map(normalizeCategory)),
+      map((categories) =>
+        (Array.isArray(categories) ? categories : categories.data)
+          .filter((category: any) => pickText(category.name).trim().length > 0)
+          .map(normalizeCategory),
+      ),
       shareReplay({ bufferSize: 1, refCount: false }),
     );
 

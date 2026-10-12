@@ -2,7 +2,7 @@ import { Component, computed, inject, signal, OnInit, effect } from '@angular/co
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { Address, ServerCountry, ServerCurrency, ServerPaymentMethod } from '../../core/models';
+import { Address, ServerCountry, ServerCurrency, ServerPaymentMethod, COUNTRIES } from '../../core/models';
 import { AuthStore } from '../../core/stores/auth.store';
 import { CartStore } from '../../core/stores/cart.store';
 import { CouponStore } from '../../core/stores/coupon.store';
@@ -12,6 +12,7 @@ import { StripeService } from '../../core/services/stripe.service';
 import { CatalogService } from '../../core/services/catalog.service';
 import { formatPrice, effectivePrice } from '../../core/utils/price';
 import { pickText } from '../../core/utils/localize';
+import { appLocalePath } from '../../core/utils/locale';
 import { normalizeApiError } from '../../core/services/api-error';
 import { ToastService } from '../../shared/toast/toast.service';
 import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
@@ -70,7 +71,6 @@ const ENABLED_METHODS = new Set([
   'credit-card',
   'cod',
   'bank-transfer',
-  'vodafone-cash',
   'paypal',
   // Paymob card checkout. The backend only marks this active once a real card
   // integration is configured, so the server list gates it either way.
@@ -277,6 +277,20 @@ export class CheckoutComponent implements OnInit {
       }
       this.autoSelectGateway();
     } catch {
+      // Fallback to static countries when API fails
+      const fallback: CountryOption[] = COUNTRIES.map((c) => ({
+        code: c.code,
+        name: c.name,
+        flag: c.flag,
+        dialCode: c.dialCode,
+        currencyCode: 'EGP',
+        methods: [],
+      }));
+      this.countries.set(fallback);
+      if (!this.countryCode() && fallback.length > 0) {
+        this.applyPrefilledCountry(fallback);
+      }
+      this.autoSelectGateway();
       this.toasts.show($localize`Could not load countries, please try again`, 'error');
     } finally {
       this.countriesLoading.set(false);
@@ -422,6 +436,7 @@ export class CheckoutComponent implements OnInit {
         couponCode: this.coupon.applied()?.code,
         customerEmail: this.auth.user()?.email,
         paymentMethod: method.stripe ? 'card' : method.code,
+        locale: appLocalePath() ?? undefined,
       });
 
       if (this.saveAsAddress()) {

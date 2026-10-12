@@ -1,5 +1,5 @@
 @if (loading() && !content()) {
-  <footer class="pt-[105px] pb-[50px] flex flex-col sm:flex-row bg-blue-black ps-[175px] pe-[175px] animate-pulse" role="status" aria-label="Loading" i18n-aria-label="Footer loading|@@footer.loadingAria">
+  <footer class="pt-[105px] pb-[50px] flex flex-col md:flex-row bg-blue-black page-x animate-pulse" role="status" aria-label="Loading" i18n-aria-label="Footer loading|@@footer.loadingAria">
     <div class="flex flex-col items-start justify-between sm:flex-1 sm:basis-0 xl:me-12">
       <div class="h-10 w-32 rounded bg-white/10 mb-[35px]"></div>
       <div class="h-4 w-64 rounded bg-white/10 mb-4"></div>
@@ -10,7 +10,7 @@
       </div>
     </div>
     @for (_ of [1, 2, 3]; track $index) {
-      <figure class="mt-8 sm:mt-0 sm:flex-1 sm:basis-0">
+      <figure class="mt-8 md:mt-0 sm:flex-1 sm:basis-0">
         <div class="h-5 w-24 rounded bg-white/10 mb-[25px]"></div>
         @for (_ of [1, 2, 3, 4]; track $index) {
           <div class="mb-paragraph h-3 w-28 rounded bg-white/10"></div>
@@ -19,7 +19,7 @@
     }
   </footer>
 } @else if (content(); as data) {
-  <footer class="pt-[105px] pb-[50px] flex flex-col sm:flex-row bg-blue-black ps-[175px] pe-[175px]">
+  <footer class="pt-[105px] pb-[50px] flex flex-col md:flex-row bg-blue-black page-x">
     <div class="flex flex-col items-start justify-between sm:flex-1 sm:basis-0 xl:me-12">
       <div class="bg-transparent mb-[35px]">
         <img src="assets/logo2_footer.png.webp" class="object-cover" alt="" />
@@ -56,7 +56,7 @@
     </div>
 
     @for (section of footerSections(); track $index) {
-      <figure class="mt-8 sm:mt-0 sm:flex-1 sm:basis-0">
+      <figure class="mt-8 md:mt-0 sm:flex-1 sm:basis-0">
         @if (section.heading) {
           <figcaption class="text-white font-semibold text-[17px] mb-[25px]">
             {{ section.heading }}
@@ -86,7 +86,7 @@
     }
 
     @if (contact() && (contact()!.address || contact()!.email || contact()!.phone || contact()!.workingHours)) {
-      <figure class="mt-8 sm:mt-0 sm:flex-1 sm:basis-0">
+      <figure class="mt-8 md:mt-0 sm:flex-1 sm:basis-0">
         <figcaption class="text-white font-semibold text-[17px] mb-[25px]" i18n="Contact info footer heading|@@footer.contactInfo">
           Contact Info
         </figcaption>

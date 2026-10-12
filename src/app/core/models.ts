@@ -159,6 +159,7 @@ export interface CheckoutRequest {
   couponCode?: string;
   customerEmail?: string;
   paymentMethod?: string;
+  locale?: 'en' | 'ar';
 }
 
 export interface CheckoutResponse {

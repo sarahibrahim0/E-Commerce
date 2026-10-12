@@ -1,5 +1,5 @@
 <div class="cart-page transition-all duration-300 ease-in-out">
-  <div class="ps-[175px] pe-[175px] pt-page-x pb-section">
+  <div class="page-x pt-page-x pb-section">
     <h3 class="text-lg font-semibold tracking-wider my-[30px] text-[#1a1a1a]" i18n="Shopping cart heading|@@cart.title">Shopping Cart</h3>
 
     @if (cart.count() === 0) {
@@ -90,9 +90,9 @@
               <span class="text-[14px] text-[#1a1a1a] font-semibold">{{ subtotal() }}</span>
             </div>
 
-            <div class="flex justify-between items-center mb-3">
+            <div class="flex justify-between items-start mb-3">
               <span class="text-[14px] text-[#797979]" i18n="Shipping label|@@cart.shipping">Shipping</span>
-              <span class="text-[14px] font-semibold {{ freeShipping() ? 'text-[#3fa32d]' : 'text-[#646D77]' }}">{{ shippingLabel() }}</span>
+              <span class="text-[14px] font-semibold text-right ml-2 {{ freeShipping() ? 'text-[#3fa32d]' : 'text-[#646D77]' }}">{{ shippingLabel() }}</span>
             </div>
 
             <div class="mb-4 border-t-[1px] border-[#ddd] pt-4">

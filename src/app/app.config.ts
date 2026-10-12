@@ -14,6 +14,8 @@ import { routes } from './app.routes';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { networkInterceptor } from './core/interceptors/network.interceptor';
 import { initAppLocale } from './core/utils/locale';
+import { pickText } from './core/utils/localize';
+import { SettingsService } from './core/services/settings.service';
 import localeAr from '@angular/common/locales/ar';
 
 registerLocaleData(localeAr);
@@ -28,6 +30,15 @@ export function applyDocumentLocale(localeId: string): () => void {
       document.documentElement.lang = isAr ? 'ar' : 'en';
       document.documentElement.dir = isAr ? 'rtl' : 'ltr';
     }
+  };
+}
+
+export function applyDocumentTitle(settings: SettingsService): () => void {
+  return () => {
+    settings.get().subscribe((s) => {
+      if (!s.title || typeof document === 'undefined') return;
+      document.title = pickText(s.title);
+    });
   };
 }
 
@@ -46,5 +57,6 @@ export const appConfig: ApplicationConfig = {
       },
     }),
     { provide: APP_INITIALIZER, useFactory: applyDocumentLocale, deps: [LOCALE_ID], multi: true },
+    { provide: APP_INITIALIZER, useFactory: applyDocumentTitle, deps: [SettingsService], multi: true },
   ],
 };

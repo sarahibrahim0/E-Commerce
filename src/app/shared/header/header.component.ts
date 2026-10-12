@@ -21,6 +21,7 @@ export class HeaderComponent {
   protected readonly cart = inject(CartStore);
   protected readonly wishlist = inject(WishlistStore);
   protected searchQuery = signal('');
+  protected menuOpen = signal(false);
   protected isHome = true;
   protected hideNav = false;
   protected url = '';
@@ -37,6 +38,7 @@ export class HeaderComponent {
       .subscribe((e) => {
         this.isHome = e.urlAfterRedirects === '/';
         this.url = e.urlAfterRedirects;
+        this.menuOpen.set(false);
         this.updateOtherLocaleUrl();
       });
     this.isHome = this.router.url === '/';
@@ -66,6 +68,14 @@ export class HeaderComponent {
 
   search(): void {
     this.searchTerms.next(this.searchQuery().trim());
+  }
+
+  toggleMenu(): void {
+    this.menuOpen.update((open) => !open);
+  }
+
+  closeMenu(): void {
+    this.menuOpen.set(false);
   }
 
   logout(): void {

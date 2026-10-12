@@ -4,9 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && node scripts/stage-hosting.js",
+    "build": "ng build",
     "start:localized": "npm run build && node scripts/serve-localized.mjs",
     "preview:localized": "node scripts/serve-localized.mjs",
+    "build:deploy": "npm run build && node scripts/copy-hosting.mjs",
+    "deploy": "npm run build:deploy && firebase deploy --only hosting",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

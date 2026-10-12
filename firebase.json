@@ -1,11 +1,22 @@
 {
   "hosting": {
-    "public": "dist/hosting/en",
+    "public": "dist/hosting",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/en/",
+        "type": 301
+      }
+    ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/en/**",
+        "destination": "/en/index.html"
+      },
+      {
+        "source": "/ar/**",
+        "destination": "/ar/index.html"
       }
     ],
     "headers": [
@@ -28,7 +39,7 @@
         ]
       },
       {
-        "source": "index.html",
+        "source": "**/index.html",
         "headers": [
           {
             "key": "Cache-Control",

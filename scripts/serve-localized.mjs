@@ -38,15 +38,25 @@ function safePath(locale, rest) {
 async function serveFile(res, filePath) {
   const body = await readFile(filePath);
   const type = MIME[extname(filePath).toLowerCase()] || 'application/octet-stream';
-  res.writeHead(200, { 'Content-Type': type });
+  res.writeHead(200, {
+    'Content-Type': type,
+    'Cache-Control': 'public, max-age=31536000, immutable',
+  });
   res.end(body);
 }
 
 async function serveIndex(res, locale) {
   const index = join(root, locale, 'index.html');
   const body = await readFile(index);
-  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  res.writeHead(200, {
+    'Content-Type': 'text/html; charset=utf-8',
+    'Cache-Control': 'no-cache',
+  });
   res.end(body);
+}
+
+function isAssetRequest(pathname) {
+  return extname(pathname).length > 0;
 }
 
 const server = createServer(async (req, res) => {
@@ -78,18 +88,29 @@ const server = createServer(async (req, res) => {
     const filePath = safePath(locale, rest);
     const info = await stat(filePath);
     if (info.isFile()) {
+      if (extname(filePath).toLowerCase() === '.html') {
+        await serveIndex(res, locale);
+        return;
+      }
       await serveFile(res, filePath);
       return;
     }
     // Directory request (e.g. /ar/ or /en/) -> index.html.
     await serveIndex(res, locale);
   } catch {
+    // SPA fallback: only for extension-less client-side routes (e.g. /ar/products),
+    // NEVER for missing assets (js/css/images) which must return 404.
+    const fallback = new URL(req.url ?? '/', 'http://localhost').pathname;
+    const m = fallback.match(/^\/(en|ar)(?:\/([^.]*))?$/);
+    if (!m || isAssetRequest(fallback)) {
+      if (!res.headersSent) {
+        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+        res.end('Not found');
+      }
+      return;
+    }
     try {
-      // SPA fallback: any client-side route inside a locale -> that locale's index.html
-      const fallback = new URL(req.url ?? '/', 'http://localhost').pathname;
-      const m = fallback.match(/^\/(en|ar)(?:\/.*)?$/);
-      const locale = m ? m[1] : 'en';
-      await serveIndex(res, locale);
+      await serveIndex(res, m[1]);
     } catch {
       if (!res.headersSent) {
         res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
