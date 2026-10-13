@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { environment } from '../../../environments/environment';
 import { WishlistStore } from './wishlist.store';
 import { AuthStore } from './auth.store';
 import { Product } from '../models';
@@ -36,7 +37,7 @@ describe('WishlistStore', () => {
     auth.token.set('fake-token');
 
     const loadPromise = store.load();
-    const req = httpMock.expectOne('http://localhost:3000/api/v1/wishlist');
+    const req = httpMock.expectOne(`${environment.apiUrl}wishlist`);
     req.flush([product('p1')]);
     await loadPromise;
 

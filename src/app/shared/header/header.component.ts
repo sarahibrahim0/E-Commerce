@@ -67,7 +67,10 @@ export class HeaderComponent {
   }
 
   search(): void {
-    this.searchTerms.next(this.searchQuery().trim());
+    // Submitting the form (Enter / search button) navigates immediately;
+    // the debounced stream is only for live typing.
+    const query = this.searchQuery().trim();
+    this.router.navigate(['/products'], query ? { queryParams: { search: query } } : undefined);
   }
 
   toggleMenu(): void {

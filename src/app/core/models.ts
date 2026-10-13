@@ -76,6 +76,8 @@ export interface Coupon {
   type: 'percent' | 'fixed';
   value: number;
   minSubtotal: number;
+  products?: (string | { id?: string })[];
+  categories?: (string | { id?: string })[];
   productIds?: string[];
   categoryIds?: string[];
   maxUses: number;

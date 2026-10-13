@@ -17,12 +17,17 @@ export class CouponStore {
   readonly validating = signal(false);
   readonly error = signal<string | null>(null);
 
-  private idSet(coupon: Coupon | null, key: 'productIds' | 'categoryIds'): Set<string> {
-    if (!coupon) return new Set();
-    const list = (coupon[key] ?? []) as (string | { id?: string })[];
+  private idList(coupon: Coupon | null, key: 'products' | 'categories', legacyKey: 'productIds' | 'categoryIds'): (string | { id?: string; _id?: string })[] {
+    if (!coupon) return [];
+    const primary = coupon[key];
+    const list = primary && primary.length ? primary : (coupon[legacyKey] ?? []);
+    return list as (string | { id?: string; _id?: string })[];
+  }
+
+  private idSet(coupon: Coupon | null, key: 'products' | 'categories', legacyKey: 'productIds' | 'categoryIds'): Set<string> {
     return new Set(
-      list
-        .map((v) => (typeof v === 'object' && v ? String(v.id ?? '') : String(v)))
+      this.idList(coupon, key, legacyKey)
+        .map((v) => (typeof v === 'object' && v ? String(v.id ?? v._id ?? '') : String(v)))
         .filter(Boolean),
     );
   }
@@ -30,8 +35,8 @@ export class CouponStore {
   eligibleSubtotal(subtotal: number, items: CartItem[] = []): number {
     const coupon = this.applied();
     if (!coupon) return 0;
-    const productIds = this.idSet(coupon, 'productIds');
-    const categoryIds = this.idSet(coupon, 'categoryIds');
+    const productIds = this.idSet(coupon, 'products', 'productIds');
+    const categoryIds = this.idSet(coupon, 'categories', 'categoryIds');
     if (productIds.size === 0 && categoryIds.size === 0) return subtotal;
 
     let amount = 0;
@@ -80,7 +85,7 @@ export class CouponStore {
     const eligible = this.eligibleSubtotal(subtotal, items);
     if (coupon.minSubtotal > 0 && eligible < coupon.minSubtotal) return 0;
     if (coupon.type === 'percent') {
-      return Math.round(eligible * (coupon.value / 100));
+      return Math.round(eligible * coupon.value) / 100;
     }
     return Math.min(coupon.value, eligible);
   }

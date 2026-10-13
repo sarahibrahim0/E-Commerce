@@ -6,7 +6,7 @@ import { CouponStore } from './coupon.store';
 import { Coupon } from '../models';
 
 const coupon = (overrides: Partial<Coupon> = {}): Coupon => ({
-  id: 'c1', code: 'SAVE10', type: 'percent', value: 10, minSubtotal: 0, productIds: [], categoryIds: [], maxUses: 100, usedCount: 0,
+  id: 'c1', code: 'SAVE10', type: 'percent', value: 10, minSubtotal: 0, products: [], categories: [], maxUses: 100, usedCount: 0,
   active: true, ...overrides,
 });
 
@@ -66,10 +66,18 @@ describe('CouponStore', () => {
       { product: { id: 'p1', price: 100, salePrice: 0, category: 'c1' } as any, quantity: 2 },
       { product: { id: 'p2', price: 50, salePrice: 0, category: 'c2' } as any, quantity: 1 },
     ];
-    store.applied.set(coupon({ productIds: ['p1'] }));
+    store.applied.set(coupon({ products: ['p1'] }));
     expect(store.discountFor(250, items as any)).toBe(20);
-    store.applied.set(coupon({ categoryIds: ['c2'] }));
+    store.applied.set(coupon({ categories: ['c2'] }));
     expect(store.discountFor(250, items as any)).toBe(5);
+  });
+
+  it('discount honours legacy productIds/categoryIds names too', () => {
+    const items = [
+      { product: { id: 'p1', price: 100, salePrice: 0, category: 'c1' } as any, quantity: 2 },
+    ];
+    store.applied.set(coupon({ productIds: ['p1'], categoryIds: [] }));
+    expect(store.discountFor(200, items as any)).toBe(20);
   });
 
   it('discount is zero below min subtotal', () => {

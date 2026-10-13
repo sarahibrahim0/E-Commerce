@@ -43,7 +43,7 @@ describe('CatalogStore', () => {
     const p = store.loadProducts();
     const req = http.expectOne((r) => r.url === environment.apiUrl + 'products');
     expect(req.request.params.get('categories')).toBe('c1');
-    expect(req.request.params.get('name')).toBe('shoes');
+    expect(req.request.params.get('search')).toBe('shoes');
     req.flush({ data: [], total: 0, page: 1, totalPages: 0 });
     await p;
   });
