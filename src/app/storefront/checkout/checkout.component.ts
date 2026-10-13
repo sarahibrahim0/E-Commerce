@@ -150,11 +150,12 @@ export class CheckoutComponent implements OnInit {
 
   protected readonly paymentOptions = computed<PaymentOption[]>(() => {
     const methods = this.selectedCountry()?.methods ?? [];
-    const hasCard = methods.some((m) => m.code === 'credit-card');
+    // Only fall back to a card option when the server returned nothing at all.
+    // The server list is authoritative: forcing a card method the backend cannot
+    // process (e.g. Egypt without a configured Stripe/Paymob integration) is
+    // exactly what produced "unsupported payment method: card".
     const list = methods.length > 0 ? methods : [FALLBACK_CARD];
-    const items = list.map((m) => this.toPaymentOption(m));
-    if (!hasCard) items.push(this.toPaymentOption(FALLBACK_CARD));
-    return items;
+    return list.map((m) => this.toPaymentOption(m));
   });
 
   private toPaymentOption(m: ServerPaymentMethod): PaymentOption {
@@ -432,7 +433,7 @@ export class CheckoutComponent implements OnInit {
         shippingAddress,
         couponCode: this.coupon.applied()?.code,
         customerEmail: this.auth.user()?.email,
-        paymentMethod: method.stripe ? 'card' : method.code,
+        paymentMethod: method.code,
         locale: appLocalePath() ?? undefined,
       });
 
