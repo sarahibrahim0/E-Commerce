@@ -2,15 +2,16 @@ import { Component, computed, inject, signal, OnInit, effect } from '@angular/co
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { Address, ServerCountry, ServerCurrency, ServerPaymentMethod, COUNTRIES } from '../../core/models';
+import { Address, ServerPaymentMethod, COUNTRIES } from '../../core/models';
 import { AuthStore } from '../../core/stores/auth.store';
 import { CartStore } from '../../core/stores/cart.store';
 import { CouponStore } from '../../core/stores/coupon.store';
 import { AddressStore } from '../../core/stores/address.store';
 import { OrdersStore } from '../../core/stores/orders.store';
-import { StripeService } from '../../core/services/stripe.service';
+import { RegionStore } from '../../core/stores/region.store';
 import { CatalogService } from '../../core/services/catalog.service';
-import { formatPrice, effectivePrice } from '../../core/utils/price';
+import { StripeService } from '../../core/services/stripe.service';
+import { effectivePrice, formatPrice } from '../../core/utils/price';
 import { pickText } from '../../core/utils/localize';
 import { appLocalePath } from '../../core/utils/locale';
 import { normalizeApiError } from '../../core/services/api-error';
@@ -23,7 +24,6 @@ interface CountryOption {
   flag: string;
   dialCode: string;
   currencyCode: string;
-  methods: ServerPaymentMethod[];
 }
 
 interface PaymentOption {
@@ -51,17 +51,7 @@ interface CheckoutDraft {
   rememberInfo: boolean;
 }
 
-const FALLBACK_CURRENCY = { code: 'EGP', symbol: 'E£', rate: 1 };
-
 const DRAFT_KEY = 'ecom.checkout.draft';
-
-const FALLBACK_CARD: ServerPaymentMethod = {
-  id: '',
-  code: 'credit-card',
-  name: { en: 'Credit / Debit Card (Stripe)', ar: '' },
-  icon: 'bi-credit-card',
-  color: '#6366F1',
-};
 
 // Methods the storefront is allowed to offer. Keep in step with the `available`
 // flags in the backend's helpers/seed-countries.js: a method listed here that the
@@ -88,13 +78,15 @@ export class CheckoutComponent implements OnInit {
   protected readonly coupon = inject(CouponStore);
   protected readonly addresses = inject(AddressStore);
   protected readonly orders = inject(OrdersStore);
+  protected readonly region = inject(RegionStore);
 
-  protected readonly countries = signal<CountryOption[]>([]);
-  protected readonly countriesLoading = signal(true);
-
-  protected readonly countryCode = signal('');
   protected readonly country = signal('');
   protected readonly paymentGateway = signal('credit-card');
+  protected readonly countryPaymentMethods = signal<ServerPaymentMethod[]>([]);
+  protected readonly paymentMethodsLoading = signal(false);
+  protected readonly paymentMethodsError = signal<string | null>(null);
+  private paymentMethodsRequest = 0;
+  private readonly checkoutCurrency = signal<{ code: string; rate: number; symbol: string } | null>(null);
 
   protected street = signal('');
   protected apartment = signal('');
@@ -112,11 +104,10 @@ export class CheckoutComponent implements OnInit {
   protected error = signal<string | null>(null);
 
   private stripe = inject(StripeService);
-  private toasts = inject(ToastService);
   private catalog = inject(CatalogService);
+  private toasts = inject(ToastService);
   private router = inject(Router);
 
-  protected readonly formatPrice = formatPrice;
   protected readonly effectivePrice = effectivePrice;
   protected readonly pickText = pickText;
 
@@ -130,32 +121,51 @@ export class CheckoutComponent implements OnInit {
     this.cart.subtotal() - this.discount() + this.shippingFee(),
   );
 
-  protected readonly selectedCountry = computed(() =>
-    this.countries().find((c) => c.code === this.countryCode()),
-  );
-
-  protected readonly currencies = signal<ServerCurrency[]>([]);
-
-  protected readonly currencyById = computed<Record<string, ServerCurrency>>(() => {
-    const map: Record<string, ServerCurrency> = {};
-    for (const c of this.currencies()) if (c.rate) map[c.code] = c;
-    return map;
+  protected readonly countries = computed<CountryOption[]>(() => {
+    const list = this.region.countries();
+    if (list.length) {
+      return list.map((c) => ({
+        code: c.code,
+        name: pickText(c.name) || c.code,
+        flag: c.flag || '',
+        dialCode: c.phoneCode || '+',
+        currencyCode: c.currencyId?.code || 'EGP',
+      }));
+    }
+    return COUNTRIES.map((c) => ({
+      code: c.code,
+      name: c.name,
+      flag: c.flag,
+      dialCode: c.dialCode,
+      currencyCode: 'EGP',
+    }));
   });
 
+  protected readonly countriesLoading = computed(() => this.region.loading());
+  protected readonly countryCode = computed(() => this.region.countryCode());
+  protected readonly selectedCountry = computed(() =>
+    this.countries().find((c) => c.code === this.region.countryCode()),
+  );
   protected readonly currencyInfo = computed(() => {
-    const cc = this.selectedCountry()?.currencyCode;
-    const found = cc ? this.currencyById()[cc] : null;
-    return found ? { code: found.code, symbol: found.symbol, rate: Number(found.rate) || 1 } : FALLBACK_CURRENCY;
+    const countryCurrency = this.checkoutCurrency();
+    if (countryCurrency?.code) return countryCurrency;
+    const code = this.selectedCountry()?.currencyCode;
+    const listedCurrency = this.region.currencies().find((currency) => currency.code === code);
+    return listedCurrency
+      ? { code: listedCurrency.code, rate: Number(listedCurrency.rate) || 1, symbol: listedCurrency.symbol || listedCurrency.code }
+      : this.region.currency();
   });
 
   protected readonly paymentOptions = computed<PaymentOption[]>(() => {
-    const methods = this.selectedCountry()?.methods ?? [];
-    // Only fall back to a card option when the server returned nothing at all.
-    // The server list is authoritative: forcing a card method the backend cannot
-    // process (e.g. Egypt without a configured Stripe/Paymob integration) is
-    // exactly what produced "unsupported payment method: card".
-    const list = methods.length > 0 ? methods : [FALLBACK_CARD];
-    return list.map((m) => this.toPaymentOption(m));
+    const methods = this.countryPaymentMethods();
+    // The server list is authoritative — it already excludes methods that this
+    // country's currency can't be charged in. Never inject a card option the
+    // backend would reject (that is what produced "unsupported/invalid currency").
+    return methods.map((m) => this.toPaymentOption(m));
+  });
+
+  private paymentMethodsSync = effect(() => {
+    void this.loadCountryPaymentMethods(this.region.countryCode());
   });
 
   private toPaymentOption(m: ServerPaymentMethod): PaymentOption {
@@ -178,8 +188,8 @@ export class CheckoutComponent implements OnInit {
   });
 
   protected fmt = (amountBase: number): string => {
-    const c = this.currencyInfo();
-    return formatPrice(amountBase, c.code, c.rate);
+    const currency = this.currencyInfo();
+    return formatPrice(amountBase, currency.code, currency.rate);
   };
 
   ngOnInit(): void {
@@ -192,7 +202,7 @@ export class CheckoutComponent implements OnInit {
     void this.restoreCoupon();
     void this.cart.loadConfig();
     this.requestGeolocation();
-    void this.loadCatalog();
+    void this.loadRegion();
   }
 
   private async restoreCoupon(): Promise<void> {
@@ -221,7 +231,7 @@ export class CheckoutComponent implements OnInit {
       if (d.city != null) this.city.set(d.city);
       if (d.zip != null) this.zip.set(d.zip);
       if (d.country != null) this.country.set(d.country);
-      if (d.countryCode != null) this.countryCode.set(d.countryCode);
+      if (d.countryCode != null && !this.region.countryCode()) this.region.setCountry(d.countryCode);
       if (d.phoneDialCode != null) this.phoneDialCode.set(d.phoneDialCode);
       if (d.phone != null) this.phone.set(d.phone);
       if (d.couponCode != null) this.couponCode.set(d.couponCode);
@@ -239,7 +249,7 @@ export class CheckoutComponent implements OnInit {
       city: this.city(),
       zip: this.zip(),
       country: this.country(),
-      countryCode: this.countryCode(),
+      countryCode: this.region.countryCode(),
       phoneDialCode: this.phoneDialCode(),
       phone: this.phone(),
       couponCode: this.couponCode(),
@@ -254,52 +264,28 @@ export class CheckoutComponent implements OnInit {
     }
   });
 
-  private async loadCatalog(): Promise<void> {
-    try {
-      const [countriesRes, currenciesRes] = await Promise.all([
-        firstValueFrom(this.catalog.getCountries()),
-        firstValueFrom(this.catalog.getCurrencies()),
-      ]);
-      this.currencies.set(currenciesRes.data ?? []);
-      const options: CountryOption[] = (countriesRes.data ?? []).map((c) => ({
-        code: c.code,
-        name: pickText(c.name) || c.code,
-        flag: c.flag || '',
-        dialCode: c.phoneCode || '+',
-        currencyCode: c.currencyId?.code || 'EGP',
-        methods: (c.paymentMethods ?? []).filter((m) => m && m.code),
-      }));
-      this.countries.set(options);
-      if (!this.countryCode() && options.length > 0) {
-        this.applyPrefilledCountry(options);
+  private async loadRegion(): Promise<void> {
+    await this.region.ensureLoaded();
+    const options = this.countries();
+    if (this.region.countryCode()) {
+      const match = options.find((o) => o.code === this.region.countryCode());
+      if (match) {
+        this.country.set(match.name);
+        this.phoneDialCode.set(match.dialCode);
       }
-      this.autoSelectGateway();
-    } catch {
-      // Fallback to static countries when API fails
-      const fallback: CountryOption[] = COUNTRIES.map((c) => ({
-        code: c.code,
-        name: c.name,
-        flag: c.flag,
-        dialCode: c.dialCode,
-        currencyCode: 'EGP',
-        methods: [],
-      }));
-      this.countries.set(fallback);
-      if (!this.countryCode() && fallback.length > 0) {
-        this.applyPrefilledCountry(fallback);
-      }
-      this.autoSelectGateway();
+    } else if (this.country().trim()) {
+      this.applyPrefilledCountry();
+    }
+    if (!this.region.countries().length) {
       this.toasts.show($localize`Could not load countries, please try again`, 'error');
-    } finally {
-      this.countriesLoading.set(false);
     }
   }
 
-  private applyPrefilledCountry(options: CountryOption[]): void {
+  private applyPrefilledCountry(): void {
     const name = this.country().trim().toLowerCase();
-    const match = options.find((o) => o.name.toLowerCase() === name);
+    const match = this.countries().find((o) => o.name.toLowerCase() === name);
     if (match) {
-      this.countryCode.set(match.code);
+      this.region.setCountry(match.code);
       this.phoneDialCode.set(match.dialCode);
     }
   }
@@ -326,16 +312,48 @@ export class CheckoutComponent implements OnInit {
     const current = this.paymentGateway();
     if (options.some((o) => o.code === current && o.enabled)) return;
     const preferred = options.find((o) => o.stripe) ?? options.find((o) => o.cod) ?? options.find((o) => o.enabled);
-    if (preferred) this.paymentGateway.set(preferred.code);
+    this.paymentGateway.set(preferred?.code ?? '');
+  }
+
+  private async loadCountryPaymentMethods(code: string): Promise<void> {
+    const request = ++this.paymentMethodsRequest;
+    this.paymentMethodsLoading.set(!!code);
+    this.paymentMethodsError.set(null);
+    this.countryPaymentMethods.set([]);
+    this.checkoutCurrency.set(null);
+    if (!code) {
+      this.paymentMethodsLoading.set(false);
+      this.autoSelectGateway();
+      return;
+    }
+    try {
+      const response = await firstValueFrom(this.catalog.getCountryPaymentMethods(code));
+      if (request !== this.paymentMethodsRequest || code !== this.region.countryCode()) return;
+      this.countryPaymentMethods.set((response.paymentMethods ?? []).filter((method) => method?.code));
+      if (response.currency?.code) {
+        this.checkoutCurrency.set({
+          code: response.currency.code,
+          rate: Number(response.currency.rate) || 1,
+          symbol: response.currency.symbol || response.currency.code,
+        });
+      }
+    } catch (err) {
+      if (request !== this.paymentMethodsRequest || code !== this.region.countryCode()) return;
+      this.paymentMethodsError.set(normalizeApiError(err).message);
+    } finally {
+      if (request === this.paymentMethodsRequest) {
+        this.paymentMethodsLoading.set(false);
+        this.autoSelectGateway();
+      }
+    }
   }
 
   onCountryChange(code: string): void {
     const found = this.countries().find((c) => c.code === code);
     if (found) {
-      this.countryCode.set(found.code);
+      this.region.setCountry(found.code);
       this.country.set(found.name);
       this.phoneDialCode.set(found.dialCode);
-      this.autoSelectGateway();
     }
   }
 
@@ -364,8 +382,10 @@ export class CheckoutComponent implements OnInit {
     this.country.set(address.country);
     this.phone.set(address.phone);
     const match = this.countries().find((c) => c.name.toLowerCase() === address.country.toLowerCase());
-    if (match) this.countryCode.set(match.code);
-    this.autoSelectGateway();
+    if (match) {
+      this.region.setCountry(match.code);
+      this.phoneDialCode.set(match.dialCode);
+    }
   }
 
   async applyCoupon(): Promise<void> {
@@ -387,6 +407,8 @@ export class CheckoutComponent implements OnInit {
   canPay(): boolean {
     return (
       this.cart.count() > 0 &&
+      !this.paymentMethodsLoading() &&
+      !!this.selectedPayMethod()?.enabled &&
       !!this.street().trim() &&
       !!this.city().trim() &&
       !!this.country().trim() &&

@@ -12,6 +12,7 @@ describe('AuthStore', () => {
       providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     localStorage.clear();
+    sessionStorage.clear();
     http = TestBed.inject(HttpTestingController);
   });
 
@@ -57,6 +58,27 @@ describe('AuthStore', () => {
     expect(restored.isLoggedIn()).toBe(true);
     expect(restored.token()).toBe('stored-token');
     expect(restored.userId()).toBe('u9');
+  });
+
+  it('keeps the session in sessionStorage when keep me logged in is off', async () => {
+    const store = TestBed.inject(AuthStore);
+    const loginPromise = store.login('a@b.c', 'secret', false);
+    const loginReq = http.expectOne(`${environment.apiUrl}users/login`);
+    expect(loginReq.request.body).toEqual({ email: 'a@b.c', password: 'secret', keepMeLoggedIn: false });
+    loginReq.flush({ user: 'a@b.c', token: 'tok-2', refreshToken: 'rt-2', userId: 'u2' });
+
+    await Promise.resolve();
+    await Promise.resolve();
+
+    http.expectOne(`${environment.apiUrl}users/u2`).flush({
+      id: 'u2', name: 'B', email: 'a@b.c', phone: '123', isAdmin: false,
+      street: '', apartment: '', city: '', zip: '', country: '',
+    });
+    await loginPromise;
+    http.expectOne(`${environment.apiUrl}wishlist`).flush([]);
+
+    expect(sessionStorage.getItem('ecom.token')).toBe('tok-2');
+    expect(localStorage.getItem('ecom.token')).toBeNull();
   });
 
   it('logs out and clears state', () => {

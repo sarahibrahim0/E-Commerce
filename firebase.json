@@ -17,6 +17,10 @@
       {
         "source": "/ar/**",
         "destination": "/ar/index.html"
+      },
+      {
+        "source": "**",
+        "destination": "/en/index.html"
       }
     ],
     "headers": [

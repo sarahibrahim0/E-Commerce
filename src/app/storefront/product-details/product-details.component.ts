@@ -11,8 +11,9 @@ import { AuthStore } from '../../core/stores/auth.store';
 import { CartStore } from '../../core/stores/cart.store';
 import { ReviewsStore } from '../../core/stores/reviews.store';
 import { RecentlyViewedStore } from '../../core/stores/recently-viewed.store';
+import { RegionStore } from '../../core/stores/region.store';
 import { normalizeApiError } from '../../core/services/api-error';
-import { formatPrice, effectivePrice, onSale } from '../../core/utils/price';
+import { effectivePrice, onSale } from '../../core/utils/price';
 import { RatingStarsComponent } from '../../shared/rating-stars/rating-stars.component';
 import { LoadingSpinnerComponent } from '../../shared/loading-spinner/loading-spinner.component';
 import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
@@ -31,6 +32,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   protected readonly cart = inject(CartStore);
   protected readonly reviews = inject(ReviewsStore);
   protected readonly recentlyViewed = inject(RecentlyViewedStore);
+  protected readonly region = inject(RegionStore);
 
   readonly product = signal<Product | null>(null);
   readonly loading = signal(false);
@@ -39,8 +41,8 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   readonly activeImage = signal('');
   readonly related = signal<Product[]>([]);
 
-  protected readonly price = computed(() => formatPrice(effectivePrice(this.product())));
-  protected readonly oldPrice = computed(() => (onSale(this.product()) ? formatPrice(this.product()?.price ?? 0) : ''));
+  protected readonly price = computed(() => this.region.format(effectivePrice(this.product())));
+  protected readonly oldPrice = computed(() => (onSale(this.product()) ? this.region.format(this.product()?.price ?? 0) : ''));
   protected readonly discountPercent = computed(() => {
     const p = this.product();
     if (!p || !onSale(p)) return 0;

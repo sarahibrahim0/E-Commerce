@@ -33,6 +33,23 @@ describe('ReviewsStore', () => {
     expect(store.productId()).toBe('p1');
   });
 
+  it('accepts a bare array response (current backend shape)', async () => {
+    const p = store.load('p1');
+    const req = http.expectOne(`${environment.apiUrl}products/p1/reviews`);
+    req.flush([review('r1', 5), review('r2', 4)]);
+    await p;
+    expect(store.reviews().length).toBe(2);
+    expect(store.reviews()[0].id).toBe('r1');
+  });
+
+  it('never leaves reviews undefined when the payload is malformed', async () => {
+    const p = store.load('p1');
+    const req = http.expectOne(`${environment.apiUrl}products/p1/reviews`);
+    req.flush({} as unknown as Review[]);
+    await p;
+    expect(store.reviews()).toEqual([]);
+  });
+
   it('adds a review and reloads the list', async () => {
     const loadPromise = store.load('p1');
     http.expectOne(`${environment.apiUrl}products/p1/reviews`).flush({ data: [], total: 0, page: 1, totalPages: 0 });

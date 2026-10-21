@@ -9,8 +9,8 @@ export class AuthService {
   private http = inject(HttpClient);
   private base = `${environment.apiUrl}users`;
 
-  login(email: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.base}/login`, { email, password });
+  login(email: string, password: string, keepMeLoggedIn = false): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.base}/login`, { email, password, keepMeLoggedIn });
   }
 
   register(body: RegisterRequest): Observable<RegisterResponse> {

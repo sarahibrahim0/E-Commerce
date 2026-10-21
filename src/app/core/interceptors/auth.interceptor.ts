@@ -3,6 +3,7 @@ import { PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
 import { BehaviorSubject, Observable, catchError, filter, switchMap, take, throwError, timer } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { clearStorageKey, persistRotatedTokens, readStorageString } from '../utils/storage';
 
 let isRefreshing = false;
 const refreshSubject = new BehaviorSubject<string | null>(null);
@@ -13,7 +14,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
   }
   const http = inject(HttpClient);
-  const token = localStorage.getItem('ecom.token');
+  const token = readStorageString('ecom.token', null);
   const needsAuth = !isPublicUrl(req.url);
   const authReq = token && needsAuth
     ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
@@ -48,7 +49,7 @@ function isPublicUrl(url: string): boolean {
 
 function scheduleProactiveRefresh(http: HttpClient): void {
   if (refreshTimeoutId) return;
-  const token = localStorage.getItem('ecom.token');
+  const token = readStorageString('ecom.token', null);
   if (!token) return;
   const payload = parseJwt(token);
   if (!payload?.exp) return;
@@ -60,15 +61,14 @@ function scheduleProactiveRefresh(http: HttpClient): void {
   if (delay < timeUntilExpiry) {
     refreshTimeoutId = setTimeout(() => {
       refreshTimeoutId = null;
-      const rt = localStorage.getItem('ecom.refreshToken');
+      const rt = readStorageString('ecom.refreshToken', null);
       if (rt) {
         http.post<{ accessToken: string; refreshToken: string }>(
           `${environment.apiUrl}auth/refresh`,
           { refreshToken: rt },
         ).subscribe({
           next: (res) => {
-            localStorage.setItem('ecom.token', res.accessToken);
-            localStorage.setItem('ecom.refreshToken', res.refreshToken);
+            persistRotatedTokens(res.accessToken, res.refreshToken);
             scheduleProactiveRefresh(http);
           },
           error: () => { /* ignore; interceptor will handle on next 401 */ },
@@ -96,7 +96,7 @@ function refreshTokenAndRetry(
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> {
-  const refreshToken = localStorage.getItem('ecom.refreshToken');
+  const refreshToken = readStorageString('ecom.refreshToken', null);
   if (!refreshToken) {
     clearSession();
     return throwError(() => new Error($localize`Session expired. Please sign in again.`));
@@ -114,8 +114,7 @@ function refreshTokenAndRetry(
       .pipe(
         switchMap((res) => {
           isRefreshing = false;
-          localStorage.setItem('ecom.token', res.accessToken);
-          localStorage.setItem('ecom.refreshToken', res.refreshToken);
+          persistRotatedTokens(res.accessToken, res.refreshToken);
           refreshSubject.next(res.accessToken);
           scheduleProactiveRefresh(http);
           return next(req.clone({ setHeaders: { Authorization: `Bearer ${res.accessToken}` } }));
@@ -139,9 +138,9 @@ function refreshTokenAndRetry(
 }
 
 function clearSession(): void {
-  localStorage.removeItem('ecom.token');
-  localStorage.removeItem('ecom.userId');
-  localStorage.removeItem('ecom.refreshToken');
+  clearStorageKey('ecom.token');
+  clearStorageKey('ecom.userId');
+  clearStorageKey('ecom.refreshToken');
   if (refreshTimeoutId) {
     clearTimeout(refreshTimeoutId);
     refreshTimeoutId = null;

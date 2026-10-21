@@ -72,6 +72,24 @@ describe('HeaderComponent', () => {
     expect(navigate).toHaveBeenCalledWith(['/products'], { queryParams: { search: 'shoes' } });
   });
 
+  it('opens the currency menu and closes it with Escape', () => {
+    const fixture = TestBed.createComponent(HeaderComponent);
+    fixture.detectChanges();
+
+    const trigger = fixture.nativeElement.querySelector('[data-testid="currency-trigger"]') as HTMLButtonElement;
+    trigger.click();
+    fixture.detectChanges();
+
+    expect(trigger.getAttribute('aria-expanded')).toBe('true');
+    expect(fixture.nativeElement.querySelector('.currency-menu')).toBeTruthy();
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    fixture.detectChanges();
+
+    expect(trigger.getAttribute('aria-expanded')).toBe('false');
+    expect(fixture.nativeElement.querySelector('.currency-menu')).toBeNull();
+  });
+
   it('shows sign-in links when logged out and profile menu when logged in', () => {
     localStorage.setItem('ecom.token', 't');
     localStorage.setItem('ecom.userId', 'u1');

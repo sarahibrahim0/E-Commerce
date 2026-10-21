@@ -12,6 +12,7 @@ describe('LoginComponent', () => {
       providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
     });
     localStorage.clear();
+    sessionStorage.clear();
     const fixture = TestBed.createComponent(LoginComponent);
     const router = TestBed.inject(Router);
     const nav = spyOn(router, 'navigateByUrl').and.resolveTo(true);
@@ -50,6 +51,7 @@ describe('LoginComponent', () => {
       providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
     });
     localStorage.clear();
+    sessionStorage.clear();
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
 
@@ -75,55 +77,77 @@ describe('LoginComponent', () => {
     http.verify();
   });
 
-  it('restores remembered credentials and saves them after login', async () => {
+  it('sends keepMeLoggedIn and persists the session when checked', async () => {
     TestBed.configureTestingModule({
       imports: [LoginComponent],
       providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
     });
-    localStorage.setItem('ecom.rememberedCredentials', JSON.stringify({ email: 'saved@example.com', password: 'saved-secret' }));
+    localStorage.clear();
+    sessionStorage.clear();
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
 
-    expect(fixture.nativeElement.querySelector('input[name="email"]').value).toBe('saved@example.com');
-    expect(fixture.nativeElement.querySelector('input[name="password"]').value).toBe('saved-secret');
-    expect(fixture.nativeElement.querySelector('input[name="rememberPassword"]').checked).toBeTrue();
+    const email = fixture.nativeElement.querySelector('input[name="email"]');
+    email.value = 'saved@example.com';
+    email.dispatchEvent(new Event('input'));
+    const password = fixture.nativeElement.querySelector('input[name="password"]');
+    password.value = 'saved-secret';
+    password.dispatchEvent(new Event('input'));
+    fixture.nativeElement.querySelector('input[name="keepMeLoggedIn"]').click();
+    fixture.detectChanges();
 
     fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
     const http = TestBed.inject(HttpTestingController);
-    http.expectOne(`${environment.apiUrl}users/login`).flush({ user: 'saved@example.com', token: 'tok', userId: 'u1' });
+    const loginReq = http.expectOne(`${environment.apiUrl}users/login`);
+    expect(loginReq.request.body).toEqual({
+      email: 'saved@example.com', password: 'saved-secret', keepMeLoggedIn: true,
+    });
+    loginReq.flush({ user: 'saved@example.com', token: 'tok', refreshToken: 'rt', userId: 'u1' });
     http.expectOne(`${environment.apiUrl}users/u1`).flush({
       id: 'u1', name: 'A', email: 'saved@example.com', phone: '1', isAdmin: false,
       street: '', apartment: '', city: '', zip: '', country: '',
     });
 
     await fixture.whenStable();
-    expect(JSON.parse(localStorage.getItem('ecom.rememberedCredentials')!)).toEqual({
-      email: 'saved@example.com', password: 'saved-secret',
-    });
+    expect(localStorage.getItem('ecom.token')).toBe('tok');
+    expect(sessionStorage.getItem('ecom.token')).toBeNull();
     http.expectOne(`${environment.apiUrl}wishlist`).flush([]);
     http.verify();
   });
 
-  it('removes remembered credentials when the option is unchecked', async () => {
+  it('keeps the session scoped to the tab when the option is unchecked', async () => {
     TestBed.configureTestingModule({
       imports: [LoginComponent],
       providers: [provideHttpClient(), provideHttpClientTesting(), provideRouter([])],
     });
-    localStorage.setItem('ecom.rememberedCredentials', JSON.stringify({ email: 'saved@example.com', password: 'saved-secret' }));
+    localStorage.clear();
+    sessionStorage.clear();
     const fixture = TestBed.createComponent(LoginComponent);
     fixture.detectChanges();
 
-    fixture.nativeElement.querySelector('input[name="rememberPassword"]').click();
+    const email = fixture.nativeElement.querySelector('input[name="email"]');
+    email.value = 'saved@example.com';
+    email.dispatchEvent(new Event('input'));
+    const password = fixture.nativeElement.querySelector('input[name="password"]');
+    password.value = 'saved-secret';
+    password.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
     fixture.nativeElement.querySelector('form').dispatchEvent(new Event('submit'));
     const http = TestBed.inject(HttpTestingController);
-    http.expectOne(`${environment.apiUrl}users/login`).flush({ user: 'saved@example.com', token: 'tok', userId: 'u1' });
+    const loginReq = http.expectOne(`${environment.apiUrl}users/login`);
+    expect(loginReq.request.body).toEqual({
+      email: 'saved@example.com', password: 'saved-secret', keepMeLoggedIn: false,
+    });
+    loginReq.flush({ user: 'saved@example.com', token: 'tok', refreshToken: 'rt', userId: 'u1' });
     http.expectOne(`${environment.apiUrl}users/u1`).flush({
       id: 'u1', name: 'A', email: 'saved@example.com', phone: '1', isAdmin: false,
       street: '', apartment: '', city: '', zip: '', country: '',
     });
 
     await fixture.whenStable();
-    expect(localStorage.getItem('ecom.rememberedCredentials')).toBeNull();
+    expect(sessionStorage.getItem('ecom.token')).toBe('tok');
+    expect(localStorage.getItem('ecom.token')).toBeNull();
     http.expectOne(`${environment.apiUrl}wishlist`).flush([]);
     http.verify();
   });

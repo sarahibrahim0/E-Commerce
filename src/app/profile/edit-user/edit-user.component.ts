@@ -1,9 +1,10 @@
-import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthStore } from '../../core/stores/auth.store';
 import { AuthService } from '../../core/services/auth.service';
 import { normalizeApiError } from '../../core/services/api-error';
 import { ToastService } from '../../shared/toast/toast.service';
+import { User } from '../../core/models';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -13,7 +14,7 @@ import { firstValueFrom } from 'rxjs';
   templateUrl: './edit-user.component.html',
   styleUrl: './edit-user.component.scss',
 })
-export class EditUserComponent implements OnInit {
+export class EditUserComponent {
   protected readonly auth = inject(AuthStore);
 
   readonly name = signal('');
@@ -34,20 +35,35 @@ export class EditUserComponent implements OnInit {
 
   private api = inject(AuthService);
   private toasts = inject(ToastService);
+  private initialized = false;
 
-  ngOnInit(): void {
-    const user = this.auth.user();
-    if (user) {
-      this.name.set(user.name);
-      this.email.set(user.email);
-      this.phone.set(user.phone);
-      this.street.set(user.street);
-      this.apartment.set(user.apartment);
-      this.city.set(user.city);
-      this.zip.set(user.zip);
-      this.country.set(user.country);
-    }
+  constructor() {
+    // Populate the form once the user arrives, so a deep link (or a slow
+    // request) still fills in the fields instead of leaving them blank.
+    effect(() => {
+      const user = this.auth.user();
+      if (user && !this.initialized) {
+        this.initialized = true;
+        this.populate(user);
+      }
+    });
   }
+
+  private populate(user: User): void {
+    this.name.set(user.name ?? '');
+    this.email.set(user.email ?? '');
+    this.phone.set(user.phone ?? '');
+    this.street.set(user.street ?? '');
+    this.apartment.set(user.apartment ?? '');
+    this.city.set(user.city ?? '');
+    this.zip.set(user.zip ?? '');
+    this.country.set(user.country ?? '');
+  }
+
+  /** True while we expect user data but have not received it yet. */
+  protected readonly showSkeleton = computed(
+    () => this.auth.userLoading() && !this.auth.user(),
+  );
 
   async save(): Promise<void> {
     const userId = this.auth.userId();

@@ -2,7 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { ServerCountry, ServerCurrency, ServerPaymentMethod, PaginatedResponse } from '../models';
+import {
+  CountryPaymentMethodsResponse,
+  ServerCountry,
+  ServerCurrency,
+  ServerPaymentMethod,
+  PaginatedResponse,
+} from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class CatalogService {
@@ -25,5 +31,11 @@ export class CatalogService {
     return this.http.get<PaginatedResponse<ServerPaymentMethod>>(`${this.base}payment-methods`, {
       params: { limit: '200', sortBy: 'name', sortDir: 'asc' },
     });
+  }
+
+  getCountryPaymentMethods(code: string): Observable<CountryPaymentMethodsResponse> {
+    return this.http.get<CountryPaymentMethodsResponse>(
+      `${this.base}countries/${encodeURIComponent(code)}/payment-methods`,
+    );
   }
 }

@@ -36,11 +36,11 @@
     <div class="flex items-center justify-between">
       <label class="flex items-center gap-2 text-sm text-[#646D77]">
         <input
-          name="rememberPassword" type="checkbox" [checked]="rememberPassword()"
-          (change)="rememberPassword.set($any($event.target).checked)"
+          name="keepMeLoggedIn" type="checkbox" [checked]="keepMeLoggedIn()"
+          (change)="keepMeLoggedIn.set($any($event.target).checked)"
           class="h-4 w-4 accent-salmon"
         />
-        <span i18n="Remember password label|@@login.rememberPassword">Remember password</span>
+        <span i18n="Keep me logged in label|@@login.keepMeLoggedIn">Keep me logged in</span>
       </label>
       <a routerLink="/forgot-password" class="text-sm font-medium text-salmon hover:text-[#e9855a]" i18n="Forgot password link|@@login.forgotPassword">Forgot password?</a>
     </div>

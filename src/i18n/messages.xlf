@@ -103,13 +103,13 @@
         </context-group>
         <note priority="1" from="meaning">Password label</note>
       </trans-unit>
-      <trans-unit id="login.rememberPassword" datatype="html">
-        <source>Remember password</source>
+      <trans-unit id="login.keepMeLoggedIn" datatype="html">
+        <source>Keep me logged in</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/login/login.component.html</context>
           <context context-type="linenumber">43,45</context>
         </context-group>
-        <note priority="1" from="meaning">Remember password label</note>
+        <note priority="1" from="meaning">Keep me logged in label</note>
       </trans-unit>
       <trans-unit id="login.forgotPassword" datatype="html">
         <source>Forgot password?</source>
@@ -1620,6 +1620,42 @@
         </context-group>
         <note priority="1" from="meaning">Sign in action</note>
       </trans-unit>
+      <trans-unit id="nav.countryAria" datatype="html">
+        <source>Currency</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">241</context>
+        </context-group>
+        <note priority="1" from="meaning">Country selector</note>
+      </trans-unit>
+      <trans-unit id="nav.openMenu" datatype="html">
+        <source>Open menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">205</context>
+        </context-group>
+        <note priority="1" from="meaning">Open menu</note>
+      </trans-unit>
+      <trans-unit id="nav.closeMenu" datatype="html">
+        <source>Close menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/header/header.component.html</context>
+          <context context-type="linenumber">220</context>
+        </context-group>
+        <note priority="1" from="meaning">Close menu</note>
+      </trans-unit>
       <trans-unit id="header.heroSale" datatype="html">
         <source> 70% sale off </source>
         <context-group purpose="location">
@@ -2235,13 +2271,21 @@
         </context-group>
         <note priority="1" from="meaning">Not available label</note>
       </trans-unit>
-      <trans-unit id="checkout.cardNote" datatype="html">
-        <source>Online card checkout is available for all countries.</source>
+      <trans-unit id="checkout.noPaymentMethods" datatype="html">
+        <source>No payment methods are available for your country yet.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
-          <context context-type="linenumber">99,103</context>
+          <context context-type="linenumber">86,87</context>
         </context-group>
-        <note priority="1" from="meaning">Card availability note</note>
+        <note priority="1" from="meaning">No payment methods message</note>
+      </trans-unit>
+      <trans-unit id="checkout.loadingPaymentMethods" datatype="html">
+        <source>Loading payment methods...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/storefront/checkout/checkout.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <note priority="1" from="meaning">Loading payment methods message</note>
       </trans-unit>
       <trans-unit id="checkout.coupon" datatype="html">
         <source>Coupon</source>

@@ -7,13 +7,13 @@
       {{ product.name }}
     </a>
   </h3>
-  @if (oldPrice() > 0) {
+  @if (oldPriceRaw() > 0) {
   <span class="text-dark-purple font-semibold block">
-    <span class="me-2 text-[#999] line-through">{{ oldPrice() | currency }}</span>
-    <span class="text-[#e74c3c]">{{ price() | currency }}</span>
+    <span class="me-2 text-[#999] line-through">{{ oldPrice() }}</span>
+    <span class="text-[#e74c3c]">{{ price() }}</span>
     <span class="ms-1 rounded-full bg-[#fff5f5] px-1.5 py-0.5 text-xs font-semibold text-[#e74c3c]">&minus;{{ discountPercent() }}%</span>
   </span>
 } @else {
-  <span class="text-dark-purple font-semibold block">{{ price() | currency }}</span>
+  <span class="text-dark-purple font-semibold block">{{ price() }}</span>
 }
 </div>

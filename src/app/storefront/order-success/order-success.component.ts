@@ -41,6 +41,8 @@ export class OrderSuccessComponent {
   protected readonly pickText = pickText;
 
   protected readonly currencyRate = computed(() => {
+    const snapshot = Number(this.orders.current()?.currencyRate);
+    if (snapshot > 0) return snapshot;
     const code = this.priceCode();
     if (code === 'EGP') return 1;
     const found = this.currencies().find((c) => c.code === code);

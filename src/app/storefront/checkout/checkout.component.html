@@ -81,6 +81,13 @@
           <section>
             <h2 class="text-lg font-semibold text-blue-black" i18n="Payment method heading|@@checkout.paymentMethod">Payment method</h2>
             <div class="mt-3 space-y-2">
+              @if (paymentMethodsLoading()) {
+                <p class="rounded-md bg-[#f9f9f9] p-2 text-sm text-[#797979]" role="status" i18n="Loading payment methods|@@checkout.loadingPaymentMethods">Loading payment methods...</p>
+              } @else if (paymentMethodsError(); as paymentError) {
+                <p class="rounded-md bg-[#fff5f5] p-2 text-sm text-[#ff4545]" role="alert">{{ paymentError }}</p>
+              } @else if (paymentOptions().length === 0) {
+                <p class="rounded-md bg-amber-50 p-2 text-sm text-amber-700" i18n="No payment methods message|@@checkout.noPaymentMethods">No payment methods are available for your country yet.</p>
+              }
               @for (m of paymentOptions(); track m.code) {
                 <label class="flex cursor-pointer items-center gap-3 rounded-lg border border-[#F6F8FE] p-3 text-sm hover:border-salmon"
                        [class.border-salmon]="paymentGateway() === m.code"
@@ -96,7 +103,6 @@
                   }
                 </label>
               }
-              <p class="mt-2 text-xs text-[#c9c9c9]" i18n="Card availability note|@@checkout.cardNote">Online card checkout is available for all countries.</p>
             </div>
           </section>
         }

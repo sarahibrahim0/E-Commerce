@@ -1,9 +1,18 @@
 <section class="rounded-lg border border-[#F6F8FE] bg-white p-6">
   <h2 class="text-lg font-semibold text-blue-black" i18n="Edit profile heading|@@editUser.title">Edit profile</h2>
-  @if (error(); as err) {
-    <p class="mt-3 rounded-md bg-[#fff5f5] p-3 text-sm text-[#ff4545]">{{ err }}</p>
-  }
-  <form class="mt-4 grid gap-4 sm:grid-cols-2" (ngSubmit)="save()">
+  @if (showSkeleton()) {
+    <div class="mt-4 grid gap-4 animate-pulse sm:grid-cols-2" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@userData.loadingAria">
+      @for (_ of [0, 1, 2, 3, 4, 5, 6, 7]; track $index) {
+        <div class="h-10 rounded-md bg-[#ecd7cd]"></div>
+      }
+      <div class="h-10 rounded-md bg-[#ecd7cd] sm:col-span-2"></div>
+      <div class="h-10 w-40 rounded-md bg-[#ecd7cd] sm:col-span-2"></div>
+    </div>
+  } @else {
+    @if (error(); as err) {
+      <p class="mt-3 rounded-md bg-[#fff5f5] p-3 text-sm text-[#ff4545]">{{ err }}</p>
+    }
+    <form class="mt-4 grid gap-4 sm:grid-cols-2" (ngSubmit)="save()">
     <input [ngModel]="name()" (ngModelChange)="name.set($event)" name="name" placeholder="Name" i18n-placeholder="Name placeholder|@@editUser.namePlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
     <input [ngModel]="email()" (ngModelChange)="email.set($event)" name="email" type="email" placeholder="Email" i18n-placeholder="Email placeholder|@@editUser.emailPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
     <input [ngModel]="phone()" (ngModelChange)="phone.set($event)" name="phone" placeholder="Phone" i18n-placeholder="Phone placeholder|@@editUser.phonePlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
@@ -18,5 +27,6 @@
         {{ saveLabel() }}
       </button>
     </div>
-  </form>
+    </form>
+  }
 </section>

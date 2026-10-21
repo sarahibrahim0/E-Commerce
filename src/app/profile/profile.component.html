@@ -5,12 +5,20 @@
 
     <div class="mt-6 grid gap-6 md:grid-cols-[260px_minmax(0,1fr)]">
       <aside class="flex h-max flex-col gap-2 rounded-2xl border border-[#EFE6E0] bg-white p-3 shadow-sm">
-        <div class="flex items-center gap-3 rounded-xl bg-[#FBF4F0] p-3">
-          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-salmon/15 text-sm font-bold text-salmon">{{ initials() }}</span>
-          <div class="min-w-0">
-            <p class="truncate text-sm font-semibold text-blue-black">{{ auth.user()?.name || '—' }}</p>
-            <p class="truncate text-xs text-body-gray">{{ auth.user()?.email || '' }}</p>
-          </div>
+        <div class="flex items-center gap-3 rounded-xl bg-[#FBF4F0] p-3" role="status" [attr.aria-label]="auth.userLoading() ? 'Loading' : null" i18n-aria-label="Loading indicator|@@userData.loadingAria">
+          @if (auth.userLoading()) {
+            <span class="grid h-11 w-11 shrink-0 animate-pulse place-items-center rounded-full bg-[#ecd7cd]"></span>
+            <div class="min-w-0 flex-1 space-y-2">
+              <div class="h-3.5 w-2/3 animate-pulse rounded bg-[#ecd7cd]"></div>
+              <div class="h-3 w-1/2 animate-pulse rounded bg-[#ecd7cd]"></div>
+            </div>
+          } @else {
+            <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-salmon/15 text-sm font-bold text-salmon">{{ initials() }}</span>
+            <div class="min-w-0">
+              <p class="truncate text-sm font-semibold text-blue-black">{{ auth.user()?.name || '—' }}</p>
+              <p class="truncate text-xs text-body-gray">{{ auth.user()?.email || '' }}</p>
+            </div>
+          }
         </div>
 
         <nav class="flex flex-row gap-1 overflow-x-auto md:flex-col" aria-label="Profile" i18n-aria-label="Profile navigation|@@profile.navAria">

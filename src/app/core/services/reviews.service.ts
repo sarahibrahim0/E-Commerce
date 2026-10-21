@@ -10,8 +10,10 @@ export class ReviewsService {
   private productsBase = `${environment.apiUrl}products`;
   private reviewsBase = `${environment.apiUrl}reviews`;
 
-  list(productId: string): Observable<PaginatedResponse<Review>> {
-    return this.http.get<PaginatedResponse<Review>>(`${this.productsBase}/${productId}/reviews`);
+  list(productId: string): Observable<Review[]> {
+    return this.http
+      .get<Review[] | PaginatedResponse<Review>>(`${this.productsBase}/${productId}/reviews`)
+      .pipe(map((res) => (Array.isArray(res) ? res : res?.data ?? [])));
   }
 
   add(productId: string, body: { rating: number; comment: string }): Observable<Review> {

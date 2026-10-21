@@ -119,6 +119,7 @@ export interface Order {
   paymentStatus: 'unpaid' | 'paid' | 'failed' | 'refunded';
   paymentId: string;
   currency?: string;
+  currencyRate?: number;
   paymentMethod?: string;
   couponCode: string;
   discount: number;
@@ -271,6 +272,12 @@ export interface ServerPaymentMethod {
   description?: { en: string; ar: string };
   icon: string;
   color: string;
+}
+
+export interface CountryPaymentMethodsResponse {
+  country: string;
+  currency: { code: string; rate: number; symbol: string };
+  paymentMethods: ServerPaymentMethod[];
 }
 
 export interface PaginatedResponse<T> {

@@ -2,7 +2,8 @@ import { Component, computed, inject, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../core/models';
 import { WishlistStore } from '../../core/stores/wishlist.store';
-import { formatPrice, effectivePrice, onSale } from '../../core/utils/price';
+import { RegionStore } from '../../core/stores/region.store';
+import { effectivePrice, onSale } from '../../core/utils/price';
 import { RatingStarsComponent } from '../rating-stars/rating-stars.component';
 
 @Component({
@@ -17,9 +18,10 @@ export class ProductCardComponent {
   addToCart = output<Product>();
 
   private wishlist = inject(WishlistStore);
+  protected readonly region = inject(RegionStore);
 
-  protected readonly price = computed(() => formatPrice(effectivePrice(this.product())));
-  protected readonly oldPrice = computed(() => (onSale(this.product()) ? formatPrice(this.product().price) : ''));
+  protected readonly price = computed(() => this.region.format(effectivePrice(this.product())));
+  protected readonly oldPrice = computed(() => (onSale(this.product()) ? this.region.format(this.product().price) : ''));
   protected readonly discountPercent = computed(() => {
     const p = this.product();
     if (!onSale(p)) return 0;

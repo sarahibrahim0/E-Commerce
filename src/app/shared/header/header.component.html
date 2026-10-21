@@ -1,6 +1,6 @@
 <nav class="w-full flex flex-col justify-between items-center relative main transition-all duration-500 ease-in-out bg-almond">
   <!-- Main Nav Bar -->
-  <div [class]="hideNav ? 'Nav' : 'showNav'" class="relative box-border w-full flex flex-row justify-between items-start page-x md:min-h-[136px] sm:min-h-[69px]">
+  <div [class]="hideNav ? 'Nav' : 'showNav'" class="relative box-border w-full flex flex-row justify-between items-start ps-[16px] pe-[16px] md:ps-[120px] md:pe-10 2xl:ps-[185px] 2xl:pe-16 3xl:ps-[175px] 3xl:pe-[175px] md:min-h-[136px] sm:min-h-[69px]">
     <!-- Logo -->
     <div class="absolute start-0 top-0 font-semibold text-sm md:w-[165px] md:h-[136px] sm:w-[100px] sm:h-[69px] text-blue-black min-w-max min-h-max z-10">
       <a routerLink="/" class="block w-full h-full">
@@ -9,8 +9,8 @@
     </div>
 
     <!-- Desktop Nav -->
-    <div class="box-border w-full 2xl:flex flex-row justify-between items-center h-[100px] sm:hidden bg-almond">
-      <ul class="flex flex-row justify-between items-center">
+    <div class="box-border w-full 2xl:flex flex-row justify-between items-center gap-x-10 h-[100px] sm:hidden bg-almond">
+      <ul class="flex flex-row justify-between items-center whitespace-nowrap">
         <li class="duration-100 leading-[32px] 3xl:me-10 2xl:me-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer" routerLink="/">
           <span i18n="Home page link|@@nav.home">Home</span>
         </li>
@@ -28,9 +28,41 @@
         </li>
       </ul>
 
-      <ul class="flex flex-row justify-between items-center">
-        <li class="flex items-center duration-100 leading-[32px] 3xl:me-10 2xl:me-5 text-base text-blue-black transition-all ease-in-out cursor-pointer">
-          <a [href]="otherLocaleUrl" class="text-sm font-semibold text-blue-black hover:text-salmon transition-all ease-in-out whitespace-nowrap">{{ otherLocaleLabel }}</a>
+      <ul class="flex flex-row justify-between items-center whitespace-nowrap">
+        <li class="duration-100 leading-[32px] 3xl:me-10 2xl:me-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer">
+          <a [href]="otherLocaleUrl" class="inline-flex items-center whitespace-nowrap">{{ otherLocaleLabel }}</a>
+        </li>
+        <li class="currency-picker 3xl:me-10 2xl:me-5">
+          <button
+            type="button"
+            class="currency-trigger"
+            data-testid="currency-trigger"
+            (click)="toggleCurrencyMenu($event)"
+            [attr.aria-expanded]="currencyMenuOpen()"
+            aria-haspopup="listbox"
+            aria-label="Currency"
+            i18n-aria-label="Currency selector|@@nav.countryAria">
+            <span class="text-base leading-none">{{ regionFlag() }}</span>
+            <span>{{ region.currency().code }}</span>
+            <i class="bi bi-chevron-down text-[10px]" aria-hidden="true"></i>
+          </button>
+          @if (currencyMenuOpen()) {
+            <div class="currency-menu" role="listbox" aria-label="Currency" i18n-aria-label="Currency selector|@@nav.countryAria">
+              @for (c of region.currencyOptions(); track c.code) {
+                <button
+                  type="button"
+                  role="option"
+                  class="currency-option"
+                  [class.currency-option-selected]="region.currency().code === c.code"
+                  [attr.aria-selected]="region.currency().code === c.code"
+                  (click)="selectCurrency(c.code)">
+                  <span>{{ c.flag }}</span>
+                  <span class="currency-option-code">{{ c.code }}</span>
+                  <span class="currency-option-name">{{ c.name }}</span>
+                </button>
+              }
+            </div>
+          }
         </li>
         <li class="duration-100 leading-[32px] 3xl:me-10 2xl:me-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer">
 <form (ngSubmit)="search()" class="flex items-center">
@@ -44,7 +76,7 @@
                i18n-placeholder="Search products placeholder|@@header.searchPlaceholder"
                aria-label="Search"
                i18n-aria-label="Search products|@@header.searchAria"
-               class="w-full border-none bg-transparent text-sm outline-none placeholder-[#797979]"
+               class="nav-search-input w-full border-none bg-transparent text-sm outline-none placeholder-[#797979]"
              />
              <button type="submit" class="text-blue-black hover:text-salmon" aria-label="Submit search" i18n-aria-label="Submit search button|@@header.searchSubmitAria">
                <i class="bi bi-search text-[20px]" style="-webkit-text-stroke: 0.6px"></i>
@@ -95,12 +127,12 @@
   </div>
 
   <!-- Sticky Nav (appears on scroll) -->
-  <div [class]="!hideNav ? 'fakeNav' : 'showFakeNav'" class="transition-all shadow-lg duration-300 ease-in-out fixed -top-3 start-0 box-border w-full flex flex-row justify-between items-center page-x py-2 !z-30 bg-almond">
-    <div class="font-semibold text-sm md:w-[77px] sm:w-[77px] h-auto text-blue-black min-w-max min-h-max">
+  <div [class]="!hideNav ? 'fakeNav' : 'showFakeNav'" class="transition-all shadow-lg duration-300 ease-in-out fixed -top-3 start-0 box-border w-full flex flex-row justify-between items-center ps-[16px] pe-[16px] md:ps-[120px] md:pe-10 2xl:ps-[185px] 2xl:pe-16 3xl:ps-[175px] 3xl:pe-[175px] py-2 !z-30 bg-almond">
+    <div class="absolute start-0 top-0 font-semibold text-sm md:w-[77px] sm:w-[77px] h-auto text-blue-black min-w-max min-h-max">
       <img src="assets/logo2.png.webp" class="md:inline-block w-full h-full object-cover" alt="logo" i18n-alt="Site logo|@@header.logoAlt" />
     </div>
-    <div class="box-border w-full 2xl:flex flex-row justify-between items-center ps-[93px] sm:hidden bg-almond">
-      <ul class="flex flex-row justify-between items-center">
+    <div class="box-border w-full 2xl:flex flex-row justify-between items-center gap-x-10 sm:hidden bg-almond">
+      <ul class="flex flex-row justify-between items-center whitespace-nowrap">
         <li class="duration-100 leading-[32px] 3xl:me-10 2xl:me-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer" routerLink="/">
           <span i18n="Home page link|@@nav.home">Home</span>
         </li>
@@ -117,9 +149,41 @@
           <span i18n="Contact page link|@@nav.contact">Contact</span>
         </li>
       </ul>
-      <ul class="flex flex-row justify-between items-center">
-        <li class="flex items-center duration-100 leading-[32px] 3xl:me-10 2xl:me-5 text-base text-blue-black transition-all ease-in-out cursor-pointer">
-          <a [href]="otherLocaleUrl" class="text-sm font-semibold text-blue-black hover:text-salmon transition-all ease-in-out whitespace-nowrap">{{ otherLocaleLabel }}</a>
+      <ul class="flex flex-row justify-between items-center whitespace-nowrap">
+        <li class="duration-100 leading-[32px] 3xl:me-10 2xl:me-5 font-semibold text-sm text-blue-black hover:text-salmon transition-all ease-in-out cursor-pointer">
+          <a [href]="otherLocaleUrl" class="inline-flex items-center whitespace-nowrap">{{ otherLocaleLabel }}</a>
+        </li>
+        <li class="currency-picker 3xl:me-10 2xl:me-5">
+          <button
+            type="button"
+            class="currency-trigger"
+            data-testid="currency-trigger"
+            (click)="toggleCurrencyMenu($event)"
+            [attr.aria-expanded]="currencyMenuOpen()"
+            aria-haspopup="listbox"
+            aria-label="Currency"
+            i18n-aria-label="Currency selector|@@nav.countryAria">
+            <span class="text-base leading-none">{{ regionFlag() }}</span>
+            <span>{{ region.currency().code }}</span>
+            <i class="bi bi-chevron-down text-[10px]" aria-hidden="true"></i>
+          </button>
+          @if (currencyMenuOpen()) {
+            <div class="currency-menu" role="listbox" aria-label="Currency" i18n-aria-label="Currency selector|@@nav.countryAria">
+              @for (c of region.currencyOptions(); track c.code) {
+                <button
+                  type="button"
+                  role="option"
+                  class="currency-option"
+                  [class.currency-option-selected]="region.currency().code === c.code"
+                  [attr.aria-selected]="region.currency().code === c.code"
+                  (click)="selectCurrency(c.code)">
+                  <span>{{ c.flag }}</span>
+                  <span class="currency-option-code">{{ c.code }}</span>
+                  <span class="currency-option-name">{{ c.name }}</span>
+                </button>
+              }
+            </div>
+          }
         </li>
         <li class="duration-100 leading-[32px] 3xl:me-10 2xl:me-5 border-b-[1px] border-b-blue-black text-base text-blue-black transition-all ease-in-out cursor-pointer">
 <form (ngSubmit)="search()" class="flex items-center">
@@ -133,7 +197,7 @@
                i18n-placeholder="Search products placeholder|@@header.searchPlaceholder"
                aria-label="Search"
                i18n-aria-label="Search products|@@header.searchAria"
-               class="w-full border-none bg-transparent text-sm outline-none placeholder-[#797979]"
+               class="nav-search-input w-full border-none bg-transparent text-sm outline-none placeholder-[#797979]"
              />
              <button type="submit" class="text-blue-black hover:text-salmon" aria-label="Submit search" i18n-aria-label="Submit search button|@@header.searchSubmitAria">
                <i class="bi bi-search text-[20px]" style="-webkit-text-stroke: 0.6px"></i>
@@ -205,6 +269,38 @@
           }
         </ul>
 
+        <div class="currency-picker currency-picker-mobile mt-6 w-full max-w-[240px] self-start">
+          <button
+            type="button"
+            class="flex items-center justify-between gap-1 w-full rounded-md border border-[#c9c9c9] bg-white px-3 py-2 text-base font-semibold text-blue-black"
+            data-testid="currency-trigger"
+            (click)="toggleCurrencyMenu($event)"
+            [attr.aria-expanded]="currencyMenuOpen()"
+            aria-haspopup="listbox"
+            aria-label="Currency"
+            i18n-aria-label="Currency selector|@@nav.countryAria">
+            <span>{{ regionFlag() }} {{ region.currency().code }}</span>
+            <i class="bi bi-chevron-down text-[10px]" aria-hidden="true"></i>
+          </button>
+          @if (currencyMenuOpen()) {
+            <div class="currency-menu currency-menu-mobile" role="listbox" aria-label="Currency" i18n-aria-label="Currency selector|@@nav.countryAria">
+              @for (c of region.currencyOptions(); track c.code) {
+                <button
+                  type="button"
+                  role="option"
+                  class="currency-option"
+                  [class.currency-option-selected]="region.currency().code === c.code"
+                  [attr.aria-selected]="region.currency().code === c.code"
+                  (click)="selectCurrency(c.code)">
+                  <span>{{ c.flag }}</span>
+                  <span class="currency-option-code">{{ c.code }}</span>
+                  <span class="currency-option-name">{{ c.name }}</span>
+                </button>
+              }
+            </div>
+          }
+        </div>
+
         <form (ngSubmit)="search(); closeMenu()" class="flex items-center mt-8 border-b-[1px] border-b-blue-black">
           <input
             [ngModel]="searchQuery()"
@@ -216,7 +312,7 @@
             i18n-placeholder="Search products placeholder|@@header.searchPlaceholder"
             aria-label="Search"
             i18n-aria-label="Search products|@@header.searchAria"
-            class="w-full border-none bg-transparent text-base outline-none placeholder-[#797979] py-2"
+            class="nav-search-input w-full border-none bg-transparent text-base outline-none placeholder-[#797979] py-2"
           />
           <button type="submit" class="text-blue-black hover:text-salmon" aria-label="Submit search" i18n-aria-label="Submit search button|@@header.searchSubmitAria">
             <i class="bi bi-search text-[20px]" style="-webkit-text-stroke: 0.6px"></i>
@@ -272,7 +368,7 @@
              i18n-placeholder="Search products placeholder|@@header.searchPlaceholder"
              aria-label="Search"
              i18n-aria-label="Search products|@@header.searchAria"
-             class="w-full border-none bg-transparent text-sm outline-none placeholder-[#797979]"
+             class="nav-search-input w-full border-none bg-transparent text-sm outline-none placeholder-[#797979]"
            />
            <button type="submit" class="text-blue-black hover:text-salmon" aria-label="Submit search" i18n-aria-label="Submit search button|@@header.searchSubmitAria">
              <i class="bi bi-search text-[20px]" style="-webkit-text-stroke: 0.6px"></i>

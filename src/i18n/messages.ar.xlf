@@ -50,9 +50,9 @@
         <source>Password</source>
         <target>كلمة المرور</target>
       </trans-unit>
-      <trans-unit id="login.rememberPassword" datatype="html">
-        <source>Remember password</source>
-        <target>تذكر كلمة المرور</target>
+      <trans-unit id="login.keepMeLoggedIn" datatype="html">
+        <source>Keep me logged in</source>
+        <target>أبقني مسجّلاً</target>
       </trans-unit>
       <trans-unit id="login.forgotPassword" datatype="html">
         <source>Forgot password?</source>
@@ -758,6 +758,18 @@
         <source>Sign in</source>
         <target>تسجيل الدخول</target>
       </trans-unit>
+      <trans-unit id="nav.countryAria" datatype="html">
+        <source>Currency</source>
+        <target>اختيار العملة</target>
+      </trans-unit>
+      <trans-unit id="nav.openMenu" datatype="html">
+        <source>Open menu</source>
+        <target>فتح القائمة</target>
+      </trans-unit>
+      <trans-unit id="nav.closeMenu" datatype="html">
+        <source>Close menu</source>
+        <target>إغلاق القائمة</target>
+      </trans-unit>
       <trans-unit id="header.heroSale" datatype="html">
         <source> 70% sale off </source>
         <target> خصم 70% </target>
@@ -1050,9 +1062,13 @@
         <source>Not available yet</source>
         <target>غير متاح بعد</target>
       </trans-unit>
-      <trans-unit id="checkout.cardNote" datatype="html">
-        <source>Online card checkout is available for all countries.</source>
-        <target>الدفع بالبطاقة عبر الإنترنت متاح لجميع الدول.</target>
+      <trans-unit id="checkout.noPaymentMethods" datatype="html">
+        <source>No payment methods are available for your country yet.</source>
+        <target>لا توجد طرق دفع متاحة لدولتك حتى الآن.</target>
+      </trans-unit>
+      <trans-unit id="checkout.loadingPaymentMethods" datatype="html">
+        <source>Loading payment methods...</source>
+        <target>جارٍ تحميل طرق الدفع...</target>
       </trans-unit>
       <trans-unit id="checkout.coupon" datatype="html">
         <source>Coupon</source>

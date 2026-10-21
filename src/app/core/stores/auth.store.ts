@@ -21,6 +21,7 @@ export class AuthStore {
     this.userId.set(safeStoredId(readStorageString('ecom.userId', null)));
     this.user.set(null);
     this.loading.set(false);
+    this.userLoading.set(false);
     this.error.set(null);
     this.pendingVerificationUserId.set(null);
     this.pendingVerificationEmail.set(null);
@@ -34,6 +35,7 @@ export class AuthStore {
   readonly userId = signal<string | null>(null);
   readonly user = signal<User | null>(null);
   readonly loading = signal(false);
+  readonly userLoading = signal(false);
   readonly error = signal<string | null>(null);
   readonly pendingVerificationUserId = signal<string | null>(null);
   readonly pendingVerificationEmail = signal<string | null>(null);
@@ -41,19 +43,19 @@ export class AuthStore {
   readonly isLoggedIn = computed(() => this.token() !== null);
   readonly isAdmin = computed(() => this.user()?.isAdmin === true);
 
-  async login(email: string, password: string): Promise<void> {
+  async login(email: string, password: string, keepMeLoggedIn = true): Promise<void> {
     this.loading.set(true);
     this.error.set(null);
     try {
       await firstValueFrom(
-        this.auth.login(email, password).pipe(
+        this.auth.login(email, password, keepMeLoggedIn).pipe(
           tap((res) => {
             this.token.set(res.token);
             this.userId.set(res.userId);
-            writeStorageString('ecom.token', res.token);
-            writeStorageString('ecom.userId', res.userId);
+            writeStorageString('ecom.token', res.token, keepMeLoggedIn);
+            writeStorageString('ecom.userId', res.userId, keepMeLoggedIn);
             if (res.refreshToken) {
-              writeStorageString('ecom.refreshToken', res.refreshToken);
+              writeStorageString('ecom.refreshToken', res.refreshToken, keepMeLoggedIn);
             }
           }),
           switchMap((res) => this.auth.me(res.userId)),
@@ -93,10 +95,13 @@ export class AuthStore {
   async loadUser(): Promise<void> {
     const id = this.userId();
     if (!id) return;
+    this.userLoading.set(true);
     try {
       this.user.set(normalizeUser(await firstValueFrom(this.auth.me(id))));
     } catch {
       this.user.set(null);
+    } finally {
+      this.userLoading.set(false);
     }
   }
 

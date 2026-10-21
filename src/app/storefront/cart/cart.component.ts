@@ -3,8 +3,9 @@ import { RouterLink } from '@angular/router';
 import { CartStore } from '../../core/stores/cart.store';
 import { CouponStore } from '../../core/stores/coupon.store';
 import { WishlistStore } from '../../core/stores/wishlist.store';
+import { RegionStore } from '../../core/stores/region.store';
 import { Product } from '../../core/models';
-import { formatPrice, effectivePrice } from '../../core/utils/price';
+import { effectivePrice } from '../../core/utils/price';
 import { pickText } from '../../core/utils/localize';
 import { ToastService } from '../../shared/toast/toast.service';
 import { ConfirmDialogService } from '../../shared/confirm-dialog/confirm-dialog.service';
@@ -21,14 +22,15 @@ export class CartComponent implements OnInit {
   protected readonly cart = inject(CartStore);
   protected readonly wishlist = inject(WishlistStore);
   protected readonly coupon = inject(CouponStore);
+  protected readonly region = inject(RegionStore);
   private toasts = inject(ToastService);
   private confirm = inject(ConfirmDialogService);
 
-  protected readonly formatPrice = formatPrice;
+  protected readonly fmt = (amount: number): string => this.region.format(amount);
   protected readonly effectivePrice = effectivePrice;
   protected readonly pickText = pickText;
   protected readonly couponCode = signal('');
-  protected readonly subtotal = computed(() => formatPrice(this.cart.subtotal()));
+  protected readonly subtotal = computed(() => this.fmt(this.cart.subtotal()));
   protected readonly discount = computed(() =>
     this.coupon.discountFor(this.cart.subtotal(), this.cart.items()),
   );
@@ -36,10 +38,10 @@ export class CartComponent implements OnInit {
     () => !!this.coupon.applied() && !this.coupon.minSubtotalMet(this.cart.subtotal(), this.cart.items()),
   );
   protected readonly total = computed(() =>
-    formatPrice(this.cart.subtotal() - this.discount() + this.cart.shippingFee()),
+    this.fmt(this.cart.subtotal() - this.discount() + this.cart.shippingFee()),
   );
   protected readonly shippingFee = computed(() =>
-    formatPrice(this.cart.shippingFee()),
+    this.fmt(this.cart.shippingFee()),
   );
 
   protected readonly freeShippingThreshold = computed(() =>
@@ -56,7 +58,7 @@ export class CartComponent implements OnInit {
     if (!this.cart.config()) return $localize`Calculating...`;
     const threshold = this.freeShippingThreshold();
     if (threshold <= 0 || this.cart.subtotal() >= threshold) return $localize`Free`;
-    return $localize`Add ${formatPrice(threshold - this.cart.subtotal())} more for free shipping`;
+    return $localize`Add ${this.fmt(threshold - this.cart.subtotal())} more for free shipping`;
   });
 
   ngOnInit(): void {
