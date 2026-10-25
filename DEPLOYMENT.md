@@ -148,11 +148,17 @@ npm install
 node index.js  # starts on :3000
 ```
 
+Configure the backend's local environment with `EMAIL_USER`, `EMAIL_PASS`, and
+`CONTACT_EMAIL` before starting it. `EMAIL_PASS` must be the mail provider's
+app password (for Gmail with two-step verification), not the account password.
+
 ### Frontend
 ```bash
 cd ecommerce-v2
 npm install
-ng serve  # starts on :4200, proxies API to localhost:3000
+ng serve  # starts on :4200; API requests go directly to localhost:3000
 ```
 
-The `environment.development.ts` is auto-used by `ng serve` (points to `localhost:3000`).
+`ng serve` uses `environment.development.ts`, which sends API requests to
+`http://localhost:3000/api/v1/`. Run the backend locally; the development
+frontend does not use the deployed backend's email configuration.
