@@ -8,6 +8,7 @@ import { LoadingSkeletonComponent } from '../../shared/loading-skeleton/loading-
 import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
 import { ToastService } from '../../shared/toast/toast.service';
 import { CartStore } from '../../core/stores/cart.store';
+import { RegionStore } from '../../core/stores/region.store';
 
 @Component({
   selector: 'app-product-list',
@@ -18,6 +19,7 @@ import { CartStore } from '../../core/stores/cart.store';
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   protected readonly catalog = inject(CatalogStore);
+  protected readonly region = inject(RegionStore);
   protected readonly totalPages = this.catalog.totalPages;
 
   private route = inject(ActivatedRoute);

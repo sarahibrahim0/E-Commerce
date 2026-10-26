@@ -4,6 +4,7 @@ import { Category, Product } from '../models';
 import { CategoriesService } from '../services/categories.service';
 import { ProductsService } from '../services/products.service';
 import { normalizeApiError } from '../services/api-error';
+import { RegionStore } from './region.store';
 
 export type SortOption = 'newest' | 'priceAsc' | 'priceDesc' | 'rating';
 
@@ -11,6 +12,7 @@ export type SortOption = 'newest' | 'priceAsc' | 'priceDesc' | 'rating';
 export class CatalogStore {
   private productsApi = inject(ProductsService);
   private categoriesApi = inject(CategoriesService);
+  private region = inject(RegionStore);
 
   readonly productsList = signal<Product[]>([]);
   readonly productsLoading = signal(false);
@@ -62,12 +64,14 @@ export class CatalogStore {
     this.productsLoading.set(true);
     this.productsError.set(null);
     try {
+      await this.region.ensureLoaded();
+      const rate = this.region.currency().rate;
       const list = await firstValueFrom(
         this.productsApi.list({
           categoryId: this.categoryId(),
           search: this.search(),
-          minPrice: this.minPrice(),
-          maxPrice: this.maxPrice(),
+          minPrice: this.toBasePrice(this.minPrice(), rate),
+          maxPrice: this.toBasePrice(this.maxPrice(), rate),
           color: this.color(),
         }),
       );
@@ -81,6 +85,10 @@ export class CatalogStore {
     } finally {
       this.productsLoading.set(false);
     }
+  }
+
+  private toBasePrice(displayPrice: number | null, rate: number): number | null {
+    return displayPrice === null ? null : displayPrice / rate;
   }
 
   async loadCategories(): Promise<void> {

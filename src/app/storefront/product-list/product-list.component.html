@@ -40,7 +40,7 @@
         </div>
 
         <div>
-          <label class="text-sm font-medium text-[#646D77]" i18n="Price filter label|@@productList.price">Price</label>
+          <label class="text-sm font-medium text-[#646D77]" i18n="Price filter label|@@productList.price">Price ({{ region.currency().code }})</label>
           <div class="mt-1 flex items-center gap-2">
             <input type="number" min="0" step="any" placeholder="Min" i18n-placeholder="Minimum price placeholder|@@productList.minPrice" [ngModel]="catalog.minPrice()" (ngModelChange)="catalog.minPrice.set($event)" class="w-1/2 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
             <input type="number" min="0" step="any" placeholder="Max" i18n-placeholder="Maximum price placeholder|@@productList.maxPrice" [ngModel]="catalog.maxPrice()" (ngModelChange)="catalog.maxPrice.set($event)" class="w-1/2 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
