@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -28,6 +28,24 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private toasts = inject(ToastService);
 
   private querySub: Subscription | null = null;
+
+  constructor() {
+    let lastCurrency: string | null = null;
+    effect(() => {
+      if (this.region.loading()) return;
+      const currency = this.region.currency();
+      const key = `${currency.code}:${currency.rate}`;
+      if (lastCurrency === null) {
+        lastCurrency = key;
+        return;
+      }
+      if (key === lastCurrency) return;
+
+      lastCurrency = key;
+      this.applyParams(this.route.snapshot.queryParams as Record<string, string>);
+      void this.catalog.loadProducts();
+    });
+  }
 
   ngOnInit(): void {
     // queryParams emits the current params immediately, so this covers both
