@@ -1,5 +1,5 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, Subject } from 'rxjs';
 import { ServerCountry, ServerCurrency } from '../models';
 import { CatalogService } from '../services/catalog.service';
 import { formatPrice } from '../utils/price';
@@ -49,6 +49,8 @@ export class RegionStore {
 
   private loaded = false;
   private pending: Promise<void> | null = null;
+  private currencyChanged = new Subject<DisplayCurrency>();
+  readonly currencyChanges = this.currencyChanged.asObservable();
 
   readonly selectedCountry = computed(() => {
     const code = this.countryCode();
@@ -103,8 +105,10 @@ export class RegionStore {
   }
 
   setCountry(code: string): void {
+    const previousCurrency = this.currency();
     const next = String(code || '').toUpperCase();
     this.countryCode.set(next);
+    this.emitCurrencyChange(previousCurrency);
     try {
       if (next) localStorage.setItem(STORAGE_KEY, next);
       else localStorage.removeItem(STORAGE_KEY);
@@ -117,6 +121,7 @@ export class RegionStore {
   setCurrency(code: string): void {
     const next = String(code || '').toUpperCase();
     if (!next) return;
+    const previousCurrency = this.currency();
     this.currencyOverride.set(next);
     try {
       localStorage.setItem(CURRENCY_STORAGE_KEY, next);
@@ -125,6 +130,14 @@ export class RegionStore {
     }
     const country = this.countries().find((c) => c.currencyId?.code === next);
     if (country) this.setCountry(country.code);
+    this.emitCurrencyChange(previousCurrency);
+  }
+
+  private emitCurrencyChange(previous: DisplayCurrency): void {
+    const current = this.currency();
+    if (previous.code !== current.code || previous.rate !== current.rate) {
+      this.currencyChanged.next(current);
+    }
   }
 
   private toDisplay(c: ServerCurrency): DisplayCurrency {

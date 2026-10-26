@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, computed, inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -28,30 +28,17 @@ export class ProductListComponent implements OnInit, OnDestroy {
   private toasts = inject(ToastService);
 
   private querySub: Subscription | null = null;
-
-  constructor() {
-    let lastCurrency: string | null = null;
-    effect(() => {
-      if (this.region.loading()) return;
-      const currency = this.region.currency();
-      const key = `${currency.code}:${currency.rate}`;
-      if (lastCurrency === null) {
-        lastCurrency = key;
-        return;
-      }
-      if (key === lastCurrency) return;
-
-      lastCurrency = key;
-      this.applyParams(this.route.snapshot.queryParams as Record<string, string>);
-      void this.catalog.loadProducts();
-    });
-  }
+  private currencySub: Subscription | null = null;
 
   ngOnInit(): void {
     // queryParams emits the current params immediately, so this covers both
     // the initial load and later back/forward navigation.
     this.querySub = this.route.queryParams.subscribe((params) => {
       this.applyParams(params as Record<string, string>);
+      void this.catalog.loadProducts();
+    });
+    this.currencySub = this.region.currencyChanges.subscribe(() => {
+      this.applyParams(this.route.snapshot.queryParams as Record<string, string>);
       void this.catalog.loadProducts();
     });
     if (this.catalog.categoriesList().length === 0) {
@@ -64,6 +51,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.querySub?.unsubscribe();
+    this.currencySub?.unsubscribe();
   }
 
   private applyParams(params: Record<string, string>): void {
