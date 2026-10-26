@@ -42,14 +42,26 @@
         <div>
           <label class="text-sm font-medium text-[#646D77]" i18n="Price filter label|@@productList.price">Price</label>
           <div class="mt-1 flex items-center gap-2">
-            <input type="number" placeholder="Min" i18n-placeholder="Minimum price placeholder|@@productList.minPrice" [ngModel]="catalog.minPrice()" (ngModelChange)="catalog.minPrice.set($event)" class="w-1/2 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-            <input type="number" placeholder="Max" i18n-placeholder="Maximum price placeholder|@@productList.maxPrice" [ngModel]="catalog.maxPrice()" (ngModelChange)="catalog.maxPrice.set($event)" class="w-1/2 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            <input type="number" min="0" step="any" placeholder="Min" i18n-placeholder="Minimum price placeholder|@@productList.minPrice" [ngModel]="catalog.minPrice()" (ngModelChange)="catalog.minPrice.set($event)" class="w-1/2 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+            <input type="number" min="0" step="any" placeholder="Max" i18n-placeholder="Maximum price placeholder|@@productList.maxPrice" [ngModel]="catalog.maxPrice()" (ngModelChange)="catalog.maxPrice.set($event)" class="w-1/2 rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
           </div>
         </div>
 
         <div>
           <label class="text-sm font-medium text-[#646D77]" i18n="Color filter label|@@productList.color">Color</label>
-          <input [ngModel]="catalog.color()" (ngModelChange)="catalog.color.set($event)" placeholder="e.g. black" i18n-placeholder="Color filter placeholder|@@productList.colorPlaceholder" class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+          <select [ngModel]="catalog.color() ?? ''" (ngModelChange)="catalog.color.set($event || null)"
+                  [disabled]="catalog.colorsLoading() || catalog.colors().length === 0"
+                  class="mt-1 w-full rounded-md border border-[#c9c9c9] bg-white px-3 py-2 text-sm text-blue-black outline-none focus:border-salmon disabled:cursor-not-allowed disabled:opacity-60">
+            <option value="" i18n="All colors option|@@productList.allColors">All colors</option>
+            @for (color of catalog.colors(); track color) {
+              <option [value]="color" class="bg-white text-blue-black">{{ color }}</option>
+            }
+          </select>
+          @if (catalog.colorsError(); as colorsError) {
+            <p class="mt-1 text-xs text-[#ff4545]">{{ colorsError }}</p>
+          } @else if (!catalog.colorsLoading() && catalog.colors().length === 0) {
+            <p class="mt-1 text-xs text-[#797979]" i18n="No colors available|@@productList.noColors">No product colors are available.</p>
+          }
         </div>
 
         <div>

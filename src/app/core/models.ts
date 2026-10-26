@@ -58,6 +58,7 @@ export interface RegisterRequest {
   phone: string;
   phoneDialCode?: string;
   password: string;
+  country: string;
 }
 
 export interface Review {

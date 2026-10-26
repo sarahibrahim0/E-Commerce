@@ -15,6 +15,9 @@ export class CatalogStore {
   readonly productsList = signal<Product[]>([]);
   readonly productsLoading = signal(false);
   readonly productsError = signal<string | null>(null);
+  readonly colors = signal<string[]>([]);
+  readonly colorsLoading = signal(false);
+  readonly colorsError = signal<string | null>(null);
   readonly categoriesList = signal<Category[]>([]);
   readonly categoriesLoading = signal(false);
   readonly categoriesError = signal<string | null>(null);
@@ -89,6 +92,18 @@ export class CatalogStore {
       this.categoriesError.set(normalizeApiError(err).message);
     } finally {
       this.categoriesLoading.set(false);
+    }
+  }
+
+  async loadColors(): Promise<void> {
+    this.colorsLoading.set(true);
+    this.colorsError.set(null);
+    try {
+      this.colors.set(await firstValueFrom(this.productsApi.colors()));
+    } catch (err) {
+      this.colorsError.set(normalizeApiError(err).message);
+    } finally {
+      this.colorsLoading.set(false);
     }
   }
 }

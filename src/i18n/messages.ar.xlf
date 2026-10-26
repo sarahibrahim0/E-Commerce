@@ -386,6 +386,22 @@
         <source>Country</source>
         <target>الدولة</target>
       </trans-unit>
+      <trans-unit id="editUser.countryLabel" datatype="html">
+        <source>Country</source>
+        <target>الدولة</target>
+      </trans-unit>
+      <trans-unit id="editUser.selectCountry" datatype="html">
+        <source>Select country</source>
+        <target>اختر الدولة</target>
+      </trans-unit>
+      <trans-unit id="editUser.noCountries" datatype="html">
+        <source>No countries are available.</source>
+        <target>لا توجد دول متاحة.</target>
+      </trans-unit>
+      <trans-unit id="profile.countryRequired" datatype="html">
+        <source>Please select a country.</source>
+        <target>يرجى اختيار الدولة.</target>
+      </trans-unit>
       <trans-unit id="editUser.passwordPlaceholder" datatype="html">
         <source>New password (optional)</source>
         <target>كلمة مرور جديدة (اختياري)</target>
@@ -1601,6 +1617,14 @@
       <trans-unit id="productList.colorPlaceholder" datatype="html">
         <source>e.g. black</source>
         <target>مثل: أسود</target>
+      </trans-unit>
+      <trans-unit id="productList.allColors" datatype="html">
+        <source>All colors</source>
+        <target>كل الألوان</target>
+      </trans-unit>
+      <trans-unit id="productList.noColors" datatype="html">
+        <source>No product colors are available.</source>
+        <target>لا تتوفر ألوان للمنتجات.</target>
       </trans-unit>
       <trans-unit id="productList.sort" datatype="html">
         <source>Sort</source>

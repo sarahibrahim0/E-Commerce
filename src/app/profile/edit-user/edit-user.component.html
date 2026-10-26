@@ -2,7 +2,7 @@
   <h2 class="text-lg font-semibold text-blue-black" i18n="Edit profile heading|@@editUser.title">Edit profile</h2>
   @if (showSkeleton()) {
     <div class="mt-4 grid gap-4 animate-pulse sm:grid-cols-2" role="status" aria-label="Loading" i18n-aria-label="Loading indicator|@@userData.loadingAria">
-      @for (_ of [0, 1, 2, 3, 4, 5, 6, 7]; track $index) {
+      @for (_ of [0, 1, 2, 3, 4, 5, 6]; track $index) {
         <div class="h-10 rounded-md bg-[#ecd7cd]"></div>
       }
       <div class="h-10 rounded-md bg-[#ecd7cd] sm:col-span-2"></div>
@@ -20,7 +20,22 @@
     <input [ngModel]="apartment()" (ngModelChange)="apartment.set($event)" name="apartment" placeholder="Apartment" i18n-placeholder="Apartment placeholder|@@editUser.apartmentPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
     <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City" i18n-placeholder="City placeholder|@@editUser.cityPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
     <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" i18n-placeholder="ZIP placeholder|@@editUser.zipPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
-    <input [ngModel]="country()" (ngModelChange)="country.set($event)" name="country" placeholder="Country" i18n-placeholder="Country placeholder|@@editUser.countryPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
+    <div>
+      <label for="profile-country" class="sr-only" i18n="Country label|@@editUser.countryLabel">Country</label>
+      <select id="profile-country" name="country" required [disabled]="region.loading() || countries().length === 0"
+              [ngModel]="selectedCountry()" (ngModelChange)="country.set($event)"
+              class="w-full rounded-md border border-[#c9c9c9] bg-white px-3 py-2 text-sm text-[#1f2937] outline-none focus:border-salmon disabled:cursor-not-allowed disabled:opacity-60">
+        <option value="" disabled i18n="Select country option|@@editUser.selectCountry">Select country</option>
+        @for (option of countries(); track option.code) {
+          <option [value]="option.code" class="bg-white text-[#1f2937]">{{ option.flag }} {{ option.name }}</option>
+        }
+      </select>
+      @if (region.error(); as countryError) {
+        <p class="mt-1 text-xs text-[#ff4545]">{{ countryError }}</p>
+      } @else if (!region.loading() && countries().length === 0) {
+        <p class="mt-1 text-xs text-[#797979]" i18n="No countries available message|@@editUser.noCountries">No countries are available.</p>
+      }
+    </div>
     <input [ngModel]="password()" (ngModelChange)="password.set($event)" name="password" type="password" placeholder="New password (optional)" i18n-placeholder="New password placeholder|@@editUser.passwordPlaceholder" class="w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon sm:col-span-2" />
     <div class="sm:col-span-2">
       <button type="submit" [disabled]="saving()" class="rounded-md uppercase tracking-wider bg-salmon px-5 py-2.5 text-sm font-medium text-white hover:bg-[#e9855a] disabled:opacity-50">

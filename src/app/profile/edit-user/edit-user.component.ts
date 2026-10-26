@@ -1,6 +1,7 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthStore } from '../../core/stores/auth.store';
+import { RegionStore } from '../../core/stores/region.store';
 import { AuthService } from '../../core/services/auth.service';
 import { normalizeApiError } from '../../core/services/api-error';
 import { ToastService } from '../../shared/toast/toast.service';
@@ -16,6 +17,8 @@ import { firstValueFrom } from 'rxjs';
 })
 export class EditUserComponent {
   protected readonly auth = inject(AuthStore);
+  protected readonly region = inject(RegionStore);
+  protected readonly countries = this.region.options;
 
   readonly name = signal('');
   readonly email = signal('');
@@ -28,6 +31,12 @@ export class EditUserComponent {
   readonly password = signal('');
   readonly saving = signal(false);
   readonly error = signal<string | null>(null);
+  protected readonly selectedCountry = computed(() => {
+    const value = this.country().trim().toLocaleLowerCase();
+    return this.countries().find((option) =>
+      option.code.toLocaleLowerCase() === value || option.name.toLocaleLowerCase() === value,
+    )?.code ?? '';
+  });
 
   protected readonly saveLabel = computed(() =>
     this.saving() ? $localize`Saving...` : $localize`Save changes`,
@@ -38,6 +47,7 @@ export class EditUserComponent {
   private initialized = false;
 
   constructor() {
+    void this.region.ensureLoaded();
     // Populate the form once the user arrives, so a deep link (or a slow
     // request) still fills in the fields instead of leaving them blank.
     effect(() => {
@@ -68,6 +78,10 @@ export class EditUserComponent {
   async save(): Promise<void> {
     const userId = this.auth.userId();
     if (!userId) return;
+    if (!this.selectedCountry()) {
+      this.error.set($localize`:@@profile.countryRequired:Please select a country.`);
+      return;
+    }
     this.saving.set(true);
     this.error.set(null);
     try {
@@ -80,7 +94,7 @@ export class EditUserComponent {
           apartment: this.apartment().trim(),
           city: this.city().trim(),
           zip: this.zip().trim(),
-          country: this.country().trim(),
+          country: this.selectedCountry(),
           ...(this.password() ? { password: this.password() } : {}),
         }),
       );

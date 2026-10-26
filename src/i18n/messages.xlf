@@ -760,6 +760,18 @@
         </context-group>
         <note priority="1" from="meaning">Country placeholder</note>
       </trans-unit>
+      <trans-unit id="editUser.countryLabel" datatype="html">
+        <source>Country</source>
+      </trans-unit>
+      <trans-unit id="editUser.selectCountry" datatype="html">
+        <source>Select country</source>
+      </trans-unit>
+      <trans-unit id="editUser.noCountries" datatype="html">
+        <source>No countries are available.</source>
+      </trans-unit>
+      <trans-unit id="profile.countryRequired" datatype="html">
+        <source>Please select a country.</source>
+      </trans-unit>
       <trans-unit id="editUser.passwordPlaceholder" datatype="html">
         <source>New password (optional)</source>
         <context-group purpose="location">
@@ -3309,6 +3321,12 @@
           <context context-type="linenumber">48</context>
         </context-group>
         <note priority="1" from="meaning">Color filter placeholder</note>
+      </trans-unit>
+      <trans-unit id="productList.allColors" datatype="html">
+        <source>All colors</source>
+      </trans-unit>
+      <trans-unit id="productList.noColors" datatype="html">
+        <source>No product colors are available.</source>
       </trans-unit>
       <trans-unit id="productList.sort" datatype="html">
         <source>Sort</source>

@@ -19,7 +19,7 @@ export class RegisterComponent {
   readonly name = signal('');
   readonly email = signal('');
   readonly phone = signal('');
-  readonly phoneDialCode = signal('+20');
+  readonly phoneDialCode = signal('');
   readonly country = signal('');
   readonly password = signal('');
   readonly confirm = signal('');
@@ -44,7 +44,13 @@ export class RegisterComponent {
   }
 
   async submit(): Promise<void> {
-    if (!this.name().trim() || !this.email().trim() || !this.phone().trim() || !this.password()) {
+    if (
+      !this.name().trim()
+      || !this.email().trim()
+      || !this.phone().trim()
+      || !this.password()
+      || !this.country().trim()
+    ) {
       this.formError.set($localize`All fields are required.`);
       return;
     }
@@ -60,6 +66,7 @@ export class RegisterComponent {
         phone: this.phone().trim(),
         phoneDialCode: this.phoneDialCode(),
         password: this.password(),
+        country: this.country(),
       });
       await this.router.navigate(['/verify-email']);
     } catch {

@@ -33,6 +33,10 @@ export class ProductsService {
     );
   }
 
+  colors(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.base}/colors`);
+  }
+
   get(id: string): Observable<Product> {
     return this.http.get<Product>(`${this.base}/${id}`).pipe(map(normalizeProduct));
   }

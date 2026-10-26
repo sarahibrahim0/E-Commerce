@@ -48,6 +48,28 @@ describe('CatalogStore', () => {
     await p;
   });
 
+  it('sends price bounds including zero and color as query params', async () => {
+    store.minPrice.set(0);
+    store.maxPrice.set(50);
+    store.color.set('matte black');
+    const p = store.loadProducts();
+    const req = http.expectOne((r) => r.url === environment.apiUrl + 'products');
+    expect(req.request.params.get('minPrice')).toBe('0');
+    expect(req.request.params.get('maxPrice')).toBe('50');
+    expect(req.request.params.get('color')).toBe('matte black');
+    req.flush({ data: [], total: 0, page: 1, totalPages: 0 });
+    await p;
+  });
+
+  it('loads available product colors from the backend', async () => {
+    const p = store.loadColors();
+    http.expectOne(environment.apiUrl + 'products/colors').flush(['Black', 'Matte Black']);
+    await p;
+    expect(store.colors()).toEqual(['Black', 'Matte Black']);
+    expect(store.colorsError()).toBeNull();
+    expect(store.colorsLoading()).toBeFalse();
+  });
+
   it('sorts products by price ascending', () => {
     store.productsList.set([product('a', 50), product('b', 10), product('c', 30)]);
     store.sort.set('priceAsc');

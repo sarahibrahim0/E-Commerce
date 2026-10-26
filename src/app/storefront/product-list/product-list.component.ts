@@ -37,6 +37,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
     if (this.catalog.categoriesList().length === 0) {
       void this.catalog.loadCategories();
     }
+    if (this.catalog.colors().length === 0) {
+      void this.catalog.loadColors();
+    }
   }
 
   ngOnDestroy(): void {
@@ -48,10 +51,21 @@ export class ProductListComponent implements OnInit, OnDestroy {
     const search = params['search'] ?? '';
     const sort = (params['sort'] as SortOption) ?? 'newest';
     const page = Number(params['page']) || 1;
+    const minPrice = this.parsePrice(params['minPrice']);
+    const maxPrice = this.parsePrice(params['maxPrice']);
     this.catalog.categoryId.set(categoryId);
     this.catalog.search.set(search);
+    this.catalog.minPrice.set(minPrice);
+    this.catalog.maxPrice.set(maxPrice);
+    this.catalog.color.set(params['color']?.trim() || null);
     this.catalog.sort.set(sort);
     this.catalog.page.set(page);
+  }
+
+  private parsePrice(value: string | undefined): number | null {
+    if (value === undefined || value.trim() === '') return null;
+    const price = Number(value);
+    return Number.isFinite(price) && price >= 0 ? price : null;
   }
 
   async syncUrl(): Promise<void> {
@@ -60,6 +74,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
       queryParams: {
         categories: this.catalog.categoryId() ?? undefined,
         search: this.catalog.search() || undefined,
+        minPrice: this.catalog.minPrice() ?? undefined,
+        maxPrice: this.catalog.maxPrice() ?? undefined,
+        color: this.catalog.color()?.trim() || undefined,
         sort: this.catalog.sort() === 'newest' ? undefined : this.catalog.sort(),
         page: this.catalog.page() === 1 ? undefined : this.catalog.page(),
       },
@@ -85,6 +102,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   async applyFilters(): Promise<void> {
+    this.catalog.page.set(1);
     await this.syncUrl();
   }
 
