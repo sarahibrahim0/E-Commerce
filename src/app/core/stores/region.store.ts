@@ -41,7 +41,8 @@ export class RegionStore {
 
   readonly countries = signal<ServerCountry[]>([]);
   readonly currencies = signal<ServerCurrency[]>([]);
-  readonly loading = signal(false);
+  readonly loading = signal(true);
+  readonly error = signal<string | null>(null);
   readonly countryCode = signal<string>(this.readStoredCountry());
   /** Explicit display-currency choice made in the header dropdown. */
   readonly currencyOverride = signal<string>(this.readStoredCurrency());
@@ -139,6 +140,7 @@ export class RegionStore {
 
   private async load(): Promise<void> {
     this.loading.set(true);
+    this.error.set(null);
     try {
       const [countriesRes, currenciesRes] = await Promise.all([
         firstValueFrom(this.catalog.getCountries()),
@@ -148,7 +150,7 @@ export class RegionStore {
       this.currencies.set(currenciesRes.data ?? []);
       this.loaded = true;
     } catch {
-      /* fall back to the base currency when the catalog cannot be reached */
+      this.error.set($localize`:@@region.loadError:Could not load country and currency options.`);
     } finally {
       this.loading.set(false);
       this.pending = null;

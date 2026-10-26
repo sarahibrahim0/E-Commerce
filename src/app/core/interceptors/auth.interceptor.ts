@@ -1,5 +1,5 @@
 import { HttpClient, HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { PLATFORM_ID, inject } from '@angular/core';
+import { LOCALE_ID, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformServer } from '@angular/common';
 import { BehaviorSubject, Observable, catchError, filter, switchMap, take, throwError, timer } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -14,21 +14,30 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
   }
   const http = inject(HttpClient);
+  const locale = inject(LOCALE_ID);
   const token = readStorageString('ecom.token', null);
   const needsAuth = !isPublicUrl(req.url);
   const authReq = token && needsAuth
     ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
     : req;
 
+  const localizedReq = authReq.url.startsWith(environment.apiUrl)
+    ? authReq.clone({
+        setHeaders: {
+          'Accept-Language': locale.toLowerCase().startsWith('ar') ? 'ar' : 'en',
+        },
+      })
+    : authReq;
+
   scheduleProactiveRefresh(http);
 
-  return next(authReq).pipe(
+  return next(localizedReq).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401 && needsAuth) {
-        return refreshTokenAndRetry(http, req, next);
+        return refreshTokenAndRetry(http, localizedReq, next);
       }
       if (error.status === 403 && error.error?.message?.includes('token already used')) {
-        return refreshTokenAndRetry(http, req, next);
+        return refreshTokenAndRetry(http, localizedReq, next);
       }
       return throwError(() => error);
     }),

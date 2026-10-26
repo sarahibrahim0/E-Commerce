@@ -22,13 +22,22 @@
     </div>
     <div>
       <label for="country" class="block text-sm font-medium text-[#646D77]" i18n="Country label|@@register.country">Country</label>
-      <select id="country" name="country" [ngModel]="country()" (ngModelChange)="onCountryChange($event)"
-              class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon bg-white">
-        <option value="" disabled i18n="Select country option|@@register.selectCountry">Select country</option>
-        @for (c of countries; track c.code) {
-          <option [value]="c.code">{{ c.flag }} {{ c.name }}</option>
+      @if (region.loading()) {
+        <div class="mt-1 h-10 w-full animate-pulse rounded-md bg-[#ecd7cd]" role="status" aria-label="Loading countries" i18n-aria-label="Loading countries|@@register.loadingCountries"></div>
+      } @else {
+        <select id="country" name="country" [ngModel]="country()" (ngModelChange)="onCountryChange($event)"
+                class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon bg-white">
+          <option value="" disabled i18n="Select country option|@@register.selectCountry">Select country</option>
+          @for (c of countries(); track c.code) {
+            <option [value]="c.code">{{ c.flag }} {{ c.name }}</option>
+          }
+        </select>
+        @if (region.error()) {
+          <p class="mt-1 text-xs text-[#ff4545]">{{ region.error() }}</p>
+        } @else if (countries().length === 0) {
+          <p class="mt-1 text-xs text-[#797979]" i18n="No countries available message|@@register.noCountries">No countries are available.</p>
         }
-      </select>
+      }
     </div>
     <div>
       <label for="phone" class="block text-sm font-medium text-[#646D77]" i18n="Phone label|@@register.phone">Phone</label>

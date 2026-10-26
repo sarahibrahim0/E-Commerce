@@ -1,10 +1,12 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CartStore } from '../../core/stores/cart.store';
 import { WishlistStore } from '../../core/stores/wishlist.store';
-import { formatPrice } from '../../core/utils/price';
+import { Product } from '../../core/models';
+import { pickText } from '../../core/utils/localize';
 import { EmptyStateComponent } from '../../shared/empty-state/empty-state.component';
 import { ProductCardComponent } from '../../shared/product-card/product-card.component';
+import { ToastService } from '../../shared/toast/toast.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -46,12 +48,14 @@ import { ProductCardComponent } from '../../shared/product-card/product-card.com
 export class WishlistComponent implements OnInit {
   protected readonly wishlist = inject(WishlistStore);
   private readonly cart = inject(CartStore);
+  private readonly toasts = inject(ToastService);
 
   ngOnInit(): void {
     this.wishlist.load();
   }
 
-  addToCart(product: any): void {
+  addToCart(product: Product): void {
     this.cart.add(product);
+    this.toasts.show($localize`${pickText(product.name)} added to cart`, 'success');
   }
 }

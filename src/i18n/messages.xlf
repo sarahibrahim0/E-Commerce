@@ -189,6 +189,12 @@
         </context-group>
         <note priority="1" from="meaning">Country label</note>
       </trans-unit>
+      <trans-unit id="register.loadingCountries" datatype="html">
+        <source>Loading countries</source>
+      </trans-unit>
+      <trans-unit id="register.noCountries" datatype="html">
+        <source>No countries are available.</source>
+      </trans-unit>
       <trans-unit id="register.selectCountry" datatype="html">
         <source>Select country</source>
         <context-group purpose="location">
@@ -1636,6 +1642,12 @@
         </context-group>
         <note priority="1" from="meaning">Country selector</note>
       </trans-unit>
+      <trans-unit id="nav.loadingCurrencies" datatype="html">
+        <source>Loading currencies</source>
+      </trans-unit>
+      <trans-unit id="nav.noCurrencies" datatype="html">
+        <source>No currencies available.</source>
+      </trans-unit>
       <trans-unit id="nav.openMenu" datatype="html">
         <source>Open menu</source>
         <context-group purpose="location">
@@ -2215,6 +2227,9 @@
         </context-group>
         <note priority="1" from="meaning">Country select label</note>
       </trans-unit>
+      <trans-unit id="checkout.loadingCountriesAria" datatype="html">
+        <source>Loading countries</source>
+      </trans-unit>
       <trans-unit id="checkout.loadingCountries" datatype="html">
         <source>Loading countries...</source>
         <context-group purpose="location">
@@ -2222,6 +2237,9 @@
           <context context-type="linenumber">56,59</context>
         </context-group>
         <note priority="1" from="meaning">Loading countries message</note>
+      </trans-unit>
+      <trans-unit id="region.loadError" datatype="html">
+        <source>Could not load country and currency options.</source>
       </trans-unit>
       <trans-unit id="checkout.phonePlaceholder" datatype="html">
         <source>Phone *</source>
@@ -3240,6 +3258,9 @@
           <context context-type="linenumber">25,27</context>
         </context-group>
         <note priority="1" from="meaning">Category filter label</note>
+      </trans-unit>
+      <trans-unit id="productList.loadingCategories" datatype="html">
+        <source>Loading categories</source>
       </trans-unit>
       <trans-unit id="productList.allCategories" datatype="html">
         <source>All</source>

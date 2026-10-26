@@ -45,15 +45,19 @@
             <input [ngModel]="city()" (ngModelChange)="city.set($event)" name="city" placeholder="City *" i18n-placeholder="City placeholder|@@checkout.cityPlaceholder" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
             <input [ngModel]="zip()" (ngModelChange)="zip.set($event)" name="zip" placeholder="ZIP / Postal" i18n-placeholder="ZIP placeholder|@@checkout.zipPlaceholder" class="rounded-md border border-[#c9c9c9] px-3 py-2 text-sm outline-none focus:border-salmon" />
             <div class="sm:col-span-2">
-              <select name="country" [ngModel]="countryCode()" (ngModelChange)="onCountryChange($event)"
-                      class="w-full rounded-md border border-[#c9c9c9] bg-white px-3 py-2 text-sm outline-none focus:border-salmon">
-                <option value="" disabled i18n="Country select label|@@checkout.countryLabel">Country *</option>
-                @for (c of countries(); track c.code) {
-                  <option [value]="c.code">{{ c.flag }} {{ c.name }}</option>
-                }
-              </select>
               @if (countriesLoading()) {
-                <p class="mt-1 text-xs text-[#c9c9c9]" i18n="Loading countries message|@@checkout.loadingCountries">Loading countries...</p>
+                <div class="h-10 w-full animate-pulse rounded-md bg-[#ecd7cd]" role="status" aria-label="Loading countries" i18n-aria-label="Loading countries|@@checkout.loadingCountriesAria"></div>
+              } @else {
+                <select name="country" [ngModel]="countryCode()" (ngModelChange)="onCountryChange($event)"
+                        class="w-full rounded-md border border-[#c9c9c9] bg-white px-3 py-2 text-sm outline-none focus:border-salmon">
+                  <option value="" disabled i18n="Country select label|@@checkout.countryLabel">Country *</option>
+                  @for (c of countries(); track c.code) {
+                    <option [value]="c.code">{{ c.flag }} {{ c.name }}</option>
+                  }
+                </select>
+                @if (region.error()) {
+                  <p class="mt-1 text-xs text-[#ff4545]">{{ region.error() }}</p>
+                }
               }
             </div>
             <div class="sm:col-span-2 flex mt-1">

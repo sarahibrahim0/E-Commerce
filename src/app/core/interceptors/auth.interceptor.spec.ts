@@ -1,4 +1,5 @@
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { LOCALE_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -12,6 +13,7 @@ describe('authInterceptor', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
+        { provide: LOCALE_ID, useValue: 'en-US' },
         provideHttpClient(withInterceptors([authInterceptor])),
         provideHttpClientTesting(),
       ],
@@ -34,6 +36,7 @@ describe('authInterceptor', () => {
     products.list({}).subscribe();
     const req = http.expectOne(environment.apiUrl + 'products');
     expect(req.request.headers.has('Authorization')).toBe(false);
+    expect(req.request.headers.get('Accept-Language')).toBe('en');
   });
 
   it('passes a 404 through as an HttpErrorResponse', () => {
@@ -44,5 +47,31 @@ describe('authInterceptor', () => {
       { status: 404, statusText: 'Not Found' },
     );
     expect(status).toBe(404);
+  });
+});
+
+describe('authInterceptor Arabic locale', () => {
+  let http: HttpTestingController;
+  let products: ProductsService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: LOCALE_ID, useValue: 'ar' },
+        provideHttpClient(withInterceptors([authInterceptor])),
+        provideHttpClientTesting(),
+      ],
+    });
+    localStorage.clear();
+    http = TestBed.inject(HttpTestingController);
+    products = TestBed.inject(ProductsService);
+  });
+
+  afterEach(() => http.verify());
+
+  it('requests Arabic API error messages for Arabic builds', () => {
+    products.list({}).subscribe();
+    const req = http.expectOne(environment.apiUrl + 'products');
+    expect(req.request.headers.get('Accept-Language')).toBe('ar');
   });
 });

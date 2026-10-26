@@ -2,7 +2,7 @@ import { Component, computed, inject, signal, OnInit, effect } from '@angular/co
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { firstValueFrom } from 'rxjs';
-import { Address, ServerPaymentMethod, COUNTRIES } from '../../core/models';
+import { Address, ServerPaymentMethod } from '../../core/models';
 import { AuthStore } from '../../core/stores/auth.store';
 import { CartStore } from '../../core/stores/cart.store';
 import { CouponStore } from '../../core/stores/coupon.store';
@@ -122,22 +122,12 @@ export class CheckoutComponent implements OnInit {
   );
 
   protected readonly countries = computed<CountryOption[]>(() => {
-    const list = this.region.countries();
-    if (list.length) {
-      return list.map((c) => ({
-        code: c.code,
-        name: pickText(c.name) || c.code,
-        flag: c.flag || '',
-        dialCode: c.phoneCode || '+',
-        currencyCode: c.currencyId?.code || 'EGP',
-      }));
-    }
-    return COUNTRIES.map((c) => ({
+    return this.region.countries().map((c) => ({
       code: c.code,
-      name: c.name,
-      flag: c.flag,
-      dialCode: c.dialCode,
-      currencyCode: 'EGP',
+      name: pickText(c.name) || c.code,
+      flag: c.flag || '',
+      dialCode: c.phoneCode || '+',
+      currencyCode: c.currencyId?.code || 'EGP',
     }));
   });
 

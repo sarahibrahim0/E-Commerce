@@ -2,7 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthStore } from '../../core/stores/auth.store';
-import { COUNTRIES } from '../../core/models';
+import { RegionStore } from '../../core/stores/region.store';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,8 @@ import { COUNTRIES } from '../../core/models';
 })
 export class RegisterComponent {
   protected readonly auth = inject(AuthStore);
-  protected readonly countries = COUNTRIES;
+  protected readonly region = inject(RegionStore);
+  protected readonly countries = this.region.options;
 
   readonly name = signal('');
   readonly email = signal('');
@@ -30,10 +31,14 @@ export class RegisterComponent {
 
   private router = inject(Router);
 
+  constructor() {
+    void this.region.ensureLoaded();
+  }
+
   onCountryChange(code: string): void {
-    const found = this.countries.find(c => c.code === code);
+    const found = this.countries().find(c => c.code === code);
     if (found) {
-      this.country.set(found.name);
+      this.country.set(found.code);
       this.phoneDialCode.set(found.dialCode);
     }
   }

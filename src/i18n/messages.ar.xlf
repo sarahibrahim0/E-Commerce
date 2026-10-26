@@ -94,6 +94,14 @@
         <source>Country</source>
         <target>الدولة</target>
       </trans-unit>
+      <trans-unit id="register.loadingCountries" datatype="html">
+        <source>Loading countries</source>
+        <target>جارٍ تحميل الدول</target>
+      </trans-unit>
+      <trans-unit id="register.noCountries" datatype="html">
+        <source>No countries are available.</source>
+        <target>لا توجد دول متاحة.</target>
+      </trans-unit>
       <trans-unit id="register.selectCountry" datatype="html">
         <source>Select country</source>
         <target>اختر الدولة</target>
@@ -762,6 +770,14 @@
         <source>Currency</source>
         <target>اختيار العملة</target>
       </trans-unit>
+      <trans-unit id="nav.loadingCurrencies" datatype="html">
+        <source>Loading currencies</source>
+        <target>جارٍ تحميل العملات</target>
+      </trans-unit>
+      <trans-unit id="nav.noCurrencies" datatype="html">
+        <source>No currencies available.</source>
+        <target>لا توجد عملات متاحة.</target>
+      </trans-unit>
       <trans-unit id="nav.openMenu" datatype="html">
         <source>Open menu</source>
         <target>فتح القائمة</target>
@@ -1034,9 +1050,17 @@
         <source>Country *</source>
         <target>الدولة *</target>
       </trans-unit>
+      <trans-unit id="checkout.loadingCountriesAria" datatype="html">
+        <source>Loading countries</source>
+        <target>جارٍ تحميل الدول</target>
+      </trans-unit>
       <trans-unit id="checkout.loadingCountries" datatype="html">
         <source>Loading countries...</source>
         <target>جارٍ تحميل الدول...</target>
+      </trans-unit>
+      <trans-unit id="region.loadError" datatype="html">
+        <source>Could not load country and currency options.</source>
+        <target>تعذر تحميل خيارات الدول والعملات.</target>
       </trans-unit>
       <trans-unit id="checkout.phonePlaceholder" datatype="html">
         <source>Phone *</source>
@@ -1549,6 +1573,10 @@
       <trans-unit id="productList.category" datatype="html">
         <source>Category</source>
         <target>الفئة</target>
+      </trans-unit>
+      <trans-unit id="productList.loadingCategories" datatype="html">
+        <source>Loading categories</source>
+        <target>جارٍ تحميل الفئات</target>
       </trans-unit>
       <trans-unit id="productList.allCategories" datatype="html">
         <source>All</source>

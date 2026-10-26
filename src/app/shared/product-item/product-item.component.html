@@ -1,7 +1,24 @@
 <div class="w-full border-[1px] border-solid border-[#F6F8FE] pb-5 text-center">
-  <a [routerLink]="['/product', product.id]" class="block cursor-pointer">
-    <img [src]="product.images?.[0]?.url ?? product.image" class="aspect-[4/3] cursor-pointer block w-full object-cover" [alt]="product.name" />
-  </a>
+  <div class="group relative">
+    <a [routerLink]="['/product', product.id]" class="block cursor-pointer">
+      <img [src]="product.images?.[0]?.url || product.image.url" class="aspect-[4/3] cursor-pointer block w-full object-cover" [alt]="product.name" />
+    </a>
+    <button
+      type="button"
+      data-testid="product-item-wishlist"
+      [attr.data-wishlisted]="isWishlisted() ? 'true' : 'false'"
+      aria-label="Toggle wishlist"
+      i18n-aria-label="Toggle wishlist action|@@productCard.toggleWishlistAria"
+      title="Toggle wishlist"
+      i18n-title="Toggle wishlist action|@@productCard.toggleWishlistAria"
+      class="absolute end-3 top-3 z-10 flex h-9 w-9 items-center justify-center rounded-md bg-white shadow transition hover:text-[#ff4545]"
+      (click)="toggleWishlist()"
+    >
+      <svg class="h-5 w-5" [class]="isWishlisted() ? 'fill-[#ff4545] text-[#ff4545]' : 'fill-none'" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7.5-4.6-9.5-8.6C.9 9.4 2.6 6 5.6 6c1.9 0 3.2 1 4.4 2.7C11.2 7 12.5 6 14.4 6c3 0 4.7 3.4 3.1 6.4C15.5 16.4 12 21 12 21z" />
+      </svg>
+    </button>
+  </div>
   <h3 class="w-full !font-[500] tracking-wider md:mt-[31px] sm:mt-[20px]">
     <a [routerLink]="['/product', product.id]" class="text-[#1a1a1a] !font-semibold block leading-[1.7] mb-card-title transition-all duration-300 hover:!underline">
       {{ product.name }}
@@ -16,4 +33,17 @@
 } @else {
   <span class="text-dark-purple font-semibold block">{{ price() }}</span>
 }
+  @if (product.countInStock > 0) {
+    <button
+      type="button"
+      data-testid="product-item-add-to-cart"
+      aria-label="Add to cart"
+      i18n-aria-label="Add to cart action|@@productCard.addToCartAria"
+      class="mt-4 inline-flex items-center gap-2 rounded-md bg-salmon px-4 py-2 text-sm font-medium text-white transition hover:bg-[#e9855a]"
+      (click)="onAddToCart()"
+    >
+      <i class="bi bi-bag" aria-hidden="true"></i>
+      <span i18n="Add to cart action|@@productCard.addToCart">Add to cart</span>
+    </button>
+  }
 </div>

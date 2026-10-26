@@ -23,16 +23,20 @@
       <div class="mt-4 space-y-4">
         <div>
           <label class="text-sm font-medium text-[#646D77]" i18n="Category filter label|@@productList.category">Category</label>
-          <select
-            [ngModel]="catalog.categoryId()"
-            (ngModelChange)="catalog.categoryId.set($event); syncUrl()"
-            class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm text-blue-black outline-none focus:border-salmon"
-          >
-            <option [ngValue]="null" i18n="All categories option|@@productList.allCategories">All</option>
-            @for (cat of catalog.categoriesList(); track cat.id) {
-              <option [ngValue]="cat.id">{{ cat.name }}</option>
-            }
-          </select>
+          @if (catalog.categoriesLoading()) {
+            <div class="mt-1 h-10 w-full animate-pulse rounded-md bg-[#ecd7cd]" role="status" aria-label="Loading categories" i18n-aria-label="Loading categories|@@productList.loadingCategories"></div>
+          } @else {
+            <select
+              [ngModel]="catalog.categoryId()"
+              (ngModelChange)="catalog.categoryId.set($event); syncUrl()"
+              class="mt-1 w-full rounded-md border border-[#c9c9c9] px-3 py-2 text-sm text-blue-black outline-none focus:border-salmon"
+            >
+              <option [ngValue]="null" i18n="All categories option|@@productList.allCategories">All</option>
+              @for (cat of catalog.categoriesList(); track cat.id) {
+                <option [ngValue]="cat.id">{{ cat.name }}</option>
+              }
+            </select>
+          }
         </div>
 
         <div>

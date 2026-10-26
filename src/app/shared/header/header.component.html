@@ -48,18 +48,32 @@
           </button>
           @if (currencyMenuOpen()) {
             <div class="currency-menu" role="listbox" aria-label="Currency" i18n-aria-label="Currency selector|@@nav.countryAria">
-              @for (c of region.currencyOptions(); track c.code) {
-                <button
-                  type="button"
-                  role="option"
-                  class="currency-option"
-                  [class.currency-option-selected]="region.currency().code === c.code"
-                  [attr.aria-selected]="region.currency().code === c.code"
-                  (click)="selectCurrency(c.code)">
-                  <span>{{ c.flag }}</span>
-                  <span class="currency-option-code">{{ c.code }}</span>
-                  <span class="currency-option-name">{{ c.name }}</span>
-                </button>
+              @if (region.loading()) {
+                <div class="animate-pulse space-y-2 p-2" role="status" aria-label="Loading currencies" i18n-aria-label="Loading currencies|@@nav.loadingCurrencies">
+                  @for (_ of [0, 1, 2, 3]; track $index) {
+                    <div class="flex min-h-8 items-center gap-2">
+                      <span class="h-4 w-4 rounded bg-[#ecd7cd]"></span>
+                      <span class="h-3 w-10 rounded bg-[#ecd7cd]"></span>
+                      <span class="h-3 w-24 rounded bg-[#ecd7cd]"></span>
+                    </div>
+                  }
+                </div>
+              } @else if (region.currencyOptions().length === 0) {
+                <p class="p-2 text-sm text-[#797979]" i18n="No currencies available|@@nav.noCurrencies">No currencies available.</p>
+              } @else {
+                @for (c of region.currencyOptions(); track c.code) {
+                  <button
+                    type="button"
+                    role="option"
+                    class="currency-option"
+                    [class.currency-option-selected]="region.currency().code === c.code"
+                    [attr.aria-selected]="region.currency().code === c.code"
+                    (click)="selectCurrency(c.code)">
+                    <span>{{ c.flag }}</span>
+                    <span class="currency-option-code">{{ c.code }}</span>
+                    <span class="currency-option-name">{{ c.name }}</span>
+                  </button>
+                }
               }
             </div>
           }
@@ -169,18 +183,32 @@
           </button>
           @if (currencyMenuOpen()) {
             <div class="currency-menu" role="listbox" aria-label="Currency" i18n-aria-label="Currency selector|@@nav.countryAria">
-              @for (c of region.currencyOptions(); track c.code) {
-                <button
-                  type="button"
-                  role="option"
-                  class="currency-option"
-                  [class.currency-option-selected]="region.currency().code === c.code"
-                  [attr.aria-selected]="region.currency().code === c.code"
-                  (click)="selectCurrency(c.code)">
-                  <span>{{ c.flag }}</span>
-                  <span class="currency-option-code">{{ c.code }}</span>
-                  <span class="currency-option-name">{{ c.name }}</span>
-                </button>
+              @if (region.loading()) {
+                <div class="animate-pulse space-y-2 p-2" role="status" aria-label="Loading currencies" i18n-aria-label="Loading currencies|@@nav.loadingCurrencies">
+                  @for (_ of [0, 1, 2, 3]; track $index) {
+                    <div class="flex min-h-8 items-center gap-2">
+                      <span class="h-4 w-4 rounded bg-[#ecd7cd]"></span>
+                      <span class="h-3 w-10 rounded bg-[#ecd7cd]"></span>
+                      <span class="h-3 w-24 rounded bg-[#ecd7cd]"></span>
+                    </div>
+                  }
+                </div>
+              } @else if (region.currencyOptions().length === 0) {
+                <p class="p-2 text-sm text-[#797979]" i18n="No currencies available|@@nav.noCurrencies">No currencies available.</p>
+              } @else {
+                @for (c of region.currencyOptions(); track c.code) {
+                  <button
+                    type="button"
+                    role="option"
+                    class="currency-option"
+                    [class.currency-option-selected]="region.currency().code === c.code"
+                    [attr.aria-selected]="region.currency().code === c.code"
+                    (click)="selectCurrency(c.code)">
+                    <span>{{ c.flag }}</span>
+                    <span class="currency-option-code">{{ c.code }}</span>
+                    <span class="currency-option-name">{{ c.name }}</span>
+                  </button>
+                }
               }
             </div>
           }
@@ -284,18 +312,32 @@
           </button>
           @if (currencyMenuOpen()) {
             <div class="currency-menu currency-menu-mobile" role="listbox" aria-label="Currency" i18n-aria-label="Currency selector|@@nav.countryAria">
-              @for (c of region.currencyOptions(); track c.code) {
-                <button
-                  type="button"
-                  role="option"
-                  class="currency-option"
-                  [class.currency-option-selected]="region.currency().code === c.code"
-                  [attr.aria-selected]="region.currency().code === c.code"
-                  (click)="selectCurrency(c.code)">
-                  <span>{{ c.flag }}</span>
-                  <span class="currency-option-code">{{ c.code }}</span>
-                  <span class="currency-option-name">{{ c.name }}</span>
-                </button>
+              @if (region.loading()) {
+                <div class="animate-pulse space-y-2 p-2" role="status" aria-label="Loading currencies" i18n-aria-label="Loading currencies|@@nav.loadingCurrencies">
+                  @for (_ of [0, 1, 2, 3]; track $index) {
+                    <div class="flex min-h-8 items-center gap-2">
+                      <span class="h-4 w-4 rounded bg-[#ecd7cd]"></span>
+                      <span class="h-3 w-10 rounded bg-[#ecd7cd]"></span>
+                      <span class="h-3 w-24 rounded bg-[#ecd7cd]"></span>
+                    </div>
+                  }
+                </div>
+              } @else if (region.currencyOptions().length === 0) {
+                <p class="p-2 text-sm text-[#797979]" i18n="No currencies available|@@nav.noCurrencies">No currencies available.</p>
+              } @else {
+                @for (c of region.currencyOptions(); track c.code) {
+                  <button
+                    type="button"
+                    role="option"
+                    class="currency-option"
+                    [class.currency-option-selected]="region.currency().code === c.code"
+                    [attr.aria-selected]="region.currency().code === c.code"
+                    (click)="selectCurrency(c.code)">
+                    <span>{{ c.flag }}</span>
+                    <span class="currency-option-code">{{ c.code }}</span>
+                    <span class="currency-option-name">{{ c.name }}</span>
+                  </button>
+                }
               }
             </div>
           }
